@@ -1,0 +1,25 @@
+\renewcommand{\arraystretch}{1.5}
+\newcolumntype{S}{>{\hsize=.2\hsize}X}
+
+\chapter{Notazioni}
+\section{Generali}
+\begin{tabularx}{\textwidth}{SX}
+\hline
+$\id$ & dato un insieme $A$ (solitamente chiaro dal contesto), $\id:A\to A$ è la funzione identità (per ogni $a\in A$ vale $\id(a)=a$)\\
+$\delta$ & dato un insieme $I$ e un campo $\mathbb{K}$ (solitamente chiari dal contesto), $\delta:I\times I\to\mathbb{K}$ è la funzione tale che per ogni $i,j\in I$ $\delta_{ij}=1$ se $i=j$, $\delta_{ij}=0$ altrimenti \\
+\hline
+\end{tabularx}
+\section{Spazi Vettoriali}
+Tutti gli spazi vettoriali si intenderanno definiti su un campo $\mathbb{K}$; eventuali limitazioni su $\mathbb{K}$ (ad esempio $\mathbb{K}=\mathbb{C}$ o $\ch\mathbb{K}=0$) saranno opportunamente segnalate.\\
+\begin{tabularx}{\textwidth}{SX}
+\hline
+$\langle S\rangle$ & se $S\subseteq V$, $\langle S\rangle$ è il sottospazio di $V$ generato dagli elementi di $S$ \\
+$\Hom(V,W)$ & lo spazio vettoriale delle applicazioni lineari da $V$ in $W$\\
+$\End(V)$ & $=\Hom(V,V)$ \\
+$GL(V)$ & il gruppo delle applicazioni lineari invertibili da $V$ in sé (l'operazione è la composizione) \\
+0 & l'applicazione nulla (dati due spazi vettoriali $V\comma W$, $0\in\Hom(V,W)$ è tale che $0(v)=0_W$ per ogni $v\in V$) \\
+$V^*$ & lo spazio duale di $V$ (ovvero $V^*=\Hom(V,\mathbb{K})$) \\
+$v_i^*$ & se $\{v_i\}_{i\in I}$ è una base di $V$, $v_i^*$ è il funzionale duale di $v_i$, ovvero l'unico elemento di $V^*$ tale che per ogni $j\in I$ vale $v_i^*(v_{j})=\delta_{ij}$\\
+$\sum_{i\in I}v_i$ & si intende che solo un numero finito di $v_i$ sono non nulli\\
+\hline
+\end{tabularx}

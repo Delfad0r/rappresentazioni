@@ -1,0 +1,226 @@
+\chapter{Complementi di Algebra Lineare}
+
+\section{Spazi Vettoriali Liberi}
+
+\begin{definition}
+Sia $X$ un insieme. Uno spazio vettoriale $V$ dotato di un'immersione $e:X\to V$ si dice \emph{libero} su $X$ se $e(X)$ è una base di $V$. Equivalentemente, $V$ è libero su $X$ se per ogni spazio vettoriale $Z$ e per ogni mappa $f:X\to Z$ esiste un'unica applicazione lineare $\bar{f}:V\to Z$ che fa commutare il diagramma
+$$
+\begin{tikzcd}
+X\arrow[r,"f"]\arrow[d,"e",swap]&Z\\
+V\arrow[ru,"\bar{f}",swap]
+\end{tikzcd}
+$$
+, ovvero tale che $f=\bar{f}\circ e$
+\end{definition}
+
+\begin{proposition}\thlabel{free-vector-space-existence}
+Sia $X$ un insieme. Allora esiste uno spazio vettoriale $V$ (dotato di un'immersione $e:X\to V$) che è libero su $X$.
+\end{proposition}
+\begin{proof}
+Scegliamo come $V$ l'insieme delle funzioni da $X$ in $\mathbb{K}$ a supporto finito, e come $e$ l'applicazione da $X$ in $V$ tale che $e(x)=(y\mapsto\delta_{xy})$. V possiede un'ovvia struttura di spazio vettoriale. Vediamo che $e(X)$ genera $V$: infatti, dato $f\in V$, vale
+$$
+f=\sum_{x\in X}f(x)e(x)
+$$
+(dove la somma è in realtà su un numero finito di addendi poiché f ha supporto finito). Supponiamo ora che esistano coefficienti $a_x\in\mathbb{K}$ tali che
+$$
+0=\sum_{x\in X}a_xe(x)
+$$
+. Allora per ogni $y\in X$ vale
+$$
+0=0(y)=\sum_{x\in X}a_xe(x)(y)=a_y
+$$
+, dunque $e(X)$ è un insieme di generatori di $V$ indipendenti.
+\end{proof}
+
+\begin{proposition}\thlabel{free-vector-space-uniqueness}
+Sia $X$ un insieme, $V\comma \bar{V}$ spazi vettoriali liberi su $X$ (con immersioni associate, rispettivamente, $e$ ed $\bar{e}$). Allora $V$ e $\bar{V}$ sono canonicamente isomorfi mediante un isomorfismo $\psi:V\to\bar{V}$ tale che $\bar{e}=\psi\circ e$.
+\end{proposition}
+\begin{proof}
+Se definiamo $\psi:V\to\bar{V}$ in questo modo
+$$
+\psi\biggl(\sum_{x\in X}a_xe(x)\biggr)=\sum_{x\in X}a_x\bar{e}(x)
+$$
+(dove gli $a_x$ sono coefficienti in $\mathbb{K}$), tutte le verifiche sono immediate.
+\end{proof}
+
+
+\section{Prodotto Tensore}
+
+\begin{definition}
+Siano $V\comma W$ spazi vettoriali. Si dice \emph{prodotto tensore} di $V$ e $W$ uno spazio vettoriale (indicato con $V\tensor W$) dotato di un'applicazione $\otimes:V\times W\to V\otimes W$ che soddisfa la seguente proprietà universale: per ogni spazio vettoriale $Z$ e per ogni applicazione bilineare $h:V\times W\to Z$ esiste un'unica applicazione lineare $\bar{h}:V\tensor W\to Z$ che fa commutare il diagramma
+$$
+\begin{tikzcd}
+V\times W\arrow[r,"h"]\arrow[d,"\tensor",swap]&Z\\
+V\tensor W\arrow[ru,"\bar{h}",swap]
+\end{tikzcd}
+$$
+, ovvero tale che $h=\bar{h}\circ\tensor$.
+\end{definition}
+
+\begin{proposition}\thlabel{tensor-space-existence}
+Siano $V\comma W$ spazi vettoriali. Allora esiste uno spazio vettoriale $V\tensor W$ (dotato di un'applicazione $\tensor:V\times W\to V\tensor W$) che è prodotto tensore di $V$ e $W$.
+\end{proposition}
+\begin{proof}
+Sia $U$ lo spazio vettoriale libero su $V\times W$, con $\{e(v,w)\}_{(v,w)\in V\times W}$ come base. Sia
+\begin{align*}
+K=\langle&e(\alpha v_1+\beta v_2,w_1)-\alpha e(v_1,w_1)-\beta e(v_2,w_1),\\&e(v_1,\alpha w_1+\beta w_2)-\alpha e(v_1, w_1)-\beta e(v_1, w_2)\\&:v_1,v_2\in V,w_1,w_2\in W,\alpha,\beta\in\mathbb{K}\rangle
+\end{align*}
+. Poniamo $V\tensor W=U/K$ con $\tensor=\pi\circ e:V\times W\to V\tensor W$, dove $\pi$ è la proiezione da $U$ su $U/K$. Dalla definizione di $K$ segue banalmente che $\tensor$ è bilineare. Sia ora $Z$ uno spazio vettoriale, $h:V\times W\to Z$ un'applicazione bilineare; dobbiamo trovare un'applicazione lineare $\bar h:V\tensor W\to Z$ tale che $h=\bar h\circ\tensor$. Poiché $U$ è lo spazio vettoriale libero su $V\times W$, esiste un'unica applicazione lineare $k:U\to Z$ tale che $h=k\circ e$. Essendo $h$ bilineare, si vede facilmente che $K\subseteq\ker k$. Allora, per il teorema di omomorfismo, esiste un'unica applicazione lineare $\bar h:U/K\to Z$ tale che $k=\bar h\circ\pi$. Segue che $\bar h\circ \tensor=\bar h\circ\pi\circ e=k\circ e=h$.
+$$
+\begin{tikzcd}
+V\times W\arrow[rr,"h"]\arrow[rd,"e"]\arrow[rdd,"\tensor",swap]&&Z\\
+&U\arrow[ru,"k"]\arrow[d,"\pi"]\\
+& U/K=V\tensor W\arrow[ruu,"\bar h",swap]
+\end{tikzcd}
+$$
+Inoltre $\bar h$ è unica: sia infatti $\bar{h'}$ un'applicazione lineare da $V\tensor W$ in $Z$ che soddisfa $h=\bar{h'}\circ\tensor$; allora $h=(\bar{h'}\circ\pi)\circ e$ da cui (per l'unicità di $k$) $\bar{h'}\circ e=k$, pertanto (per l'unicità di $\bar h$) $\bar{h'}=\bar h$.
+\end{proof}
+
+
+\begin{proposition}\thlabel{tensor-space-uniqueness}
+Siano $V\comma W$ spazi vettoriali, $V\tensor W\comma V\bar\tensor W$ prodotti tensore di $V$ e $W$ con applicazioni bilineari associate rispettivamente $\tensor$ e $\bar\tensor$. Allora $V\tensor W$ e $V\bar\tensor W$ sono canonicamente isomorfi mediante un isomorfismo $\psi:V\tensor W\to V\bar\tensor W$ tale che $\bar\tensor=\psi\circ\tensor$.
+\end{proposition}
+\begin{proof}Poiché $\bar\tensor:V\times W\to V\bar\tensor W$ è un'applicazione bilineare, esiste un'unica applicazione lineare $\psi:V\tensor W\to V\bar\tensor W$ tale che $\bar\tensor=\psi\circ\tensor$. Analogamente esiste $\bar\psi:V\bar\tensor W\to V\tensor W$ lineare tale che $\tensor=\bar\psi\circ\bar\tensor$. Osserviamo che
+$$
+\id\circ\tensor=\tensor=\bar\psi\circ\bar\tensor=\bar\psi\circ\psi\circ\tensor
+$$
+, dunque $\id$ e $\bar\psi\circ\psi$ sono entrambe applicazioni lineari da $V\tensor W$ in sé che fanno commutare i diagrammi\\
+\begin{tabularx}{\textwidth}{XX}
+$$
+\begin{tikzcd}[ampersand replacement = \&]
+V\times W\arrow[r,"\tensor"]\arrow[d,"\tensor",swap]\&V\tensor W\\
+V\tensor W\arrow[ru,"\id",swap]
+\end{tikzcd}
+$$
+&
+$$
+\begin{tikzcd}[ampersand replacement = \&]
+V\times W\arrow[r,"\tensor"]\arrow[d,"\tensor",swap]\&V\tensor W\\
+V\tensor W\arrow[ru,"\bar\psi\circ\psi",swap]
+\end{tikzcd}
+$$
+\end{tabularx}
+, quindi sono la stessa applicazione, ossia $\bar\psi\circ\psi=\id$. Analogamente si dimostra che $\psi\circ\bar\psi=\id$, pertanto $\psi$ è un isomorfismo (con inverso $\bar\psi$).
+\end{proof}
+
+D'ora in poi parleremo dunque \emph{del} prodotto tensore di due spazi vettoriali, dato che abbiamo dimostrato che questo esiste ed è unico a meno di isomorfismo canonico.
+
+\begin{proposition}\thlabel{tensor-space-generated}
+Siano $V\comma W$ spazi vettoriali. Allora
+$$
+V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle
+$$
+\end{proposition}
+\begin{proof}
+Sia $Z=\langle v\tensor w:v\in V, w\in W\rangle\subseteq V\tensor W$. Consideriamo l'applicazione bilineare nulla $0:V\times W\to (V\tensor W)/Z$. È evidente che $0=0\circ\tensor$. D'altro canto, se indichiamo con $\pi$ la proiezione da $V\tensor W$ su $(V\tensor W)/Z$, vale $\pi(v\tensor w)=0$ per ogni $v\in V,w\in W$, dunque $0=\pi\circ\tensor$. Segue che entrambi i diagrammi\\
+\begin{tabularx}{\textwidth}{XX}
+$$
+\begin{tikzcd}[ampersand replacement = \&]
+V\times W\arrow[r,"0"]\arrow[d,"\tensor",swap]\&(V\tensor W)/Z\\
+V\tensor W\arrow[ru,"0",swap]
+\end{tikzcd}
+$$
+&
+$$
+\begin{tikzcd}[ampersand replacement = \&]
+V\times W\arrow[r,"0"]\arrow[d,"\tensor",swap]\&(V\tensor W)/Z\\
+V\tensor W\arrow[ru,"\pi",swap]
+\end{tikzcd}
+$$
+\end{tabularx}
+commutano, dunque $\pi=0$, ovvero $Z=V\tensor W$.
+\end{proof}
+
+\begin{proposition}\thlabel{tensor-space-basis}
+Siano $V\comma W$ spazi vettoriali con basi, rispettivamente, $\{v_i\}_{i\in I}$ e $\{w_j\}_{j\in J}$. Allora $\{v_i\tensor w_j\}_{(i,j)\in I\times J}$ è una base di $V\tensor W$.
+\end{proposition}
+\begin{proof}
+Se $v\in V$ con $v=\sum_{i\in I}\alpha_i v_i$ e $w\in W$ con $w=\sum_{j\in J}\beta_j w_j$, allora
+$$
+v\tensor w=\sum_{(i,j)\in I\times J}\alpha_i\beta_j(v_i\tensor w_j)
+$$
+per bilinearità di $\tensor$. Dalla \thref{tensor-space-generated} segue che
+$$
+V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle=\langle v_i\tensor w_j:(i,j)\in I\times J\rangle
+$$
+Quindi i vettori $\{v_i\tensor w_j\}$ generano; mostriamo ora che sono linearmente indipendenti. Per ogni $i\in I,j\in J$ sia $\psi_{ij}:V\tensor W\to\mathbb{K}$ l'applicazione lineare tale che per ogni $v\in V,w\in W$ vale $\psi_{ij}(v\tensor w)=v_i^*(v)w_j^*(w)$ (l'esistenza di $\psi_{ij}$ è garantita dalla proprietà universale). Supponiamo esistano coefficienti $a_{ij}\in\mathbb{K}$ tali che
+$$
+0=\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)
+$$
+. Allora per ogni $h\in I,k\in J$ vale
+$$
+0=\psi_{hk}\biggl(\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)\biggr)=\sum_{(i,j)\in I\times J}a_{ij}\psi_{hk}(v_i\tensor w_j)=a_{hk}
+$$
+, quindi i vettori $\{v_i\tensor w_j\}$ sono indipendenti.
+\end{proof}
+
+\begin{corollary}\thlabel{tensor-space-dimension}
+Siano $V\comma W$ spazi vettoriali. Allora
+$$
+\dim (V\tensor W)=\dim V\cdot\dim W
+$$
+\end{corollary}
+
+\begin{proposition}\thlabel{tensor-threefold-product}
+Siano $V\comma W\comma U\comma Z$ spazi vettoriali, $h:V\times W\times U\to Z$ un'applicazione trilineare. Allora esiste un'unica applicazione lineare $\bar h:(V\tensor W)\tensor U\to Z$ tale che per ogni $v\in V,w\in W,u\in U$ vale $h(v,w,u)=\bar h((v\tensor w)\tensor u)$.
+\end{proposition}
+\begin{proof}
+Per ogni $u\in U$ l'applicazione $(v,w)\mapsto h(v,w,u)$ è bilineare, quindi esiste un'unica applicazione lineare $h_u:V\tensor W\to Z$ tale che per ogni $v\in V,w\in W$ vale $h_u(v\tensor w)=h(v,w,u)$. Ora, l'applicazione $(x,u)\mapsto h_u(x)$ è un'applicazione bilineare da $(V\tensor W)\times U$ in $Z$, quindi esiste un'unica applicazione lineare $\bar h:(V\tensor W)\tensor U\to Z$ tale che per ogni $x\in V\tensor W, u\in U$ vale $\bar h(x\tensor u)=h_u(x)$. In particolare, per ogni $v\in V,w\in W,u\in U$ vale
+$$
+\bar h((v\tensor w)\tensor u)=h_u(v\tensor w)=h(v,w,u)
+$$
+. Riguardo all'unicità di $\bar h$, sia $\bar{h'}:(V\tensor W)\tensor U\to Z$ che soddisfa $h(v,w,u)=\bar{h'}((v\tensor w)\tensor u)$ per ogni $v\in V,w\in W,u\in U$. Poiché $\bar{h'}$ coincide con $\bar h$ su una base (si veda la \thref{tensor-space-basis}) si ha $\bar{h'}=\bar h$.
+\end{proof}
+
+
+
+\begin{proposition}\thlabel{tensor-product-properties}
+Siano $V\comma W\comma U$ spazi vettoriali. Allora
+\begin{enumerate}[(i)]
+\item $V\tensor W\isom W\tensor V$
+\item $\mathbb{K}\tensor V\isom V$
+\item $(V\tensor W)\tensor U\isom V\tensor(W\tensor U)$
+\item $(V\dirsum W)\tensor U\isom(V\tensor U)\dirsum(W\tensor U)$
+\end{enumerate}
+Gli isomorfismi sono canonici.
+\end{proposition}
+\begin{proof}\leavevmode
+\begin{enumerate}[(i)]
+\item L'unica applicazione lineare da $V\tensor W$ in $W\tensor V$ che a $v\tensor w\in V\tensor W$ associa $w\tensor v$ (la cui esistenza è garantita dalla proprietà universale) manda una base in una base (si veda la \thref{tensor-space-basis}), quindi è un isomorfismo.
+\item L'unica applicazione lineare da $\mathbb{K}\tensor V$ in $V$ che a $\alpha\tensor v$ associa $\alpha v$ manda una base in una base, quindi è un isomorfismo.
+\item L'unica applicazione lineare da $(V\tensor W)\tensor U$ in $V\tensor(W\tensor U)$ che a $(v\tensor w)\tensor u$ associa $v\tensor(w\tensor u)$ (la cui esistenza è garantita dalla proprietà universale della \thref{tensor-threefold-product}) manda una base in una base, quindi è un isomorfismo.
+\item L'unica applicazione lineare da $(V\dirsum W)\tensor U)$ in $(V\tensor U)\dirsum(W\tensor U)$ che a $(v+w)\tensor u$ associa $v\tensor u+w\tensor u$ manda una base in una base, quindi è un isomorfismo.
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Siano $V\comma V'\comma W\comma W'$ spazi vettoriali, $f\in\Hom(V,V')\comma g\in\Hom(W,W')$. Si definisce $f\tensor g$ l'unica applicazione lineare da $V\tensor W$ in $V'\tensor W'$ tale che per ogni $v\in V,w\in W$ vale $(f\tensor g)(v\tensor w)=f(v)\tensor g(w)$ (unicità ed esistenza sono garantite dalla proprietà universale).
+\end{definition}
+
+\begin{proposition}\thlabel{tensor-homomorphism-properties}
+Siano $V\comma V'\comma V''\comma W\comma W'\comma W''$ spazi vettoriali, $f\in\Hom(V,V')\comma f'\in\Hom(V',V'')\comma g\in\Hom(W,W')\comma g'\in\Hom(W',W'')$.
+\begin{enumerate}[(i)]
+\item $(f'\tensor g')\circ(f\tensor g)=(f'\circ f)\tensor(g'\circ g)$
+\item Se $f$ e $g$ sono isomorfismi, allora anche $f\tensor g$ è un isomorfismo.
+\end{enumerate}
+\end{proposition}
+\begin{proof}\leavevmode
+\begin{enumerate}[(i)]
+\item Ovvio.
+\item Basta osservare che $f\tensor g$ manda una base in una base (si veda la \thref{tensor-space-basis}).
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}\thlabel{tensor-homomorphisms-vs-tensor}
+Siano $V\comma W$ spazi vettoriali di dimensione finita. Allora $V^*\tensor W$ e $\Hom(V,W)$ sono canonicamente isomorfi.
+\end{proposition}
+\begin{proof}
+Sia $\Psi:V^*\tensor W\to\Hom(V,W)$ l'unica applicazione lineare che a $\varphi\tensor w$ associa l'omomorfismo $(v\mapsto\varphi(v)w)$. Mostriamo che $\Psi$ è un isomorfismo. Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Per ogni $i,i'\in I\comma j\in J$ vale $\Psi(v_i^*\tensor w_j)(v_{i'})=\delta_{ii'}w_j$. Se scriviamo le applicazione lineari in forma di matrici rispetto alle basi $\{v_i\}$ e $\{w_j\}$ (siamo in dimensione finita), $\Psi(v_i^*\tensor w_j)$ è la matrice nulla ovunque tranne che in posizione $(j,i)$, dove compare un 1. $\Psi$ manda una base di $V^*\tensor W$ in una base di $\Hom(V,W)$, quindi è un isomorfismo.
+\end{proof}
+
+\begin{corollary}\thlabel{tensor-endomorphism-vs-tensor}
+Sia $V$ uno spazio vettoriale di dimensione finita. Allora $V^*\tensor V$ e $\End(V)$ sono canonicamente isomorfi.
+\end{corollary}
+
+
+
