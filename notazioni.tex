@@ -7,6 +7,9 @@
 \hline
 $\id$ & dato un insieme $A$ (solitamente chiaro dal contesto), $\id:A\to A$ è la funzione identità (per ogni $a\in A$ vale $\id(a)=a$)\\
 $\delta$ & dato un insieme $I$ e un campo $\mathbb{K}$ (solitamente chiari dal contesto), $\delta:I\times I\to\mathbb{K}$ è la funzione tale che per ogni $i,j\in I$ $\delta_{ij}=1$ se $i=j$, $\delta_{ij}=0$ altrimenti \\
+$\im f,f(A)$ & $=\{f(a):a\in A\}$ se $f$ è una funzione da un insieme $A$\\
+$\fix f$ & $=\{a\in A:f(a)=a\}$ se $f$ è una funzione da $A$ in sé\\
+$f|_{A'}$ & se $f:A\to B$ e $A'\subseteq A$, allora $f|_{A'}:A'\to B$ è tale che $f|_{A'}(a)=f(a)$ per ogni $a\in A'$\\
 \hline
 \end{tabularx}
 \section{Spazi Vettoriali}
@@ -14,12 +17,17 @@ Tutti gli spazi vettoriali si intenderanno definiti su un campo $\mathbb{K}$; ev
 \begin{tabularx}{\textwidth}{SX}
 \hline
 $\langle S\rangle$ & se $S\subseteq V$, $\langle S\rangle$ è il sottospazio di $V$ generato dagli elementi di $S$ \\
+$V^n$ & $\underbrace{V\dirsum\ldots\dirsum V}_\text{$n$ volte}$\\
+$\mathbb{K}^{m\times n}$ & lo spazio vettoriale delle matrici $m\times n$ a coefficienti in $\mathbb{K}$\\
+$[A]_{ij}$ & il coefficiente in posizione $(i,j)$ della matrice $A$\\
 $\Hom(V,W)$ & lo spazio vettoriale delle applicazioni lineari da $V$ in $W$\\
 $\End(V)$ & $=\Hom(V,V)$ \\
 $GL(V)$ & il gruppo delle applicazioni lineari invertibili da $V$ in sé (l'operazione è la composizione) \\
-0 & l'applicazione nulla (dati due spazi vettoriali $V\comma W$, $0\in\Hom(V,W)$ è tale che $0(v)=0_W$ per ogni $v\in V$) \\
+0 & dati un insieme $A$ e uno spazio vettoriale $V$, l'applicazione nulla $0:A\to V$ è l'applicazione tale che $0(a)=0_V$ per ogni $a\in A$ \\
+$V_\lambda(f)$ & l'autospazio di $f$ relativo all'autovalore $\lambda$ (f può essere omessa se è chiara dal contesto)\\
 $V^*$ & lo spazio duale di $V$ (ovvero $V^*=\Hom(V,\mathbb{K})$) \\
 $v_i^*$ & se $\{v_i\}_{i\in I}$ è una base di $V$, $v_i^*$ è il funzionale duale di $v_i$, ovvero l'unico elemento di $V^*$ tale che per ogni $j\in I$ vale $v_i^*(v_{j})=\delta_{ij}$\\
+$e_i$ & l'$i$-esimo elemento della base canonica di $\mathbb{K}^n$ (cioè il vettore con coordinate nulle eccetto la $i$-esima, che è 1)\\
 $\sum_{i\in I}v_i$ & si intende che solo un numero finito di $v_i$ sono non nulli\\
 \hline
 \end{tabularx}

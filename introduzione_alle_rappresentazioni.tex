@@ -1,0 +1,295 @@
+\chapter{Introduzione alle Rappresentazioni}
+
+\section{Definizioni e prime proprietà}
+
+\begin{definition}
+Sia $G$ un gruppo, $V$ uno spazio vettoriale. Si dice \emph{rappresentazione} (lineare) un omomorfismo di gruppi $\Rep{\rho}{G}{V}$. $\rho$ si dice \emph{rappresentazione complessa} (rispettivamente \emph{reale}) se $V$ è uno spazio vettoriale complesso (rispettivamente reale).
+\end{definition}
+
+Con lieve abuso di notazione, potremo chiamare $V$ stesso \emph{rappresentazione} quando sarà chiaro dal contesto quale rappresentazione stia agendo su $V$.
+
+Poiché ogni rappresentazione $\Rep{\rho}{G}{V}$ è un'azione di $G$ su $V$, utilizzeremo spesso la notazione (usuale per le azioni di gruppi) $gv$ per indicare $\rho(g)v$.
+
+\begin{definition}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Si chiama \emph{grado} di $\rho$ (e si indica con $\deg\rho$) il numero $\dim V$.
+\end{definition}
+
+\begin{example}
+Per ogni $n\in\mathbb{N}$ la rappresentazione $\Rep{n_G}{G}{\mathbb{K}^n}$ (che indicheremo con $n$ qualora non ci fossero rischi di ambiguità) che a ogni $g\in G$ associa l'identità è detta \emph{rappresentazione banale di grado $n$}. $0_G$ prende il nome di \emph{rappresentazione nulla}.
+\end{example}
+
+\begin{definition}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Un'applicazione lineare $\varphi:V\to W$ si dice \emph{omomorfismo di rappresentazioni} se per ogni $g\in G$ vale $\varphi\circ\rho(g)=\sigma(g)\circ\varphi$. L'insieme degli omomorfismi di rappresentazioni da $\rho$ in $\sigma$ si indica con $\Hom(\rho,\sigma)$ o $\Hom_G(V, W)$.
+\end{definition}
+
+\begin{definition}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Un'applicazione lineare $\varphi:V\to W$ si dice \emph{isomorfismo di rappresentazioni} se è un isomorfismo e un omomorfismo di rappresentazioni. Diciamo che $\rho$ e $\sigma$ sono \emph{isomorfe} (e scriviamo $\rho\isor\sigma$) se esiste un isomorfismo di rappresentazioni da $\rho$ in $\sigma$.
+\end{definition}
+
+Utilizzeremo il simbolo $\isor$ per indicare l'isomorfismo anche quando confonderemo le rappresentazioni con i rispettivi spazi vettoriali: $V\isor W$ indica che $V$ e $W$ sono isomorfi come rappresentazioni, mentre $V\iso W$ indica che $V$ e $W$ sono isomorfi solo come spazi vettoriali.
+
+\begin{proposition}\thlabel{representation-homomorphisms-properties}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni, $\varphi\in\Hom_G(V,W)\comma\psi\in\Hom_G(W,U)$.
+\begin{enumerate}[(i)]
+\item $\Hom_G(V,W)$ è un sottospazio vettoriale di $\Hom(V,W)$
+\item $\psi\varphi\in\Hom_G(V,U)$
+\item L'isomorfismo fra rappresentazioni è una relazione di equivalenza.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Si tratta di semplici verifiche.
+\end{proof}
+
+\begin{definition}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Si definisce \emph{somma diretta} di $\rho$ e $\sigma$ la rappresentazione $\Rep{\rho+\sigma}{G}{V\dirsum W}$ tale che per ogni $g\in G\comma v\in V\comma w\in W$ vale $(\rho+\sigma)(g)(v+w)=\rho(g)v+\sigma(g)w$.
+\end{definition}
+
+Scriveremo $n\rho$ (dove $n\in\mathbb{N}$) per indicare la rappresentazione $\underbrace{\rho+\ldots+\rho}_{\text{$n$ volte}}$; in particolare, $0\rho=0_G$.
+
+\begin{proposition}\thlabel{representation-direct-sum-properties}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni.
+\begin{enumerate}[(i)]
+\item $\deg(\rho+\sigma)=\deg\rho+\deg\sigma$
+\item $\rho+\sigma\isor\sigma+\rho$
+\item $(\rho+\sigma)+\tau\isor\rho+(\sigma+\tau)$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Dimostriamo solo la (ii)
+\begin{enumerate}[(i)]
+\addtocounter{enumi}{1}
+\item Sia $\psi:V\dirsum W\to W\dirsum V$ tale che $\psi(v+w)=w+v$ per ogni $v\in V\comma w\in W$. $\psi$ è ovviamente un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni.
+\begin{align*}
+\psi((\rho+\sigma)(g)(v+w))&=\psi(\rho(g)v+\sigma(g)w)\\
+&=\sigma(g)w+\rho(g)v\\
+&=(\sigma+\rho)(g)(w+v)\\
+&=(\sigma+\rho)(g)\psi(v+w)
+\end{align*}
+\end{enumerate}
+Molte dimostrazioni di proprietà delle operazioni fra rappresentazione sono analoghe a questa e verranno pertanto omesse.
+\end{proof}
+
+\begin{proposition}\thlabel{representation-projection-inclusion-homomorphism}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\pi_V:V\dirsum W\to V$ la proiezione, $\iota_V:V\to V\dirsum W$ l'inclusione. Allora $\pi_V$ e $\iota_V$ sono omomorfismi di rappresentazioni.
+\end{proposition}
+\begin{proof}
+Le verifiche sono semplici:
+\begin{multline*}
+\pi_V((\rho+\sigma)(g)(v+w))=\pi_V(\rho(g)v+\sigma(g)w)=\rho(g)v=\rho(g)\pi_V(v+w)\\
+\iota_V(\rho(g)v)=\rho(g)v=(\rho+\sigma)(g)\iota_V(v)\\
+\end{multline*}
+\end{proof}
+
+\begin{proposition}\thlabel{representation-sum-homomorphisms}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni. Allora
+$$
+\Hom(\rho+\sigma,\tau)\iso\Hom(\rho,\tau)\dirsum\Hom(\sigma,\tau)
+$$
+\end{proposition}
+\begin{proof}
+Siano $\pi_V:V\dirsum W\to V\comma\pi_W:V\dirsum W\to W$ le proiezioni. Consideriamo l'applicazione lineare
+\begin{alignat*}{2}
+\Theta:\Hom_G(V,U)&\dirsum\Hom_G(W,U)&&\to\Hom_G(V\dirsum W,U)\\
+\varphi&+\psi&&\mapsto\varphi\pi_V+\psi\pi_W
+\end{alignat*}
+Osserviamo che $\Theta$ è ben definita (cioè l'immagine sta davvero in $\Hom_G(V\dirsum W,U)$: infatti per la \thref{representation-projection-inclusion-homomorphism} $\pi_V\in\Hom_G(V\dirsum W,V)$, quindi $\varphi\pi_W\in\Hom_G(V\dirsum W,U)$. Per mostrare che $\Theta$ è un isomorfismo basta notare che l'inversa $\Theta^{-1}$ è data da
+$$
+\Theta^{-1}(\varphi)=\varphi\iota_V+\varphi\iota_W
+$$
+: infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verifica facilmente che $\Theta^{-1}\circ\Theta=\id\comma\Theta\circ\Theta^{-1}=\id$
+\end{proof}
+
+\begin{definition}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Si definisce \emph{prodotto tensore} (o semplicemente prodotto) di $\rho$ e $\sigma$ la rappresentazione $\Rep{\rho\tensor\sigma}{G}{V\tensor W}$ (indicata anche con $\rho\sigma$) tale che per ogni $g\in G\comma v\in V\comma w\in W$ vale $(\rho\tensor\sigma)(g)(v\tensor w)=\rho(g)v\tensor\sigma(g)w$.
+\end{definition}
+\begin{remark}
+Si tratta di una buona definizione, poiché l'esistenza e l'unicità di $(\rho\tensor\sigma)(g)$ sono garantite dalla proprietà universale del prodotto tensore.
+\end{remark}
+
+\begin{proposition}\thlabel{representation-tensor-product-properties}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni.
+\begin{enumerate}[(i)]
+\item $\deg(\rho\sigma)=\deg\rho\cdot\deg\sigma$
+\item $\rho\sigma\isor\sigma\rho$
+\item $(\rho\sigma)\tau\isor\rho(\sigma\tau)$
+\item $\rho(\sigma+\tau)\isor\rho\sigma+\rho\tau$
+\item $n_G\tensor\rho\isor n\rho$ per ogni $n\in\mathbb{N}$ (in particolare $0_G\tensor\rho\isor 0_G$).
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Dimostriamo solo la (v).
+\begin{enumerate}[(i)]
+\addtocounter{enumi}{4}
+\item Abbiamo $\Rep{n_G}{G}{\mathbb{K}^n}\comma\Rep{\rho}{G}{V}\comma\Rep{n\rho}{G}{V^n}$. Indichiamo per comodità 
+$$
+V^n=\Dirsum_{i=1}^{n}V^{(i)}\qquad\text{, dove i $V^{(i)}$ sono copie disgiunte di $V$}
+$$
+; dato $v\in V$, chiamiamo $v^{(i)}$ l'elemento corrispondente in $V^{(i)}$. Consideriamo l'unica applicazione lineare
+\begin{alignat*}{3}
+\psi:&&\mathbb{K}^n&\tensor V&&\to V^n\\
+&&\biggl(\sum_{i=1}^{n}\alpha_ie_i\biggr)&\tensor v&&\mapsto\sum_{i=1}^{n}\alpha_iv^{(i)}
+\end{alignat*}
+. Se $\{v_j\}_{j\in J}$ è una base di $V$, allora $\{e_i\tensor v_j\}_{i\in\{1,\ldots,n\},j\in J}$ è una base di $\mathbb{K}^n\tensor V$ e $\{v_j^{(i)}\}_{i\in\{1,\ldots,n\},j\in J}$ è una base di $V^n$, quindi $\psi$ manda una base in una base, ossia è un isomorfismo.
+\end{enumerate}
+\end{proof}
+
+\section{Sottorappresentazioni e Decomposizioni}
+
+\begin{definition}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Un sottospazio $W\subseteq V$ si dice \emph{$G$-stabile} se, per ogni $g\in G$, $W$ è $\rho(g)$-stabile, ovvero $\rho(g)(W)\subseteq W$.
+\end{definition}
+
+\begin{definition}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Indichiamo con $\Rep{\rho^W}{G}{W}$ la rappresentazione tale che $\rho^W(g)=\rho(g)|_W$ per ogni $g\in G$. Diciamo che $\rho^W$ è una \emph{sottorappresentazione} di $\rho$; se $W\neq\langle0\rangle$ e $W\neq V$ diciamo che $\rho^W$ è una \emph{sottorappresentazione propria} di $\rho$.
+\end{definition}
+
+Coerentemente con il già citato abuso di notazione potremo dire che $W$ è una sottorappresentazione di $V$ se $W$ è $G$-stabile (invece del più proprio ``$\rho^W$ è una sottorappresentazione di $\rho$'').
+
+\begin{example}
+Se $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ sono rappresentazioni, allora $\rho$ e $\sigma$ sono sottorappresentazioni di $\rho+\sigma$ (o $V$ e $W$ sono sottorappresentazioni di $V\dirsum W$).
+\end{example}
+
+\begin{proposition}\thlabel{subrepresentation-ker-im}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\Hom(\rho,\sigma)$. Allora $\ker\varphi$ e $\im\varphi$ sono sottorappresentazioni, rispettivamente, di $V$ e di $W$.
+\end{proposition}
+\begin{proof}
+Sia $v\in\ker\varphi$. Allora $\varphi(\rho(g)v)=\sigma(g)\varphi(v)=0$, quindi $\rho(g)v\in\ker\varphi$. Analogamente se $w\in\im\varphi$, allora $w=\varphi(v)$ per un qualche $v\in V$; segue che $\sigma(g)w=\sigma(g)\varphi(v)=\varphi(\rho(g)v)$, quindi $\sigma(g)w\in\im\varphi$.
+\end{proof}
+
+\begin{definition}
+Una rappresentazione $\Rep{\rho}{G}{V}$ non nulla si dice \emph{irriducibile} se non ha sottorappresentazioni proprie.
+\end{definition}
+
+\begin{example}
+Ogni rappresentazione di grado 1 è irriducibile.
+\end{example}
+
+\begin{definition}
+Una rappresentazione $\Rep{\rho}{G}{V}$ non nulla si dice \emph{indecomponibile} se non esistono sottorappresentazioni proprie $W\comma W'\subseteq V$ tali che $V=W\dirsum W'$.
+\end{definition}
+
+\begin{remark}
+Ogni rappresentazione irriducibile è indecomponibile, mentre il viceversa è falso in generale.
+\end{remark}
+
+\begin{definition}
+Una rappresentazione $\Rep{\rho}{G}{V}$ si dice \emph{completamente riducibile} se è isomorfa a una somma di rappresentazioni irriducibili.
+\end{definition}
+
+\begin{example}
+Ogni rappresentazione irriducibile è completamente riducibile.
+\end{example}
+
+\begin{proposition}\thlabel{representation-irreducible-finite-degree}
+Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile. Allora $\deg\rho<\infty$.
+\end{proposition}
+\begin{proof}
+Sia $v\in V$ un vettore non nullo. Sia $W=\langle\rho(g)v:g\in G\rangle\neq\langle 0\rangle$. È facile verificare che $W$ è $G$-stabile (basta farlo sui generatori), quindi (essendo $V$ irriducibile) $W=V$. Ma $\dim W\le|G|<\infty$.
+\end{proof}
+
+\begin{proposition}\thlabel{representation-finite-group-diagonalisable}
+Sia $G$ è un gruppo finito di ordine $n$, $\Rep{\rho}{G}{V}$ una rappresentazione. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora per ogni $g\in G$ gli autovalori di $\rho(g)$ sono radici $n$-esime dell'unità. Se inoltre supponiamo che $\ch\mathbb{K}\nmid n$, allora $\rho(g)$ è diagonalizzabile.
+\end{proposition}
+\begin{proof}
+Sia $g\in G$. Osserviamo che $\rho(g)^n=\id$, dunque gli autovalori di $\rho(g)$ sono necessariamente radici $n$-esime dell'unità. Inoltre il polinomio minimo di $\rho(g)$ divide $x^n-1$. Supponiamo ora che $\ch\mathbb{K}\nmid n$; allora applicando il criterio della derivata si ottiene che $x^n-1$ non ha radici doppie, quindi il polinomio minimo di $\rho(g)$ è prodotto di fattori di primo grado. Per decomposizione primaria segue che $\rho(g)$ è diagonalizzabile.
+\end{proof}
+
+\begin{proposition}\thlabel{representation-finite-abelian-group}
+Sia $G$ un gruppo abeliano finito, $\Rep{\rho}{G}{V}$ una rappresentazione di grado finito. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid |G|$. Allora $V$ si decompone come somma di rappresentazioni di grado 1.
+\end{proposition}
+\begin{proof}
+Sappiamo dalla \thref{representation-finite-group-diagonalisable} che ogni $\rho(g)$ è diagonalizzabile. Inoltre, poiché $G$ è abeliano, $\rho(G)$ è un sottogruppo abeliano di $GL(V)$, dunque gli elementi di $\rho(G)$ sono simultaneamente diagonalizzabili, ovvero esiste una base di V  di vettori $\{v_i\}_{i\in I}$ che sono autovettori per ogni $\rho(g)\in\rho(G)$. Ma allora $\langle v_i\rangle$ è un sottospazio $G$-stabile per ogni $i\in I$, quindi
+$$
+V=\Dirsum_{i\in I}\langle v_i\rangle
+$$
+come somma di rappresentazioni.
+\end{proof}
+
+\begin{proposition}\thlabel{subrepresentation-stable-complement}
+Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ una sottorappresentazione. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Allora esiste una sottorappresentazione $W'\subseteq V$ tale che $V=W\dirsum W'$.
+\end{proposition}
+\begin{proof}
+Sia $U$ un complementare qualunque di $W$ (cioè tale che $V=W\dirsum U$), e sia $\pi_W:V\to W$ la proiezione. Sia $T:V\to V$ l'applicazione lineare definita da
+$$
+T=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}
+$$
+. Ricordando che $W$ è $G$-stabile e che $\im\pi_W=\fix\pi_W=W$ si vede facilmente che $\im T\subseteq W$ e che $T|_W=\id$, da cui $\im T=\fix T=W$. Segue che $T^2=T$ e dunque, per decomposizione primaria, $V=V_0\dirsum V_1=\ker T\dirsum\fix T$. Inoltre $T$ è un omomorfismo di rappresentazioni: infatti
+\begin{align*}
+hT&=\frac{1}{|G|}\sum_{g\in G}hg\pi_Wg^{-1}\\
+&=\frac{1}{|G|}\sum_{hg\in G}(hg)\pi_W(hg)^{-1}h\\
+&=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}h=Th
+\end{align*}
+. Pertanto, grazie alla \thref{subrepresentation-ker-im}, $\ker T$ è $G$-stabile. Ponendo $W'=\ker T$ si ha, come voluto, $V=W\dirsum W'$  come somma di rappresentazioni.
+\end{proof}
+
+\begin{proposition}\thlabel{representation-finite-completely-reducible}
+Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione di grado finito. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Allora $V$ è completamente riducibile.
+\end{proposition}
+\begin{proof}
+Sia $W\subseteq V$ un sottospazio $G$-stabile minimale non nullo. Se $W=V$ non c'è nulla da dimostrare, altrimenti per la \thref{subrepresentation-stable-complement} esiste un complementare $W'$ di $W$ $G$-stabile. Allora $V=W\dirsum W'$ con $W$ irriducibile e $\dim W'<\dim V$, dunque si può concludere per induzione.
+\end{proof}
+
+\begin{corollary}\thlabel{representation-indecomposable-implies-irreducible}
+Supponiamo $\ch\mathbb{K}=0$. Allora ogni rappresentazione indecomponibile di un gruppo finito è irriducibile.
+\end{corollary}
+
+\begin{proposition}[Lemma di Schur I]\thlabel{schur-lemma-1}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\Hom(\rho,\sigma)$.
+\begin{enumerate}[(i)]
+\item Se $\rho$ è irriducibile, allora $\varphi$ è nullo oppure iniettivo.
+\item Se $\sigma$ è irriducibile, allora $\varphi$ è nullo oppure suriettivo.
+\item Se $\rho$ e $\sigma$ sono irriducibili, allora $\varphi$ è nullo oppure è un isomorfismo.
+\end{enumerate}
+\end{proposition}
+\begin{proof}\leavevmode
+\begin{enumerate}[(i)]
+\item $\ker\varphi\subseteq V$ è una sottorappresentazione, quindi è nullo (e allora $\varphi$ è iniettivo) oppure coincide con $V$ (e allora $\varphi$ è nullo).
+\item $\im\varphi\subseteq W$ è una sottorappresentazione, quindi è nullo (e allora $\varphi$ è nullo) oppure coincide con $W$ (e allora $\varphi$ è suriettivo).
+\item Segue da (i) e (ii).
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Lemma di Schur II]\thlabel{schur-lemma-2}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $\varphi\in\Hom(\rho,\rho)$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\varphi$ è un multiplo scalare (eventualmente nullo) dell'identità.
+\end{proposition}
+\begin{proof}
+Sia $\lambda\in\mathbb{K}$ un autovalore per $\varphi$ (esiste poiché $\mathbb{K}$ è algebricamente chiuso). Allora $\varphi-\lambda\id\in\Hom(\rho,\rho)$ non è un isomorfismo (almeno un vettore non nullo viene mandato in 0), quindi per la \thref{schur-lemma-1} è nullo, ossia $\varphi=\lambda\id$.
+\end{proof}
+
+\begin{corollary}\thlabel{representation-center-homothety}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $z\in Z(G)$. Supponiamo che $\ch\mathbb{K}$ sia algebricamente chiuso. Allora $\rho(z)$ è un multiplo scalare dell'identità.
+\end{corollary}
+\begin{proof}
+Da $z\in Z(G)$ segue $\rho(z)\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\rho(z)$ è un multiplo scalare dell'identità.
+\end{proof}
+
+\begin{corollary}\thlabel{representation-irreducible-homomorphisms-dim}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni irriducibili. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora
+$$
+\dim\Hom(\rho,\sigma)=
+\begin{cases}
+1\qquad&\text{se $\rho\isor\sigma$}\\
+0\qquad&\text{altrimenti}
+\end{cases}
+$$
+\end{corollary}
+\begin{proof}
+Se $\rho\not\isor\sigma$ allora per il Lemma di Schur ogni omomorfismo da $\rho$ in $\sigma$ è nullo, quindi $\dim\Hom(\rho,\sigma)=0$. Se invece $\rho\isor\sigma$, sia $\psi$ un isomorfismo da $\rho$ in $\sigma$. Dato $\varphi\in\Hom(\rho,\sigma)$ vale $\psi^{-1}\varphi\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\psi^{-1}\varphi$ è un multiplo scalare dell'identità, ovvero $\varphi=\lambda\psi$ per un qualche $\lambda\in\mathbb{K}$. Allora è chiaro che $\Hom(\rho,\sigma)\iso\mathbb{K}$, perciò $\dim\Hom(\rho,\sigma)=1$.
+\end{proof}
+
+\begin{corollary}\thlabel{representation-multiplicity-homomorphisms}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $\rho=\sum_{i\in I}n_i\rho_i$ con  $I$ finito, $n_i\in\mathbb{N}^+\comma\Rep{\rho_i}{G}{W_i}$ rappresentazioni irriducibili a due a due non isomorfe. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $n_i=\dim\Hom(\rho,\rho_i)=\dim\Hom(\rho_i,\rho)$.
+\end{corollary}
+\begin{proof}
+Mostriamo l'uguaglianza $n_i=\dim\Hom(\rho,\rho_i)$. Dalla \thref{representation-sum-homomorphisms} e dal \thref{representation-irreducible-homomorphisms-dim} ricaviamo
+\begin{align*}
+\Hom(\rho,\rho_i)&\iso \Dirsum_{j\in I}\Hom(n_j\rho_j,\rho_i)\\
+&\iso\Dirsum_{j\in I}\Dirsum_{k=1}^{n_j}\Hom(\rho_j,\rho_i)\\
+\dim\Hom(\rho,\rho_i)&=\sum_{j\in I}n_j\dim\Hom(\rho_j,\rho_i)\\
+&=\sum_{j\in I}n_j\delta_{ij}=n_i
+\end{align*}
+L'uguaglianza $n_i=\dim\Hom(\rho_i,\rho)$ si mostra in modo analogo.
+\end{proof}
+
+
+

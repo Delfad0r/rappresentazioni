@@ -4,6 +4,7 @@
 \usepackage[italian]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage[shortlabels]{enumitem}
 \usepackage{ltablex}
@@ -27,14 +28,20 @@
 \newtheorem{corollary}[theorem]{Corollario}
 \theoremstyle{remark}
 \newtheorem*{remark}{Osservazione}
+\newtheorem*{example}{Esempio}
 
 \newcommand{\comma}{,\allowbreak}
 \newcommand{\dirsum}{\oplus}
+\newcommand{\Dirsum}{\bigoplus}
 \newcommand{\tensor}{\otimes}
-\newcommand{\isom}{\cong}
+\newcommand{\iso}{\cong}
+\newcommand{\isor}{\simeq}
 \newcommand{\Rep}[3]{#1:#2\to GL(#3)}
 
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\fix}{fix}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\tr}{tr}

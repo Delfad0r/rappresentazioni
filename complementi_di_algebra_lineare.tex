@@ -13,15 +13,22 @@ $$
 , ovvero tale che $f=\bar{f}\circ e$
 \end{definition}
 
+La proprietà soddisfatta da $V$ nella definizione equivalente è un esempio di proprietà universale\footnote{Una definizione formale di \emph{proprietà universale} richiede alcune conoscenze di teoria delle categorie; per noi l'espressione \emph{proprietà universale} avrà una funzione puramente denotativa.}.
+
+\begin{example}
+Ogni spazio vettoriale è libero su una sua base (prendendo $e=\id$).
+\end{example}
+
+
 \begin{proposition}\thlabel{free-vector-space-existence}
 Sia $X$ un insieme. Allora esiste uno spazio vettoriale $V$ (dotato di un'immersione $e:X\to V$) che è libero su $X$.
 \end{proposition}
 \begin{proof}
-Scegliamo come $V$ l'insieme delle funzioni da $X$ in $\mathbb{K}$ a supporto finito, e come $e$ l'applicazione da $X$ in $V$ tale che $e(x)=(y\mapsto\delta_{xy})$. V possiede un'ovvia struttura di spazio vettoriale. Vediamo che $e(X)$ genera $V$: infatti, dato $f\in V$, vale
+Scegliamo come $V$ l'insieme delle funzioni da $X$ in $\mathbb{K}$ a supporto finito, e come $e$ l'applicazione da $X$ in $V$ tale che $e(x)=(y\mapsto\delta_{xy})$. $V$ possiede una naturale struttura di spazio vettoriale. Vediamo che $e(X)$ genera $V$: infatti, dato $f\in V$, vale
 $$
 f=\sum_{x\in X}f(x)e(x)
 $$
-(dove la somma è in realtà su un numero finito di addendi poiché f ha supporto finito). Supponiamo ora che esistano coefficienti $a_x\in\mathbb{K}$ tali che
+(dove la somma è in realtà su un numero finito di addendi poiché $f$ ha supporto finito). Supponiamo ora che esistano coefficienti $a_x\in\mathbb{K}$ tali che
 $$
 0=\sum_{x\in X}a_xe(x)
 $$
@@ -56,6 +63,8 @@ V\tensor W\arrow[ru,"\bar{h}",swap]
 $$
 , ovvero tale che $h=\bar{h}\circ\tensor$.
 \end{definition}
+
+La proprietà soddisfatta da $V\tensor W$ è un altro esempio di proprietà universale.
 
 \begin{proposition}\thlabel{tensor-space-existence}
 Siano $V\comma W$ spazi vettoriali. Allora esiste uno spazio vettoriale $V\tensor W$ (dotato di un'applicazione $\tensor:V\times W\to V\tensor W$) che è prodotto tensore di $V$ e $W$.
@@ -169,28 +178,24 @@ Per ogni $u\in U$ l'applicazione $(v,w)\mapsto h(v,w,u)$ è bilineare, quindi es
 $$
 \bar h((v\tensor w)\tensor u)=h_u(v\tensor w)=h(v,w,u)
 $$
-. Riguardo all'unicità di $\bar h$, sia $\bar{h'}:(V\tensor W)\tensor U\to Z$ che soddisfa $h(v,w,u)=\bar{h'}((v\tensor w)\tensor u)$ per ogni $v\in V,w\in W,u\in U$. Poiché $\bar{h'}$ coincide con $\bar h$ su una base (si veda la \thref{tensor-space-basis}) si ha $\bar{h'}=\bar h$.
+. Riguardo all'unicità di $\bar h$, sia $\bar{h'}:(V\tensor W)\tensor U\to Z$ che soddisfa $h(v,w,u)=\bar{h'}((v\tensor w)\tensor u)$ per ogni $v\in V,w\in W,u\in U$. Poiché $\bar{h'}$ coincide con $\bar h$ su un insieme di generatori si ha $\bar{h'}=\bar h$.
 \end{proof}
-
-
 
 \begin{proposition}\thlabel{tensor-product-properties}
 Siano $V\comma W\comma U$ spazi vettoriali. Allora
 \begin{enumerate}[(i)]
-\item $V\tensor W\isom W\tensor V$
-\item $\mathbb{K}\tensor V\isom V$
-\item $(V\tensor W)\tensor U\isom V\tensor(W\tensor U)$
-\item $(V\dirsum W)\tensor U\isom(V\tensor U)\dirsum(W\tensor U)$
+\item $V\tensor W\iso W\tensor V$
+\item $\mathbb{K}\tensor V\iso V$
+\item $(V\tensor W)\tensor U\iso V\tensor(W\tensor U)$
+\item $(V\dirsum W)\tensor U\iso(V\tensor U)\dirsum(W\tensor U)$
 \end{enumerate}
 Gli isomorfismi sono canonici.
 \end{proposition}
 \begin{proof}\leavevmode
 \begin{enumerate}[(i)]
-\item L'unica applicazione lineare da $V\tensor W$ in $W\tensor V$ che a $v\tensor w\in V\tensor W$ associa $w\tensor v$ (la cui esistenza è garantita dalla proprietà universale) manda una base in una base (si veda la \thref{tensor-space-basis}), quindi è un isomorfismo.
-\item L'unica applicazione lineare da $\mathbb{K}\tensor V$ in $V$ che a $\alpha\tensor v$ associa $\alpha v$ manda una base in una base, quindi è un isomorfismo.
-\item L'unica applicazione lineare da $(V\tensor W)\tensor U$ in $V\tensor(W\tensor U)$ che a $(v\tensor w)\tensor u$ associa $v\tensor(w\tensor u)$ (la cui esistenza è garantita dalla proprietà universale della \thref{tensor-threefold-product}) manda una base in una base, quindi è un isomorfismo.
-\item L'unica applicazione lineare da $(V\dirsum W)\tensor U)$ in $(V\tensor U)\dirsum(W\tensor U)$ che a $(v+w)\tensor u$ associa $v\tensor u+w\tensor u$ manda una base in una base, quindi è un isomorfismo.
+\item Sia $\psi:V\tensor W\to W\tensor V$ l'unica applicazione lineare tale che $\psi(v\tensor w)=w\tensor v$ per ogni $v\in V\comma w\in W$ (esistenza e unicità di $\psi$ sono garantite dalla proprietà universale). Se $\{v_i\}_{i\in I}$ è una base di $V$ e $\{w_j\}_{j\in J}$ è una base di $W$, allora $\{v_i\tensor w_j\}_{(i,j)\in I\times J}$ è una base di $V\tensor W$ e $\{w_j\tensor v_i\}_{(i,j)\in I\times J}$ è una base di $W\tensor V$, quindi $\psi$ manda una base in una base, ossia è un isomorfismo. Osserviamo che abbiamo fissato basi di $V$ e $W$ solo per dimostrare che $\psi$ è un isomorfismo, non per definirlo, quindi $\psi$ è un isomorfismo canonico.
 \end{enumerate}
+Le altre proprietà si dimostrano in modo del tutto analogo, avendo cura nella (iii) di utilizzare la proprietà universale della \thref{tensor-threefold-product}.
 \end{proof}
 
 \begin{definition}
@@ -215,12 +220,37 @@ Siano $V\comma V'\comma V''\comma W\comma W'\comma W''$ spazi vettoriali, $f\in\
 Siano $V\comma W$ spazi vettoriali di dimensione finita. Allora $V^*\tensor W$ e $\Hom(V,W)$ sono canonicamente isomorfi.
 \end{proposition}
 \begin{proof}
-Sia $\Psi:V^*\tensor W\to\Hom(V,W)$ l'unica applicazione lineare che a $\varphi\tensor w$ associa l'omomorfismo $(v\mapsto\varphi(v)w)$. Mostriamo che $\Psi$ è un isomorfismo. Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Per ogni $i,i'\in I\comma j\in J$ vale $\Psi(v_i^*\tensor w_j)(v_{i'})=\delta_{ii'}w_j$. Se scriviamo le applicazione lineari in forma di matrici rispetto alle basi $\{v_i\}$ e $\{w_j\}$ (siamo in dimensione finita), $\Psi(v_i^*\tensor w_j)$ è la matrice nulla ovunque tranne che in posizione $(j,i)$, dove compare un 1. $\Psi$ manda una base di $V^*\tensor W$ in una base di $\Hom(V,W)$, quindi è un isomorfismo.
+Sia $\Psi:V^*\tensor W\to\Hom(V,W)$ l'unica applicazione lineare che a $\varphi\tensor w$ associa l'omomorfismo $(v\mapsto\varphi(v)w)$. Mostriamo che $\Psi$ è un isomorfismo. Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Per ogni $i,i'\in I\comma j\in J$ vale $\Psi(v_i^*\tensor w_j)(v_{i'})=\delta_{ii'}w_j$. Se scriviamo le applicazione lineari in forma di matrici rispetto alle basi $\{v_i\}$ e $\{w_j\}$ (siamo in dimensione finita), $\Psi(v_i^*\tensor w_j)$ è la matrice nulla ovunque tranne che in posizione $(j,i)$, dove compare un 1. Segue che $\Psi$ manda una base di $V^*\tensor W$ in una base di $\Hom(V,W)$, quindi è un isomorfismo.
 \end{proof}
 
-\begin{corollary}\thlabel{tensor-endomorphism-vs-tensor}
+\begin{remark}
+L'ipotesi che $V$ e $W$ abbiano dimensione finita è necessaria. Non dimostreremo questa affermazione, ma limitiamoci a osservare che $\Psi(\varphi\tensor w)$ ha rango $\le 1$, dunque (poiché gli elementi del tipo $\varphi\tensor w$ generano $V^*\tensor W$) nell'immagine di $\Psi$ ci sono solo omomorfismi di rango finito.
+\end{remark}
+
+\begin{corollary}\thlabel{tensor-endomorphisms-vs-tensor}
 Sia $V$ uno spazio vettoriale di dimensione finita. Allora $V^*\tensor V$ e $\End(V)$ sono canonicamente isomorfi.
 \end{corollary}
 
+\begin{remark}
+Sia $\Psi$ l'isomorfismo canonico da $V^*\tensor V$ a $\End(V)$. Allora la traccia $\tr$ è l'unica applicazione lineare da $\End(V)$ in $\mathbb{K}$ tale che $(\tr\circ\Psi)(\varphi\tensor v)=\varphi(v)$ per ogni $\varphi\in V^*,v\in V$ (la verifica è elementare e segue lo schema della dimostrazione della \thref{tensor-homomorphisms-vs-tensor}). Risulta dunque evidente che la traccia di un endomorfismo non dipende dalla base scelta per scriverne la matrice.
+\end{remark}
+
+\begin{proposition}\thlabel{tensor-homomorphism-trace}
+Siano $V\comma W$ spazi vettoriali di dimensione finita, $f\in\End(V)\comma g\in\End(W)$. Allora $\tr(f\tensor g)=\tr(f)\tr(g)$.
+\end{proposition}
+\begin{proof}
+Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Osserviamo che $(v_i\tensor w_j)^*=v_i^*\tensor w_j^*$ (a meno di identificare $\mathbb{K}$ con $\mathbb{K}\tensor\mathbb{K}$): infatti se $i'\in I\comma j'\in J$ vale 
+\begin{align*}
+(v_i\tensor w_j)^*(v_{i'}\tensor w_{j'})&=\delta_{ii'}\delta_{jj'}=\delta_{ii'}\tensor\delta_{jj'}\\&=v_i^*(v_{i'})\tensor w_j^*(w_{j'})=(v_i^*\tensor w_j^*)(v_{i'}\tensor w_{j'})
+\end{align*}
+. Allora
+\begin{align*}
+\tr(f\tensor g)&=\sum_{(i,j)\in I\times J}(v_i\tensor w_j)^*(f\tensor g)(v_i\tensor w_j)\\
+&=\sum_{(i,j)\in I\times J}(v_i^*\tensor w_j^*)(f(v_i)\tensor g(w_j))\\
+&=\sum_{(i,j)\in I\times J}v_i^*(f(v_i))w_j^*(g(w_j))\\
+&=\biggl(\sum_{i\in I}v_i^*(f(v_i))\biggr)\biggl(\sum_{j\in J}w_j^*(g(w_j))\biggr)\\
+&=\tr(f)\tr(g)
+\end{align*}
+\end{proof}
 
 
