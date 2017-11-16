@@ -82,12 +82,14 @@ Le verifiche sono semplici:
 
 \begin{proposition}\thlabel{representation-sum-homomorphisms}
 Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni. Allora
-$$
-\Hom(\rho+\sigma,\tau)\iso\Hom(\rho,\tau)\dirsum\Hom(\sigma,\tau)
-$$
+\begin{align*}
+\Hom(\rho+\sigma,\tau)\iso\Hom(\rho,\tau)\dirsum\Hom(\sigma,\tau)\\
+\Hom(\rho,\sigma+\tau)\iso\Hom(\rho,\sigma)\dirsum\Hom(\rho,\tau)
+\end{align*}
 \end{proposition}
 \begin{proof}
-Siano $\pi_V:V\dirsum W\to V\comma\pi_W:V\dirsum W\to W$ le proiezioni. Consideriamo l'applicazione lineare
+Dimostriamo solo la prima affermazione.\\
+Siano $\pi_V:V\dirsum W\to V\comma\pi_W:V\dirsum W\to W$ le proiezioni, $\iota_V:V\to V\dirsum W\comma\iota_W:W\to V\dirsum W$ le inclusioni. Consideriamo l'applicazione lineare
 \begin{alignat*}{2}
 \Theta:\Hom_G(V,U)&\dirsum\Hom_G(W,U)&&\to\Hom_G(V\dirsum W,U)\\
 \varphi&+\psi&&\mapsto\varphi\pi_V+\psi\pi_W
@@ -96,7 +98,7 @@ Osserviamo che $\Theta$ è ben definita (cioè l'immagine sta davvero in $\Hom_G
 $$
 \Theta^{-1}(\varphi)=\varphi\iota_V+\varphi\iota_W
 $$
-: infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verifica facilmente che $\Theta^{-1}\circ\Theta=\id\comma\Theta\circ\Theta^{-1}=\id$
+: infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verifica facilmente che $\Theta^{-1}\circ\Theta=\id\comma\Theta\circ\Theta^{-1}=\id$.
 \end{proof}
 
 \begin{definition}
@@ -157,12 +159,14 @@ Sia $v\in\ker\varphi$. Allora $\varphi(\rho(g)v)=\sigma(g)\varphi(v)=0$, quindi 
 \end{proof}
 
 \begin{definition}
-Una rappresentazione $\Rep{\rho}{G}{V}$ non nulla si dice \emph{irriducibile} se non ha sottorappresentazioni proprie.
+Una rappresentazione non nulla si dice \emph{irriducibile} se non ha sottorappresentazioni proprie.
 \end{definition}
 
 \begin{example}
 Ogni rappresentazione di grado 1 è irriducibile.
 \end{example}
+
+Denotiamo con $\Irr(G)$ un insieme di rappresentanti delle classi di isomorfismo delle rappresentazioni irriducibili di $G$.
 
 \begin{definition}
 Una rappresentazione $\Rep{\rho}{G}{V}$ non nulla si dice \emph{indecomponibile} se non esistono sottorappresentazioni proprie $W\comma W'\subseteq V$ tali che $V=W\dirsum W'$.
@@ -173,7 +177,7 @@ Ogni rappresentazione irriducibile è indecomponibile, mentre il viceversa è fa
 \end{remark}
 
 \begin{definition}
-Una rappresentazione $\Rep{\rho}{G}{V}$ si dice \emph{completamente riducibile} se è isomorfa a una somma di rappresentazioni irriducibili.
+Una rappresentazione $\Rep{\rho}{G}{V}$ si dice \emph{completamente riducibile} se si scrive come somma di rappresentazioni irriducibili.
 \end{definition}
 
 \begin{example}
@@ -222,16 +226,16 @@ hT&=\frac{1}{|G|}\sum_{g\in G}hg\pi_Wg^{-1}\\
 . Pertanto, grazie alla \thref{subrepresentation-ker-im}, $\ker T$ è $G$-stabile. Ponendo $W'=\ker T$ si ha, come voluto, $V=W\dirsum W'$  come somma di rappresentazioni.
 \end{proof}
 
+\begin{corollary}\thlabel{representation-indecomposable-implies-irreducible}
+Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione indecomponibile. Supponiamo $\ch\mathbb{K}\nmid |G|$. Allora $\rho$ è irriducibile.
+\end{corollary}
+
 \begin{proposition}\thlabel{representation-finite-completely-reducible}
 Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione di grado finito. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Allora $V$ è completamente riducibile.
 \end{proposition}
 \begin{proof}
-Sia $W\subseteq V$ un sottospazio $G$-stabile minimale non nullo. Se $W=V$ non c'è nulla da dimostrare, altrimenti per la \thref{subrepresentation-stable-complement} esiste un complementare $W'$ di $W$ $G$-stabile. Allora $V=W\dirsum W'$ con $W$ irriducibile e $\dim W'<\dim V$, dunque si può concludere per induzione.
+Sia $W\subseteq V$ un sottospazio $G$-stabile minimale non nullo. Se $W=V$ non c'è nulla da dimostrare, altrimenti per la \thref{subrepresentation-stable-complement} esiste un complementare $W'$ di $W$ $G$-stabile. Allora $V=W\dirsum W'$ come somma di rappresentazioni con $W$ irriducibile e $\dim W'<\dim V$, dunque si può concludere per induzione.
 \end{proof}
-
-\begin{corollary}\thlabel{representation-indecomposable-implies-irreducible}
-Supponiamo $\ch\mathbb{K}=0$. Allora ogni rappresentazione indecomponibile di un gruppo finito è irriducibile.
-\end{corollary}
 
 \begin{proposition}[Lemma di Schur I]\thlabel{schur-lemma-1}
 Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\Hom(\rho,\sigma)$.
@@ -249,18 +253,37 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\H
 \end{enumerate}
 \end{proof}
 
+\begin{corollary}\thlabel{representation-irreducible-sum-homomorphisms}
+Siano $\Rep{\rho_i}{G}{V}$ con $i\in I$ e $\Rep{\sigma_i}{G}{W_j}$ con $j\in J$ rappresentazioni irriducibili tali che $\rho_i\not\isor\sigma_j$ per ogni $i\in I\comma j\in J$ ($I$ e $J$ finiti). Poniamo $\rho=\sum_{i\in I}\rho_i\comma\sigma=\sum_{j\in J}\sigma_j$. Allora $\Hom(\rho,\sigma)=\langle 0\rangle$.
+\end{corollary}
+\begin{proof}
+La tesi segue facilmente dalla \thref{representation-sum-homomorphisms} e dalla \thref{schur-lemma-1}:
+\begin{align*}
+\Hom(\rho,\sigma)&=\Hom\biggl(\sum_{i\in I}\rho_i,\sum_{j\in J}\sigma_j\biggr)\\
+&\iso\Dirsum_{i\in I}\Dirsum_{j\in J}\Hom(\rho_i,\sigma_j)\\
+&=\Dirsum_{i\in I}\Dirsum_{j\in J}\langle 0\rangle=\langle 0\rangle
+\end{align*}
+\end{proof}
+
 \begin{proposition}[Lemma di Schur II]\thlabel{schur-lemma-2}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $\varphi\in\Hom(\rho,\rho)$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\varphi$ è un multiplo scalare (eventualmente nullo) dell'identità.
 \end{proposition}
 \begin{proof}
-Sia $\lambda\in\mathbb{K}$ un autovalore per $\varphi$ (esiste poiché $\mathbb{K}$ è algebricamente chiuso). Allora $\varphi-\lambda\id\in\Hom(\rho,\rho)$ non è un isomorfismo (almeno un vettore non nullo viene mandato in 0), quindi per la \thref{schur-lemma-1} è nullo, ossia $\varphi=\lambda\id$.
+Sia $\lambda\in\mathbb{K}$ un autovalore per $\varphi$ (esiste poiché $\mathbb{K}$ è algebricamente chiuso). Allora $\varphi-\lambda\id\in\Hom(\rho,\rho)$ non è un isomorfismo (ogni autovettore per $\lambda$ viene mandato in 0), quindi per la \thref{schur-lemma-1} è nullo, ossia $\varphi=\lambda\id$.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-center-homothety}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $z\in Z(G)$. Supponiamo che $\ch\mathbb{K}$ sia algebricamente chiuso. Allora $\rho(z)$ è un multiplo scalare dell'identità.
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $z\in Z(G)$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\rho(z)$ è un multiplo scalare dell'identità.
 \end{corollary}
 \begin{proof}
 Da $z\in Z(G)$ segue $\rho(z)\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\rho(z)$ è un multiplo scalare dell'identità.
+\end{proof}
+
+\begin{corollary}\thlabel{representation-irreducible-abelian-group}
+Sia $G$ un gruppo abeliano, $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\deg\rho=1$.
+\end{corollary}
+\begin{proof}
+Per il \thref{representation-center-homothety} $\rho(g)$ è un multiplo scalare dell'identità per ogni $g\in G$, quindi ogni sottospazio di $V$ è $G$-stabile, pertanto $\dim V=1$.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-irreducible-homomorphisms-dim}
@@ -277,19 +300,125 @@ $$
 Se $\rho\not\isor\sigma$ allora per il Lemma di Schur ogni omomorfismo da $\rho$ in $\sigma$ è nullo, quindi $\dim\Hom(\rho,\sigma)=0$. Se invece $\rho\isor\sigma$, sia $\psi$ un isomorfismo da $\rho$ in $\sigma$. Dato $\varphi\in\Hom(\rho,\sigma)$ vale $\psi^{-1}\varphi\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\psi^{-1}\varphi$ è un multiplo scalare dell'identità, ovvero $\varphi=\lambda\psi$ per un qualche $\lambda\in\mathbb{K}$. Allora è chiaro che $\Hom(\rho,\sigma)\iso\mathbb{K}$, perciò $\dim\Hom(\rho,\sigma)=1$.
 \end{proof}
 
-\begin{corollary}\thlabel{representation-multiplicity-homomorphisms}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $\rho=\sum_{i\in I}n_i\rho_i$ con  $I$ finito, $n_i\in\mathbb{N}^+\comma\Rep{\rho_i}{G}{W_i}$ rappresentazioni irriducibili a due a due non isomorfe. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $n_i=\dim\Hom(\rho,\rho_i)=\dim\Hom(\rho_i,\rho)$.
+\begin{corollary}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni completamente riducibili. Allora $\dim\Hom(\rho,\sigma)=\dim\Hom(\sigma,\rho)$.
 \end{corollary}
 \begin{proof}
-Mostriamo l'uguaglianza $n_i=\dim\Hom(\rho,\rho_i)$. Dalla \thref{representation-sum-homomorphisms} e dal \thref{representation-irreducible-homomorphisms-dim} ricaviamo
-\begin{align*}
-\Hom(\rho,\rho_i)&\iso \Dirsum_{j\in I}\Hom(n_j\rho_j,\rho_i)\\
-&\iso\Dirsum_{j\in I}\Dirsum_{k=1}^{n_j}\Hom(\rho_j,\rho_i)\\
-\dim\Hom(\rho,\rho_i)&=\sum_{j\in I}n_j\dim\Hom(\rho_j,\rho_i)\\
-&=\sum_{j\in I}n_j\delta_{ij}=n_i
-\end{align*}
-L'uguaglianza $n_i=\dim\Hom(\rho_i,\rho)$ si mostra in modo analogo.
+La tesi segue dal \thref{representation-irreducible-homomorphisms-dim} se $\rho$ e $\sigma$ sono irriducibili, e si estende al caso di $\rho\comma\sigma$ completamente riducibili grazie alla \thref{representation-sum-homomorphisms}.
 \end{proof}
+
+\begin{proposition}\thlabel{representation-decomposition-formula}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione completamente riducibile. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora:
+\begin{enumerate}[(i)]
+\item per ogni $\sigma\in\Irr(G)$ vale $\dim\Hom(\rho,\sigma)<\infty$;
+\item l'insieme $\{\sigma\in\Irr(G):\dim\Hom(\rho,\sigma)>0\}$ è finito;
+\item vale $\rho=\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma$;
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Sia $\rho=\sum_{i\in I}n_i\rho_i$ una decomposizione in rappresentazioni irriducibili a due a due non isomorfe, con $n_i\in\mathbb{N^+}$. Sia $\sigma\in\Irr(G)$. Se per ogni $i\in I$ vale $\sigma\not\isor\rho_i$, allora
+$$
+\dim\Hom(\rho,\sigma)=\sum_{i\in I}n_i\dim\Hom(\rho_i,\sigma)=0
+$$
+per la \thref{representation-sum-homomorphisms} e il \thref{representation-irreducible-homomorphisms-dim}; questo dimostra la (ii) (dato che $I$ è finito). Se invece esiste un $j\in I$ tale che $\sigma\isor\rho_j$, allora
+$$
+\dim\Hom(\rho,\sigma)=\sum_{i\in I}n_i\dim\Hom(\rho_i,\sigma)=n_j<\infty
+$$
+. Questo dimostra la (i). Osserviamo ora che l'uguaglianza in (iii) ha senso (la somma presente al membro di destra è una somma finita di rappresentazioni) e vale
+\begin{align*}
+&\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma\\
+=\,&\sum_{\substack{\sigma\in\Irr(G)\\\forall i\in I(\sigma\not\isor\rho_i)}}\dim\Hom(\rho,\sigma)\sigma+\sum_{\substack{\sigma\in\Irr(G)\\\exists j\in I(\sigma\isor\rho_j)}}\dim\Hom(\rho,\sigma)\sigma\\
+=\,&0+\sum_{\substack{\sigma\in\Irr(G)\\\exists j\in I(\sigma\isor\rho_j)}}n_j\sigma=\sum_{j\in I}n_j\rho_j=\rho
+\end{align*}
+\end{proof}
+
+\begin{proposition}\thlabel{representation-decomposition-uniqueness}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione,
+$$
+\rho=\sum_{i\in I}n_i\sigma_i=\sum_{j\in J}m_j\tau_j
+$$
+due decomposizioni in rappresentazioni irriducibili a due a due non isomorfe, con $n_i\comma m_j\in\mathbb{N}^+$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora esiste una funzione $\theta:J\to I$ biiettiva tale che per ogni $j\in J$ vale $\tau_j\isor\sigma_{\theta(j)}$ e $m_j=n_{\theta(j)}$.
+\end{proposition}
+\begin{proof}
+Sia $j\in J$. Con gli usuali ragionamenti (\thref{representation-sum-homomorphisms} e \thref{representation-irreducible-homomorphisms-dim}) otteniamo che
+\begin{align*}
+m_j&=\dim\Hom(\rho,\tau_j)\\
+&=\dim\Hom\biggl(\sum_{i\in I}n_i\sigma_i,\tau_j\biggr)\\
+&=\sum_{i\in I}n_i\dim\Hom(\sigma_i,\tau_j)
+\end{align*}
+. Poiché $m_j>0$ deve esistere un $i\in I$ tale che $\dim\Hom(\sigma_i,\tau_j)>0$, ovvero (\thref{representation-irreducible-homomorphisms-dim}) tale che $\sigma_i\isor\tau_j$. Tale $i$ è ovviamente unico (le $\sigma_i$ sono a due a due non isomorfe), quindi vale $m_j=n_i$ e possiamo porre $\theta(j)=i$. La funzione $\theta$ così definita è iniettiva (le $\tau_j$ sono a due a due non isomorfe), e per vedere che è suriettiva basta ripetere il ragionamento di sopra con $I$ al posto di $J$. Per come abbiamo definito $\theta$ vale $\tau_j\isor\sigma_{\theta(j)}$, e abbiamo già osservato che $m_j=n_{\theta(j)}$.
+\end{proof}
+
+\begin{proposition}\thlabel{representation-decomposition-subrepresentation-uniqueness}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $\rho=\sum_{i\in I}n_i\rho_i$ con $n_i\in\mathbb{N}\comma\Rep{\rho_i}{G}{W_i}$ rappresentazioni irriducibili a due a due non isomorfe. Se
+$$
+\Dirsum_{i\in I}V_i=V=\Dirsum_{i\in I}V_i'
+$$
+dove $V_i\comma V_i'\subseteq V$ sono sottorappresentazioni tali che $V_i\isor V_i'\isor W_i^{n_i}$, allora $V_i=V_i'$ per ogni $i\in I$.
+\end{proposition}
+\begin{proof}
+Fissiamo un $i\in I$. Sia $U_i=\Dirsum\limits_{j\in I\setminus\{i\}}V_j\comma\pi:V\to U_i$ la proiezione indotta dalla decomposizione $V=V_i\dirsum U_i$. Notiamo che $\pi|_{V_i'}\in\Hom(V_i',U_i)$, quindi per il \thref{representation-irreducible-sum-homomorphisms} $\pi|_{V_i'}=0$, da cui $V_i'\subseteq\ker\pi=V_i$. Simmetricamente $V_i\subseteq V_i'$, pertanto $V_i=V_i'$.
+\end{proof}
+
+\section{Rappresentazioni per Permutazione e Rappresentazione Regolare}
+
+\begin{definition}
+Sia $G$ un gruppo, $X$ un insieme, $\varphi:G\to S(X)$ un'azione. Sia $\mathbb{K}[X]$ lo spazio vettoriale libero su $X$, con $\{e_x\}_{x\in X}$ come base. Si chiama \emph{rappresentazione per permutazione} di $G$ su $X$ la rappresentazione $\Rep{\rho}{G}{\mathbb{K}[X]}$ tale che, per ogni $g\in G$, $\rho(g)$ è l'unica applicazione lineare da $\mathbb{K}[X]$ in sé che fa commutare il diagramma
+$$
+\begin{tikzcd}
+\mathbb{K}[X]\arrow[r,"\rho(g)"]&\mathbb{K}[X]\\
+X\arrow[u,"e"]\arrow[r,"\varphi(g)"]&X\arrow[u,"e"]
+\end{tikzcd}
+$$
+, ovvero tale che $\rho(g)e_x=e_{\varphi(g)x}$ per ogni $x\in X$.
+\end{definition}
+
+\begin{definition}
+Sia $G$ un gruppo. Consideriamo l'azione $\varphi:G\to S(G)$ della moltiplicazione a sinistra, ossia $\varphi(g)=(x\mapsto gx)$ per ogni $g\in G$. Si chiama \emph{rappresentazione regolare} di $G$ la rappresentazione per permutazione di $G$ su se stesso $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$.
+\end{definition}
+
+Coerentemente con il già citato abuso di notazione potremo indicare la rappresentazione regolare $\mathcal{R}$ con $\mathbb{K}[G]$. Se $\{e_g\}_{g\in G}$ è la base ``canonica`` di $\mathbb{K}[G]$, la rappresentazione regolare $\mathcal{R}$ agisce in questo modo: per ogni $g,h\in G$ vale $\rho(g)e_h=e_{gh}$.
+
+\begin{proposition}\thlabel{representation-regular-homomorphisms-dim}
+Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la sua rappresentazione regolare, $\Rep{\rho}{G}{V}$ una rappresentazione. Allora 
+$$
+\dim\Hom(\mathcal{R},\rho)=\deg\rho
+$$
+\end{proposition}
+\begin{proof}
+Mostriamo che $\Hom(\mathcal{R},\rho)\iso V$. Consideriamo l'applicazione lineare
+$\Phi:\Hom(\mathcal{R},\rho)\to V$ tale che $\Phi(f)=f(e_1)$ per ogni $f\in\Hom(\mathcal{R},\rho)$, dove $1\in G$ è l'identità. $\Phi$ è iniettiva: sia infatti $f\in\Hom(\mathcal{R},\rho)$ tale che $\Phi(f)=f(e_1)=0$. Allora per ogni $g\in G$ vale
+$$
+f(e_g)=f(e_{g\cdot1})=f(\mathcal{R}(g)e_1)=\rho(g)f(e_1)=\rho(g)0=0
+$$
+quindi $f=0$. Inoltre $\Phi$ è suriettiva: sia infatti $v\in V$. Sia $f$ l'unica applicazione lineare da $\mathbb{K}[G]$ in $V$ tale che $f(e_g)=\rho(g)v$ per ogni $g\in G$. $f$ è un omomorfismo di rappresentazioni: per ogni $g\in G,u\in V$ vale
+\begin{alignat*}{2}
+\rho(g)f(u)&=\rho(g)f\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)
+&&=\sum_{h\in G}e_h^*(u)\rho(g)f(e_h)\\
+&=\sum_{h\in G}e_h^*(u)\rho(g)\rho(h)v
+&&=\sum_{h\in G}e_h^*(u)\rho(gh)v\\
+&=\sum_{h\in G}e_h^*(u)f(e_{gh})
+&&=\sum_{h\in G}e_h^*(u)f(\mathcal{R}(g)e_h)\\
+&=(f\mathcal{R}(g))\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)&&=f(\mathcal{R}(g)u)
+\end{alignat*}
+, e ovviamente $\Phi(f)=v$. Dunque $\Phi$ è l'isomorfismo cercato.
+\end{proof}
+
+\begin{corollary}\thlabel{representation-regular-decomposition}
+Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la sua rappresentazione regolare. Supponiamo che $\mathcal{R}$ sia completamente riducibile e che $\mathbb{K}$ sia algebricamente chiuso. Allora $\Irr(G)$ è finito e vale
+$$
+\mathcal{R}=\sum_{\rho\in\Irr(G)}(\deg\rho)\rho
+$$
+\end{corollary}
+\begin{proof}
+La tesi segue banalmente dalla \thref{representation-decomposition-formula} e dalla \thref{representation-regular-homomorphisms-dim}.
+\end{proof}
+
+\begin{remark}
+L'applicazione della \thref{representation-decomposition-formula} e della \thref{representation-regular-homomorphisms-dim} ci permetterebbe di concludere anche che ogni rappresentazione irriducibile di $G$ ha grado finito, fatto che avevamo già dimostrato nella \thref{representation-irreducible-finite-degree} con ipotesi lievemente diverse.
+\end{remark}
+
+
 
 
 
