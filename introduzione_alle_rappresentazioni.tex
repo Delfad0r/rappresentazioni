@@ -418,7 +418,78 @@ La tesi segue banalmente dalla \thref{representation-decomposition-formula} e da
 L'applicazione della \thref{representation-decomposition-formula} e della \thref{representation-regular-homomorphisms-dim} ci permetterebbe di concludere anche che ogni rappresentazione irriducibile di $G$ ha grado finito, fatto che avevamo già dimostrato nella \thref{representation-irreducible-finite-degree} con ipotesi lievemente diverse.
 \end{remark}
 
+\section{Rappresentazione Duale}
 
+\begin{definition}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Si chiama \emph{rappresentazione duale} la rappresentazione $\Rep{\rho^*}{G}{V^*}$ tale che $\rho^*(g)=\rho(g^{-1})^T$.
+
+\end{definition}
+\begin{remark}
+Vale $\rho^*(g)=(\rho(g)^{-1})^T$. Se $V$ è finitamente generato, chiamiamo $A$ la matrice associata a $\rho(g)$ rispetto a una certa base e $B$ la matrice associata a $\rho^*(g)$ rispetto alla base duale; vale allora $B=(A^{-1})^T$. Se $V$ è anche un $\mathbb{C}$-spazio vettoriale e la base scelta è ortonormale, la relazione diviene $B=\bar{A}$.
+\end{remark}
+
+\begin{proposition}\thlabel{representation-bidual}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora ${\rho^*}^*\isor\rho$.
+\end{proposition}
+\begin{proof}
+Sia $\Phi:V\to{V^*}^*$ l'isomorfismo canonico (ovvero l'applicazione lineare tale che $\Phi(v)=(f\mapsto f(v))$ per ogni $v\in V$). Verifichiamo che si tratta di un omomorfismo di rappresentazioni. Siano $g\in G,v\in V$; allora
+\begin{align*}
+{\rho^*}^*(g)\Phi(v)&=\rho^*(g^{-1})^T\Phi(v)=\Phi(v)\circ\rho^*(g^{-1})=\Phi(v)\circ\rho(g)^T\\
+&=(f\mapsto\Phi(v)(\rho(g)^Tf))\\
+&=(f\mapsto\Phi(v)(f\circ\rho(g)))\\
+&=(f\mapsto(f\circ\rho(g))v)\\
+&=(f\mapsto f(\rho(g)v))=\Phi(\rho(g)v)
+\end{align*}
+\end{proof}
+
+\begin{proposition}\thlabel{representation-dual-sum}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Allora $(\rho+\sigma)^*\isor\rho^*+\sigma^*$.
+\end{proposition}
+\begin{proof}
+Consideriamo l'applicazione lineare
+\begin{alignat*}{2}
+\Theta:(V\dirsum W)^*&\to V^*&&\dirsum W^*\\
+f&\mapsto f\iota_V&&+f\iota_W
+\end{alignat*}
+dove $\iota_V:V\to V\dirsum W\comma\iota_W:W\to V\dirsum W$ sono le inclusioni. Si vede facilmente che $\Theta$ è invertibile, e l'applicazione inversa è
+\begin{alignat*}{2}
+\Theta^{-1}:V^*&\dirsum W^*&&\to(V\dirsum W)^*\\
+f&+g&&\mapsto f\pi_V+g\pi_W
+\end{alignat*}
+dove $\pi_V:V\dirsum W\to V\comma\pi_W:V\dirsum W\to W$ sono le proiezioni. Verifichiamo ora che $\Theta\in\Hom((\rho+\sigma)^*,\rho^*+\sigma^*)$. Siano $g\in G,f\in(V\dirsum W)^*$; allora
+\begin{align*}
+\Theta((\rho+\sigma)^*(g)f)&=\Theta(f\circ(\rho+\sigma)(g^{-1}))\\
+&=f\circ(\rho+\sigma)(g^{-1})\circ\iota_V+f\circ(\rho+\sigma)(g^{-1})\circ\iota_W\\
+&=f\circ\rho(g^{-1})+f\circ\sigma(g^{-1})\\
+&=\rho^*(g)f\circ\iota_V+\sigma^*(g)f\circ\iota_W=(\rho^*+\sigma^*)(g)\Theta(f)
+\end{align*}
+\end{proof}
+
+\begin{proposition}\thlabel{representation-dual-irreducible}
+Sia $V$ uno spazio vettoriale finitamente generato, $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile. Allora $\Rep{\rho^*}{G}{V^*}$ è irriducibile.
+\end{proposition}
+\begin{proof}
+Sia $W\subseteq V^*$ una sottorappresentazione, e sia $U=\Ann W$. Allora $U$ è una sottorappresentazione di $V$; infatti, dati $g\in G\comma u\in U\comma f\in W$ vale
+$$
+f(\rho(g)u)=\rho(g^{-1})^T(f)(u)=(\rho^*(g^{-1})f)u=0
+$$
+poiché $\rho^*(g^{-1})f\in W$; segue che $\rho(g)u\in\Ann(W)=U$, ovvero $U$ è $G$-stabile. Essendo $\rho$ irriducibile, necessariamente $U=\langle 0\rangle$ o $U=V$, da cui $W=V^*$ o $W=\langle 0\rangle$.
+\end{proof}
+
+\begin{proposition}(Probabilmente da spostare dentro la dimostrazione del teorema che usa questa proposizione).
+Siano $V\comma W$ spazi vettoriali finitamente generati, $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\Psi:V^*\tensor W\to\Hom(V,W)$ l'isomorfismo canonico (si veda la \thref{tensor-homomorphisms-vs-tensor}). Allora per ogni $g\in G\comma\varphi\in V^*\tensor W$ vale $\Psi((\rho^*\sigma)(g)\varphi)=\sigma(g)\Psi(\varphi)\rho(g)^{-1}$.
+\end{proposition}
+\begin{proof}
+Per la proprietà universale del prodotto tensore, è sufficiente verificare la tesi per $\varphi=f\tensor w$ con $f\in V^*\comma w\in W$.
+\begin{align*}
+\Psi((\rho^*\sigma)(g)(f\tensor w))&=\Psi(\rho^*(g)f\tensor\sigma(g)w)\\
+&=\Psi((f\circ\rho(g)^{-1})\tensor\sigma(g)w)\\
+&=(v\mapsto \sigma(g)(f(\rho(g)^{-1}v)w))\\
+&=\sigma(g)\circ(v\mapsto f(v)w)\circ\rho(g)^{-1}\\
+&=\sigma(g)\circ\Psi(f\tensor w)\circ\rho(g)^{-1}
+\end{align*}
+
+\end{proof}
 
 
 

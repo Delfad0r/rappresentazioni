@@ -217,7 +217,7 @@ Siano $V\comma V'\comma V''\comma W\comma W'\comma W''$ spazi vettoriali, $f\in\
 \end{proof}
 
 \begin{proposition}\thlabel{tensor-homomorphisms-vs-tensor}
-Siano $V\comma W$ spazi vettoriali di dimensione finita. Allora $V^*\tensor W$ e $\Hom(V,W)$ sono canonicamente isomorfi.
+Siano $V\comma W$ spazi vettoriali finitamente generati. Allora $V^*\tensor W$ e $\Hom(V,W)$ sono canonicamente isomorfi.
 \end{proposition}
 \begin{proof}
 Sia $\Psi:V^*\tensor W\to\Hom(V,W)$ l'unica applicazione lineare che a $\varphi\tensor w$ associa l'omomorfismo $(v\mapsto\varphi(v)w)$. Mostriamo che $\Psi$ è un isomorfismo. Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Per ogni $i,i'\in I\comma j\in J$ vale $\Psi(v_i^*\tensor w_j)(v_{i'})=\delta_{ii'}w_j$. Se scriviamo le applicazione lineari in forma di matrici rispetto alle basi $\{v_i\}$ e $\{w_j\}$ (siamo in dimensione finita), $\Psi(v_i^*\tensor w_j)$ è la matrice nulla ovunque tranne che in posizione $(j,i)$, dove compare un 1. Segue che $\Psi$ manda una base di $V^*\tensor W$ in una base di $\Hom(V,W)$, quindi è un isomorfismo.
@@ -228,7 +228,7 @@ L'ipotesi che $V$ e $W$ abbiano dimensione finita è necessaria. Non dimostrerem
 \end{remark}
 
 \begin{corollary}\thlabel{tensor-endomorphisms-vs-tensor}
-Sia $V$ uno spazio vettoriale di dimensione finita. Allora $V^*\tensor V$ e $\End(V)$ sono canonicamente isomorfi.
+Sia $V$ uno spazio vettoriale finitamente generato. Allora $V^*\tensor V$ e $\End(V)$ sono canonicamente isomorfi.
 \end{corollary}
 
 \begin{remark}
@@ -236,7 +236,7 @@ Sia $\Psi$ l'isomorfismo canonico da $V^*\tensor V$ a $\End(V)$. Allora la tracc
 \end{remark}
 
 \begin{proposition}\thlabel{tensor-homomorphism-trace}
-Siano $V\comma W$ spazi vettoriali di dimensione finita, $f\in\End(V)\comma g\in\End(W)$. Allora $\tr(f\tensor g)=\tr(f)\tr(g)$.
+Siano $V\comma W$ spazi vettoriali finitamente generati, $f\in\End(V)\comma g\in\End(W)$. Allora $\tr(f\tensor g)=\tr(f)\tr(g)$.
 \end{proposition}
 \begin{proof}
 Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Osserviamo che $(v_i\tensor w_j)^*=v_i^*\tensor w_j^*$ (a meno di identificare $\mathbb{K}$ con $\mathbb{K}\tensor\mathbb{K}$): infatti se $i'\in I\comma j'\in J$ vale 
