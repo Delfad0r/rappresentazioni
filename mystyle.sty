@@ -32,13 +32,19 @@
 \newtheorem*{remark}{Osservazione}
 \newtheorem*{example}{Esempio}
 
+\newenvironment{diagram}[1][]{\begin{tikzcd}[#1,row sep=huge,column sep=huge]}{\end{tikzcd}}
+
 \newcommand{\comma}{,\allowbreak}
 \newcommand{\dirsum}{\oplus}
 \newcommand{\Dirsum}{\bigoplus}
 \newcommand{\tensor}{\otimes}
+\newcommand{\tbox}{\boxtimes}
 \newcommand{\iso}{\cong}
 \newcommand{\isor}{\simeq}
 \newcommand{\Rep}[3]{#1:#2\to GL(#3)}
+\newcommand{\Sym}{\mathcal{S}}
+\newcommand{\SymP}{S}
+\newcommand{\ExtP}{\Lambda}
 
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\im}{im}
