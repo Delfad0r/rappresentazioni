@@ -1,0 +1,63 @@
+\chapter{Teoria dei Caratteri}
+Nella trattazione della teoria dei caratteri ci limiteremo a considerare rappresentazioni complesse di grado finito su gruppi finiti. Per tutto questo capitolo assumeremo implicitamente le suddette ipotesi, senza più ripeterle.
+
+\section{Caratteri di Rappresentazioni}
+
+\begin{definition}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Si definisce \emph{carattere} di $\rho$ la funzione
+\begin{align*}
+\chi_\rho:G&\longrightarrow\mathbb{C}\\
+g&\longmapsto\tr\rho(g)
+\end{align*}
+\end{definition}
+
+\begin{proposition}\thlabel{character-properties}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $g,h\in G$.
+\begin{enumerate}[(i)]
+\item Se $\rho\isor\sigma$ allora $\chi_\rho=\chi_\sigma$.
+\item $\chi_\rho(1)=\deg(\rho)$
+\item $\chi_\rho(g^{-1})=\chi_\rho(g)^*$
+\item $\chi_\rho(hgh^{-1})=\chi_\rho(g)$
+\item $\chi_{\rho^*}=\chi_\rho^*$
+\item $\chi_{\rho+\sigma}=\chi_\rho+\chi_\sigma$
+\item $\chi_{\rho\sigma}=\chi_\rho\cdot\chi_\sigma$
+\item $\chi_{\SymP^2\rho}(g)=\frac{1}{2}(\chi_\rho(g)^2+\chi_\rho(g^2))$
+\item $\chi_{\ExtP^2\rho}(g)=\frac{1}{2}(\chi_\rho(g)^2-\chi_\rho(g^2))$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\leavevmode
+\begin{enumerate}[(i)]
+\item Sia $\psi:V\to W$ un isomorfismo di rappresentazioni. Allora vale $\psi\rho(g)\psi^{-1}=\sigma(g)$, dunque $\tr\rho(g)=\tr\sigma(g)$ per ogni $g\in G$.
+\item $\chi_\rho(1)=\tr\id=\dim V=\deg\rho$
+\item Per la \thref{representation-finite-group-diagonalisable} $\rho(g)$ è diagonalizzabile e ha come autovalori solo radici dell'unità, dunque $\chi_\rho(g^{-1})=\tr\rho(g)^{-1}=(\tr\rho(g))^*=\chi_\rho(g)^*$.
+\item $\chi_\rho(hgh^{-1})=\tr(\rho(h)\rho(g)\rho(h)^{-1})=\tr\rho(g)=\chi_\rho(g)$
+\item $\chi_{\rho^*}(g)=\tr(\rho(g)^{-1})^T=\tr\rho(g)^{-1}=\tr\rho(g)=\chi_\rho(g)$
+\item $\chi_{\rho+\sigma}(g)=\tr(\rho(g)\dirsum\sigma(g))=\tr\rho(g)+\tr\sigma(g)=\chi_\rho(g)+\chi_\sigma(g)$
+\item Segue dalla \thref{tensor-homomorphism-trace}.
+\item Sia $\{v_i\}_{i\in I}$ una base di $V$ di autovettori per $\rho(g)$, con $\rho(g)v_i=\lambda_iv_i$. Allora $\{v_i\}_{i\in I}$ è una base di $V$ di autovettori per $\rho(g)^2$ con $\rho(g)^2v_i=\lambda_i^2v_i$, mentre $\{v_iv_j\}_{i\le j}$ è una base di $\SymP^2V$ di autovettori per $\SymP^2\rho(g)$, con $\SymP^2\rho(g)(v_iv_j)=\lambda_i\lambda_j(v_iv_j)$. Allora
+\begin{align*}
+\chi_{\SymP^2\rho}(g)&=\tr\SymP^2\rho(g)\\
+&=\sum_{i\le j}\lambda_i\lambda_j\\
+&=\frac{1}{2}\biggl(\biggl(\sum_{i\in I}\lambda_i\biggr)^2+\sum_{i\in I}\lambda_i^2\biggr)\\
+&=\frac{1}{2}((\tr\rho(g))^2+\tr(\rho(g)^2))\\
+&=\frac{1}{2}(\chi_\rho(g)^2+\chi_\rho(g^2))
+\end{align*}
+\item Identica alla (viii).
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}\thlabel{character-permutation-representation}
+Sia $X$ un insieme, $G$ un gruppo che agisce su $X$, $\Rep{\rho}{G}{\mathbb{C}[X]}$ la corrispondente rappresentazione per permutazione, $g\in G$. Allora
+$$
+\chi_\rho(g)=|\{x\in X:gx=x\}|
+$$
+\end{proposition}
+\begin{proof}
+La matrice associata a $\rho(g)$ rispetto alla base ``canonica'' di $\mathbb{C}[X]$ è una matrice di permutazione; i valori sulla diagonale sono 1 se il corrispondente elemento di $X$ viene fissato da $g$, 0 altrimenti, da cui la tesi.
+\end{proof}
+
+\begin{corollary}\thlabel{character-regular-representation}
+Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{C}[G]}$ la sua rappresentazione regolare, $g\in G$. Allora $\chi_\mathcal{R}(g)=|G|\delta_{1g}$.
+\end{corollary}
+

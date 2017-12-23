@@ -43,10 +43,11 @@ Si tratta di semplici verifiche.
 \section{Somma di Rappresentazioni}
 
 \begin{definition}
-Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Si definisce \emph{somma} di $\rho$ e $\sigma$ la rappresentazione $\Rep{\rho+\sigma}{G}{V\dirsum W}$ tale che per ogni $g\in G\comma v\in V\comma w\in W$ vale
-$$
-(\rho+\sigma)(g)(v\dirsum w)=\rho(g)v\dirsum\sigma(g)w
-$$
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Si definisce \emph{somma} di $\rho$ e $\sigma$ la rappresentazione
+\begin{align*}
+\rho+\sigma G&\longrightarrow GL(V\dirsum W)\\
+g&\longmapsto\rho(g)\dirsum\sigma(g)
+\end{align*}
 \end{definition}
 
 Scriveremo $n\rho$ (dove $n\in\mathbb{N}$) per indicare la rappresentazione $\underbrace{\rho+\ldots+\rho}_{\text{$n$ volte}}$; in particolare, $0\rho=0_G$.
@@ -200,6 +201,14 @@ hT&=\frac{1}{|G|}\sum_{g\in G}hg\pi_Wg^{-1}\\
 \begin{corollary}\thlabel{representation-indecomposable-implies-irreducible}
 Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione indecomponibile. Supponiamo $\ch\mathbb{K}\nmid |G|$. Allora $\rho$ è irriducibile.
 \end{corollary}
+
+\begin{corollary}\thlabel{representation-surjective-homomorphism-subrepresentation}
+Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\Hom_G(V,W)$ un omomorfismo suriettivo. Supponiamo $\ch\mathbb{K}\nmid|G|$. Allora $\sigma$ è una sottorappresentazione di $\rho$.
+\end{corollary}
+\begin{proof}
+Sia $K=\ker\varphi$, e sia $W'\subseteq V$ un complementare $G$-stabile di $K$. Allora $\varphi|_{W'}\in\Hom_G(W',W)$ è un omomorfismo suriettivo e iniettivo, quindi $W'\isor W$.
+\end{proof}
+
 
 \begin{proposition}\thlabel{representation-finite-completely-reducible}
 Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione di grado finito. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Allora $V$ è completamente riducibile.
@@ -434,9 +443,9 @@ v&\tensor w&&\longmapsto& vw&\dirsum v\wedge w
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Si chiama \emph{rappresentazione duale} la rappresentazione $\Rep{\rho^*}{G}{V^*}$ tale che $\rho^*(g)=\rho(g^{-1})^T$.
 
 \end{definition}
-\begin{remark}
-Vale $\rho^*(g)=(\rho(g)^{-1})^T$. Se $V$ è finitamente generato, chiamiamo $A$ la matrice associata a $\rho(g)$ rispetto a una certa base e $B$ la matrice associata a $\rho^*(g)$ rispetto alla base duale; vale allora $B=(A^{-1})^T$. Se $V$ è anche un $\mathbb{C}$-spazio vettoriale e la base scelta è ortonormale, la relazione diviene $B=\bar{A}$.
-\end{remark}
+%\begin{remark}
+%Vale $\rho^*(g)=(\rho(g)^{-1})^T$. Se $V$ è finitamente generato, chiamiamo $A$ la matrice associata a $\rho(g)$ rispetto a una certa base e $B$ la matrice associata a $\rho^*(g)$ rispetto alla base duale; vale allora $B=(A^{-1})^T$. Se $V$ è anche un $\mathbb{C}$-spazio vettoriale e la base scelta è ortonormale, la relazione diviene $B=\bar{A}$.
+%\end{remark}
 
 \begin{proposition}\thlabel{representation-bidual}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora ${\rho^*}^*\isor\rho$.
@@ -500,7 +509,7 @@ $$
 \end{definition}
 
 \begin{definition}
-Sia $G$ un gruppo. Consideriamo l'azione $\varphi:G\to \Sym(G)$ della moltiplicazione a sinistra, ossia $\varphi(g)=(x\mapsto gx)$ per ogni $g\in G$. Si chiama \emph{rappresentazione regolare} di $G$ la rappresentazione per permutazione di $G$ su se stesso $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$.
+Sia $G$ un gruppo. $G$ agisce su $G$ per moltiplicazione a sinistra, ossia $g\cdot x=gx$. Si chiama \emph{rappresentazione regolare} di $G$ la rappresentazione per permutazione $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ associata all'azione di moltiplicazione a sinistra.
 \end{definition}
 
 Coerentemente con il già citato abuso di notazione potremo indicare la rappresentazione regolare $\mathcal{R}$ con $\mathbb{K}[G]$. Se $\{e_g\}_{g\in G}$ è la base ``canonica`` di $\mathbb{K}[G]$, la rappresentazione regolare $\mathcal{R}$ agisce in questo modo: per ogni $g,h\in G$ vale $\mathcal{R}(g)e_h=e_{gh}$.
@@ -541,11 +550,11 @@ La tesi segue immediatamente dalla \thref{representation-decomposition-formula} 
 \end{proof}
 
 \begin{remark}
-L'applicazione della \thref{representation-decomposition-formula} e della \thref{representation-regular-homomorphisms-dim} ci permetterebbe di concludere anche che ogni rappresentazione irriducibile di $G$ ha grado finito, fatto che avevamo già dimostrato nella \thref{representation-irreducible-finite-degree} con ipotesi lievemente diverse.
+L'ipotesi di completa riducibilità di $\mathcal{R}$ è soddisfatta, ad esempio, se $G$ è un gruppo finito e $\ch\mathbb{K}\nmid|G|$ (\thref{representation-finite-completely-reducible}).
 \end{remark}
 
 \begin{corollary}\thlabel{representation-irreducible-degrees}
-Sia $G$ un gruppo finito. Allora
+Sia $G$ un gruppo finito. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid |G|$. Allora
 $$
 |G|=\sum_{\rho\in\Irr(G)}(\deg\rho)^2
 $$
@@ -563,6 +572,11 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{H}{W}$ rappresentazioni. Si definisce 
 (g&,&h)&\longmapsto\rho(g)\tensor\sigma(h)
 \end{alignat*}
 \end{definition}
+
+\begin{remark}
+Se $G=H$, chiamando $\Delta:G\to G\times G$ l'omomorfismo di gruppi tale che $\Delta(g)=(g,g)$, vale $(\rho\tbox\sigma)\circ\Delta=\rho\tensor\sigma)$.
+\end{remark}
+
 
 \begin{proposition}\thlabel{representation-box-irreducible}
 Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{H}{W}$ rappresentazioni irriducibili. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\rho\tbox\sigma$ è irriducibile.
@@ -602,7 +616,7 @@ essendo $v\tensor w\in U$ e $U$ $(\langle1\rangle\times H)$-stabile. Poiché $\s
 \end{proof}
 
 \begin{corollary}\thlabel{irreducible-representation-direct-product}
-Siano $G\comma H$ gruppi finiti. Supponiamo $\mathbb{K}$ algebricamente chiuso. Allora
+Siano $G\comma H$ gruppi finiti. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid|G|\cdot|H|$. Allora
 $$
 \Irr(G\times H)=\{\rho\tbox\sigma:\rho\in\Irr(G),\sigma\in\Irr(H)\}
 $$
@@ -621,3 +635,64 @@ Rimane infine da mostrare che tutte le rappresentazioni irriducibili di $G\times
 
 \section{Rappresentazioni su Omomorfismi}
 
+Supponiamo di avere due rappresentazioni $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{H}{W}$; possiamo costruire in modo naturale una rappresentazione $\tau$ che agisce su $\Hom(V,W)$ nel seguente modo:
+\begin{alignat*}{3}
+\tau:G&\times&& H&&\longrightarrow GL(\Hom(V,W))\\
+(g&,&&h)&&\longmapsto (f\mapsto\sigma(h)\circ f\circ \rho(g)^{-1})
+\end{alignat*}
+. Se $V$ e $W$ sono finitamente generati, sappiamo (dalla \thref{tensor-homomorphisms-vs-tensor}) che esiste un isomorfismo canonico
+\begin{alignat*}{2}
+\Psi:V^*&\tensor W&&\longrightarrow\Hom(V,W)\\
+\varphi&\tensor w&&\longmapsto(v\mapsto \varphi(v)w)
+\end{alignat*}
+. Una rappresentazione che agisce naturalmente su $V^*\tensor W$ è $\rho^*\tbox\sigma$. La seguente proposizione mostra che in realtà $\tau$ e $\rho^*\tbox\sigma$ sono la stessa rappresentazione.
+
+\begin{proposition}\thlabel{representation-on-homomorphisms-vs-tensor}
+Siano $\rho\comma\sigma\comma\tau\comma\Psi$ come sopra, con l'ipotesi che $V$ e $W$ siano finitamente generati. Allora $\Psi$ è un isomorfismo di rappresentazioni da $\rho^*\tbox\sigma$ in $\tau$.
+\end{proposition}
+\begin{proof}
+È sufficiente mostrare che per ogni $(g,h)\in G\times H\comma f\in V^*\comma w\in W$ vale
+$$
+\Psi((\rho^*\tbox\sigma)(g,h)(f\tensor w))=\tau(\Psi(f\tensor w))
+$$
+. Abbiamo
+\begin{align*}
+\Psi((\rho^*\tbox\sigma)(g,h)(f\tensor w))&=\Psi(\rho^*(g)f\tensor\sigma(h)w)\\
+&=\Psi(f\circ\rho(g)^{-1}\tensor\sigma(h)w)\\
+&=(v\mapsto f(\rho(g)^{-1}v)\sigma(h)w)\\
+&=(v\mapsto \sigma(h)(f(v)w))\circ \rho(g)^{-1}\\
+&=\sigma(h)\circ\Psi(f\tensor w)\circ\rho(g)^{-1}\\
+&=\tau(\Psi(f\tensor w))
+\end{align*}
+\end{proof}
+
+Poiché $\Psi$ è un isomorfismo canonico di rappresentazioni, saremo autorizzati a confondere $\rho^*\tbox\sigma$ con $\tau$, considerando la prima come agente indifferentemente su $V^*\tensor W$ o su $\Hom(V,W)$. Nel caso $G=H$ sappiamo che $\rho^*\tensor\sigma=(\rho^*\tbox\sigma)\circ\Delta$, quindi possiamo immaginare che $\rho^*\tensor\sigma$ agisca su $\Hom(V,W)$ come $\tau\circ\Delta$:
+\begin{align*}
+\rho^*\tensor\sigma:G&\longrightarrow GL(\Hom(V,W))\\
+g&\longmapsto(f\mapsto\sigma(g)\circ f\circ\rho(g)^{-1})
+\end{align*}
+
+\begin{example}
+Sia $G$ un gruppo, e consideriamo l'azione di $G\times G$ su $G$ data da $(g_1,g_2)\cdot g=g_2gg_1^{-1}$. Questa induce una rappresentazione per permutazione $\Rep{\hat{\mathcal{R}}}{G\times G}{\mathbb{K}[G]}$. Supponiamo che $G$ sia finito, che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid|G|$. Dimostriamo allora che
+$$
+\hat{\mathcal{R}}=\sum_{\sigma\in\Irr(G)}\sigma^*\tbox\sigma
+$$
+. Sappiamo che se $\sigma\in\Irr(G)$, allora $\sigma^*$ è irriducibile (\thref{representation-dual-irreducible}), dunque anche $\sigma^*\tbox\sigma$ è irriducibile (\thref{representation-box-irreducible}); inoltre $\deg\sigma^*\tbox\sigma=(\deg\sigma)^2$, e per il \thref{representation-irreducible-degrees}
+$$
+\sum_{\sigma\in\Irr}\deg\sigma^*\tbox\sigma=\sum_{\sigma\in\Irr}(\deg\sigma)^2=|G|=\deg\hat{\mathcal{R}}
+$$
+. Poiché (come già osservato) le rappresentazioni $\sigma^*\tbox\sigma$ sono tutte diverse al variare di $\sigma\in\Irr(G)$, è sufficiente mostrare che $\hat{\mathcal{R}}$ contiene una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$ per ogni $\sigma\in\Irr(G)$. Fissiamo dunque $\Rep{\sigma}{G}{V_\sigma}$ una rappresentazione irriducibile di $G$. Sia $\{e_g\}_{g\in G}$ la base ``canonica'' di $\mathbb{K}[G]$. Consideriamo l'applicazione lineare
+\begin{align*}
+T_\sigma:\mathbb{K}[G]&\longrightarrow\End(V_\sigma)\\
+e_g&\longmapsto\sigma(g)
+\end{align*}
+e mostriamo che $T_\sigma\in\Hom(\hat{\mathcal{R}},\sigma^*\tbox\sigma)$:
+\begin{align*}
+T_\sigma(\hat{\mathcal{R}}(g_1,g_2)e_g)&=T_\sigma(e_{g_2gg_1^{-1}})\\
+&=\sigma(g_2gg_1^{-1})\\
+&=\sigma(g_2)\sigma(g)\sigma(g_1)^{-1}\\
+&=(\sigma^*\tbox\sigma)(g_1,g_2)\sigma(g)\\
+&=(\sigma^*\tbox\sigma)(g_1,g_2)T_\sigma(e_g)
+\end{align*}
+. Osserviamo che $T_\sigma$ non è nulla (ad esempio $T_\sigma(e_1)=\id$) e $\sigma^*\tbox\sigma$ è irriducibile, quindi per il Lemma di Schur $T_\sigma$ è suriettiva. Allora per il \thref{representation-surjective-homomorphism-subrepresentation} $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$.
+\end{example}
