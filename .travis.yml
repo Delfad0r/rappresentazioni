@@ -1,17 +1,31 @@
 sudo: required
 dist: trusty
+addons:
+  ssh_known_hosts: ssh.uz.sns.it
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-italian pgf
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-italian
+  pgf
 script:
 - mkdir _build
 - cd src
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory ../_build -jobname=Rappresentazioni rappresentazioni.tex
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory ../_build -jobname=Rappresentazioni
+  rappresentazioni.tex
 - cd ..
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_04dc0c0e4d0e_key -iv $encrypted_04dc0c0e4d0e_iv
+  -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/deploy_rsa
+- ssh-add /tmp/deploy_rsa
 deploy:
-  provider: releases
-  api_key:
-    secure: i4zTIs3BhdfdVV9YWBQpHXFdREf3foBkWU5QBaujj4TY4Xf1Ys8CV4AKwHH6JJmAKMKMJfAB2etB64f2JU275e35gjGRwuWlAjGVQR4P1U58owN8sAMWB7R41sawB6JARZOf1iwfl0PuGXSDDB/gAqio8igOrQGnqVVsgpcq/kc96PNUmbjv4zcSdQsZ23q6IiCOlVhPdN5I6yef9v+RxxJ93/r6crXEXkgeoU6WWNFAIfSrDCTWuHxsaRzKjVqrGOIuWXsC/P1DB3sF5FT2JuM3MFIfp0D8JGyuR7zhZ2sRRJM1Y8m8SowgL3w+MpjaRUau6hVbWJDGAQc61Y+q0+ZmX71mpZpeZTuIfqOcW0RoUKDXWWcitsdV6fiMZtEaGBraoMGE01GeOb7AroNCKXotUK1WHwPcD1MwaG36LJTSr31ERodpuMtlJ5Jb0qb6u4MT1JWQUaf83r09/9CJ8fV3rn2bJBiiXtDOWdQNCCkW1RBUIHITeenMXsaTZozDF1QTYFtmr3ZjXHT/o6sRJhllObviJnNDUpNLwqq3pEmLLuY8x9SuNNB2FWxxi3yIrHs3h1jm24HJ3Hl/Sd+gG4EE+WKprvEIvdd81woKGRhYruQr/nJMUwJ43noPN7zOGVwQQWVbiPGPDkPBUVy95UFf0sxFLZHO+b2piW/uYWA=
-  file: _build/Rappresentazioni.pdf
+#  provider: releases
+#  api_key:
+#    secure: i4zTIs3BhdfdVV9YWBQpHXFdREf3foBkWU5QBaujj4TY4Xf1Ys8CV4AKwHH6JJmAKMKMJfAB2etB64f2JU275e35gjGRwuWlAjGVQR4P1U58owN8sAMWB7R41sawB6JARZOf1iwfl0PuGXSDDB/gAqio8igOrQGnqVVsgpcq/kc96PNUmbjv4zcSdQsZ23q6IiCOlVhPdN5I6yef9v+RxxJ93/r6crXEXkgeoU6WWNFAIfSrDCTWuHxsaRzKjVqrGOIuWXsC/P1DB3sF5FT2JuM3MFIfp0D8JGyuR7zhZ2sRRJM1Y8m8SowgL3w+MpjaRUau6hVbWJDGAQc61Y+q0+ZmX71mpZpeZTuIfqOcW0RoUKDXWWcitsdV6fiMZtEaGBraoMGE01GeOb7AroNCKXotUK1WHwPcD1MwaG36LJTSr31ERodpuMtlJ5Jb0qb6u4MT1JWQUaf83r09/9CJ8fV3rn2bJBiiXtDOWdQNCCkW1RBUIHITeenMXsaTZozDF1QTYFtmr3ZjXHT/o6sRJhllObviJnNDUpNLwqq3pEmLLuY8x9SuNNB2FWxxi3yIrHs3h1jm24HJ3Hl/Sd+gG4EE+WKprvEIvdd81woKGRhYruQr/nJMUwJ43noPN7zOGVwQQWVbiPGPDkPBUVy95UFf0sxFLZHO+b2piW/uYWA=
+#  file: _build/Rappresentazioni.pdf
+  provider: script
+  script: scp _build/Rappresentazioni.pdf Delfad0r@ssh.uz.sns.it:~
   skip_cleanup: true
   on:
     repo: Delfad0r/rappresentazioni
+    branch: master
