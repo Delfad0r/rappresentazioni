@@ -2,30 +2,28 @@ sudo: required
 dist: trusty
 addons:
   ssh_known_hosts: ssh.uz.sns.it
+  apt:
+    packages:
+    - sshpass
+    - pgf
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
   texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended texlive-lang-italian
-  pgf
 script:
 - mkdir _build
 - cd src
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory ../_build -jobname=Rappresentazioni
   rappresentazioni.tex
 - cd ..
-before_deploy:
-- openssl aes-256-cbc -K $encrypted_04dc0c0e4d0e_key -iv $encrypted_04dc0c0e4d0e_iv
-  -in deploy_rsa.enc -out /tmp/deploy_rsa -d
-- eval "$(ssh-agent -s)"
-- chmod 600 /tmp/deploy_rsa
-- ssh-add /tmp/deploy_rsa
 deploy:
-#  provider: releases
-#  api_key:
-#    secure: i4zTIs3BhdfdVV9YWBQpHXFdREf3foBkWU5QBaujj4TY4Xf1Ys8CV4AKwHH6JJmAKMKMJfAB2etB64f2JU275e35gjGRwuWlAjGVQR4P1U58owN8sAMWB7R41sawB6JARZOf1iwfl0PuGXSDDB/gAqio8igOrQGnqVVsgpcq/kc96PNUmbjv4zcSdQsZ23q6IiCOlVhPdN5I6yef9v+RxxJ93/r6crXEXkgeoU6WWNFAIfSrDCTWuHxsaRzKjVqrGOIuWXsC/P1DB3sF5FT2JuM3MFIfp0D8JGyuR7zhZ2sRRJM1Y8m8SowgL3w+MpjaRUau6hVbWJDGAQc61Y+q0+ZmX71mpZpeZTuIfqOcW0RoUKDXWWcitsdV6fiMZtEaGBraoMGE01GeOb7AroNCKXotUK1WHwPcD1MwaG36LJTSr31ERodpuMtlJ5Jb0qb6u4MT1JWQUaf83r09/9CJ8fV3rn2bJBiiXtDOWdQNCCkW1RBUIHITeenMXsaTZozDF1QTYFtmr3ZjXHT/o6sRJhllObviJnNDUpNLwqq3pEmLLuY8x9SuNNB2FWxxi3yIrHs3h1jm24HJ3Hl/Sd+gG4EE+WKprvEIvdd81woKGRhYruQr/nJMUwJ43noPN7zOGVwQQWVbiPGPDkPBUVy95UFf0sxFLZHO+b2piW/uYWA=
-#  file: _build/Rappresentazioni.pdf
   provider: script
-  script: scp _build/Rappresentazioni.pdf Delfad0r@ssh.uz.sns.it:~
+  script:
+  - export SSHPASS=$DEPLOY_PASS
+  - sshpass -e scp _build/Rappresentazioni.pdf Delfad0r@ssh.uz.sns.it:~
   skip_cleanup: true
   on:
     repo: Delfad0r/rappresentazioni
     branch: master
+env:
+  global:
+  - secure: MRzIT1usfQnOqpY5BR0HuJhlxmGh9+QtNzb3aHYh1muWAiwz3Gvw1wcxD33Me1EVnanlx57ecXkVuv5hyYsWfyaQC9/Ih6y/Qmlh05Mm43LBs93PIgdXgKaKhZuOy256eYVJD+nLkm59oVH9oYXxIUP5SxZtYWsGuBKr5zZzTBmozHs5Cd3XL03/5FzmW64O7vcRgB1NSutsSdVo51LUrQD+zG6h06ExAlBNqaq3kQ6/KEAqkDiySur0BRQU8qhN15gTOp2DxVL/sPQktf8GXIEaM7ybITp/ewT+dJmxwrMxzEbJl6XcysyOI/lOibJIBDjlkaq3GW2+nPWSHc59bcFfzKoCJ2O4skw5fjvXg4wq4suBi/c/3a4Bh6lzklvA3ERkgxTJ1vyQYJigVPMcpXokO65ILoTw8hunZz/IKx+rMnPOJpCQziuCJcoGhafb05lPpkqZOVWlj6fBYmu4fLbYxZfdQtBnMorKwUNP/+oprSg8F2Gfsa3x/1fNYhVqBPRXGEncqvqcMNh5QpgCySp14XnWY9xZb22jRziGK2kLELr7JYoD04ZmCkV3ulqizebOtHCxKrnPbnL5ORmeHnSX0eEVZnpC7FCDx7cfgqTujHZ8djyy3DbNTGvBfzgsGeIVM1xYMlbBaMAdRPnZNwqyCVpvBMsz20uBgufuVPg=
