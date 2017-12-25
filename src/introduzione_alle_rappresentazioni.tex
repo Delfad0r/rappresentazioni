@@ -500,10 +500,10 @@ poiché $\rho^*(g^{-1})f\in W$; segue che $\rho(g)u\in\Ann(W)=U$, ovvero $U$ è 
 \begin{definition}
 Sia $G$ un gruppo, $X$ un insieme, $\varphi:G\to \Sym(X)$ un'azione. Sia $\mathbb{K}[X]$ lo spazio vettoriale libero su $X$, con $\{e_x\}_{x\in X}$ come base. Si chiama \emph{rappresentazione per permutazione} di $G$ su $X$ la rappresentazione $\Rep{\rho}{G}{\mathbb{K}[X]}$ tale che, per ogni $g\in G$, $\rho(g)$ è l'unica applicazione lineare da $\mathbb{K}[X]$ in sé che fa commutare il diagramma
 $$
-\begin{tikzcd}
-\mathbb{K}[X]\arrow[r,"\rho(g)"]&\mathbb{K}[X]\\
-X\arrow[u,"e"]\arrow[r,"\varphi(g)"]&X\arrow[u,"e"]
-\end{tikzcd}
+\begin{diagram}
+\mathbb{K}[X]\arrow{r}{\rho(g)}&\mathbb{K}[X]\\
+X\arrow{u}{e}\arrow{r}{\varphi(g)}&X\arrow{u}{e}
+\end{diagram}
 $$
 , ovvero tale che $\rho(g)e_x=e_{\varphi(g)x}$ per ogni $x\in X$.
 \end{definition}
