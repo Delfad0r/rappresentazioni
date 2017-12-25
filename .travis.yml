@@ -15,15 +15,9 @@ script:
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory ../_build -jobname=Rappresentazioni
   rappresentazioni.tex
 - cd ..
-deploy:
-  provider: script
-  script:
+after_success:
   - export SSHPASS=$DEPLOY_PASSWORD
   - sshpass -e scp _build/Rappresentazioni.pdf Delfad0r@ssh.uz.sns.it:~
-  skip_cleanup: true
-  on:
-    repo: Delfad0r/rappresentazioni
-    branch: master
 env:
   global:
   - secure: MRzIT1usfQnOqpY5BR0HuJhlxmGh9+QtNzb3aHYh1muWAiwz3Gvw1wcxD33Me1EVnanlx57ecXkVuv5hyYsWfyaQC9/Ih6y/Qmlh05Mm43LBs93PIgdXgKaKhZuOy256eYVJD+nLkm59oVH9oYXxIUP5SxZtYWsGuBKr5zZzTBmozHs5Cd3XL03/5FzmW64O7vcRgB1NSutsSdVo51LUrQD+zG6h06ExAlBNqaq3kQ6/KEAqkDiySur0BRQU8qhN15gTOp2DxVL/sPQktf8GXIEaM7ybITp/ewT+dJmxwrMxzEbJl6XcysyOI/lOibJIBDjlkaq3GW2+nPWSHc59bcFfzKoCJ2O4skw5fjvXg4wq4suBi/c/3a4Bh6lzklvA3ERkgxTJ1vyQYJigVPMcpXokO65ILoTw8hunZz/IKx+rMnPOJpCQziuCJcoGhafb05lPpkqZOVWlj6fBYmu4fLbYxZfdQtBnMorKwUNP/+oprSg8F2Gfsa3x/1fNYhVqBPRXGEncqvqcMNh5QpgCySp14XnWY9xZb22jRziGK2kLELr7JYoD04ZmCkV3ulqizebOtHCxKrnPbnL5ORmeHnSX0eEVZnpC7FCDx7cfgqTujHZ8djyy3DbNTGvBfzgsGeIVM1xYMlbBaMAdRPnZNwqyCVpvBMsz20uBgufuVPg=
