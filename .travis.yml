@@ -18,7 +18,7 @@ script:
 deploy:
   provider: script
   script:
-  - export SSHPASS=$DEPLOY_PASS
+  - export SSHPASS=$DEPLOY_PASSWORD
   - sshpass -e scp _build/Rappresentazioni.pdf Delfad0r@ssh.uz.sns.it:~
   skip_cleanup: true
   on:
