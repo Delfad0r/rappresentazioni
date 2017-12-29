@@ -453,7 +453,8 @@ Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora ${\rho^*}^*\isor\rho$.
 \begin{proof}
 Sia $\Phi:V\to{V^*}^*$ l'isomorfismo canonico (ovvero l'applicazione lineare tale che $\Phi(v)=(f\mapsto f(v))$ per ogni $v\in V$). Verifichiamo che si tratta di un omomorfismo di rappresentazioni. Siano $g\in G,v\in V$; allora
 \begin{align*}
-{\rho^*}^*(g)\Phi(v)&=\rho^*(g^{-1})^T\Phi(v)=\Phi(v)\circ\rho^*(g^{-1})=\Phi(v)\circ\rho(g)^T\\
+{\rho^*}^*(g)\Phi(v)&=\rho^*(g^{-1})^T\Phi(v)=\Phi(v)\circ\rho^*(g^{-1})\\
+&=\Phi(v)\circ\rho(g)^T\\
 &=(f\mapsto\Phi(v)(\rho(g)^Tf))\\
 &=(f\mapsto\Phi(v)(f\circ\rho(g)))\\
 &=(f\mapsto(f\circ\rho(g))v)\\
@@ -527,15 +528,16 @@ $$
 f(e_g)=f(e_{g\cdot1})=f(\mathcal{R}(g)e_1)=\rho(g)f(e_1)=\rho(g)0=0
 $$
 quindi $f=0$. Inoltre $\Phi$ è suriettiva: sia infatti $v\in V$. Sia $f$ l'unica applicazione lineare da $\mathbb{K}[G]$ in $V$ tale che $f(e_g)=\rho(g)v$ per ogni $g\in G$. $f$ è un omomorfismo di rappresentazioni: per ogni $g\in G,u\in V$ vale
-\begin{alignat*}{2}
-\rho(g)f(u)&=\rho(g)f\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)
-&&=\sum_{h\in G}e_h^*(u)\rho(g)f(e_h)\\
-&=\sum_{h\in G}e_h^*(u)\rho(g)\rho(h)v
-&&=\sum_{h\in G}e_h^*(u)\rho(gh)v\\
-&=\sum_{h\in G}e_h^*(u)f(e_{gh})
-&&=\sum_{h\in G}e_h^*(u)f(\mathcal{R}(g)e_h)\\
-&=(f\mathcal{R}(g))\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)&&=f(\mathcal{R}(g)u)
-\end{alignat*}
+\begin{align*}
+\rho(g)f(u)&=\rho(g)f\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)\\
+&=\sum_{h\in G}e_h^*(u)\rho(g)f(e_h)\\
+&=\sum_{h\in G}e_h^*(u)\rho(g)\rho(h)v\\
+&=\sum_{h\in G}e_h^*(u)\rho(gh)v\\
+&=\sum_{h\in G}e_h^*(u)f(e_{gh})\\
+&=\sum_{h\in G}e_h^*(u)f(\mathcal{R}(g)e_h)\\
+&=(f\mathcal{R}(g))\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)\\
+&=f(\mathcal{R}(g)u)
+\end{align*}
 , e ovviamente $\Phi(f)=v$. Dunque $\Phi$ è l'isomorfismo cercato.
 \end{proof}
 
@@ -671,6 +673,20 @@ Poiché $\Psi$ è un isomorfismo canonico di rappresentazioni, saremo autorizzat
 \rho^*\tensor\sigma:G&\longrightarrow GL(\Hom(V,W))\\
 g&\longmapsto(f\mapsto\sigma(g)\circ f\circ\rho(g)^{-1})
 \end{align*}
+
+\begin{proposition}\thlabel{representation-fix-of-homomorphisms}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni di grado finito. Allora $\Hom_G(V,W)=\Hom(V,W)^G$, dove su $\Hom(V,W)$ si considera l'azione di $\rho^*\tensor\sigma$.
+\end{proposition}
+\begin{proof}
+Si tratta di scrivere le definizioni
+\begin{align*}
+\varphi\in\Hom_G(V,W)&\iff\forall g\in G\quad\sigma(g)\varphi=\varphi\rho(g)\\
+\varphi\in\Hom(V,W)^G&\iff\forall g\in G\quad\sigma(g)\varphi\rho(g)^{-1}=\varphi
+\end{align*}
+che sono evidentemente equivalenti.
+\end{proof}
+
+
 
 \begin{example}
 Sia $G$ un gruppo, e consideriamo l'azione di $G\times G$ su $G$ data da $(g_1,g_2)\cdot g=g_2gg_1^{-1}$. Questa induce una rappresentazione per permutazione $\Rep{\hat{\mathcal{R}}}{G\times G}{\mathbb{K}[G]}$. Supponiamo che $G$ sia finito, che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid|G|$. Dimostriamo allora che

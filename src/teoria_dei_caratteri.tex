@@ -36,13 +36,13 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $g,h\in G$.
 \item $\chi_{\rho+\sigma}(g)=\tr(\rho(g)\dirsum\sigma(g))=\tr\rho(g)+\tr\sigma(g)=\chi_\rho(g)+\chi_\sigma(g)$
 \item Segue dalla \thref{tensor-homomorphism-trace}.
 \item Sia $\{v_i\}_{i\in I}$ una base di $V$ di autovettori per $\rho(g)$, con $\rho(g)v_i=\lambda_iv_i$. Allora $\{v_i\}_{i\in I}$ è una base di $V$ di autovettori per $\rho(g)^2$ con $\rho(g)^2v_i=\lambda_i^2v_i$, mentre $\{v_iv_j\}_{i\le j}$ è una base di $\SymP^2V$ di autovettori per $\SymP^2\rho(g)$, con $\SymP^2\rho(g)(v_iv_j)=\lambda_i\lambda_j(v_iv_j)$. Allora
-\begin{align*}
-\chi_{\SymP^2\rho}(g)&=\tr\SymP^2\rho(g)\\
-&=\sum_{i\le j}\lambda_i\lambda_j\\
-&=\frac{1}{2}\biggl(\biggl(\sum_{i\in I}\lambda_i\biggr)^2+\sum_{i\in I}\lambda_i^2\biggr)\\
-&=\frac{1}{2}((\tr\rho(g))^2+\tr(\rho(g)^2))\\
+\begin{alignat*}{2}
+\chi_{\SymP^2\rho}(g)&=\tr\SymP^2\rho(g)
+&&=\sum_{i\le j}\lambda_i\lambda_j\\
+&=\frac{1}{2}\biggl(\biggl(\sum_{i\in I}\lambda_i\biggr)^2+\sum_{i\in I}\lambda_i^2\biggr)
+&&=\frac{1}{2}((\tr\rho(g))^2+\tr(\rho(g)^2))\\
 &=\frac{1}{2}(\chi_\rho(g)^2+\chi_\rho(g^2))
-\end{align*}
+\end{alignat*}
 \item Identica alla (viii).
 \end{enumerate}
 \end{proof}
@@ -58,6 +58,43 @@ La matrice associata a $\rho(g)$ rispetto alla base ``canonica'' di $\mathbb{C}[
 \end{proof}
 
 \begin{corollary}\thlabel{character-regular-representation}
-Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{C}[G]}$ la sua rappresentazione regolare, $g\in G$. Allora $\chi_\mathcal{R}(g)=|G|\delta_{1g}$.
+Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{C}[G]}$ la sua rappresentazione regolare, $g\in G$. Allora $\chi_\mathcal{R}(g)=|G|\cdot\delta_{1g}$.
 \end{corollary}
+
+\section{Ortogonalità}
+
+Dato un gruppo $G$, definiamo una forma hermitiana $\vs{\cdot}{\cdot}_G$ (o più semplicemente $\vs{\cdot}{\cdot}$ se non c'è rischio di ambiguità) sullo spazio vettoriale $\Fun{G}{\mathbb{C}}$:
+$$
+\vs{f_1}{f_2}_G=\frac{1}{|G|}\sum_{g\in G}f_1(g)f_2(g)^*
+$$
+. È evidente che $\vs{\cdot}{\cdot}_G$ è definita positiva.
+
+Ricordiamo che con $1_G$ (o più semplicemente con $1$) si indica la rappresentazione banale di grado 1 di $G$.
+
+\begin{lemma}\thlabel{character-vs-trivial}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
+$$
+\vs{\chi_\rho}{\chi_1}=\dim V^G
+$$
+\end{lemma}
+\begin{proof}
+Sia $T:V\to V$ l'applicazione lineare definita da
+$$
+T=\frac{1}{|G|}\sum_{g\in G}\rho(g)
+$$
+. Osserviamo che $\im T\subseteq V^G$: infatti, dato $h\in G$, vale
+$$
+hT(v)=\frac{1}{|G|}\sum_{g\in G}hgv=\frac{1}{|G|}\sum_{g\in G}gv=T(v)
+$$
+. Inoltre $T|_{V^G}=\id$. Segue che $\dim V^G=\tr T$; ma
+\begin{align*}
+\tr T&=\frac{1}{|G|}\sum_{g\in G}\tr\rho(g)\\
+&=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\cdot1\\
+&=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\chi_1(g)^*\\
+&=\vs{\chi_\rho}{\chi_1}
+\end{align*}
+, da cui la tesi.
+\end{proof}
+
+
 
