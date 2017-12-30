@@ -3,7 +3,7 @@
 \section{Rappresentazioni e Omomorfismi}
 
 \begin{definition}
-Sia $G$ un gruppo, $V$ uno spazio vettoriale. Si dice \emph{rappresentazione} (lineare) un omomorfismo di gruppi $\Rep{\rho}{G}{V}$. $\rho$ si dice \emph{rappresentazione complessa} (rispettivamente \emph{reale}) se $V$ è uno spazio vettoriale complesso (rispettivamente reale).
+Sia $G$ un gruppo, $V$ uno spazio vettoriale. Si dice \emph{rappresentazione} (lineare) un omomorfismo di gruppi $\Rep{\rho}{G}{V}$.
 \end{definition}
 
 Con lieve abuso di notazione, potremo chiamare $V$ stesso \emph{rappresentazione} quando sarà chiaro dal contesto quale rappresentazione stia agendo su $V$.
@@ -31,8 +31,8 @@ Utilizzeremo il simbolo $\isor$ per indicare l'isomorfismo anche quando confonde
 \begin{proposition}\thlabel{representation-homomorphisms-properties}
 Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni, $\varphi\in\Hom_G(V,W)\comma\psi\in\Hom_G(W,U)$.
 \begin{enumerate}[(i)]
-\item $\Hom_G(V,W)$ è un sottospazio vettoriale di $\Hom(V,W)$
-\item $\psi\varphi\in\Hom_G(V,U)$
+\item $\Hom_G(V,W)$ è un sottospazio vettoriale di $\Hom(V,W)$.
+\item $\psi\varphi\in\Hom_G(V,U)$.
 \item L'isomorfismo fra rappresentazioni è una relazione di equivalenza.
 \end{enumerate}
 \end{proposition}
@@ -45,7 +45,7 @@ Si tratta di semplici verifiche.
 \begin{definition}
 Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Si definisce \emph{somma} di $\rho$ e $\sigma$ la rappresentazione
 \begin{align*}
-\rho+\sigma G&\longrightarrow GL(V\dirsum W)\\
+\rho+\sigma: G&\longrightarrow GL(V\dirsum W)\\
 g&\longmapsto\rho(g)\dirsum\sigma(g)
 \end{align*}
 \end{definition}
@@ -53,11 +53,11 @@ g&\longmapsto\rho(g)\dirsum\sigma(g)
 Scriveremo $n\rho$ (dove $n\in\mathbb{N}$) per indicare la rappresentazione $\underbrace{\rho+\ldots+\rho}_{\text{$n$ volte}}$; in particolare, $0\rho=0_G$.
 
 \begin{proposition}\thlabel{representation-direct-sum-properties}
-Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni.
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni. Allora
 \begin{enumerate}[(i)]
-\item $\deg(\rho+\sigma)=\deg\rho+\deg\sigma$
-\item $\rho+\sigma\isor\sigma+\rho$
-\item $(\rho+\sigma)+\tau\isor\rho+(\sigma+\tau)$
+\item $\deg(\rho+\sigma)=\deg\rho+\deg\sigma$;
+\item $\rho+\sigma\isor\sigma+\rho$;
+\item $(\rho+\sigma)+\tau\isor\rho+(\sigma+\tau)$.
 \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -72,7 +72,6 @@ Dimostriamo solo la (ii)
 &=(\sigma+\rho)(g)\psi(v\dirsum w)
 \end{align*}
 \end{enumerate}
-Molte dimostrazioni di proprietà delle operazioni fra rappresentazione sono analoghe a questa e verranno pertanto omesse.
 \end{proof}
 
 \begin{proposition}\thlabel{representation-projection-inclusion-homomorphism}
@@ -80,17 +79,17 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\pi_V:V\dirs
 \end{proposition}
 \begin{proof}
 Le verifiche sono semplici:
-\begin{multline*}
-\pi_V((\rho+\sigma)(g)(v\dirsum w))=\pi_V(\rho(g)v\dirsum\sigma(g)w)=\rho(g)v=\rho(g)\pi_V(v\dirsum w)\\
-\iota_V(\rho(g)v)=\rho(g)v\dirsum 0=(\rho+\sigma)(g)(v\dirsum 0)=(\rho+\sigma)(g)\iota_V(v)\\
-\end{multline*}
+\begin{align*}
+&\pi_V((\rho+\sigma)(g)(v\dirsum w))=\pi_V(\rho(g)v\dirsum\sigma(g)w)=\rho(g)v=\rho(g)\pi_V(v\dirsum w);\\
+&\iota_V(\rho(g)v)=\rho(g)v\dirsum 0=(\rho+\sigma)(g)(v\dirsum 0)=(\rho+\sigma)(g)\iota_V(v).\\
+\end{align*}
 \end{proof}
 
 \begin{proposition}\thlabel{representation-sum-homomorphisms}
 Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni. Allora
 \begin{align*}
-\Hom(\rho+\sigma,\tau)\iso\Hom(\rho,\tau)\dirsum\Hom(\sigma,\tau)\\
-\Hom(\rho,\sigma+\tau)\iso\Hom(\rho,\sigma)\dirsum\Hom(\rho,\tau)
+\Hom(\rho+\sigma,\tau)\iso\Hom(\rho,\tau)\dirsum\Hom(\sigma,\tau);\\
+\Hom(\rho,\sigma+\tau)\iso\Hom(\rho,\sigma)\dirsum\Hom(\rho,\tau).
 \end{align*}
 \end{proposition}
 \begin{proof}
@@ -102,9 +101,9 @@ Siano $\pi_V:V\dirsum W\to V\comma\pi_W:V\dirsum W\to W$ le proiezioni, $\iota_V
 \end{alignat*}
 Osserviamo che $\Theta$ è ben definita (cioè l'immagine sta davvero in $\Hom_G(V\dirsum W,U)$): infatti per la \thref{representation-projection-inclusion-homomorphism} $\pi_V\in\Hom_G(V\dirsum W,V)$, quindi $\varphi\pi_W\in\Hom_G(V\dirsum W,U)$. Per mostrare che $\Theta$ è un isomorfismo basta notare che l'inversa $\Theta^{-1}$ è data da
 $$
-\Theta^{-1}(\varphi)=\varphi\iota_V\dirsum\varphi\iota_W
+\Theta^{-1}(\varphi)=\varphi\iota_V\dirsum\varphi\iota_W;
 $$
-: infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verifica facilmente che $\Theta^{-1}\circ\Theta=\id\comma\Theta\circ\Theta^{-1}=\id$.
+infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verifica facilmente che $\Theta^{-1}\circ\Theta=\id\comma\Theta\circ\Theta^{-1}=\id$.
 \end{proof}
 
 \section{Sottorappresentazioni e Decomposizioni}
@@ -187,15 +186,15 @@ Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V
 \begin{proof}
 Sia $U$ un complementare qualunque di $W$ (cioè tale che $V=W\dirsum U$), e sia $\pi_W:V\to W$ la proiezione. Sia $T:V\to V$ l'applicazione lineare definita da
 $$
-T=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}
+T=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}.
 $$
-. Ricordando che $W$ è $G$-stabile e che $\im\pi_W=\fix\pi_W=W$ si vede facilmente che $\im T\subseteq W$ e che $T|_W=\id$, da cui $\im T=\fix T=W$. Segue che $T^2=T$ e dunque, per decomposizione primaria, $V=V_0\dirsum V_1=\ker T\dirsum\fix T$. Inoltre $T$ è un omomorfismo di rappresentazioni: infatti
+Ricordando che $W$ è $G$-stabile e che $\im\pi_W=\fix\pi_W=W$ si vede facilmente che $\im T\subseteq W$ e che $T|_W=\id$, da cui $\im T=\fix T=W$. Segue che $T^2=T$ e dunque, per decomposizione primaria, $V=V_0\dirsum V_1=\ker T\dirsum\fix T$. Inoltre $T$ è un omomorfismo di rappresentazioni: infatti
 \begin{align*}
 hT&=\frac{1}{|G|}\sum_{g\in G}hg\pi_Wg^{-1}\\
 &=\frac{1}{|G|}\sum_{hg\in G}(hg)\pi_W(hg)^{-1}h\\
-&=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}h=Th
+&=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}h=Th.
 \end{align*}
-. Pertanto, grazie alla \thref{subrepresentation-ker-im}, $\ker T$ è $G$-stabile. Ponendo $W'=\ker T$ si ha, come voluto, $V=W\dirsum W'$  come somma di rappresentazioni.
+Pertanto, grazie alla \thref{subrepresentation-ker-im}, $\ker T$ è $G$-stabile. Ponendo $W'=\ker T$ si ha, come voluto, $V=W\dirsum W'$  come somma di rappresentazioni.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-indecomposable-implies-irreducible}
@@ -241,7 +240,7 @@ La tesi segue facilmente dalla \thref{representation-sum-homomorphisms} e dal Le
 \begin{align*}
 \Hom(\rho,\sigma)&=\Hom\biggl(\sum_{i\in I}\rho_i,\sum_{j\in J}\sigma_j\biggr)\\
 &\iso\Dirsum_{i\in I}\Dirsum_{j\in J}\Hom(\rho_i,\sigma_j)\\
-&=\Dirsum_{i\in I}\Dirsum_{j\in J}\langle 0\rangle=\langle 0\rangle
+&=\Dirsum_{i\in I}\Dirsum_{j\in J}\langle 0\rangle=\langle 0\rangle.
 \end{align*}
 \end{proof}
 
@@ -273,7 +272,7 @@ $$
 \begin{cases}
 1\qquad&\text{se $\rho\isor\sigma$}\\
 0\qquad&\text{altrimenti}
-\end{cases}
+\end{cases}.
 $$
 \end{corollary}
 \begin{proof}
@@ -292,7 +291,7 @@ Sia $\Rep{\rho}{G}{V}$ una rappresentazione completamente riducibile. Supponiamo
 \begin{enumerate}[(i)]
 \item per ogni $\sigma\in\Irr(G)$ vale $\dim\Hom(\rho,\sigma)<\infty$;
 \item l'insieme $\{\sigma\in\Irr(G):\dim\Hom(\rho,\sigma)>0\}$ è finito;
-\item vale $\rho=\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma$;
+\item vale $\rho=\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma$.
 \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -302,9 +301,9 @@ $$
 $$
 per la \thref{representation-sum-homomorphisms} e il \thref{representation-irreducible-homomorphisms-dim}; questo dimostra la (ii) (dato che $I$ è finito). Se invece esiste un $j\in I$ tale che $\sigma\isor\rho_j$, allora
 $$
-\dim\Hom(\rho,\sigma)=\sum_{i\in I}n_i\dim\Hom(\rho_i,\sigma)=n_j<\infty
+\dim\Hom(\rho,\sigma)=\sum_{i\in I}n_i\dim\Hom(\rho_i,\sigma)=n_j<\infty.
 $$
-. Questo dimostra la (i). Osserviamo ora che l'uguaglianza in (iii) ha senso (la somma presente al membro di destra è una somma finita di rappresentazioni) e vale
+Questo dimostra la (i). Osserviamo ora che l'uguaglianza in (iii) ha senso (la somma presente al membro di destra è una somma finita di rappresentazioni) e vale
 %TODO:l'allineamento fa schifo
 \begin{alignat*}{3}
 &&\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma\\
@@ -327,9 +326,9 @@ Sia $j\in J$. Con gli usuali ragionamenti (\thref{representation-sum-homomorphis
 \begin{align*}
 m_j&=\dim\Hom(\rho,\tau_j)\\
 &=\dim\Hom\biggl(\sum_{i\in I}n_i\sigma_i,\tau_j\biggr)\\
-&=\sum_{i\in I}n_i\dim\Hom(\sigma_i,\tau_j)
+&=\sum_{i\in I}n_i\dim\Hom(\sigma_i,\tau_j).
 \end{align*}
-. Poiché $m_j>0$ deve esistere un $i\in I$ tale che $\dim\Hom(\sigma_i,\tau_j)>0$, ovvero (\thref{representation-irreducible-homomorphisms-dim}) tale che $\sigma_i\isor\tau_j$. Tale $i$ è ovviamente unico (le $\sigma_i$ sono a due a due non isomorfe), quindi vale $m_j=n_i$ e possiamo porre $\theta(j)=i$. La funzione $\theta$ così definita è iniettiva (le $\tau_j$ sono a due a due non isomorfe), e per vedere che è suriettiva basta ripetere il ragionamento di sopra con $I$ al posto di $J$. Per come abbiamo definito $\theta$ vale $\tau_j\isor\sigma_{\theta(j)}$, e abbiamo già osservato che $m_j=n_{\theta(j)}$.
+Poiché $m_j>0$ deve esistere un $i\in I$ tale che $\dim\Hom(\sigma_i,\tau_j)>0$, ovvero (\thref{representation-irreducible-homomorphisms-dim}) tale che $\sigma_i\isor\tau_j$. Tale $i$ è ovviamente unico (le $\sigma_i$ sono a due a due non isomorfe), quindi vale $m_j=n_i$ e possiamo porre $\theta(j)=i$. La funzione $\theta$ così definita è iniettiva (le $\tau_j$ sono a due a due non isomorfe), e per vedere che è suriettiva basta ripetere il ragionamento di sopra con $I$ al posto di $J$. Per come abbiamo definito $\theta$ vale $\tau_j\isor\sigma_{\theta(j)}$, e abbiamo già osservato che $m_j=n_{\theta(j)}$.
 \end{proof}
 
 \begin{proposition}\thlabel{representation-decomposition-subrepresentation-uniqueness}
@@ -354,12 +353,12 @@ g&\longmapsto \rho(g)\tensor\sigma(g)
 \end{definition}
 
 \begin{proposition}\thlabel{representation-tensor-product-properties}
-Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni.
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresentazioni. Allora
 \begin{enumerate}[(i)]
-\item $\deg(\rho\sigma)=\deg\rho\cdot\deg\sigma$
-\item $\rho\sigma\isor\sigma\rho$
-\item $(\rho\sigma)\tau\isor\rho(\sigma\tau)$
-\item $\rho(\sigma+\tau)\isor\rho\sigma+\rho\tau$
+\item $\deg(\rho\sigma)=\deg\rho\cdot\deg\sigma$;
+\item $\rho\sigma\isor\sigma\rho$;
+\item $(\rho\sigma)\tau\isor\rho(\sigma\tau)$;
+\item $\rho(\sigma+\tau)\isor\rho\sigma+\rho\tau$;
 \item $n_G\tensor\rho\isor n\rho$ per ogni $n\in\mathbb{N}$ (in particolare $0_G\tensor\rho\isor 0_G$).
 \end{enumerate}
 \end{proposition}
@@ -372,16 +371,16 @@ Dimostriamo solo la (ii) e la (v).
 \psi:V&\tensor W&&\longrightarrow &W&\tensor V\\
 v&\tensor w&&\longmapsto &w&\tensor v
 \end{alignat*}
-. Sappiamo già (\thref{tensor-product-properties}) che $\psi$ è un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni. È sufficiente far vedere che per ogni $g\in G\comma v\in V\comma w\in W$ vale
+Sappiamo già (\thref{tensor-product-properties}) che $\psi$ è un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni. È sufficiente far vedere che per ogni $g\in G\comma v\in V\comma w\in W$ vale
 $$
-(\psi\circ\rho\sigma(g))(v\tensor w)=(\sigma\rho(g)\circ\psi)(v\tensor w)
+(\psi\circ\rho\sigma(g))(v\tensor w)=(\sigma\rho(g)\circ\psi)(v\tensor w),
 $$
-, ma
+ma
 \begin{align*}
 (\psi\circ\rho\sigma(g))(v\tensor w)&=\psi(\rho(g)v\tensor\sigma(g)w)\\
 &=\sigma(g)w\tensor\rho(g)v\\
 &=\sigma\rho(g)(w\tensor v)\\
-&=(\sigma\rho(g)\circ\psi)(v\tensor w)
+&=(\sigma\rho(g)\circ\psi)(v\tensor w).
 \end{align*}
 
 \setcounter{enumi}{4}
@@ -390,13 +389,13 @@ $$
 \psi:&&\mathbb{K}^n&\tensor V&&\longrightarrow V^{\dirsum n}\\
 &&\biggl(\sum_{i=1}^{n}\alpha_ie_i\biggr)&\tensor v&&\longmapsto\alpha_1v\dirsum\ldots\dirsum\alpha_nv
 \end{alignat*}
-. Si vede facilmente che $\psi$ è un isomorfismo di spazi vettoriali. Per mostrare che è anche un omomorfismo di rappresentazioni, osserviamo che vale
+Si vede facilmente che $\psi$ è un isomorfismo di spazi vettoriali. Per mostrare che è anche un omomorfismo di rappresentazioni, osserviamo che vale
 \begin{align*}
 (\psi\circ(n_G\tensor\rho)(g))\biggl(\biggl(\sum_{i=1}^{n}\alpha_ie_i\biggr)\tensor v\biggr)
 &=\psi\biggl(\biggl(\sum_{i=1}^{n}\alpha_ie_i\biggr)\tensor\rho(g)v\biggr)\\
 &=\alpha_1\rho(g)v\dirsum\ldots\dirsum\alpha_n\rho(g)v\\
 &=n\rho(g)(\alpha_1v\dirsum\ldots\dirsum\alpha_nv)\\
-&=(n\rho(g)\circ\psi)\biggl(\biggl(\sum_{i=1}^{n}\alpha_ie_i\biggr)\tensor v\biggr)
+&=(n\rho(g)\circ\psi)\biggl(\biggl(\sum_{i=1}^{n}\alpha_ie_i\biggr)\tensor v\biggr).
 \end{align*}
 \end{enumerate}
 \end{proof}
@@ -426,13 +425,13 @@ Sia $\varphi$ l'applicazione lineare
 \varphi:V&\tensor V&&\longrightarrow&\SymP^2V&\dirsum\ExtP^2V\\
 v&\tensor w&&\longmapsto& vw&\dirsum v\wedge w
 \end{alignat*}
-. Sappiamo dalla \thref{tensor-square-decomposition} che $\varphi$ è un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni. Per ogni $g\in G\comma v, w\in V$ vale
+Sappiamo dalla \thref{tensor-square-decomposition} che $\varphi$ è un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni. Per ogni $g\in G\comma v, w\in V$ vale
 \begin{align*}
 (\varphi\circ\rho\rho(g))(v\tensor w)&=\varphi(\rho(g)v\tensor\rho(g)w)\\
 &=(\rho(g)v)(\rho(g)w)\dirsum(\rho(g)v)\wedge(\rho(g)w)\\
 &=(\SymP^2\rho(g))(vw)\dirsum(\ExtP^2\rho(g))(v\wedge w)\\
 &=(\SymP^2\rho+\ExtP^2\rho)(g)(vw\dirsum v\wedge w)\\
-&=((\SymP^2\rho+\ExtP^2\rho)(g)\circ\varphi)(v\tensor w)
+&=((\SymP^2\rho+\ExtP^2\rho)(g)\circ\varphi)(v\tensor w).
 \end{align*}
 \end{proof}
 
@@ -458,7 +457,7 @@ Sia $\Phi:V\to{V^*}^*$ l'isomorfismo canonico (ovvero l'applicazione lineare tal
 &=(f\mapsto\Phi(v)(\rho(g)^Tf))\\
 &=(f\mapsto\Phi(v)(f\circ\rho(g)))\\
 &=(f\mapsto(f\circ\rho(g))v)\\
-&=(f\mapsto f(\rho(g)v))=\Phi(\rho(g)v)
+&=(f\mapsto f(\rho(g)v))=\Phi(\rho(g)v).
 \end{align*}
 \end{proof}
 
@@ -481,7 +480,7 @@ dove $\pi_V:V\dirsum W\to V\comma\pi_W:V\dirsum W\to W$ sono le proiezioni. Veri
 \Theta((\rho+\sigma)^*(g)f)&=\Theta(f\circ(\rho+\sigma)(g^{-1}))\\
 &=f\circ(\rho+\sigma)(g^{-1})\circ\iota_V\dirsum f\circ(\rho+\sigma)(g^{-1})\circ\iota_W\\
 &=f\circ\rho(g^{-1})\dirsum f\circ\sigma(g^{-1})\\
-&=\rho^*(g)f\circ\iota_V\dirsum\sigma^*(g)f\circ\iota_W=(\rho^*+\sigma^*)(g)\Theta(f)
+&=\rho^*(g)f\circ\iota_V\dirsum\sigma^*(g)f\circ\iota_W=(\rho^*+\sigma^*)(g)\Theta(f).
 \end{align*}
 \end{proof}
 
@@ -506,7 +505,7 @@ $$
 X\arrow{u}{e}\arrow{r}{\varphi(g)}&X\arrow{u}{e}
 \end{diagram}
 $$
-, ovvero tale che $\rho(g)e_x=e_{\varphi(g)x}$ per ogni $x\in X$.
+ovvero tale che $\rho(g)e_x=e_{\varphi(g)x}$ per ogni $x\in X$.
 \end{definition}
 
 \begin{definition}
@@ -518,14 +517,14 @@ Coerentemente con il già citato abuso di notazione potremo indicare la rapprese
 \begin{proposition}\thlabel{representation-regular-homomorphisms-dim}
 Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la sua rappresentazione regolare, $\Rep{\rho}{G}{V}$ una rappresentazione. Allora 
 $$
-\dim\Hom(\mathcal{R},\rho)=\deg\rho
+\dim\Hom(\mathcal{R},\rho)=\deg\rho.
 $$
 \end{proposition}
 \begin{proof}
 Mostriamo che $\Hom(\mathcal{R},\rho)\iso V$. Consideriamo l'applicazione lineare
 $\Phi:\Hom(\mathcal{R},\rho)\to V$ tale che $\Phi(f)=f(e_1)$ per ogni $f\in\Hom(\mathcal{R},\rho)$, dove $1\in G$ è l'identità. $\Phi$ è iniettiva: sia infatti $f\in\Hom(\mathcal{R},\rho)$ tale che $\Phi(f)=f(e_1)=0$. Allora per ogni $g\in G$ vale
 $$
-f(e_g)=f(e_{g\cdot1})=f(\mathcal{R}(g)e_1)=\rho(g)f(e_1)=\rho(g)0=0
+f(e_g)=f(e_{g\cdot1})=f(\mathcal{R}(g)e_1)=\rho(g)f(e_1)=\rho(g)0=0,
 $$
 quindi $f=0$. Inoltre $\Phi$ è suriettiva: sia infatti $v\in V$. Sia $f$ l'unica applicazione lineare da $\mathbb{K}[G]$ in $V$ tale che $f(e_g)=\rho(g)v$ per ogni $g\in G$. $f$ è un omomorfismo di rappresentazioni: per ogni $g\in G,u\in V$ vale
 \begin{align*}
@@ -536,15 +535,15 @@ quindi $f=0$. Inoltre $\Phi$ è suriettiva: sia infatti $v\in V$. Sia $f$ l'unic
 &=\sum_{h\in G}e_h^*(u)f(e_{gh})\\
 &=\sum_{h\in G}e_h^*(u)f(\mathcal{R}(g)e_h)\\
 &=(f\mathcal{R}(g))\biggl(\sum_{h\in G}e_h^*(u)e_h\biggr)\\
-&=f(\mathcal{R}(g)u)
+&=f(\mathcal{R}(g)u),
 \end{align*}
-, e ovviamente $\Phi(f)=v$. Dunque $\Phi$ è l'isomorfismo cercato.
+e ovviamente $\Phi(f)=v$. Dunque $\Phi$ è l'isomorfismo cercato.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-regular-decomposition}
 Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la sua rappresentazione regolare. Supponiamo che $\mathcal{R}$ sia completamente riducibile e che $\mathbb{K}$ sia algebricamente chiuso. Allora $\Irr(G)$ è finito e vale
 $$
-\mathcal{R}=\sum_{\rho\in\Irr(G)}(\deg\rho)\rho
+\mathcal{R}=\sum_{\rho\in\Irr(G)}(\deg\rho)\rho.
 $$
 \end{corollary}
 \begin{proof}
@@ -558,7 +557,7 @@ L'ipotesi di completa riducibilità di $\mathcal{R}$ è soddisfatta, ad esempio,
 \begin{corollary}\thlabel{representation-irreducible-degrees}
 Sia $G$ un gruppo finito. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid |G|$. Allora
 $$
-|G|=\sum_{\rho\in\Irr(G)}(\deg\rho)^2
+|G|=\sum_{\rho\in\Irr(G)}(\deg\rho)^2.
 $$
 \end{corollary}
 \begin{proof}
@@ -602,13 +601,13 @@ $$
 \begin{align*}
 \tau(g)u&=\tau(g)\biggl(\sum_{i\in I}\varphi_i(u)\tensor w_i\biggr)\\
 &=\sum_{i\in I}\rho(g)\varphi_i(u)\tensor\sigma(1)w_i\\
-&=\sum_{i\in I}\rho(g)\varphi_i(u)\tensor w_i
+&=\sum_{i\in I}\rho(g)\varphi_i(u)\tensor w_i,
 \end{align*}
-, da cui $\varphi_i(\tau(g)u)=\rho(g)\varphi_i(u)$. Osserviamo che i $\varphi_i$ non possono essere tutti nulli, poiché $U$ non è nullo, quindi per il Lemma di Schur almeno uno è un isomorfismo. Per il \thref{representation-irreducible-homomorphisms-dim} $\dim\Hom(\tau,\rho)=1$, quindi esistono $\psi\in\Hom(\tau,\rho)\comma\lambda_i\in\mathbb{K}$ tali che per ogni $i\in I$ vale $\varphi_i=\lambda_i\psi$. $\psi$ non è nullo, dunque è un isomorfismo, ovvero ha nucleo banale. Fissato $0\neq u\in U$, solo un numero finito di $\lambda_i\psi(u)$ sono non nulli, ma $\psi(u)$ è non nullo, pertanto solo un numero finito di $\lambda_i$ sono non nulli. Allora per ogni $u\in U$ vale
+da cui $\varphi_i(\tau(g)u)=\rho(g)\varphi_i(u)$. Osserviamo che i $\varphi_i$ non possono essere tutti nulli, poiché $U$ non è nullo, quindi per il Lemma di Schur almeno uno è un isomorfismo. Per il \thref{representation-irreducible-homomorphisms-dim} $\dim\Hom(\tau,\rho)=1$, quindi esistono $\psi\in\Hom(\tau,\rho)\comma\lambda_i\in\mathbb{K}$ tali che per ogni $i\in I$ vale $\varphi_i=\lambda_i\psi$. $\psi$ non è nullo, dunque è un isomorfismo, ovvero ha nucleo banale. Fissato $0\neq u\in U$, solo un numero finito di $\lambda_i\psi(u)$ sono non nulli, ma $\psi(u)$ è non nullo, pertanto solo un numero finito di $\lambda_i$ sono non nulli. Allora per ogni $u\in U$ vale
 $$
-u=\sum_{i\in I}\lambda_i\psi(u)\tensor w_i=\psi(u)\tensor\sum_{i\in I}\lambda_i w_i
+u=\sum_{i\in I}\lambda_i\psi(u)\tensor w_i=\psi(u)\tensor\sum_{i\in I}\lambda_i w_i.
 $$
-. Scegliendo $\bar{w}=\sum_{i\in I}\lambda_i w_i$ otteniamo $U=V\tensor\bar{w}$, ovvero la tesi.
+Scegliendo $\bar{w}=\sum_{i\in I}\lambda_i w_i$ otteniamo $U=V\tensor\bar{w}$, ovvero la tesi.
 \end{proof}
 Sia ora $\langle0\rangle\neq U\subseteq V\tensor W$ un sottospazio $(G\times H)$-invariante. Applicando il Lemma a un sottospazio non nullo di $U$ $(G\times\langle1\rangle)$-stabile minimale otteniamo un $0\neq\bar{w}\in W$ tale che $V\tensor\bar{w}\subseteq U$. Per ogni $v\in V$ definiamo $W(v)=\{w\in W:v\tensor w\in U\}$. Si vede facilmente che $W(v)$ è un sottospazio vettoriale di $W$, non nullo poiché contiene $\bar{w}$, e inoltre $H$-stabile: infatti se $h\in H\comma w\in W(v)$ vale
 $$
@@ -620,7 +619,7 @@ essendo $v\tensor w\in U$ e $U$ $(\langle1\rangle\times H)$-stabile. Poiché $\s
 \begin{corollary}\thlabel{irreducible-representation-direct-product}
 Siano $G\comma H$ gruppi finiti. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid|G|\cdot|H|$. Allora
 $$
-\Irr(G\times H)=\{\rho\tbox\sigma:\rho\in\Irr(G),\sigma\in\Irr(H)\}
+\Irr(G\times H)=\{\rho\tbox\sigma:\rho\in\Irr(G),\sigma\in\Irr(H)\}.
 $$
 \end{corollary}
 \begin{proof}
@@ -630,9 +629,9 @@ Rimane infine da mostrare che tutte le rappresentazioni irriducibili di $G\times
 |G\times H|&=|G|\cdot|H|\\
 &=\biggl(\sum_{\rho\in\Irr(G)}(\deg\rho)^2\biggr)\biggl(\sum_{\sigma\in\Irr(H)}(\deg\sigma)^2\biggr)\\
 &=\sum_{\substack{\rho\in\Irr(G)\\\sigma\in\Irr(H)}}(\deg\rho)^2(\deg\sigma)^2\\
-&=\sum_{\substack{\rho\in\Irr(G)\\\sigma\in\Irr(H)}}(\deg\rho\tbox\sigma)^2
+&=\sum_{\substack{\rho\in\Irr(G)\\\sigma\in\Irr(H)}}(\deg\rho\tbox\sigma)^2,
 \end{align*}
-, dunque (sempre per il \thref{representation-irreducible-degrees}) quelle elencate sono tutte le rappresentazioni irriducibili di $G\times H$.
+dunque (sempre per il \thref{representation-irreducible-degrees}) quelle elencate sono tutte le rappresentazioni irriducibili di $G\times H$.
 \end{proof}
 
 \section{Rappresentazioni su Omomorfismi}
@@ -642,12 +641,12 @@ Supponiamo di avere due rappresentazioni $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{H}{
 \tau:G&\times&& H&&\longrightarrow GL(\Hom(V,W))\\
 (g&,&&h)&&\longmapsto (f\mapsto\sigma(h)\circ f\circ \rho(g)^{-1})
 \end{alignat*}
-. Se $V$ e $W$ sono finitamente generati, sappiamo (dalla \thref{tensor-homomorphisms-vs-tensor}) che esiste un isomorfismo canonico
+Se $V$ e $W$ sono finitamente generati, sappiamo (dalla \thref{tensor-homomorphisms-vs-tensor}) che esiste un isomorfismo canonico
 \begin{alignat*}{2}
 \Psi:V^*&\tensor W&&\longrightarrow\Hom(V,W)\\
 \varphi&\tensor w&&\longmapsto(v\mapsto \varphi(v)w)
 \end{alignat*}
-. Una rappresentazione che agisce naturalmente su $V^*\tensor W$ è $\rho^*\tbox\sigma$. La seguente proposizione mostra che in realtà $\tau$ e $\rho^*\tbox\sigma$ sono la stessa rappresentazione.
+Una rappresentazione che agisce naturalmente su $V^*\tensor W$ è $\rho^*\tbox\sigma$. La seguente proposizione mostra che in realtà $\tau$ e $\rho^*\tbox\sigma$ sono la stessa rappresentazione.
 
 \begin{proposition}\thlabel{representation-on-homomorphisms-vs-tensor}
 Siano $\rho\comma\sigma\comma\tau\comma\Psi$ come sopra, con l'ipotesi che $V$ e $W$ siano finitamente generati. Allora $\Psi$ è un isomorfismo di rappresentazioni da $\rho^*\tbox\sigma$ in $\tau$.
@@ -655,16 +654,16 @@ Siano $\rho\comma\sigma\comma\tau\comma\Psi$ come sopra, con l'ipotesi che $V$ e
 \begin{proof}
 È sufficiente mostrare che per ogni $(g,h)\in G\times H\comma f\in V^*\comma w\in W$ vale
 $$
-\Psi((\rho^*\tbox\sigma)(g,h)(f\tensor w))=\tau(\Psi(f\tensor w))
+\Psi((\rho^*\tbox\sigma)(g,h)(f\tensor w))=\tau(\Psi(f\tensor w)).
 $$
-. Abbiamo
+Abbiamo
 \begin{align*}
 \Psi((\rho^*\tbox\sigma)(g,h)(f\tensor w))&=\Psi(\rho^*(g)f\tensor\sigma(h)w)\\
 &=\Psi(f\circ\rho(g)^{-1}\tensor\sigma(h)w)\\
 &=(v\mapsto f(\rho(g)^{-1}v)\sigma(h)w)\\
 &=(v\mapsto \sigma(h)(f(v)w))\circ \rho(g)^{-1}\\
 &=\sigma(h)\circ\Psi(f\tensor w)\circ\rho(g)^{-1}\\
-&=\tau(\Psi(f\tensor w))
+&=\tau(\Psi(f\tensor w)).
 \end{align*}
 \end{proof}
 
@@ -680,24 +679,22 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni di grado finit
 \begin{proof}
 Si tratta di scrivere le definizioni
 \begin{align*}
-\varphi\in\Hom_G(V,W)&\iff\forall g\in G\quad\sigma(g)\varphi=\varphi\rho(g)\\
+\varphi\in\Hom_G(V,W)&\iff\forall g\in G\quad\sigma(g)\varphi=\varphi\rho(g),\\
 \varphi\in\Hom(V,W)^G&\iff\forall g\in G\quad\sigma(g)\varphi\rho(g)^{-1}=\varphi
 \end{align*}
 che sono evidentemente equivalenti.
 \end{proof}
 
-
-
 \begin{example}
 Sia $G$ un gruppo, e consideriamo l'azione di $G\times G$ su $G$ data da $(g_1,g_2)\cdot g=g_2gg_1^{-1}$. Questa induce una rappresentazione per permutazione $\Rep{\hat{\mathcal{R}}}{G\times G}{\mathbb{K}[G]}$. Supponiamo che $G$ sia finito, che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid|G|$. Dimostriamo allora che
 $$
-\hat{\mathcal{R}}=\sum_{\sigma\in\Irr(G)}\sigma^*\tbox\sigma
+\hat{\mathcal{R}}=\sum_{\sigma\in\Irr(G)}\sigma^*\tbox\sigma.
 $$
-. Sappiamo che se $\sigma\in\Irr(G)$, allora $\sigma^*$ è irriducibile (\thref{representation-dual-irreducible}), dunque anche $\sigma^*\tbox\sigma$ è irriducibile (\thref{representation-box-irreducible}); inoltre $\deg\sigma^*\tbox\sigma=(\deg\sigma)^2$, e per il \thref{representation-irreducible-degrees}
+Sappiamo che se $\sigma\in\Irr(G)$, allora $\sigma^*$ è irriducibile (\thref{representation-dual-irreducible}), dunque anche $\sigma^*\tbox\sigma$ è irriducibile (\thref{representation-box-irreducible}); inoltre $\deg\sigma^*\tbox\sigma=(\deg\sigma)^2$, e per il \thref{representation-irreducible-degrees}
 $$
-\sum_{\sigma\in\Irr}\deg\sigma^*\tbox\sigma=\sum_{\sigma\in\Irr}(\deg\sigma)^2=|G|=\deg\hat{\mathcal{R}}
+\sum_{\sigma\in\Irr}\deg\sigma^*\tbox\sigma=\sum_{\sigma\in\Irr}(\deg\sigma)^2=|G|=\deg\hat{\mathcal{R}}.
 $$
-. Poiché (come già osservato) le rappresentazioni $\sigma^*\tbox\sigma$ sono tutte diverse al variare di $\sigma\in\Irr(G)$, è sufficiente mostrare che $\hat{\mathcal{R}}$ contiene una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$ per ogni $\sigma\in\Irr(G)$. Fissiamo dunque $\Rep{\sigma}{G}{V_\sigma}$ una rappresentazione irriducibile di $G$. Sia $\{e_g\}_{g\in G}$ la base ``canonica'' di $\mathbb{K}[G]$. Consideriamo l'applicazione lineare
+Poiché (come già osservato) le rappresentazioni $\sigma^*\tbox\sigma$ sono tutte diverse al variare di $\sigma\in\Irr(G)$, è sufficiente mostrare che $\hat{\mathcal{R}}$ contiene una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$ per ogni $\sigma\in\Irr(G)$. Fissiamo dunque $\Rep{\sigma}{G}{V_\sigma}$ una rappresentazione irriducibile di $G$. Sia $\{e_g\}_{g\in G}$ la base ``canonica'' di $\mathbb{K}[G]$. Consideriamo l'applicazione lineare
 \begin{align*}
 T_\sigma:\mathbb{K}[G]&\longrightarrow\End(V_\sigma)\\
 e_g&\longmapsto\sigma(g)
@@ -708,7 +705,7 @@ T_\sigma(\hat{\mathcal{R}}(g_1,g_2)e_g)&=T_\sigma(e_{g_2gg_1^{-1}})\\
 &=\sigma(g_2gg_1^{-1})\\
 &=\sigma(g_2)\sigma(g)\sigma(g_1)^{-1}\\
 &=(\sigma^*\tbox\sigma)(g_1,g_2)\sigma(g)\\
-&=(\sigma^*\tbox\sigma)(g_1,g_2)T_\sigma(e_g)
+&=(\sigma^*\tbox\sigma)(g_1,g_2)T_\sigma(e_g).
 \end{align*}
-. Osserviamo che $T_\sigma$ non è nulla (ad esempio $T_\sigma(e_1)=\id$) e $\sigma^*\tbox\sigma$ è irriducibile, quindi per il Lemma di Schur $T_\sigma$ è suriettiva. Allora per il \thref{representation-surjective-homomorphism-subrepresentation} $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$.
+Osserviamo che $T_\sigma$ non è nulla (ad esempio $T_\sigma(e_1)=\id$) e $\sigma^*\tbox\sigma$ è irriducibile, quindi per il Lemma di Schur $T_\sigma$ è suriettiva. Allora per il \thref{representation-surjective-homomorphism-subrepresentation} $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$.
 \end{example}

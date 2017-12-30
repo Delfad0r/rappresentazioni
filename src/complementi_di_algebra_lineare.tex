@@ -10,7 +10,7 @@ X\arrow{r}{f}\arrow[swap]{d}{e}&Z\\
 V\arrow[swap]{ru}{\bar{f}}
 \end{diagram}
 $$
-, ovvero tale che $f=\bar{f}\circ e$
+ovvero tale che $f=\bar{f}\circ e$
 \end{definition}
 
 \begin{remark}
@@ -27,13 +27,13 @@ f=\sum_{x\in X}f(x)e(x)
 $$
 (dove la somma è in realtà su un numero finito di addendi poiché $f$ ha supporto finito). Supponiamo ora che esistano coefficienti $a_x\in\mathbb{K}$ tali che
 $$
-0=\sum_{x\in X}a_xe(x)
+0=\sum_{x\in X}a_xe(x).
 $$
-. Allora per ogni $y\in X$ vale
+Allora per ogni $y\in X$ vale
 $$
-0=0(y)=\sum_{x\in X}a_xe(x)(y)=a_y
+0=0(y)=\sum_{x\in X}a_xe(x)(y)=a_y,
 $$
-, dunque $e(X)$ è un insieme di generatori di $V$ linearmente indipendenti.
+dunque $e(X)$ è un insieme di generatori di $V$ linearmente indipendenti.
 \end{proof}
 
 \begin{proposition}\thlabel{free-vector-space-uniqueness}
@@ -48,7 +48,7 @@ X\arrow{ru}{e}\arrow{r}{\bar{e}}\arrow[swap]{rd}{e}&\bar{V}\arrow[swap]{d}{\bar\
 {}&V
 \end{diagram}
 $$
-, dove l'esistenza di $\psi$ e $\bar{\psi}$ è garantita dalle proprietà universali di $V$ e $\bar{V}$ rispettivamente; poiché $\bar{\psi}\circ\psi\circ e=e=\id\circ e$ deve valere $\bar{\psi}\circ\psi=\id$. Analogamente si mostra che $\psi\circ\bar{\psi}=\id$, dunque $\psi:V\to\bar{V}$ è un isomorfismo.
+dove l'esistenza di $\psi$ e $\bar{\psi}$ è garantita dalle proprietà universali di $V$ e $\bar{V}$ rispettivamente; poiché $\bar{\psi}\circ\psi\circ e=e=\id\circ e$ deve valere $\bar{\psi}\circ\psi=\id$. Analogamente si mostra che $\psi\circ\bar{\psi}=\id$, dunque $\psi:V\to\bar{V}$ è un isomorfismo.
 \end{proof}
 
 \begin{remark}
@@ -67,7 +67,7 @@ V\times W\arrow{r}{h}\arrow[swap]{d}{\tensor}&Z\\
 V\tensor W\arrow[swap]{ru}{\bar{h}}
 \end{diagram}
 $$
-, ovvero tale che $h=\bar{h}\circ\tensor$.
+ovvero tale che $h=\bar{h}\circ\tensor$.
 \end{definition}
 
 \begin{proposition}\thlabel{tensor-space-existence}
@@ -76,9 +76,9 @@ Siano $V\comma W$ spazi vettoriali. Allora esiste uno spazio vettoriale $V\tenso
 \begin{proof}
 Sia $U$ lo spazio vettoriale libero su $V\times W$, con $\{e(v,w)\}_{(v,w)\in V\times W}$ come base. Sia
 \begin{align*}
-K=\langle&e(\alpha v_1+\beta v_2,w_1)-\alpha e(v_1,w_1)-\beta e(v_2,w_1),\\&e(v_1,\alpha w_1+\beta w_2)-\alpha e(v_1, w_1)-\beta e(v_1, w_2)\\&:v_1,v_2\in V,w_1,w_2\in W,\alpha,\beta\in\mathbb{K}\rangle
+K=\langle&e(\alpha v_1+\beta v_2,w_1)-\alpha e(v_1,w_1)-\beta e(v_2,w_1),\\&e(v_1,\alpha w_1+\beta w_2)-\alpha e(v_1, w_1)-\beta e(v_1, w_2)\\&:v_1,v_2\in V,w_1,w_2\in W,\alpha,\beta\in\mathbb{K}\rangle.
 \end{align*}
-. Poniamo $V\tensor W=U/K$ con $\tensor=\pi\circ e:V\times W\to V\tensor W$, dove $\pi$ è la proiezione da $U$ su $U/K$. Dalla definizione di $K$ segue banalmente che $\tensor$ è bilineare. Sia ora $Z$ uno spazio vettoriale, $h:V\times W\to Z$ un'applicazione bilineare; dobbiamo trovare un'applicazione lineare $\bar h:V\tensor W\to Z$ tale che $h=\bar h\circ\tensor$. Poiché $U$ è lo spazio vettoriale libero su $V\times W$, esiste un'unica applicazione lineare $k:U\to Z$ tale che $h=k\circ e$. Essendo $h$ bilineare, si vede facilmente che $K\subseteq\ker k$. Allora, per il teorema di omomorfismo, esiste un'unica applicazione lineare $\bar h:U/K\to Z$ tale che $k=\bar h\circ\pi$. Segue che $\bar h\circ \tensor=\bar h\circ\pi\circ e=k\circ e=h$.
+Poniamo $V\tensor W=U/K$ con $\tensor=\pi\circ e:V\times W\to V\tensor W$, dove $\pi$ è la proiezione da $U$ su $U/K$. Dalla definizione di $K$ segue banalmente che $\tensor$ è bilineare. Sia ora $Z$ uno spazio vettoriale, $h:V\times W\to Z$ un'applicazione bilineare; dobbiamo trovare un'applicazione lineare $\bar h:V\tensor W\to Z$ tale che $h=\bar h\circ\tensor$. Poiché $U$ è lo spazio vettoriale libero su $V\times W$, esiste un'unica applicazione lineare $k:U\to Z$ tale che $h=k\circ e$. Essendo $h$ bilineare, si vede facilmente che $K\subseteq\ker k$. Allora, per il teorema di omomorfismo, esiste un'unica applicazione lineare $\bar h:U/K\to Z$ tale che $k=\bar h\circ\pi$. Segue che $\bar h\circ \tensor=\bar h\circ\pi\circ e=k\circ e=h$.
 $$
 \begin{diagram}
 V\times W\arrow{rr}{h}\arrow{rd}{e}\arrow[bend right=45,swap]{rrd}{\tensor}&&Z\\
@@ -100,7 +100,7 @@ D'ora in poi parleremo dunque \emph{del} prodotto tensore di due spazi vettorial
 \begin{proposition}\thlabel{tensor-space-generated}
 Siano $V\comma W$ spazi vettoriali. Allora
 $$
-V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle
+V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle.
 $$
 \end{proposition}
 \begin{proof}
@@ -124,28 +124,28 @@ v\tensor w=\sum_{(i,j)\in I\times J}\alpha_i\beta_j(v_i\tensor w_j)
 $$
 per bilinearità di $\tensor$. Dalla \thref{tensor-space-generated} segue che
 $$
-V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle=\langle v_i\tensor w_j:(i,j)\in I\times J\rangle
+V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle=\langle v_i\tensor w_j:(i,j)\in I\times J\rangle.
 $$
 Quindi i vettori $\{v_i\tensor w_j\}$ generano; mostriamo ora che sono linearmente indipendenti. Per ogni $i\in I,j\in J$ sia $\psi_{ij}$ l'applicazione lineare
 \begin{alignat*}{2}
 \psi_{ij}:V&\tensor W&&\longrightarrow\mathbb{K}\\
 v&\tensor w&&\longmapsto v_i^*(v)w_j^*(w)
 \end{alignat*}
-. Supponiamo esistano coefficienti $a_{ij}\in\mathbb{K}$ tali che
+Supponiamo esistano coefficienti $a_{ij}\in\mathbb{K}$ tali che
 $$
-0=\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)
+0=\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j).
 $$
-. Allora per ogni $h\in I,k\in J$ vale
+Allora per ogni $h\in I,k\in J$ vale
 $$
-0=\psi_{hk}\biggl(\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)\biggr)=\sum_{(i,j)\in I\times J}a_{ij}\psi_{hk}(v_i\tensor w_j)=a_{hk}
+0=\psi_{hk}\biggl(\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)\biggr)=\sum_{(i,j)\in I\times J}a_{ij}\psi_{hk}(v_i\tensor w_j)=a_{hk},
 $$
-, quindi i vettori $\{v_i\tensor w_j\}$ sono indipendenti.
+quindi i vettori $\{v_i\tensor w_j\}$ sono indipendenti.
 \end{proof}
 
 \begin{corollary}\thlabel{tensor-space-dimension}
 Siano $V\comma W$ spazi vettoriali. Allora
 $$
-\dim (V\tensor W)=\dim V\cdot\dim W
+\dim (V\tensor W)=\dim V\cdot\dim W.
 $$
 \end{corollary}
 
@@ -158,25 +158,25 @@ Per ogni $u\in U$ l'applicazione $(v,w)\mapsto h(v,w,u)$ è bilineare, quindi es
 h_u:V&\tensor W&&\longrightarrow Z\\
 v&\tensor w&&\longmapsto h(v,w,u)
 \end{alignat*}
-. Ora, l'applicazione $(x,u)\mapsto h_u(x)$ è un'applicazione bilineare da $(V\tensor W)\times U$ in $Z$, quindi esiste un'unica applicazione lineare
+L'applicazione $(x,u)\mapsto h_u(x)$ è un'applicazione bilineare da $(V\tensor W)\times U$ in $Z$, quindi esiste un'unica applicazione lineare
 \begin{alignat*}{3}
 \bar h:(V\tensor& W)&&\tensor U&&\longrightarrow Z\\
 x&&&\tensor u&&\longmapsto h_u(x)
 \end{alignat*}
-. In particolare, per ogni $v\in V,w\in W,u\in U$ vale
+In particolare, per ogni $v\in V,w\in W,u\in U$ vale
 $$
-\bar h((v\tensor w)\tensor u)=h_u(v\tensor w)=h(v,w,u)
+\bar h((v\tensor w)\tensor u)=h_u(v\tensor w)=h(v,w,u).
 $$
-. Riguardo all'unicità di $\bar h$, sia $\bar{h'}:(V\tensor W)\tensor U\to Z$ che soddisfa $h(v,w,u)=\bar{h'}((v\tensor w)\tensor u)$ per ogni $v\in V,w\in W,u\in U$. Poiché $\bar{h'}$ coincide con $\bar h$ su un insieme di generatori si ha $\bar{h'}=\bar h$.
+Riguardo all'unicità di $\bar h$, sia $\bar{h'}:(V\tensor W)\tensor U\to Z$ che soddisfa $h(v,w,u)=\bar{h'}((v\tensor w)\tensor u)$ per ogni $v\in V,w\in W,u\in U$. Poiché $\bar{h'}$ coincide con $\bar h$ su un insieme di generatori si ha $\bar{h'}=\bar h$.
 \end{proof}
 
 \begin{proposition}\thlabel{tensor-product-properties}
 Siano $V\comma W\comma U$ spazi vettoriali. Allora
 \begin{enumerate}[(i)]
-\item $V\tensor W\iso W\tensor V$
-\item $\mathbb{K}\tensor V\iso V$
-\item $(V\tensor W)\tensor U\iso V\tensor(W\tensor U)$
-\item $(V\dirsum W)\tensor U\iso(V\tensor U)\dirsum(W\tensor U)$
+\item $V\tensor W\iso W\tensor V$;
+\item $\mathbb{K}\tensor V\iso V$;
+\item $(V\tensor W)\tensor U\iso V\tensor(W\tensor U)$;
+\item $(V\dirsum W)\tensor U\iso(V\tensor U)\dirsum(W\tensor U)$.
 \end{enumerate}
 Gli isomorfismi sono canonici.
 \end{proposition}
@@ -187,7 +187,7 @@ Gli isomorfismi sono canonici.
 \psi:V&\tensor W&&\longrightarrow &W&\tensor V\\
 v&\tensor w&&\longmapsto&w&\tensor v
 \end{alignat*}
- . Se $\{v_i\}_{i\in I}$ è una base di $V$ e $\{w_j\}_{j\in J}$ è una base di $W$, allora $\{v_i\tensor w_j\}_{(i,j)\in I\times J}$ è una base di $V\tensor W$ e $\{w_j\tensor v_i\}_{(i,j)\in I\times J}$ è una base di $W\tensor V$, quindi $\psi$ manda una base in una base, ossia è un isomorfismo. Osserviamo che abbiamo fissato basi di $V$ e $W$ solo per dimostrare che $\psi$ è un isomorfismo, non per definirlo, quindi $\psi$ è un isomorfismo canonico.
+Se $\{v_i\}_{i\in I}$ è una base di $V$ e $\{w_j\}_{j\in J}$ è una base di $W$, allora $\{v_i\tensor w_j\}_{(i,j)\in I\times J}$ è una base di $V\tensor W$ e $\{w_j\tensor v_i\}_{(i,j)\in I\times J}$ è una base di $W\tensor V$, quindi $\psi$ manda una base in una base, ossia è un isomorfismo. Osserviamo che abbiamo fissato basi di $V$ e $W$ solo per dimostrare che $\psi$ è un isomorfismo, non per definirlo, quindi $\psi$ è un isomorfismo canonico.
 \end{enumerate}
 Le altre proprietà si dimostrano in modo del tutto analogo, avendo cura nella (iii) di utilizzare la proprietà universale della \thref{tensor-threefold-product}.
 \end{proof}
@@ -206,14 +206,14 @@ v&\tensor w&&\longmapsto &f(v)&\tensor g(w)
 \begin{proposition}\thlabel{tensor-homomorphism-properties}
 Siano $V\comma V'\comma V''\comma W\comma W'\comma W''$ spazi vettoriali, $f\in\Hom(V,V')\comma f'\in\Hom(V',V'')\comma g\in\Hom(W,W')\comma g'\in\Hom(W',W'')$.
 \begin{enumerate}[(i)]
-\item $(f'\tensor g')\circ(f\tensor g)=(f'\circ f)\tensor(g'\circ g)$
+\item $(f'\tensor g')\circ(f\tensor g)=(f'\circ f)\tensor(g'\circ g)$.
 \item Se $f$ e $g$ sono isomorfismi, allora anche $f\tensor g$ è un isomorfismo.
 \end{enumerate}
 \end{proposition}
 \begin{proof}\leavevmode
 \begin{enumerate}[(i)]
 \item Ovvio.
-\item Basta osservare che $f\tensor g$ manda una base in una base (si veda la \thref{tensor-space-basis}).
+\item Basta osservare che $f\tensor g$ manda una base in una base (\thref{tensor-space-basis}).
 \end{enumerate}
 \end{proof}
 
@@ -226,7 +226,7 @@ Sia $\Psi$ l'unica applicazione lineare
 \Psi:V^*&\tensor W&&\longrightarrow\Hom(V,W)\\
 \varphi&\tensor w&&\longmapsto(v\mapsto \varphi(v)w)
 \end{alignat*}
-. Mostriamo che $\Psi$ è un isomorfismo. Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Per ogni $i,i'\in I\comma j\in J$ vale $\Psi(v_i^*\tensor w_j)(v_{i'})=\delta_{ii'}w_j$. Se scriviamo le applicazione lineari in forma di matrici rispetto alle basi $\{v_i\}$ e $\{w_j\}$ (siamo in dimensione finita), $\Psi(v_i^*\tensor w_j)$ è la matrice nulla ovunque tranne che in posizione $(j,i)$, dove compare un 1. Segue che $\Psi$ manda una base di $V^*\tensor W$ in una base di $\Hom(V,W)$, quindi è un isomorfismo.
+Mostriamo che $\Psi$ è un isomorfismo. Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Per ogni $i,i'\in I\comma j\in J$ vale $\Psi(v_i^*\tensor w_j)(v_{i'})=\delta_{ii'}w_j$. Se scriviamo le applicazione lineari in forma di matrici rispetto alle basi $\{v_i\}$ e $\{w_j\}$ (siamo in dimensione finita), $\Psi(v_i^*\tensor w_j)$ è la matrice nulla ovunque tranne che in posizione $(j,i)$, dove compare un 1. Segue che $\Psi$ manda una base di $V^*\tensor W$ in una base di $\Hom(V,W)$, quindi è un isomorfismo.
 \end{proof}
 
 \begin{remark}
@@ -247,22 +247,23 @@ Siano $V\comma W$ spazi vettoriali finitamente generati, $f\in\End(V)\comma g\in
 \begin{proof}
 Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{w_j\}_{j\in J}$ una base di $W$. Osserviamo che $(v_i\tensor w_j)^*=v_i^*\tensor w_j^*$ (a meno di identificare $\mathbb{K}$ con $\mathbb{K}\tensor\mathbb{K}$): infatti se $i'\in I\comma j'\in J$ vale 
 \begin{align*}
-(v_i\tensor w_j)^*(v_{i'}\tensor w_{j'})&=\delta_{ii'}\delta_{jj'}=\delta_{ii'}\tensor\delta_{jj'}\\&=v_i^*(v_{i'})\tensor w_j^*(w_{j'})=(v_i^*\tensor w_j^*)(v_{i'}\tensor w_{j'})
+(v_i\tensor w_j)^*(v_{i'}\tensor w_{j'})&=\delta_{ii'}\delta_{jj'}\\
+&=\delta_{ii'}\tensor\delta_{jj'}\\&=v_i^*(v_{i'})\tensor w_j^*(w_{j'})=(v_i^*\tensor w_j^*)(v_{i'}\tensor w_{j'}).
 \end{align*}
-. Allora
+Allora
 \begin{align*}
 \tr(f\tensor g)&=\sum_{(i,j)\in I\times J}(v_i\tensor w_j)^*(f\tensor g)(v_i\tensor w_j)\\
 &=\sum_{(i,j)\in I\times J}(v_i^*\tensor w_j^*)(f(v_i)\tensor g(w_j))\\
 &=\sum_{(i,j)\in I\times J}v_i^*(f(v_i))w_j^*(g(w_j))\\
 &=\biggl(\sum_{i\in I}v_i^*(f(v_i))\biggr)\biggl(\sum_{j\in J}w_j^*(g(w_j))\biggr)\\
-&=\tr(f)\tr(g)
+&=\tr(f)\tr(g).
 \end{align*}
 \end{proof}
 
 \section{Potenza Simmetrica e Potenza Esterna}
 Dati $n\in\mathbb{N}$ intero e $V$ spazio vettoriale, utilizzeremo le seguenti notazioni:
 \begin{align*}
-V^{\times n}&=\underbrace{V\times\ldots\times V}_{\text{$n$ volte}}&V^{\tensor n}&=\underbrace{V\tensor\ldots\tensor V}_{\text{$n$ volte}}
+V^{\times n}&=\underbrace{V\times\ldots\times V}_{\text{$n$ volte}};&V^{\tensor n}&=\underbrace{V\tensor\ldots\tensor V}_{\text{$n$ volte}}.
 \end{align*}
 
 \begin{definition}
@@ -270,11 +271,11 @@ Siano $n\in\mathbb{N}$ un intero, $V\comma W$ spazi vettoriali, $f:V^{\times n}\
 \begin{itemize}
 \item $f$ si dice \emph{simmetrica} se per ogni $\sigma\in \Sym_n$ e per ogni $v_1,\ldots,v_n\in V$ vale
 $$
-f(v_1,\ldots,v_n)=f(v_{\sigma(1)},\ldots,v_{\sigma(n)})
+f(v_1,\ldots,v_n)=f(v_{\sigma(1)},\ldots,v_{\sigma(n)}).
 $$
 \item $f$ si dice \emph{alternante} se per ogni $\sigma\in \Sym_n$ e per ogni $v_1,\ldots,v_n\in V$ vale
 $$
-f(v_1,\ldots,v_n)=(-1)^\sigma f(v_{\sigma(1)},\ldots,v_{\sigma(n)})
+f(v_1,\ldots,v_n)=(-1)^\sigma f(v_{\sigma(1)},\ldots,v_{\sigma(n)}).
 $$
 \end{itemize}
 \end{definition}
@@ -287,19 +288,19 @@ Siano $n\in\mathbb{N}$ un intero, $V\comma W$ spazi vettoriali, $f:V^{\times n}\
 \begin{itemize}
 \item[$(\Rightarrow)$] Supponiamo $v_i=v_j$ con $i<j$. Allora
 $$
-f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)=-f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n)
+f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)=-f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n),
 $$
 da cui $f(v_1,\ldots,v_n)=0$.
 \item[$(\Leftarrow)$] Poiché $\Sym_n$ è generato dalle trasposizioni, è sufficiente mostrare che per ogni $i<j$ vale
 $$
-f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)=-f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n)
+f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)=-f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n).
 $$
-Osserviamo che vale
+Osserviamo che
 \begin{align*}
 0&=f(v_1,\ldots,v_i+v_j,\ldots,v_i+v_j,\ldots,v_n)\\
 &=f(v_1,\ldots,v_i,\ldots,v_i,\ldots,v_n)+f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)\\
 &+f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n)+f(v_1,\ldots,v_j,\ldots,v_j,\ldots,v_n)\\
-&=f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)+f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n)
+&=f(v_1,\ldots,v_i,\ldots,v_j,\ldots,v_n)+f(v_1,\ldots,v_j,\ldots,v_i,\ldots,v_n),
 \end{align*}
 da cui la tesi.
 \end{itemize}
@@ -312,7 +313,7 @@ Siano $n\in\mathbb{N}$ un intero, $V\comma W$ spazi vettoriali, $f:V^{\times n}\
 Supponiamo $\alpha_1v_1+\ldots+\alpha_nv_n=0$, e supponiamo senza perdita di generalità che $\alpha_1\neq 0$. Allora
 \begin{align*}
 f(v_1,\ldots,v_n)&=f\left(-\frac{1}{\alpha_1}(\alpha_2v_2+\ldots+\alpha_nv_n),v_2,\ldots,v_n\right)\\
-&=-\frac{1}{\alpha_1}\sum_{i=2}^{n}\alpha_if(v_i,v_2,\ldots,v_n)=0
+&=-\frac{1}{\alpha_1}\sum_{i=2}^{n}\alpha_if(v_i,v_2,\ldots,v_n)=0.
 \end{align*}
 \end{proof}
 
@@ -330,7 +331,7 @@ V^{\times n}\arrow{r}{f}\arrow[swap]{d}{s}&W\\
 \SymP^nV\arrow[swap]{ru}{\bar{f}}
 \end{diagram}
 $$
-, ovvero tale che $f=\bar{f}\circ s$.
+ovvero tale che $f=\bar{f}\circ s$.
 \item Si dice \emph{potenza esterna $n$-esima} uno spazio vettoriale (indicato con $\ExtP^nV$) dotato di un'applicazione $n$-lineare alternante $\lambda:V^{\times n}\to\ExtP^nV$ che soddisfa la seguente proprietà universale: per ogni spazio vettoriale $W$ e per ogni applicazione $f:V^{\times n}\to W$ $n$-lineare alternante esiste un'unica applicazione lineare $\bar{f}:\ExtP^nV\to W$ che fa commutare il diagramma
 $$
 \begin{diagram}
@@ -338,7 +339,7 @@ V^{\times n}\arrow{r}{f}\arrow[swap]{d}{\lambda}&W\\
 \ExtP^nV\arrow[swap]{ru}{\bar{f}}
 \end{diagram}
 $$
-, ovvero tale che $f=\bar{f}\circ \lambda$.
+ovvero tale che $f=\bar{f}\circ \lambda$.
 \end{itemize}
 \end{definition}
 
@@ -350,9 +351,9 @@ Sia $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale. Allora esiste uno spa
 \begin{proof}
 Consideriamo il prodotto tensore $V^{\tensor n}$ con $\tensor:V^{\times n}\to V^{\tensor n}$ come applicazione $n$-lineare associata (ovvero $\tensor(v_1,\ldots,v_n)=v_1\tensor\ldots\tensor v_n$). Sia
 $$
-K=\langle v_1\tensor\ldots\tensor v_n-v_{\sigma(1)}\tensor\ldots\tensor v_{\sigma(n)}:v_1,\ldots v_n\in V,\sigma\in\Sym_n\rangle
+K=\langle v_1\tensor\ldots\tensor v_n-v_{\sigma(1)}\tensor\ldots\tensor v_{\sigma(n)}:v_1,\ldots v_n\in V,\sigma\in\Sym_n\rangle.
 $$
-. Poniamo $\SymP^nV=V^{\tensor n}/K$ con $s=\pi\circ\tensor$, dove $\pi$ è la proiezione da $V^{\tensor n}$ su $V^{\tensor n}/K$. Ora la dimostrazione procede in modo analogo a quella della \thref{tensor-space-existence}, dunque omettiamo i dettagli. Si verifica facilmente che $s$ è $n$-lineare simmetrica. Data $f:V^{\times n}\to W$ $n$-lineare simmetrica esiste un'unica applicazione lineare $g:V^{\tensor n}\to W$ tale che $f=g\circ\tensor$, ed esiste un'unica applicazione lineare $\bar{f}:V^{\tensor n}/K\to W$ tale che $g=\bar{f}\circ\pi$; quindi $f=\bar{f}\circ s$, e si verifica che è l'unica applicazione lineare che soddisfa tale proprietà.
+Poniamo $\SymP^nV=V^{\tensor n}/K$ con $s=\pi\circ\tensor$, dove $\pi$ è la proiezione da $V^{\tensor n}$ su $V^{\tensor n}/K$. Ora la dimostrazione procede in modo analogo a quella della \thref{tensor-space-existence}, dunque omettiamo i dettagli. Si verifica facilmente che $s$ è $n$-lineare simmetrica. Data $f:V^{\times n}\to W$ $n$-lineare simmetrica esiste un'unica applicazione lineare $g:V^{\tensor n}\to W$ tale che $f=g\circ\tensor$, ed esiste un'unica applicazione lineare $\bar{f}:V^{\tensor n}/K\to W$ tale che $g=\bar{f}\circ\pi$; quindi $f=\bar{f}\circ s$, e si verifica che è l'unica applicazione lineare che soddisfa tale proprietà.
 $$
 \begin{diagram}
 V^{\times n}\arrow{rr}{f}\arrow{rd}{\tensor}\arrow[bend right=45,swap]{rrd}{s}&&W\\
@@ -367,9 +368,9 @@ Sia $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale. Allora esiste uno spa
 \begin{proof}
 La dimostrazione è identica a quella della \thref{symmetric-power-existence}, a parte la definizione di $K$:
 $$
-K=\langle v_1\tensor\ldots\tensor v_n-(-1)^{\sigma}v_{\sigma(1)}\tensor\ldots\tensor v_{\sigma(n)}:v_1,\ldots v_n\in V,\sigma\in\Sym_n\rangle
+K=\langle v_1\tensor\ldots\tensor v_n-(-1)^{\sigma}v_{\sigma(1)}\tensor\ldots\tensor v_{\sigma(n)}:v_1,\ldots v_n\in V,\sigma\in\Sym_n\rangle.
 $$
-. Posto $\ExtP^nV=V^{\tensor n}/K$, il seguente diagramma illustra la costruzione:
+Posto $\ExtP^nV=V^{\tensor n}/K$, il diagramma seguente illustra la costruzione.
 $$
 \begin{diagram}
 V^{\times n}\arrow{rr}{f}\arrow{rd}{\tensor}\arrow[bend right=45,swap]{rrd}{\lambda}&&W\\
@@ -383,7 +384,7 @@ Siano $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale, $\SymP^nV\comma\bar
 Allora $\SymP^nV$ e $\bar{\SymP}^nV$ sono canonicamente isomorfi mediante un isomorfismo $\psi:\SymP^nV\to\bar{\SymP}^nV$ tale che $\bar{s}=\psi\circ s$.
 \end{proposition}
 \begin{proof}
-La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness} e fa uso esclusivamente della proprietà universale della potenza simemtrica.
+La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness} e fa uso esclusivamente della proprietà universale della potenza simmetrica.
 \end{proof}
 
 \begin{proposition}\thlabel{exterior-power-uniqueness}
@@ -391,16 +392,16 @@ Siano $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale, $\ExtP^nV\comma\bar
 Allora $\ExtP^nV$ e $\bar{\ExtP}^nV$ sono canonicamente isomorfi mediante un isomorfismo $\psi:\ExtP^nV\to\bar{\ExtP}^nV$ tale che $\bar{\lambda}=\psi\circ \lambda$.
 \end{proposition}
 \begin{proof}
-La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness} e fa uso esclusivamente della proprietà universale della potenza simemtrica.
+La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness} e fa uso esclusivamente della proprietà universale della potenza esterna.
 \end{proof}
 
-D'ora in poi parleremo dunque \emph{della} potenza simmetrica e \emph{della} potenza esterna di uno spazio vettoriale, dato che abbiamo dimostrato che queste esistono ed sono uniche a meno di isomorfismo canonico.
+D'ora in poi parleremo dunque \emph{della} potenza simmetrica e \emph{della} potenza esterna di uno spazio vettoriale, dato che abbiamo dimostrato che queste esistono e sono uniche a meno di isomorfismo canonico.
 
 \begin{proposition}\thlabel{symmetric-exterior-power-generated}
 Sia $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale. Allora
 \begin{align*}
-\SymP^nV&=\langle v_1\cdots v_n:v_1,\ldots v_n\in V\rangle\\
-\ExtP^nV&=\langle v_1\wedge\ldots\wedge v_n:v_1,\ldots, v_n\in V\rangle
+\SymP^nV&=\langle v_1\cdots v_n:v_1,\ldots v_n\in V\rangle;\\
+\ExtP^nV&=\langle v_1\wedge\ldots\wedge v_n:v_1,\ldots, v_n\in V\rangle.
 \end{align*}
 \end{proposition}
 \begin{proof}
@@ -417,42 +418,41 @@ Sia $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale con base $\{e_i\}_{i\i
 \begin{proof}
 Dimostriamo solo la (ii). Mostriamo innanzitutto che $\mathcal{B}_\ExtP$ è un sistema di generatori. Per la \thref{symmetric-exterior-power-generated} basta mostrare che ogni elemento della forma $v_1\wedge\ldots\wedge v_n$ può scriversi come combinazione lineare di elementi di $\mathcal{B}_\ExtP$. Per ogni $j\in\{1,\ldots,n\}$ scriviamo $v_j=\sum_{i\in I}\alpha_{ji}e_i$. Allora per $n$-linearità di $\lambda$ abbiamo
 $$
-v_1\wedge\ldots\wedge v_n=\sum_{i_1,\ldots,i_n\in I}\alpha_{1i_i}\cdots\alpha_{ni_n}(e_{i_1}\wedge\ldots\wedge e_{i_n})
+v_1\wedge\ldots\wedge v_n=\sum_{i_1,\ldots,i_n\in I}\alpha_{1i_i}\cdots\alpha_{ni_n}(e_{i_1}\wedge\ldots\wedge e_{i_n}).
 $$
 Consideriamo un termine $e_{i_1}\wedge\ldots\wedge e_{i_n}$: se ci sono due indici uguali fa 0, altrimenti, detta $\sigma\in\Sym_n$ l'unica permutazione tale che $i_{\sigma(1)}<\ldots<i_{\sigma(n)}$, vale 
 $$
-e_{i_1}\wedge\ldots\wedge e_{i_n}=(-1)^\sigma e_{i_{\sigma(1)}}\wedge\ldots\wedge e_{i_{\sigma(n)}}
+e_{i_1}\wedge\ldots\wedge e_{i_n}=(-1)^\sigma e_{i_{\sigma(1)}}\wedge\ldots\wedge e_{i_{\sigma(n)}},
 $$
-, quindi in ogni caso $e_{i_1}\wedge\ldots\wedge e_{i_n}\in\langle\mathcal{B}_\ExtP\rangle$. Segue che $\ExtP^nV=\langle\mathcal{B}_\ExtP\rangle$.
-
+quindi in ogni caso $e_{i_1}\wedge\ldots\wedge e_{i_n}\in\langle\mathcal{B}_\ExtP\rangle$. Segue che $\ExtP^nV=\langle\mathcal{B}_\ExtP\rangle$.\\
 Mostriamo ora che gli elementi di $\mathcal{B}_\ExtP$ sono linearmente indipendenti. Fissati $n$ indici $i_1,\ldots,i_n$, consideriamo l'applicazione $n$-lineare
 \begin{alignat*}{2}
 f_{i_1,\ldots,i_n}:&&V^{\times n}&\longrightarrow\mathbb{K}\\
 &&(v_1,\ldots,v_n)&\longmapsto\sum_{\sigma\in\Sym_n}(-1)^\sigma e_{i_1}^*(v_{\sigma(1)})\cdots e_{i_n}^*(v_{\sigma(n)})
 \end{alignat*}
-. Un semplice conto mostra che $f_{i_1,\ldots,i_m}$ è alternante: per ogni $\tau\in\Sym_n$ vale
+Un semplice conto mostra che $f_{i_1,\ldots,i_m}$ è alternante: per ogni $\tau\in\Sym_n$ vale
 \begin{align*}
 f(v_{\tau(1)},\ldots,v_{\tau(n)})&=\sum_{\sigma\in\Sym_n}(-1)^\sigma e_{i_1}^*(v_{\sigma\tau(1)})\cdots e_{i_n}^*(v_{\sigma\tau(n)})\\
 &=(-1)^\tau\sum_{\sigma\in\Sym_n}(-1)^{\sigma\tau} e_{i_1}^*(v_{\sigma\tau(1)})\cdots e_{i_n}^*(v_{\sigma\tau(n)})\\
-&=(-1)^\tau f(v_1,\ldots,v_n)
+&=(-1)^\tau f(v_1,\ldots,v_n).
 \end{align*}
-. Sia $\varphi_{i_1,\ldots,i_n}:\ExtP^nV\to\mathbb{K}$ l'applicazione lineare tale che $\varphi_{i_1,\ldots,i_n}\circ\lambda=f_{i_1,\ldots,i_n}$. Supponiamo esistano dei coefficienti $\alpha_{j_1,\ldots,j_n}\in\mathbb{K}$ tali che
+Sia $\varphi_{i_1,\ldots,i_n}:\ExtP^nV\to\mathbb{K}$ l'applicazione lineare tale che $\varphi_{i_1,\ldots,i_n}\circ\lambda=f_{i_1,\ldots,i_n}$. Supponiamo esistano dei coefficienti $\alpha_{j_1,\ldots,j_n}\in\mathbb{K}$ tali che
 $$
-0=\sum_{j_1<\ldots<j_n}\alpha_{j_1,\ldots,j_n}(e_{j_1}\wedge\ldots\wedge e_{j_n})
+0=\sum_{j_1<\ldots<j_n}\alpha_{j_1,\ldots,j_n}(e_{j_1}\wedge\ldots\wedge e_{j_n}).
 $$
-. Allora per ogni scelta di indici $i_1<\ldots<i_n$ vale
+Allora per ogni scelta di indici $i_1<\ldots<i_n$ vale
 \begin{align*}
 0&=\varphi_{i_1,\ldots,i_n}\biggl(\sum_{j_1<\ldots<j_n}\alpha_{j_1,\ldots,j_n}(e_{j_1}\wedge\ldots\wedge e_{j_n})\biggr)\\
 &=\sum_{j_1<\ldots<j_n}\alpha_{j_1,\ldots,j_n}\varphi_{i_1,\ldots,i_n}(e_{j_1}\wedge\ldots\wedge e_{j_n})\\
-&=\alpha_{i_1,\ldots,i_n}
+&=\alpha_{i_1,\ldots,i_n},
 \end{align*}
-, dunque tutti i coefficienti sono nulli. Segue che $\mathcal{B}_\ExtP$ è una base di $\ExtP^nV$.
+dunque tutti i coefficienti sono nulli. Segue che $\mathcal{B}_\ExtP$ è una base di $\ExtP^nV$.
 \end{proof}
 
 \begin{corollary}
 Sia $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale di dimensione $m$ finita. Allora
 \begin{align*}
-\dim\SymP^nV&=\binom{n+m-1}{n}&\dim\ExtP^nV&=\binom{n}{m}
+\dim\SymP^nV&=\binom{n+m-1}{n};&\dim\ExtP^nV&=\binom{n}{m}.
 \end{align*}
 \end{corollary}
 
@@ -462,9 +462,9 @@ Siano $V$ uno spazio vettoriale, $v_1,\ldots, v_n\in V$. Allora $v_1,\ldots, v_n
 \begin{proof}
 Se $v_1,\ldots,v_n$ sono linearmente dipendenti, essendo $\lambda$ un'applicazione alternante, dalla \thref{alternating-map-linearly-dependent} segue che 
 $$
-\lambda(v_1,\ldots,v_n)=v_1\wedge\ldots\wedge v_n=0
+\lambda(v_1,\ldots,v_n)=v_1\wedge\ldots\wedge v_n=0.
 $$
-. Se invece $v_1,\ldots,v_n$ sono linearmente indipendenti, sia $\{e_i\}_{i\in I}$ una base di $V$ che contiene $\{v_1,\ldots, v_n\}$. Allora la corrispondente base di $\SymP^nV$ contiene $\pm v_1\wedge\ldots\wedge v_n$, che quindi deve essere diverso da 0.
+Se invece $v_1,\ldots,v_n$ sono linearmente indipendenti, sia $\{e_i\}_{i\in I}$ una base di $V$ che contiene $\{v_1,\ldots, v_n\}$. Allora la corrispondente base di $\SymP^nV$ contiene $\pm v_1\wedge\ldots\wedge v_n$, che quindi deve essere diverso da 0.
 \end{proof}
 
 \begin{proposition}\thlabel{symmetric-power-not-zero}
@@ -482,9 +482,9 @@ dove il coefficiente $\beta_{i_1,\ldots,i_{m-1}}$ si ottiene sommando tutti i co
 \begin{align*}
 v_1\cdots v_m&=\biggl(\sum_{i\in I}\alpha_{1i}e_i\biggr)\cdots\biggl(\sum_{i\in I}\alpha_{(m-1)i}e_i\biggr)e_p\\
 &=\sum_{i_1,\ldots,i_{m-1}\in I}\alpha_{1i_1}\cdots\alpha_{(m-1)i_{m-1}}(e_{i_1}\cdots e_{i_{m-1}}e_p)\\
-&=\sum_{i_1\le\ldots\le i_{m-1}}\beta_{i_1,\ldots,i_{m-1}}(e_{i_1}\cdots e_{i_{m-1}}e_p)
+&=\sum_{i_1\le\ldots\le i_{m-1}}\beta_{i_1,\ldots,i_{m-1}}(e_{i_1}\cdots e_{i_{m-1}}e_p).
 \end{align*}
-. Sappiamo che $\{e_{i_1}\cdots e_{i_{m-1}}e_p\}_{i_1\le\ldots\le i_{m-1}}$ è un insieme di vettori linearmente indipendenti, poiché è un sottoinsieme di una base di $\SymP^mV$. Inoltre almeno uno fra i $\beta_{i_1,\ldots,i_{m-1}}$ è non nullo, dunque $v_1\cdots v_m$ è non nullo.
+Sappiamo che $\{e_{i_1}\cdots e_{i_{m-1}}e_p\}_{i_1\le\ldots\le i_{m-1}}$ è un insieme di vettori linearmente indipendenti, poiché è un sottoinsieme di una base di $\SymP^mV$. Inoltre almeno uno fra i $\beta_{i_1,\ldots,i_{m-1}}$ è non nullo, dunque $v_1\cdots v_m$ è non nullo.
 \end{proof}
 
 \begin{definition}
@@ -492,11 +492,11 @@ Siano $n\in\mathbb{N}$ un intero, $V\comma W$ spazi vettoriali, $f:V\to W$ un'ap
 \begin{itemize}
 \item Si dice \emph{potenza $n$-esima simmetrica} di $f$ l'unica applicazione lineare $\SymP^nf:\SymP^nV\to\SymP^nW$ tale che, per ogni $v_1,\ldots,v_n\in V$, vale 
 $$
-\SymP^nf(v_1\cdots v_n)=f(v_1)\cdots f(v_n)
+\SymP^nf(v_1\cdots v_n)=f(v_1)\cdots f(v_n).
 $$
 \item Si dice \emph{potenza $n$-esima esterna} di $f$ l'unica applicazione lineare $\ExtP^nf:\ExtP^nV\to\ExtP^nW$ tale che, per ogni $v_1,\ldots,v_n\in V$, vale
 $$
-\ExtP^nf(v_1\wedge\ldots\wedge v_n)=f(v_1)\wedge\ldots\wedge f(v_n)
+\ExtP^nf(v_1\wedge\ldots\wedge v_n)=f(v_1)\wedge\ldots\wedge f(v_n).
 $$
 \end{itemize}
 \end{definition}
@@ -525,13 +525,17 @@ Sia $V$ uno spazio vettoriale di dimensione $n$ finita. $\ExtP^nV$ ha dimensione
 &=\biggl(\sum_{i=1}^{n}[A]_{i1}e_i\biggr)\wedge\ldots\wedge\biggl(\sum_{i=1}^{n}[A]_{in}e_i\biggr)\\
 &=\sum_{1\le i_1,\ldots,i_n\le n}[A]_{i_11}\cdots[A]_{i_nn}(e_{i_1}\wedge\ldots\wedge e_{i_n})\\
 &=\sum_{\sigma\in\Sym_n}(-1)^\sigma[A]_{\sigma(1)1}\cdots[A]_{\sigma(n)n}(e_1\wedge\ldots\wedge e_n)\\
-&=(\det A)(e_1\wedge\ldots\wedge e_n)
+&=(\det A)(e_1\wedge\ldots\wedge e_n).
 \end{align*}
 Questa caratterizzazione del determinante permette di dimostrare molto agevolmente alcune proprietà. Ad esempio, è evidente che il determinante di un endomorfismo non dipende dalla base. Anche il teorema di Binet risulta di facile dimostrazione:
 $$
-(\det(fg))\id=\ExtP^n(f\circ g)=\ExtP^nf\circ\ExtP^ng=(\det f)\id\circ(\det g)\id=(\det f\det g)\id
+(\det(fg))\id=\ExtP^n(f\circ g)=\ExtP^nf\circ\ExtP^ng=(\det f)\id\circ(\det g)\id=(\det f\det g)\id,
 $$
-da cui $\det(fg)=\det f\det g$. Infine, mostriamo che $\det f\neq 0$ se e solo se $f$ è un isomorfismo. Per il \thref{exterior-power-linearly-dependent}, abbiamo che  $\ExtP^nf(e_1\wedge\ldots\wedge e_n)=f(e_1)\wedge\ldots\wedge f(e_n)\neq0$ se e solo se $f(e_1),\ldots,f(e_n)$ sono linearmente indipendenti, cioè se e solo se $f$ è un isomorfismo. 
+da cui $\det(fg)=\det f\det g$. Infine, mostriamo che $\det f\neq 0$ se e solo se $f$ è un isomorfismo. Per il \thref{exterior-power-linearly-dependent}, abbiamo che 
+$$
+\ExtP^nf(e_1\wedge\ldots\wedge e_n)=f(e_1)\wedge\ldots\wedge f(e_n)\neq0
+$$
+se e solo se $f(e_1),\ldots,f(e_n)$ sono linearmente indipendenti, cioè se e solo se $f$ è un isomorfismo. 
 \end{example}
 
 \begin{proposition}\thlabel{tensor-square-decomposition}
@@ -542,20 +546,20 @@ Sia $\{e_i\}_{i\in I}$ una base di $V$, con $I$ totalmente ordinato. Siano
 \begin{align*}
 \mathcal{B}_\SymP&=\left\{\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)\right\}_{i\le j}\\
 \mathcal{B}_\ExtP&=\left\{\frac{1}{2}(e_i\tensor e_j-e_j\tensor r_i)\right\}_{i<j}\\
-\mathcal{B}&=\mathcal{B}_\SymP\cup\mathcal{B}_\ExtP
+\mathcal{B}&=\mathcal{B}_\SymP\cup\mathcal{B}_\ExtP;
 \end{align*}
-; mostriamo che $\mathcal{B}$ è una base di $V\tensor V$. Sicuramente è un insieme di generatori: vale infatti
+mostriamo che $\mathcal{B}$ è una base di $V\tensor V$. Sicuramente è un insieme di generatori: vale infatti
 \begin{align*}
-e_i\tensor e_j&=\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)&\text{se $i<j$}\\
-e_i\tensor e_j&=\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)&\text{se $i=j$}\\
-e_i\tensor e_j&=\frac{1}{2}(e_j\tensor e_i+e_i\tensor e_j)-\frac{1}{2}(e_j\tensor e_i-e_i\tensor e_j)&\text{se $i>j$}
+e_i\tensor e_j&=\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)&\text{se $i<j$};\\
+e_i\tensor e_j&=\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)&\text{se $i=j$};\\
+e_i\tensor e_j&=\frac{1}{2}(e_j\tensor e_i+e_i\tensor e_j)-\frac{1}{2}(e_j\tensor e_i-e_i\tensor e_j)&\text{se $i>j$}.
 \end{align*}
-. Inoltre gli elementi di $\mathcal{B}$ sono linearmente indipendenti: supponiamo esistano dei coefficienti $\alpha_{ij},\beta_{ij}\in\mathbb{K}$ tali che
+Inoltre gli elementi di $\mathcal{B}$ sono linearmente indipendenti: supponiamo esistano dei coefficienti $\alpha_{ij},\beta_{ij}\in\mathbb{K}$ tali che
 \begin{align*}
 0&=\sum_{i\le j}\alpha_i\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\sum_{i<j}\beta_{ij}\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)\\
-&=\sum_{i<j}\frac{1}{2}(\alpha_{ij}+\beta_{ij})(e_i\tensor e_j)+\sum_{i\in I}\alpha_{ii}(e_i\tensor e_i)+\sum_{j>i}\frac{1}{2}(\alpha_{ij}-\beta_{ij})(e_i\tensor e_j)
+&=\sum_{i<j}\frac{1}{2}(\alpha_{ij}+\beta_{ij})(e_i\tensor e_j)+\sum_{i\in I}\alpha_{ii}(e_i\tensor e_i)+\sum_{j>i}\frac{1}{2}(\alpha_{ij}-\beta_{ij})(e_i\tensor e_j).
 \end{align*}
-. Allora, essendo $\{e_i\tensor e_j\}_{i,j\in I}$ una base di $V\tensor V$, $\alpha_{ij}$ e $\beta_{ij}$ sono nulli.\\
+Allora, essendo $\{e_i\tensor e_j\}_{i,j\in I}$ una base di $V\tensor V$, $\alpha_{ij}$ e $\beta_{ij}$ sono nulli.\\
 Consideriamo l'applicazione lineare
 \begin{alignat*}{3}
 \varphi:V&\tensor V&&\longrightarrow&\SymP^2V&\dirsum\ExtP^2V\\
@@ -563,7 +567,7 @@ v&\tensor w&&\longmapsto& vw&\dirsum v\wedge w
 \end{alignat*}
 Osserviamo che
 $$
-\varphi(\mathcal{B})=\varphi(\mathcal{B}_\SymP)\cup\varphi(\mathcal{B}_\ExtP)=\{e_ie_j\dirsum0\}_{i\le j}\cup\{0\dirsum e_i\wedge e_j\}_{i<j}
+\varphi(\mathcal{B})=\varphi(\mathcal{B}_\SymP)\cup\varphi(\mathcal{B}_\ExtP)=\{e_ie_j\dirsum0\}_{i\le j}\cup\{0\dirsum e_i\wedge e_j\}_{i<j},
 $$
-, ovvero $\varphi$ manda una base in una base, dunque è un isomorfismo.
+ovvero $\varphi$ manda una base in una base, dunque è un isomorfismo.
 \end{proof}
