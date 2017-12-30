@@ -47,6 +47,21 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $g,h\in G$. A
 \end{enumerate}
 \end{proof}
 
+\begin{proposition}\thlabel{character-representation-kernel}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
+$$
+\ker\rho=\{g\in G:\chi_\rho(g)=\deg\rho\}
+$$
+\end{proposition}
+\begin{proof}
+\leavevmode
+\begin{itemize}
+\item[($\subseteq$)] Se $g\in\ker\rho$ allora $\rho(g)=\id$, quindi $\chi_\rho(g)=\tr(\id)=\deg\rho$.
+\item[($\supseteq$)] Sia $n=\deg\rho$, e sia $g\in G$ tale che $\chi_\rho(g)\tr\rho(g)=n$. Per la \thref{representation-finite-group-diagonalisable}, $\rho(g)$ è diagonalizzabile e i suoi autovalori hanno modulo $1$; detti $\lambda_1,\ldots,\lambda_n$ gli autovalori di $\rho(g)$, vale $\lambda_1+\ldots+\lambda_n=n$. Ma allora $\lambda_1=\ldots=\lambda_n=1$, quindi $\rho(g)=\id$.
+\end{itemize}
+\end{proof}
+
+
 \begin{proposition}\thlabel{character-permutation-representation}
 Sia $X$ un insieme, $G$ un gruppo che agisce su $X$, $\Rep{\rho}{G}{\mathbb{C}[X]}$ la corrispondente rappresentazione per permutazione, $g\in G$. Allora
 $$
@@ -127,19 +142,88 @@ per la \thref{character-properties} e il \thref{character-vs-trivial}. $G$ agisc
 \end{align*}
 \end{proof}
 
-\begin{corollary}\thlabel{character-vs-irreducible}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $\rho=\sum_{i\in I}n_i\rho_i$ una decomposizione in rappresentazioni irriducibili a due a due non isomorfe. Allora per ogni $i\in I$ vale $n_i=\vs{\rho}{\rho_i}$.
+\begin{corollary}\thlabel{character-representation-decomposition}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
+$$
+\rho=\sum_{\sigma\in\Irr(G)}\vs{\chi_\rho}{\chi_\sigma}\sigma
+$$
 \end{corollary}
 \begin{proof}
-La tesi segue immediatamente dalla linearità di $\vs{\cdot}{\cdot}_G$ e dalla \thref{character-properties}.
+Sia $\rho=\sum_{\sigma\in\Irr(G)}n_\sigma\sigma$ ($\rho$ è completamente riducibile). Allora $\chi_\rho=\sum_{\sigma\in\Irr(G)}n_\sigma\chi_\sigma$, dunque per ogni $\tau\in\Irr(G)$ vale
+$$
+\vs{\chi_\rho}{\chi_\tau}=\sum_{\sigma\in\Irr(G)}n_\sigma\vs{\chi_\sigma}{\chi_\tau}=n_\tau,
+$$
+da cui la tesi.
 \end{proof}
 
 \begin{corollary}\thlabel{character-irreducibility-criterion}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora $\rho$ è irriducibile se e solo se $\vs{\rho}{\rho}=1$
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora $\rho$ è irriducibile se e solo se $\vs{\chi_\rho}{\chi_\rho}=1$
 \end{corollary}
 \begin{proof}
-Se $\rho$ è irriducibile allora $\vs{\rho}{\rho}=1$ per la \thref{character-irreducible-orthogonal}. Se $\vs{\rho}{\rho}=1$, l'irriducibilità segue dal fatto che $\rho$ è completamente riducibile e dal \thref{character-vs-irreducible}.
+Se $\rho$ è irriducibile allora $\vs{\chi_\rho}{\chi_\rho}=1$ per la \thref{character-irreducible-orthogonal}. Se $\vs{\chi_\rho}{\chi_\rho}=1$, l'irriducibilità segue dal fatto che $\rho$ è completamente riducibile e dal \thref{character-representation-decomposition}.
 \end{proof}
+
+\begin{definition}
+Sia $G$ un gruppo, $X$ un insieme, $f:G\to X$ una funzione. Si dice che $f$ è una \emph{funzione di classe} se è costante sulle classi di coniugio di $G$, ovvero se per ogni $g,h\in G$ vale $f(hgh^{-1})=f(g)$.
+\end{definition}
+
+Dato un gruppo $G$, indichiamo con $\Cl(G)$ il sottospazio vettoriale di $\Fun{G}{\mathbb{C}}$ costituito dalle funzioni di classe. Sappiamo dalla \thref{character-properties} che, per ogni rappresentazione $\rho$, $\chi_\rho\in\Cl(G)$.
+
+\begin{proposition}
+Sia $G$ un gruppo. Allora
+$$
+\mathcal{B}=\{\chi_\rho\}_{\rho\in\Irr(G)}
+$$
+è una base ortonormale di $\Cl(G)$.
+\end{proposition}
+\begin{proof}
+Ricordiamo che $\Irr(G)$ è finito (\thref{representation-regular-decomposition}).\\
+Mostriamo innanzitutto che gli elementi di $\mathcal{B}$ sono indipendenti. Siano $\alpha_\rho\in\mathbb{C}$ coefficienti tali che
+$$
+0=\sum_{\rho\in\Irr(G)}\alpha_\rho\chi_\rho.
+$$
+Allora per ogni $\sigma\in\Irr(G)$ vale
+$$
+\vs{0}{\chi_\sigma}=\biggl\langle\sum_{\rho\in\Irr(G)}\alpha_\rho\chi_\rho,\chi_\rho\biggr\rangle=\alpha_\sigma,
+$$
+quindi tutti i coefficienti sono nulli. Mostriamo ora che $\mathcal{B}$ è un insieme di generatori; è sufficiente far vedere che $0$ è l'unico vettore ortogonale a tutti gli elementi di $\mathcal{B}$. Sia allora $f\in\Cl(G)$ tale che per ogni $\sigma\in\Irr$ vale $\vs{f}{\chi_\sigma}=0$.
+
+\begin{lemma*}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
+$$
+\sum_{g\in G}f(g)\rho(g)=0.
+$$
+\end{lemma*}
+\begin{proof}
+Sia $T_f:V\to V$ l'applicazione lineare definita da
+$$
+T_f=\frac{1}{|G|}\sum_{g\in G}f(g)\rho(g).
+$$
+Verifichiamo che $T_f\in\Hom(\rho,\rho)$: per ogni $h\in G$ vale
+\begin{align*}
+T_fh&=\frac{1}{|G|}\sum_{g\in G}f(g)gh\\
+&=\frac{1}{|G|}\sum_{g\in G}hf(g)h^{-1}gh\\
+&=\frac{1}{|G|}\sum_{g\in G}hf(h^{-1}gh)h^{-1}gh\\
+&=\frac{1}{|G|}\sum_{g\in G}hf(g)g\\
+&=hT_f.
+\end{align*}
+Studiamo il caso in cui $\rho$ è irriducibile. Per il Lemma di Schur $T_f=\lambda\id$ per un qualche $\lambda\in\mathbb{C}$. Applicando la traccia a entrambi i membri otteniamo
+\begin{align*}
+\lambda\deg\rho&=\frac{1}{|G|}\sum_{g\in G}f(g)\chi_\rho(g)\\
+&=\frac{1}{|G|}\sum_{g\in G}f(g)\chi_{\rho^*}(g)^*\\
+&=\frac{1}{|G|}\vs{f}{\chi_{\rho^*}}\\
+&=0,
+\end{align*}
+poiché $\rho^*\in\Irr(G)$. Dunque $\lambda=0$, ovvero $T_f=0$. Nel caso generale (cioè se $\rho$ non è necessariamente irriducibile) $\rho$ è completamente riducibile e $T_f$ ristretta alle sottorappresentazioni irriducibili è nulla, quindi $T_f$ è nulla complessivamente.
+\end{proof}
+Sia $\Rep{\mathcal{R}}{G}{\mathbb{C}[G]}$ la rappresentazione regolare di $G$, e sia $\{e_g\}_{g\in G}$ la base ``canonica'' di $\mathbb{C}[G]$. Applichiamo il Lemma a $\mathcal{R}$: 
+$$
+0=\sum_{g\in G}f(g)\mathcal{R}(g)e_1=\sum_{g\in G}f(g)e_g,
+$$
+quindi $f(g)=0$ per ogni $g\in G$.\\
+Dunque $\mathcal{B}$ è una base di $\Cl(G)$, ed è ortonormale per la \thref{character-irreducible-orthogonal}.
+\end{proof}
+
 
 
 

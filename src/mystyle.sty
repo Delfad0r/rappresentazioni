@@ -13,11 +13,22 @@
 \usepackage{theoremref}
 \usepackage{tikz-cd}
 
+\usepackage{hyperref}
+\hypersetup{
+colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black
+}
+
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
 \emergencystretch 5em
 
 \allowdisplaybreaks
+
+\setlength{\parindent}{0pt}
 
 \setcounter{chapter}{-1}
 
@@ -46,8 +57,9 @@
 \newcommand{\Sym}{\mathcal{S}}
 \newcommand{\SymP}{S}
 \newcommand{\ExtP}{\Lambda}
-\newcommand{\vs}[2]{\langle#1,#2\rangle}
+\newcommand{\vs}[2]{\left\langle#1,#2\right\rangle}
 \newcommand{\Fun}[2]{\mathscr{F}(#1,#2)}
+\newcommand{\Cl}{\mathscr{C}}
 
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\im}{im}

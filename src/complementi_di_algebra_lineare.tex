@@ -25,7 +25,7 @@ Scegliamo come $V$ l'insieme delle funzioni da $X$ in $\mathbb{K}$ a supporto fi
 $$
 f=\sum_{x\in X}f(x)e(x)
 $$
-(dove la somma è in realtà su un numero finito di addendi poiché $f$ ha supporto finito). Supponiamo ora che esistano coefficienti $a_x\in\mathbb{K}$ tali che
+(dove la somma è in realtà su un numero finito di addendi poiché $f$ ha supporto finito). Siano ora $a_x\in\mathbb{K}$ coefficienti tali che
 $$
 0=\sum_{x\in X}a_xe(x).
 $$
@@ -33,7 +33,7 @@ Allora per ogni $y\in X$ vale
 $$
 0=0(y)=\sum_{x\in X}a_xe(x)(y)=a_y,
 $$
-dunque $e(X)$ è un insieme di generatori di $V$ linearmente indipendenti.
+dunque tutti i coefficienti sono nulli. Segue che $e(X)$ è una base di $V$, ovvero $V$ è libero su $X$.
 \end{proof}
 
 \begin{proposition}\thlabel{free-vector-space-uniqueness}
@@ -131,7 +131,7 @@ Quindi i vettori $\{v_i\tensor w_j\}$ generano; mostriamo ora che sono linearmen
 \psi_{ij}:V&\tensor W&&\longrightarrow\mathbb{K}\\
 v&\tensor w&&\longmapsto v_i^*(v)w_j^*(w)
 \end{alignat*}
-Supponiamo esistano coefficienti $a_{ij}\in\mathbb{K}$ tali che
+Siano $a_{ij}\in\mathbb{K}$ coefficienti tali che
 $$
 0=\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j).
 $$
@@ -436,7 +436,7 @@ f(v_{\tau(1)},\ldots,v_{\tau(n)})&=\sum_{\sigma\in\Sym_n}(-1)^\sigma e_{i_1}^*(v
 &=(-1)^\tau\sum_{\sigma\in\Sym_n}(-1)^{\sigma\tau} e_{i_1}^*(v_{\sigma\tau(1)})\cdots e_{i_n}^*(v_{\sigma\tau(n)})\\
 &=(-1)^\tau f(v_1,\ldots,v_n).
 \end{align*}
-Sia $\varphi_{i_1,\ldots,i_n}:\ExtP^nV\to\mathbb{K}$ l'applicazione lineare tale che $\varphi_{i_1,\ldots,i_n}\circ\lambda=f_{i_1,\ldots,i_n}$. Supponiamo esistano dei coefficienti $\alpha_{j_1,\ldots,j_n}\in\mathbb{K}$ tali che
+Sia $\varphi_{i_1,\ldots,i_n}:\ExtP^nV\to\mathbb{K}$ l'applicazione lineare tale che $\varphi_{i_1,\ldots,i_n}\circ\lambda=f_{i_1,\ldots,i_n}$. Siano $\alpha_{j_1,\ldots,j_n}\in\mathbb{K}$ coefficienti tali che
 $$
 0=\sum_{j_1<\ldots<j_n}\alpha_{j_1,\ldots,j_n}(e_{j_1}\wedge\ldots\wedge e_{j_n}).
 $$
@@ -554,7 +554,7 @@ e_i\tensor e_j&=\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\frac{1}{2}(e_i\tenso
 e_i\tensor e_j&=\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)&\text{se $i=j$};\\
 e_i\tensor e_j&=\frac{1}{2}(e_j\tensor e_i+e_i\tensor e_j)-\frac{1}{2}(e_j\tensor e_i-e_i\tensor e_j)&\text{se $i>j$}.
 \end{align*}
-Inoltre gli elementi di $\mathcal{B}$ sono linearmente indipendenti: supponiamo esistano dei coefficienti $\alpha_{ij},\beta_{ij}\in\mathbb{K}$ tali che
+Inoltre gli elementi di $\mathcal{B}$ sono linearmente indipendenti: siano $\alpha_{ij},\beta_{ij}\in\mathbb{K}$ coefficienti tali che
 \begin{align*}
 0&=\sum_{i\le j}\alpha_i\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\sum_{i<j}\beta_{ij}\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)\\
 &=\sum_{i<j}\frac{1}{2}(\alpha_{ij}+\beta_{ij})(e_i\tensor e_j)+\sum_{i\in I}\alpha_{ii}(e_i\tensor e_i)+\sum_{j>i}\frac{1}{2}(\alpha_{ij}-\beta_{ij})(e_i\tensor e_j).
