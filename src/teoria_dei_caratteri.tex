@@ -99,7 +99,7 @@ T=\frac{1}{|G|}\sum_{g\in G}\rho(g).
 $$
 Osserviamo che $\im T\subseteq V^G$: infatti, dato $h\in G$, vale
 $$
-hT(v)=\frac{1}{|G|}\sum_{g\in G}hgv=\frac{1}{|G|}\sum_{g\in G}gv=T(v).
+\rho(h)T(v)=\frac{1}{|G|}\sum_{g\in G}\rho(hg)v=\frac{1}{|G|}\sum_{g\in G}\rho(g)v=T(v).
 $$
 Inoltre $T|_{V^G}=\id$. Segue che $\dim V^G=\tr T$; ma
 \begin{align*}
@@ -201,11 +201,11 @@ T_f=\frac{1}{|G|}\sum_{g\in G}f(g)\rho(g).
 $$
 Verifichiamo che $T_f\in\Hom(\rho,\rho)$: per ogni $h\in G$ vale
 \begin{align*}
-T_fh&=\frac{1}{|G|}\sum_{g\in G}f(g)gh\\
-&=\frac{1}{|G|}\sum_{g\in G}hf(g)h^{-1}gh\\
-&=\frac{1}{|G|}\sum_{g\in G}hf(h^{-1}gh)h^{-1}gh\\
-&=\frac{1}{|G|}\sum_{g\in G}hf(g)g\\
-&=hT_f.
+T_f\rho(h)&=\frac{1}{|G|}\sum_{g\in G}f(g)\rho(gh)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(g)\rho(h^{-1}gh)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(h^{-1}gh)\rho(h^{-1}gh)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(g)\rho(g)\\
+&=\rho(h)T_f.
 \end{align*}
 Studiamo il caso in cui $\rho$ è irriducibile. Per il Lemma di Schur $T_f=\lambda\id$ per un qualche $\lambda\in\mathbb{C}$. Applicando la traccia a entrambi i membri otteniamo
 \begin{align*}

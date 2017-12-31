@@ -8,8 +8,6 @@ Sia $G$ un gruppo, $V$ uno spazio vettoriale. Si dice \emph{rappresentazione} (l
 
 Con lieve abuso di notazione, potremo chiamare $V$ stesso \emph{rappresentazione} quando sarà chiaro dal contesto quale rappresentazione stia agendo su $V$.
 
-Poiché ogni rappresentazione $\Rep{\rho}{G}{V}$ è un'azione di $G$ su $V$, utilizzeremo spesso la notazione (usuale per le azioni di gruppi) $gv$ per indicare $\rho(g)v$.
-
 \begin{definition}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Si chiama \emph{grado} di $\rho$ (e si indica con $\deg\rho$) il numero $\dim V$.
 \end{definition}
@@ -186,13 +184,13 @@ Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V
 \begin{proof}
 Sia $U$ un complementare qualunque di $W$ (cioè tale che $V=W\dirsum U$), e sia $\pi_W:V\to W$ la proiezione. Sia $T:V\to V$ l'applicazione lineare definita da
 $$
-T=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}.
+T=\frac{1}{|G|}\sum_{g\in G}\rho(g)\pi_W\rho(g)^{-1}.
 $$
 Ricordando che $W$ è $G$-stabile e che $\im\pi_W=\fix\pi_W=W$ si vede facilmente che $\im T\subseteq W$ e che $T|_W=\id$, da cui $\im T=\fix T=W$. Segue che $T^2=T$ e dunque, per decomposizione primaria, $V=V_0\dirsum V_1=\ker T\dirsum\fix T$. Inoltre $T$ è un omomorfismo di rappresentazioni: infatti
 \begin{align*}
-hT&=\frac{1}{|G|}\sum_{g\in G}hg\pi_Wg^{-1}\\
-&=\frac{1}{|G|}\sum_{hg\in G}(hg)\pi_W(hg)^{-1}h\\
-&=\frac{1}{|G|}\sum_{g\in G}g\pi_Wg^{-1}h=Th.
+\rho(h)T&=\frac{1}{|G|}\sum_{g\in G}\rho(hg)\pi_W\rho(g)^{-1}\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(hg)\pi_W\rho(hg)^{-1}\rho(h)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(g)\pi_W\rho(g)^{-1}\rho(h)=T\rho(h).
 \end{align*}
 Pertanto, grazie alla \thref{subrepresentation-ker-im}, $\ker T$ è $G$-stabile. Ponendo $W'=\ker T$ si ha, come voluto, $V=W\dirsum W'$  come somma di rappresentazioni.
 \end{proof}
@@ -522,7 +520,11 @@ $$
 \end{proposition}
 \begin{proof}
 Mostriamo che $\Hom(\mathcal{R},\rho)\iso V$. Consideriamo l'applicazione lineare
-$\Phi:\Hom(\mathcal{R},\rho)\to V$ tale che $\Phi(f)=f(e_1)$ per ogni $f\in\Hom(\mathcal{R},\rho)$, dove $1\in G$ è l'identità. $\Phi$ è iniettiva: sia infatti $f\in\Hom(\mathcal{R},\rho)$ tale che $\Phi(f)=f(e_1)=0$. Allora per ogni $g\in G$ vale
+\begin{align*}
+\Phi:\Hom(\mathcal{R},\rho)&\longrightarrow V\\
+f&\longmapsto f(e_1)
+\end{align*}
+dove $1\in G$ è l'identità. $\Phi$ è iniettiva: sia infatti $f\in\Hom(\mathcal{R},\rho)$ tale che $\Phi(f)=f(e_1)=0$. Allora per ogni $g\in G$ vale
 $$
 f(e_g)=f(e_{g\cdot1})=f(\mathcal{R}(g)e_1)=\rho(g)f(e_1)=\rho(g)0=0,
 $$
