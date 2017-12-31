@@ -63,10 +63,10 @@ $$
 
 
 \begin{proposition}\thlabel{character-permutation-representation}
-Sia $X$ un insieme, $G$ un gruppo che agisce su $X$, $\Rep{\rho}{G}{\mathbb{C}[X]}$ la corrispondente rappresentazione per permutazione, $g\in G$. Allora
-$$
-\chi_\rho(g)=|\{x\in X:gx=x\}|.
-$$
+Sia $X$ un insieme, $G$ un gruppo che agisce su $X$, $\Rep{\rho}{G}{\mathbb{C}[X]}$ la corrispondente rappresentazione per permutazione, $g\in G$. Allora $\chi_\rho(g)=|X^g|$.
+%$$
+%\chi_\rho(g)=|\{x\in X:gx=x\}|.
+%$$
 \end{proposition}
 \begin{proof}
 La matrice associata a $\rho(g)$ rispetto alla base ``canonica'' di $\mathbb{C}[X]$ è una matrice di permutazione; i valori sulla diagonale sono 1 se il corrispondente elemento di $X$ viene fissato da $g$, 0 altrimenti, da cui la tesi.
@@ -86,12 +86,12 @@ $$
 
 Ricordiamo che con $1_G$ (o più semplicemente con $1$) si indica la rappresentazione banale di grado 1 di $G$.
 
-\begin{lemma}\thlabel{character-vs-trivial}
+\begin{proposition}\thlabel{character-vs-trivial}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
 $$
 \vs{\chi_\rho}{\chi_1}=\dim V^G.
 $$
-\end{lemma}
+\end{proposition}
 \begin{proof}
 Sia $T:V\to V$ l'applicazione lineare definita da
 $$
@@ -130,7 +130,7 @@ Vale
 &=\vs{\chi_{\sigma^*\rho}}{\chi_1}\\
 &=\dim(W^*\tensor V)^G
 \end{align*}
-per la \thref{character-properties} e il \thref{character-vs-trivial}. $G$ agisce su $W^*\tensor V$ mediante $\sigma^*\tensor\rho$, quindi al posto di $W^*\tensor V$ possiamo considerare $\Hom(W,V)$. Applicando la \thref{representation-fix-of-homomorphisms} e il \thref{representation-irreducible-homomorphisms-dim} otteniamo la tesi:
+per la \thref{character-properties} e la \thref{character-vs-trivial}. $G$ agisce su $W^*\tensor V$ mediante $\sigma^*\tensor\rho$, quindi al posto di $W^*\tensor V$ possiamo considerare $\Hom(W,V)$. Applicando la \thref{representation-fix-of-homomorphisms} e il \thref{representation-irreducible-homomorphisms-dim} otteniamo la tesi:
 \begin{align*}
 \dim(W^*\tensor V)^G&=\dim\Hom(W,V)^G\\
 &=\dim\Hom_G(W,V)\\
@@ -156,12 +156,42 @@ $$
 da cui la tesi.
 \end{proof}
 
+\begin{corollary}\thlabel{character-representation-isomorphic}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Allora $\rho\isor\sigma$ se e solo se $\chi_\rho=\chi_\sigma$.
+\end{corollary}
+\begin{proof}
+Un'implicazione è contenuta nella \thref{character-properties}, l'altra è un'immediata conseguenza del \thref{character-representation-decomposition}.
+\end{proof}
+
 \begin{corollary}\thlabel{character-irreducibility-criterion}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora $\rho$ è irriducibile se e solo se $\vs{\chi_\rho}{\chi_\rho}=1$
 \end{corollary}
 \begin{proof}
 Se $\rho$ è irriducibile allora $\vs{\chi_\rho}{\chi_\rho}=1$ per la \thref{character-irreducible-orthogonal}. Se $\vs{\chi_\rho}{\chi_\rho}=1$, l'irriducibilità segue dal fatto che $\rho$ è completamente riducibile e dal \thref{character-representation-decomposition}.
 \end{proof}
+
+\begin{proposition}[Lemma di Burnside]\thlabel{burnside-lemma}
+Sia $X$ un insieme finito, $G$ un gruppo (finito) che agisce su $X$. Allora
+$$
+|X/G|=\frac{1}{|G|}\sum_{g\in G}|X^g|
+$$
+\end{proposition}
+\begin{proof}
+Sia $\mathbb{C}[X]$ lo spazio vettoriale libero su $X$ con $\{e_x\}_{x\in X}$ come base. Sia $\Rep{\rho}{G}{\mathbb{C}[X]}$ la rappresentazione per permutazione associata all'azione di $G$ su $X$. Grazie alla \thref{character-permutation-representation} e alla \thref{character-vs-trivial} possiamo scrivere
+$$
+\frac{1}{|G|}\sum_{g\in G}|X^g|=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)=\vs{\chi_\rho}{\chi_1}=\dim\mathbb{C}[X]^G.
+$$
+Sia $v\in\mathbb{C}[X]$ un generico vettore, e scriviamo
+$$
+v=\sum_{x\in X}a_xe_x.
+$$
+Osserviamo che, dato $g\in G$, vale
+$$
+\rho(g)v=\sum_{x\in X}a_xe_{gx}=\sum_{x\in X}a_{g^{-1}x}e_x.
+$$
+Ma $v\in\mathbb{C}[X]^G$ se e solo se per ogni $g\in G$ vale $v=\rho(g)v$; notiamo che $v=\rho(g)v$ se e solo se per ogni $x\in X$ vale $a_{gx}=a_x$. Quindi $v\in\mathbb{C}[X]^G$ se e solo se per ogni $x,y$ nella stessa orbita vale $a_x=a_y$. A questo punto si conclude facilmente che la dimensione di $\mathbb{C}[X]^G$ è pari al numero di orbite $|X/G|$.
+\end{proof}
+
 
 \begin{definition}
 Sia $G$ un gruppo, $X$ un insieme, $f:G\to X$ una funzione. Si dice che $f$ è una \emph{funzione di classe} se è costante sulle classi di coniugio di $G$, ovvero se per ogni $g,h\in G$ vale $f(hgh^{-1})=f(g)$.

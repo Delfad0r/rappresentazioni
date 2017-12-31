@@ -293,7 +293,11 @@ Sia $\Rep{\rho}{G}{V}$ una rappresentazione completamente riducibile. Supponiamo
 \end{enumerate}
 \end{proposition}
 \begin{proof}
-Sia $\rho=\sum_{i\in I}n_i\rho_i$ una decomposizione in rappresentazioni irriducibili a due a due non isomorfe, con $n_i\in\mathbb{N^+}$. Sia $\sigma\in\Irr(G)$. Se per ogni $i\in I$ vale $\sigma\not\isor\rho_i$, allora
+Sia $\rho=\sum_{i\in I}n_i\rho_i$ una decomposizione in rappresentazioni irriducibili a due a due non isomorfe, con $n_i\in\mathbb{N^+}$. Dividiamo $\Irr(G)$ in due insiemi disgiunti
+$$
+\Irr(G)=\{\rho_i:i\in I\}\cup S
+$$
+dove $S$ è l'insieme (o meglio, un insieme di rappresentanti) delle rappresentazioni irriducibili di $G$ non isomorfe ad alcuna delle $\rho_i$. Sia $\sigma\in\Irr(G)$. Se $\sigma\in S$, allora
 $$
 \dim\Hom(\rho,\sigma)=\sum_{i\in I}n_i\dim\Hom(\rho_i,\sigma)=0
 $$
@@ -301,14 +305,11 @@ per la \thref{representation-sum-homomorphisms} e il \thref{representation-irred
 $$
 \dim\Hom(\rho,\sigma)=\sum_{i\in I}n_i\dim\Hom(\rho_i,\sigma)=n_j<\infty.
 $$
-Questo dimostra la (i). Osserviamo ora che l'uguaglianza in (iii) ha senso (la somma presente al membro di destra è una somma finita di rappresentazioni) e vale
-%TODO:l'allineamento fa schifo
-\begin{alignat*}{3}
-&&\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma\\
-&=&\sum_{\substack{\sigma\in\Irr(G)\\\forall i\in I(\sigma\not\isor\rho_i)}}\dim\Hom(\rho,\sigma)\sigma
-&\;&+&\sum_{\substack{\sigma\in\Irr(G)\\\exists j\in I(\sigma\isor\rho_j)}}\dim\Hom(\rho,\sigma)\sigma\\
-&=&0\qquad&&+&\sum_{\substack{\sigma\in\Irr(G)\\\exists j\in I(\sigma\isor\rho_j)}}n_j\sigma\\
-&=&\sum_{j\in I}n_j\rho_j\qquad&&=&\qquad\rho
+Questo dimostra la (i). Osserviamo ora che l'uguaglianza in (iii) ha senso (nel membro di destra solo un numero finito di addendi sono non nulli), e vale
+\begin{alignat*}{2}
+\sum_{\sigma\in\Irr(G)}\dim\Hom(\rho,\sigma)\sigma&=\sum_{i\in I}\dim\Hom(\rho,\rho_i)\rho_i&&+\sum_{\sigma\in S}\dim\Hom(\rho,\sigma)\sigma\\
+&=\sum_{i\in I}n_i\rho_i&&+0\\
+&=\rho.
 \end{alignat*}
 \end{proof}
 
