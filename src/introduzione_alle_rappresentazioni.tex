@@ -110,6 +110,14 @@ infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verif
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Un sottospazio $W\subseteq V$ si dice \emph{$G$-stabile} se, per ogni $g\in G$, $W$ è $\rho(g)$-stabile, ovvero $\rho(g)(W)\subseteq W$.
 \end{definition}
 
+\begin{example}\thlabel{loll}
+Se $\Rep{\rho}{G}{V}$ è una rappresentazione e $W\subseteq V$ un sottospazio $G$-stabile, $\rho$ passa al quoziente $V/W$ in modo unico, cioè esiste un'unica rappresentazione $\Rep{\bar\rho}{G}{V/W}$ tale che la proiezione $\pi:V\to V/W$ è un omomorfismo di rappresentazioni. L'unicità è ovvia dalla relazione $\bar\rho(g)\circ\pi=\pi\circ\rho(g)$ e dal fatto che $\pi$ è suriettiva. Per mostrare l'esistenza è necessario (e sufficiente) verificare che per ogni $g\in G$ e per ogni $v,v'\in V$ con $\pi(v)=\pi(v')$ vale $\pi(\rho(g)v)=\pi(\rho(g)v')$: ma
+$$
+\pi(\rho(g)v)=\pi(\rho(g)(v'+v-v'))=\pi(\rho(g)v')+\pi(\rho(g)(v-v'))=\pi(\rho(g)v')
+$$
+poiché $v-v'\in W$, dunque $\rho(g)(v-v')\in W$.
+\end{example}
+
 \begin{definition}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Indichiamo con $\Rep{\rho|^W}{G}{W}$ la rappresentazione tale che $\rho|^W(g)=\rho(g)|_W$ per ogni $g\in G$. Diciamo che $\rho|^W$ è una \emph{sottorappresentazione} di $\rho$; se $W\neq\langle0\rangle$ e $W\neq V$ diciamo che $\rho|^W$ è una \emph{sottorappresentazione propria} di $\rho$.
 \end{definition}

@@ -1,0 +1,74 @@
+\chapter{Rappresentazioni indotte}
+
+\section{Definizione e proprietà}
+
+\begin{definition}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione. Si dice \emph{rappresentazione indotta} da $\sigma$ una rappresentazione $\Rep{\Ind_H^G\sigma}{G}{V}$ dotata di un'applicazione $\iota\in\Hom_H(W,V)$ che soddisfa la seguente proprietà universale: per ogni rappresentazione $\Rep{\tau}{G}{Z}$ e per ogni applicazione $f\in\Hom_H(W,Z)$ esiste un'unica applicazione $\bar{f}\in\Hom_G(V,Z)$ che fa commutare il diagramma
+$$
+\begin{diagram}
+W\arrow{r}{f}\arrow[swap]{d}{\iota}&Z\\
+V\arrow[swap]{ru}{\bar{f}}
+\end{diagram}
+$$
+ovvero tale che $f=\bar{f}\circ\iota$.
+\end{definition}
+
+Per snellire la notazione, scriveremo $\Ind\sigma$ in luogo di $\Ind_H^G\sigma$ quando non vi fossero rischi di ambiguità.
+
+\begin{proposition}\thlabel{induced-representation-existence}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione. Allora esiste una rappresentazione $\Rep{\Ind\sigma}{G}{V}$ (dotata di un'applicazione $\iota\in\Hom_H(W,V)$) che è indotta da $\sigma$.
+\end{proposition}
+\begin{proof}
+Sia $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la rappresentazione regolare di $G$, con $\{e_g\}_{g\in G}$ come base. Sia $\Rep{\triv}{G}{W}$ la rappresentazione banale di $G$ su $W$, e sia $\rho=\mathcal{R}\tensor\triv$ una rappresentazione su $\mathbb{K}[G]\tensor W$. Sia
+$$
+K=\langle e_{gh}\tensor w-e_g\tensor\sigma(h)w:w\in W,g\in G,h\in H\rangle.
+$$
+Osserviamo che $K$ è un sottospazio $G$-stabile di $\mathbb{K}[G]$: infatti per ogni $g,g'\in G\comma h\in H\comma w\in W$ vale
+$$
+(\mathcal{R}\tensor\triv)(g')(e_{gh}\tensor w-e_g\tensor\sigma(h)w)=e_{g'gh}\tensor w-e_{g'g}\tensor\sigma(h)w\in K.
+$$
+Pertanto $\rho$ passa al quoziente $(\mathbb{K}[G]\tensor W)/K$; posto $V=(\mathbb{K}[G]\tensor W)/K$, sia $\pi:\mathbb{K}[G]\tensor W\to V$ la proiezione, $\Rep{\Ind\sigma}{G}{V}$ la rappresentazione corrispondente. Sia infine $\iota$ l'applicazione lineare
+\begin{align*}
+\iota:W&\longrightarrow V\\
+w&\longmapsto \pi(e_1\tensor w)
+\end{align*}
+che si verifica facilmente essere un elemento di $\Hom_H(W,V)$: per ogni $h\in H\comma w\in W$ vale
+\begin{align*}
+\iota(\sigma(h)w)&=\pi(e_1\tensor\sigma(h)w)\\
+&=\pi(e_h\tensor w)\\
+&=(\Ind\sigma)(h)\pi(e_1\tensor w)\\
+&=(\Ind\sigma)(h)\iota(w).
+\end{align*}
+Mostriamo ora che $\Ind\sigma$ (con applicazione associata $\iota$) è effettivamente indotta da $\sigma$. Sia $\Rep{\tau}{G}{Z}$ una rappresentazione, $f\in\Hom_H(W,Z)$ un'applicazione: dobbiamo trovare $\bar{f}\in\Hom_G(V,Z)$ tale che $f=\bar{f}\circ\iota$. Per la proprietà universale del prodotto tensore esiste un'unica applicazione lineare
+\begin{alignat*}{2}
+l:\mathbb{K}[G]&\tensor W&&\longrightarrow Z\\
+e_g&\tensor w&&\longmapsto\tau(g)f(w)
+\end{alignat*}
+Si vede facilmente che $K\subseteq\ker l$: infatti per ogni $w\in W\comma g\in G\comma h\in H$ vale
+\begin{align*}
+l(e_{gh}\tensor w-e_g\tensor\sigma(h)w)&=\tau(gh)f(w)-\tau(g)f(\sigma(h)w)\\
+&=\tau(gh)f(w)-\tau(g)\tau(h)f(w)\\
+&=0,
+\end{align*}
+dove abbiamo usato che $f$ è un omomorfismo di rappresentazioni. Allora $l$ passa al quoziente, ovvero esiste un'unica applicazione lineare $\bar{f}:V\to Z$ tale che $l=\bar{f}\circ\pi$. Verifichiamo che $\bar{f}\in\Hom_G(V,Z)$: per ogni $g,g'\in G\comma w\in W$ vale
+\begin{align*}
+\bar{f}((\Ind\sigma)(g')\pi(e_g\tensor w))&=\bar{f}(\pi(e_{g'g}\tensor w))\\
+&=l(e_{g'g}\tensor w)\\
+&=\tau(g'g)f(w)\\
+&=\tau(g')\tau(g)f(w)\\
+&=\tau(g')l(e_g\tensor w)\\
+&=\tau(g')\bar{f}(\pi(e_g\tensor w)).
+\end{align*}
+Verifichiamo infine che $f=\bar{f}\circ\iota$: dato $w\in W$ vale
+$$
+f(w)=\tau(1)f(w)=l(e_1\tensor w)=\bar{f}(\pi(e_1\tensor w))=\bar{f}(\iota(w)).
+$$
+Dunque $\Ind\sigma$ è la rappresentazione cercata.
+$$
+\begin{diagram}
+W\arrow{rr}{f}\arrow{rd}{\tensor}\arrow[bend right=45,swap]{rrd}{\iota}&&Z\\
+&\mathbb{K}[G]\tensor W\arrow{ru}{l}\arrow{r}{\pi}&V\arrow[swap]{u}{\bar{f}}
+\end{diagram}
+$$
+%TODO: sistemare il diagramma (togliendo $\tensor$), fare l'unicità, forse fare un intero capitoletto sulle rappresentazioni quoziente?
+\end{proof}
