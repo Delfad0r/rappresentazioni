@@ -711,18 +711,18 @@ T_\sigma(\hat{\mathcal{R}}(g_1,g_2)e_g)&=T_\sigma(e_{g_2gg_1^{-1}})\\
 &=(\sigma^*\tbox\sigma)(g_1,g_2)T_\sigma(e_g).
 \end{align*}
 Osserviamo che $T_\sigma$ non è nulla (ad esempio $T_\sigma(e_1)=\id$) e $\sigma^*\tbox\sigma$ è irriducibile, quindi per il Lemma di Schur $T_\sigma$ è suriettiva. Allora per il \thref{representation-surjective-homomorphism-subrepresentation} $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$.\\
-Per dimostrare quest'ultima affermazione possiamo procedere anche in un altro modo. Consideriamo l'applicazione lineare
+Per dimostrare quest'ultima affermazione possiamo procedere anche in un altro modo. Sia $\tau=\sigma^*\in\Irr(G)\comma V_\tau=V_\sigma^*$. Consideriamo l'applicazione lineare
 \begin{alignat*}{2}
-S_\sigma:V_\sigma&\tensor V_\sigma^*&&\longrightarrow\mathbb{K}[G]\\
-v&\tensor\varphi&&\longmapsto\sum_{g\in G}\varphi(\sigma(g)v)e_g
+S_\tau:V_\tau&\tensor V_\tau^*&&\longrightarrow\mathbb{K}[G]\\
+v&\tensor\varphi&&\longmapsto\sum_{g\in G}\varphi(\tau(g)v)e_g
 \end{alignat*}
-e mostriamo che $S_\sigma\in\Hom(\sigma\tbox\sigma^*,\hat{\mathcal{R}})$:
+e mostriamo che $S_\tau\in\Hom(\tau\tbox\tau^*,\hat{\mathcal{R}})$:
 \begin{align*}
-\hat{\mathcal{R}}(g_1,g_2)S_\sigma(v\tensor\varphi)&=\sum_{g\in G}\varphi(\sigma(g)v)\hat{\mathcal{R}}(g_1,g_2)e_g\\
-&=\sum_{g\in G}\varphi(\sigma(g)v)e_{g_2gg_1^{-1}}\\
-&=\sum_{g\in G}\varphi(\sigma(g_2^{-1}gg_1)v)e_g\\
-&=S_\sigma(\sigma(g_1)v\tensor\varphi\circ\sigma(g_2)^{-1})\\
-&=S_\sigma((\sigma\tbox\sigma^*)(g_1,g_2)(v\tensor\varphi)).
+\hat{\mathcal{R}}(g_1,g_2)S_\tau(v\tensor\varphi)&=\sum_{g\in G}\varphi(\tau(g)v)\hat{\mathcal{R}}(g_1,g_2)e_g\\
+&=\sum_{g\in G}\varphi(\tau(g)v)e_{g_2gg_1^{-1}}\\
+&=\sum_{g\in G}\varphi(\tau(g_2^{-1}gg_1)v)e_g\\
+&=S_\tau(\tau(g_1)v\tensor\varphi\circ\tau(g_2)^{-1})\\
+&=S_\tau((\tau\tbox\tau^*)(g_1,g_2)(v\tensor\varphi)).
 \end{align*}
-Si verifica facilmente che $S_\sigma$ non è nulla, quindi per il Lemma di Schur è iniettiva. Allora $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma\tbox\sigma^*\isor\sigma^*\tbox\sigma$.
+Si verifica facilmente che $S_\tau$ non è nulla, quindi per il Lemma di Schur è iniettiva. Allora $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\tau\tbox\tau^*\isor\sigma^*\tbox{\sigma^*}^*\isor\sigma^*\tbox\sigma$.
 \end{example}
