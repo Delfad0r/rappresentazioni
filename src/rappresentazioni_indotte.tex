@@ -13,13 +13,23 @@ $$
 ovvero tale che $f=\bar{f}\circ\iota$.
 \end{definition}
 
-Per snellire la notazione, scriveremo $\Ind\sigma$ in luogo di $\Ind_H^G\sigma$ quando non vi fossero rischi di ambiguità.
+Se $G$ è un gruppo, $H\le G$ un sottogruppo, $\Rep{\rho}{G}{V}$ una rappresentazione, indichiamo con $\Res_H^G\rho$ la rappresentazione $\Rep{\rho|_H}{H}{V}$. Allora dalla definizione segue immediatamente
+$$
+\Hom(\Ind_H^G\sigma,\tau)\iso\Hom(\sigma,\Res_H^G\tau)
+$$
+dove l'isomorfismo è dato dalla mappa $(\bar{f}\mapsto\bar{f}\circ\iota)$.\\
+Per snellire la notazione, scriveremo $\Ind\sigma$ in luogo di $\Ind_H^G\sigma$ e $\Res\rho$ in luogo di $\Res_H^G\rho$ quando non vi fossero rischi di ambiguità.
 
 \begin{proposition}\thlabel{induced-representation-existence}
 Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione. Allora esiste una rappresentazione $\Rep{\Ind\sigma}{G}{V}$ (dotata di un'applicazione $\iota\in\Hom_H(W,V)$) che è indotta da $\sigma$.
 \end{proposition}
 \begin{proof}
-Sia $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la rappresentazione regolare di $G$, con $\{e_g\}_{g\in G}$ come base. Sia $\Rep{\triv}{G}{W}$ la rappresentazione banale di $G$ su $W$, e sia $\rho=\mathcal{R}\tensor\triv$ una rappresentazione su $\mathbb{K}[G]\tensor W$. Sia
+Sia $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la rappresentazione regolare di $G$, con $\{e_g\}_{g\in G}$ come base. Sia $\Rep{\triv}{G}{W}$ la rappresentazione banale di $G$ su $W$, e sia $\rho=\mathcal{R}\tensor\triv$ una rappresentazione su $\mathbb{K}[G]\tensor W$. Sia $j$ l'applicazione
+\begin{alignat*}{2}
+j:W&\longrightarrow&\mathbb{K}[G]&\tensor W\\
+w&\longmapsto&e_1&\tensor w
+\end{alignat*}
+e sia
 $$
 K=\langle e_{gh}\tensor w-e_g\tensor\sigma(h)w:w\in W,g\in G,h\in H\rangle.
 $$
@@ -27,12 +37,7 @@ Osserviamo che $K$ è un sottospazio $G$-stabile di $\mathbb{K}[G]$: infatti per
 $$
 (\mathcal{R}\tensor\triv)(g')(e_{gh}\tensor w-e_g\tensor\sigma(h)w)=e_{g'gh}\tensor w-e_{g'g}\tensor\sigma(h)w\in K.
 $$
-Pertanto $\rho$ passa al quoziente $(\mathbb{K}[G]\tensor W)/K$; posto $V=(\mathbb{K}[G]\tensor W)/K$, sia $\pi:\mathbb{K}[G]\tensor W\to V$ la proiezione, $\Rep{\Ind\sigma}{G}{V}$ la rappresentazione corrispondente. Sia infine $\iota$ l'applicazione lineare
-\begin{align*}
-\iota:W&\longrightarrow V\\
-w&\longmapsto \pi(e_1\tensor w)
-\end{align*}
-che si verifica facilmente essere un elemento di $\Hom_H(W,V)$: per ogni $h\in H\comma w\in W$ vale
+Pertanto (\thref{representation-quotient}) $\rho$ passa al quoziente $(\mathbb{K}[G]\tensor W)/K$; posto $V=(\mathbb{K}[G]\tensor W)/K$, sia $\pi:\mathbb{K}[G]\tensor W\to V$ la proiezione, $\Rep{\Ind\sigma}{G}{V}$ la rappresentazione corrispondente. Sia infine $\iota=\pi\circ j$, che si verifica facilmente essere un elemento di $\Hom_H(W,V)$: per ogni $h\in H\comma w\in W$ vale
 \begin{align*}
 \iota(\sigma(h)w)&=\pi(e_1\tensor\sigma(h)w)\\
 &=\pi(e_h\tensor w)\\
@@ -44,31 +49,143 @@ Mostriamo ora che $\Ind\sigma$ (con applicazione associata $\iota$) è effettiva
 l:\mathbb{K}[G]&\tensor W&&\longrightarrow Z\\
 e_g&\tensor w&&\longmapsto\tau(g)f(w)
 \end{alignat*}
-Si vede facilmente che $K\subseteq\ker l$: infatti per ogni $w\in W\comma g\in G\comma h\in H$ vale
+Osserviamo che $l\circ j=f$, e che $l$ è un omomorfismo di rappresentazioni: per ogni $g,g'\in G\comma w\in W$ vale
+\begin{align*}
+l((\mathcal{R}\tensor\triv)(g')(e_g\tensor w))&=l(e_{g'g}\tensor w)\\
+&=\tau(g'g)f(w)\\
+&=\tau(g')\tau(g)f(w)\\
+&=\tau(g')l(e_g\tensor w).
+\end{align*}
+Inoltre si vede facilmente che $K\subseteq\ker l$: infatti per ogni $w\in W\comma g\in G\comma h\in H$ vale
 \begin{align*}
 l(e_{gh}\tensor w-e_g\tensor\sigma(h)w)&=\tau(gh)f(w)-\tau(g)f(\sigma(h)w)\\
 &=\tau(gh)f(w)-\tau(g)\tau(h)f(w)\\
 &=0,
 \end{align*}
-dove abbiamo usato che $f$ è un omomorfismo di rappresentazioni. Allora $l$ passa al quoziente, ovvero esiste un'unica applicazione lineare $\bar{f}:V\to Z$ tale che $l=\bar{f}\circ\pi$. Verifichiamo che $\bar{f}\in\Hom_G(V,Z)$: per ogni $g,g'\in G\comma w\in W$ vale
-\begin{align*}
-\bar{f}((\Ind\sigma)(g')\pi(e_g\tensor w))&=\bar{f}(\pi(e_{g'g}\tensor w))\\
-&=l(e_{g'g}\tensor w)\\
-&=\tau(g'g)f(w)\\
-&=\tau(g')\tau(g)f(w)\\
-&=\tau(g')l(e_g\tensor w)\\
-&=\tau(g')\bar{f}(\pi(e_g\tensor w)).
-\end{align*}
-Verifichiamo infine che $f=\bar{f}\circ\iota$: dato $w\in W$ vale
-$$
-f(w)=\tau(1)f(w)=l(e_1\tensor w)=\bar{f}(\pi(e_1\tensor w))=\bar{f}(\iota(w)).
-$$
-Dunque $\Ind\sigma$ è la rappresentazione cercata.
+dove abbiamo usato che $f$ è un omomorfismo di rappresentazioni. Allora (\thref{representation-quotient-universal}) $l$ passa al quoziente, ovvero esiste un'unica applicazione $\bar{f}\in\Hom_G(V,Z)$ tale che $l=\bar{f}\circ\pi$. Vale inoltre $f=l\circ j=\bar{f}\circ\pi\circ j=\bar{f}\circ\iota$. Dunque $\bar{f}$ è l'omomorfismo cercato.
 $$
 \begin{diagram}
-W\arrow{rr}{f}\arrow{rd}{\tensor}\arrow[bend right=45,swap]{rrd}{\iota}&&Z\\
+W\arrow{rr}{f}\arrow{rd}{j}\arrow[bend right=45,swap]{rrd}{\iota}&&Z\\
 &\mathbb{K}[G]\tensor W\arrow{ru}{l}\arrow{r}{\pi}&V\arrow[swap]{u}{\bar{f}}
 \end{diagram}
 $$
-%TODO: sistemare il diagramma (togliendo $\tensor$), fare l'unicità, forse fare un intero capitoletto sulle rappresentazioni quoziente?
+Per mostrare l'unicità di $\bar{f}$, osserviamo preliminarmente che $l$ è l'unico omomorfismo di rappresentazioni da $\mathbb{K}[G]\tensor W$ in $Z$ tale che $l\circ j=f$: sia infatti $l'$ un omomorfismo che soddisfa questa proprietà, e siano $g\in G\comma w\in W$; vale allora
+\begin{align*}
+l'(e_g\tensor w)&=l'((\mathcal{R}\tensor \triv)(g)(e_1\tensor w))\\
+&=\tau(g)l'(e_1\tensor w)\\
+&=\tau(g)l'(j(w))\\
+&=\tau(g)f(w).
+\end{align*}
+Sia ora $\bar{f}'\in\Hom_G(V,Z)$ tale che $\bar{f}'\circ\iota=f$. Vale dunque $f=(\bar{f}'\circ\pi)\circ j$; per l'unicità di $l$ abbiamo che $\bar{f}'\circ\pi=l$, e dall'unicità di $\bar{f}$ segue $\bar{f}'=\bar{f}$.
+\end{proof}
+
+\begin{proposition}\thlabel{induced-representation-uniqueness}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione, $\Rep{\rho}{G}{V}\comma\Rep{\bar\rho}{G}{\bar{V}}$ rappresentazioni indotte da $\sigma$ con applicazioni associate rispettivamente $\iota\comma\bar\iota$. Allora $\rho$ e $\bar\rho$ sono isomorfe mediante un isomorfismo $\psi\in\Hom(\rho,\rho')$ tale che $\bar\iota=\psi\circ\iota$.
+\end{proposition}
+\begin{proof}
+La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness} e fa uso esclusivamente della proprietà universale della rappresentazione indotta.
+\end{proof}
+
+D'ora in poi parleremo dunque \emph{della} rappresentazione indotta da una rappresentazione, dato che abbiamo dimostrato che questa esiste ed è unica a meno di isomorfismo.
+
+\begin{proposition}\thlabel{induced-representation-generated}
+Sia $G$ un gruppo, $H\subseteq G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione, $\Rep{\rho}{G}{V}$ la rappresentazione indotta da $\sigma$ con applicazione associata $\iota\in\Hom_H(W,V)$. Allora
+$$
+V=\langle\rho(g)\iota(w):g\in G,w\in W\rangle
+$$
+\end{proposition}
+\begin{proof}
+Sia 
+$$
+Z=\langle\rho(g)\iota(w):g\in G,w\in W\rangle\subseteq V.
+$$
+Osserviamo che $Z$ è un sottospazio $G$-stabile, dunque $\rho$ passa al quoziente $V/Z$: sia $\Rep{\bar\rho}{G}{V/W}$ la rappresentazione quoziente, e sia $\pi:V\to V/W$ la proiezione. Consideriamo l'applicazione nulla $0|_W\in\Hom_H(W,V/W)$. È evidente che $0|_W=0|_V\circ\iota$. D'altro canto vale $\pi(\iota(w))=0$ per ogni $w\in W$, dunque $0|_W=\pi\circ\iota$. Segue che il diagramma
+$$
+\begin{diagram}
+W\arrow{r}{0|_W}\arrow[swap]{d}{\iota}&V/Z\\
+V\arrow{ru}{\pi}\arrow[bend right=15,swap]{ru}{0|_V}
+\end{diagram}
+$$
+commuta, dunque $\pi=0|_V$, ovvero $Z=V$.
+\end{proof}
+
+\begin{proposition}\thlabel{induced-representation-basis}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione, $\Rep{\rho}{G}{V}$ la rappresentazione indotta da $\sigma$ con applicazione associata $\iota$. Sia $\{w_i\}_{i\in I}$ una base di $W$, e sia $R\subseteq G$ un insieme di rappresentanti di $G/H$. Allora $\mathcal{B}=\{\rho(r)\iota(w_i)\}_{r\in R,i\in I}$ è una base di $V$.
+\end{proposition}
+\begin{proof}
+Mostriamo innanzitutto che $\mathcal{B}$ è un insieme di generatori: se $g\in G$ e $w\in W$, allora esistono $h\in H\comma r\in R$ tali che $g=rh$, quindi 
+$$
+\rho(g)\iota(w)=\rho(r)\rho(h)\iota(w)=\rho(r)\iota(\sigma(h)w)\in\langle\mathcal{B}\rangle.
+$$
+Dalla \thref{induced-representation-generated} segue che $V=\langle B\rangle$. Mostriamo ora che gli elementi di $\mathcal{B}$ sono linearmente indipendenti. Sia $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la rappresentazione regolare di $G$. Siano $a_{ri}\in\mathbb{K}$ coefficienti tali che
+$$
+0=\sum_{r\in R}\sum_{i\in I}a_{ri}\rho(r)\iota(w_i).
+$$
+Fissiamo un $j\in I$; sia $f_j$ l'applicazione lineare
+\begin{align*}
+f_j:W&\longrightarrow\mathbb{K}[G]\\
+w&\longmapsto\sum_{h\in H}w_j^*(\sigma(h^{-1})w)e_h
+\end{align*}
+Osserviamo che $f_j\in\Hom_H(W,\mathbb{K}[G])$: per ogni $h'\in H\comma w\in W$ vale
+\begin{align*}
+\mathcal{R}(h)f_j(w)&=\sum_{h\in H}w_j^*(\sigma(h^{-1})w)\mathcal{R}(h')e_h\\
+&=\sum_{h\in H}w_j^*(\sigma(h'h)^{-1}\sigma(h')w)e_{h'h}\\
+&=\sum_{h\in H}w_j^*(\sigma(h)\sigma(h')w)e_h\\
+&=f_j(\sigma(h')w).
+\end{align*}
+Per la proprietà universale della rappresentazione indotta esiste un'applicazione $\bar{f}_j\in\Hom_G(V,\mathbb{K}[G])$ tale che $f_j=\bar{f}_j\circ\iota$. Allora vale
+\begin{align*}
+0&=\sum_{r\in R}\sum_{i\in I}a_{ri}\bar{f}_j(\rho(r)\iota(w_i))\\
+&=\sum_{r\in R}\sum_{i\in I}a_{ri}\mathcal{R}(r)\bar{f}_j(\iota(w_i))\\
+&=\sum_{r\in R}\sum_{i\in I}a_{ri}\mathcal{R}(r)f_j(w_i)\\
+&=\sum_{r\in R}\sum_{i\in I}a_{ri}\sum_{h\in H}w_j^*(\sigma(h^{-1})w_i)\mathcal{R}(r)e_h\\
+&=\sum_{r\in R}\sum_{h\in H}\biggl(\sum_{i\in I}a_{ri}w_j^*(\sigma(h^{-1})w_i)\biggr)e_{rh}.
+\end{align*}
+Ma $\{e_{rh}\}_{r\in R,h\in H}$ è una base di $\mathbb{K}[G]$, quindi per ogni $r\in R\comma h\in H$ vale
+$$
+0=\sum_{i\in I}a_{ri}w_j^*(\sigma(h^{-1})w_i);
+$$
+scegliendo in particolare $h=1$ otteniamo
+$$
+0=\sum_{i\in I}a_{ri}w_j^*(\sigma(1)w_i)=a_{rj}.
+$$
+Applicando questo ragionamento per ogni $j\in I$ risulta che tutti i coefficienti sono nulli, dunque gli elementi di $\mathcal{B}$ sono linearmente indipendenti.
+\end{proof}
+
+\begin{corollary}\thlabel{induced-representation-dimension}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione. Allora
+$$
+\deg\Ind\sigma=[G:H]\cdot\deg\sigma
+$$
+\end{corollary}
+
+La \thref{induced-representation-basis} implica che $\iota$ è iniettiva: potremo quindi assumere, senza perdere di generalità, che $\sigma$ sia una sottorappresentazione di $\Ind\sigma$ (e che $\iota$ sia l'identità).
+
+\begin{proposition}\thlabel{induced-representation-dirsum}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo di indice finito, $R\subseteq G$ un insieme di rappresentanti di $G/H$. Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ una sottorappresentazione, $\sigma=\Res\rho|^W$. Allora sono equivalenti:
+\begin{enumerate}[(i)]
+\item $\rho$ è indotta da $\sigma$;
+\item $V=\Dirsum_{r\in R}\rho(r)W$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+L'implicazione (i)$\implies$(ii) segue dalla \thref{induced-representation-basis}. Per dimostrare l'altra consideriamo una rappresentazione $\Rep{\tau}{G}{Z}$ e un'applicazione $f\in\Hom_H(W,Z)$. Dobbiamo trovare $\bar{f}\in\Hom_G(V,Z)$ tale che $\bar{f}|_W=f$. Una tale $\bar{f}$, se esiste, deve soddisfare, per ogni $r\in R$, $\bar{f}\circ\rho(r)=\tau(r)\circ\bar{f}$, ovvero $\bar{f}=\tau(r)\circ\bar{f}\circ\rho(r)^{-1}$, dunque 
+$$
+\bar{f}|_{\rho(r)W}=\tau(r)\circ\bar{f}\circ\rho(r)^{-1}=\tau(r)\circ f\circ\rho(r)^{-1}.
+$$
+Segue che $\bar{f}$ è al più unica. Sia ora $\bar{f}$ l'applicazione lineare definita da $\bar{f}|_{\rho(r)W}=\tau(r)\circ f\circ\rho(r)^{-1}$ per ogni $r\in R$. Mostriamo che $\bar{f}\in\Hom_G(V,Z)$. Sia $v\in V\comma g\in G$; siano $r\in R\comma w\in W$ tali che $v=\rho(r)w$, e siano $r'\in R\comma h\in H$ tali che $gr=r'h$; vale allora
+\begin{align*}
+\bar{f}(\rho(g)v)&=\bar{f}(\rho(g)\rho(r)w)\\
+&=\bar{f}(\rho(r')\rho(h)w)\\
+&=\bar{f}|_{\rho(r')W}(\rho(r')\sigma(h)w)\\
+&=\tau(r')f(\sigma(h)w)\\
+&=\tau(r')\tau(h)f(w)\\
+&=\tau(g)\tau(r)f(\rho(r)^{-1}v)\\
+&=\tau(g)\bar{f}(v).
+\end{align*}
+Inoltre, se $r\in R\comma h\in H$ sono tali che $1=rh$ vale
+$$
+\bar{f}(w)=\bar{f}(\rho(r)\rho(h)w)=\tau(r)f(\sigma(h)w)=\tau(r)\tau(h)f(w)=f(w),
+$$
+ovvero $\bar{f}|_W=f$. Dunque $\bar{f}$ è l'omomorfismo cercato.
 \end{proof}

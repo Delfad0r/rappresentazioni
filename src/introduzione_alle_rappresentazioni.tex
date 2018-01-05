@@ -62,12 +62,12 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}\comma\Rep{\tau}{G}{U}$ rappresen
 Dimostriamo solo la (ii)
 \begin{enumerate}[(i)]
 \addtocounter{enumi}{1}
-\item Sia $\psi:V\dirsum W\to W\dirsum V$ tale che $\psi(v\dirsum w)=w\dirsum v$ per ogni $v\in V\comma w\in W$. $\psi$ è ovviamente un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni.
+\item Sia $\psi:V\dirsum W\to W\dirsum V$ tale che $\psi(v\dirsum w)=w\dirsum v$ per ogni $v\in V\comma w\in W$. $\psi$ è ovviamente un isomorfismo di spazi vettoriali; mostriamo che è anche un omomorfismo di rappresentazioni:
 \begin{align*}
 \psi((\rho+\sigma)(g)(v\dirsum w))&=\psi(\rho(g)v\dirsum\sigma(g)w)\\
 &=\sigma(g)w\dirsum\rho(g)v\\
 &=(\sigma+\rho)(g)(w\dirsum v)\\
-&=(\sigma+\rho)(g)\psi(v\dirsum w)
+&=(\sigma+\rho)(g)\psi(v\dirsum w).
 \end{align*}
 \end{enumerate}
 \end{proof}
@@ -104,19 +104,38 @@ $$
 infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verifica facilmente che $\Theta^{-1}\circ\Theta=\id\comma\Theta\circ\Theta^{-1}=\id$.
 \end{proof}
 
-\section{Sottorappresentazioni e Decomposizioni}
+\section{Sottorappresentazioni e Rappresentazione Quoziente}
 
 \begin{definition}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Un sottospazio $W\subseteq V$ si dice \emph{$G$-stabile} se, per ogni $g\in G$, $W$ è $\rho(g)$-stabile, ovvero $\rho(g)(W)\subseteq W$.
 \end{definition}
 
-\begin{example}\thlabel{loll}
-Se $\Rep{\rho}{G}{V}$ è una rappresentazione e $W\subseteq V$ un sottospazio $G$-stabile, $\rho$ passa al quoziente $V/W$ in modo unico, cioè esiste un'unica rappresentazione $\Rep{\bar\rho}{G}{V/W}$ tale che la proiezione $\pi:V\to V/W$ è un omomorfismo di rappresentazioni. L'unicità è ovvia dalla relazione $\bar\rho(g)\circ\pi=\pi\circ\rho(g)$ e dal fatto che $\pi$ è suriettiva. Per mostrare l'esistenza è necessario (e sufficiente) verificare che per ogni $g\in G$ e per ogni $v,v'\in V$ con $\pi(v)=\pi(v')$ vale $\pi(\rho(g)v)=\pi(\rho(g)v')$: ma
+\begin{proposition}\thlabel{representation-quotient}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Allora esiste un'unica rappresentazione $\Rep{\bar\rho}{G}{V/W}$ tale che la proiezione $\pi:V\to V/W$ è un omomorfismo di rappresentazioni.
+\end{proposition}
+\begin{proof}
+La proiezione $\pi$ è un omomorfismo di rappresentazioni se e solo se per ogni $g\in G\comma v\in V$ vale $\pi(\rho(g)v)=\bar\rho(g)\pi(v)$; essendo $\pi$ suriettiva, segue che $\bar\rho$ è al più unica. La suddetta relazione dimostra anche l'esistenza di $\bar\rho$, a patto di far vedere che $\pi(\rho(g)v)$ non dipende da $v$ ma solo da $\pi(v)$, ovvero che presi comunque $v,v'\in V$ con $v-v'\in W$ vale $\rho(g)v-\rho(g)v'\in W$. Ma $\rho(g)v-\rho(g)v'=\rho(g)(v-v')\in W$, poiché $W$ è $G$-stabile.
+\end{proof}
+
+La rappresentazione $\bar\rho$ così costruita è detta \emph{rappresentazione quoziente}, e gode di un'importante proprietà universale.
+
+\begin{proposition}\thlabel{representation-quotient-universal}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile, $\pi:V\to V/W$ la proiezione, $\Rep{\bar\rho}{G}{V/W}$ la rappresentazione quoziente. Sia $\Rep{\sigma}{G}{Z}$ una rappresentazione, $\varphi\in\Hom(\rho,\sigma)$ un omomorfismo. Allora esiste un'unica applicazione $\bar\varphi\in\Hom(\bar\rho,\sigma)$ che fa commutare il diagramma
 $$
-\pi(\rho(g)v)=\pi(\rho(g)(v'+v-v'))=\pi(\rho(g)v')+\pi(\rho(g)(v-v'))=\pi(\rho(g)v')
+\begin{diagram}
+V\arrow{r}{\varphi}\arrow[swap]{d}{\pi}&Z\\
+V/W\arrow[swap]{ru}{\bar\varphi}
+\end{diagram}
 $$
-poiché $v-v'\in W$, dunque $\rho(g)(v-v')\in W$.
-\end{example}
+ovvero tale che $\varphi=\bar\varphi\circ\pi$.
+\end{proposition}
+\begin{proof}
+Per le proprietà dello spazio vettoriale quoziente esiste un'unica applicazione lineare $\bar\varphi:V/W\to Z$ tale che $\varphi=\bar\varphi\circ\pi$; mostriamo che $\bar\varphi$ è anche un omomorfismo di rappresentazioni. Sia $g\in G\comma v\in V$; allora vale
+$$
+\bar\varphi(\bar\rho(g)\pi(v))=\bar\varphi(\pi(\rho(g)v))=\varphi(\rho(g)v)=\sigma(g)\varphi(v)=\sigma(g)\bar\varphi(\pi(v)).
+$$
+\end{proof}
+
 
 \begin{definition}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Indichiamo con $\Rep{\rho|^W}{G}{W}$ la rappresentazione tale che $\rho|^W(g)=\rho(g)|_W$ per ogni $g\in G$. Diciamo che $\rho|^W$ è una \emph{sottorappresentazione} di $\rho$; se $W\neq\langle0\rangle$ e $W\neq V$ diciamo che $\rho|^W$ è una \emph{sottorappresentazione propria} di $\rho$.
@@ -134,6 +153,8 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\H
 \begin{proof}
 Sia $v\in\ker\varphi$. Allora $\varphi(\rho(g)v)=\sigma(g)\varphi(v)=0$, quindi $\rho(g)v\in\ker\varphi$. Analogamente se $w\in\im\varphi$, allora $w=\varphi(v)$ per un qualche $v\in V$; segue che $\sigma(g)w=\sigma(g)\varphi(v)=\varphi(\rho(g)v)$, quindi $\sigma(g)w\in\im\varphi$.
 \end{proof}
+
+\section{Rappresentazioni Irriducibili e Decomposizioni}
 
 \begin{definition}
 Una rappresentazione non nulla si dice \emph{irriducibile} se non ha sottorappresentazioni proprie.
@@ -620,7 +641,7 @@ u=\sum_{i\in I}\lambda_i\psi(u)\tensor w_i=\psi(u)\tensor\sum_{i\in I}\lambda_i 
 $$
 Scegliendo $\bar{w}=\sum_{i\in I}\lambda_i w_i$ otteniamo $U=V\tensor\bar{w}$, ovvero la tesi.
 \end{proof}
-Sia ora $\langle0\rangle\neq U\subseteq V\tensor W$ un sottospazio $(G\times H)$-invariante. Applicando il Lemma a un sottospazio non nullo di $U$ $(G\times\langle1\rangle)$-stabile minimale otteniamo un $0\neq\bar{w}\in W$ tale che $V\tensor\bar{w}\subseteq U$. Per ogni $v\in V$ definiamo $W(v)=\{w\in W:v\tensor w\in U\}$. Si vede facilmente che $W(v)$ è un sottospazio vettoriale di $W$, non nullo poiché contiene $\bar{w}$, e inoltre $H$-stabile: infatti se $h\in H\comma w\in W(v)$ vale
+Sia ora $\langle0\rangle\neq U\subseteq V\tensor W$ un sottospazio $(G\times H)$-stabile. Applicando il Lemma a un sottospazio non nullo di $U$ $(G\times\langle1\rangle)$-stabile minimale otteniamo un $0\neq\bar{w}\in W$ tale che $V\tensor\bar{w}\subseteq U$. Per ogni $v\in V$ definiamo $W(v)=\{w\in W:v\tensor w\in U\}$. Si vede facilmente che $W(v)$ è un sottospazio vettoriale di $W$, non nullo poiché contiene $\bar{w}$, e inoltre $H$-stabile: infatti se $h\in H\comma w\in W(v)$ vale
 $$
 v\tensor\sigma(h)w=(\rho\tbox\sigma)(1,h)(v\tensor w)\in U
 $$

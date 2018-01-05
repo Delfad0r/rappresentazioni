@@ -10,7 +10,7 @@ X\arrow{r}{f}\arrow[swap]{d}{e}&Z\\
 V\arrow[swap]{ru}{\bar{f}}
 \end{diagram}
 $$
-ovvero tale che $f=\bar{f}\circ e$
+ovvero tale che $f=\bar{f}\circ e$.
 \end{definition}
 
 \begin{remark}
@@ -78,14 +78,14 @@ Sia $U$ lo spazio vettoriale libero su $V\times W$, con $\{e(v,w)\}_{(v,w)\in V\
 \begin{align*}
 K=\langle&e(\alpha v_1+\beta v_2,w_1)-\alpha e(v_1,w_1)-\beta e(v_2,w_1),\\&e(v_1,\alpha w_1+\beta w_2)-\alpha e(v_1, w_1)-\beta e(v_1, w_2)\\&:v_1,v_2\in V,w_1,w_2\in W,\alpha,\beta\in\mathbb{K}\rangle.
 \end{align*}
-Poniamo $V\tensor W=U/K$ con $\tensor=\pi\circ e:V\times W\to V\tensor W$, dove $\pi$ è la proiezione da $U$ su $U/K$. Dalla definizione di $K$ segue banalmente che $\tensor$ è bilineare. Sia ora $Z$ uno spazio vettoriale, $h:V\times W\to Z$ un'applicazione bilineare; dobbiamo trovare un'applicazione lineare $\bar h:V\tensor W\to Z$ tale che $h=\bar h\circ\tensor$. Poiché $U$ è lo spazio vettoriale libero su $V\times W$, esiste un'unica applicazione lineare $k:U\to Z$ tale che $h=k\circ e$. Essendo $h$ bilineare, si vede facilmente che $K\subseteq\ker k$. Allora, per il teorema di omomorfismo, esiste un'unica applicazione lineare $\bar h:U/K\to Z$ tale che $k=\bar h\circ\pi$. Segue che $\bar h\circ \tensor=\bar h\circ\pi\circ e=k\circ e=h$.
+Poniamo $V\tensor W=U/K$ con $\tensor=\pi\circ e:V\times W\to V\tensor W$, dove $\pi$ è la proiezione da $U$ su $U/K$. Dalla definizione di $K$ segue banalmente che $\tensor$ è bilineare. Sia ora $Z$ uno spazio vettoriale, $h:V\times W\to Z$ un'applicazione bilineare; dobbiamo trovare un'applicazione lineare $\bar h:V\tensor W\to Z$ tale che $h=\bar h\circ\tensor$. Poiché $U$ è lo spazio vettoriale libero su $V\times W$, esiste un'unica applicazione lineare $k:U\to Z$ tale che $h=k\circ e$. Essendo $h$ bilineare, si vede facilmente che $K\subseteq\ker k$. Allora, per le proprietà dello spazio vettoriale quoziente, esiste un'unica applicazione lineare $\bar h:U/K\to Z$ tale che $k=\bar h\circ\pi$. Segue che $\bar h\circ \tensor=\bar h\circ\pi\circ e=k\circ e=h$.
 $$
 \begin{diagram}
 V\times W\arrow{rr}{h}\arrow{rd}{e}\arrow[bend right=45,swap]{rrd}{\tensor}&&Z\\
 &U\arrow{ru}{k}\arrow{r}{\pi}&V\tensor W\arrow[swap]{u}{\bar{h}}
 \end{diagram}
 $$
-Inoltre $\bar h$ è unica: sia infatti $\bar{h'}$ un'applicazione lineare da $V\tensor W$ in $Z$ che soddisfa $h=\bar{h'}\circ\tensor$; allora $h=(\bar{h'}\circ\pi)\circ e$ da cui (per l'unicità di $k$) $\bar{h'}\circ e=k$, pertanto (per l'unicità di $\bar h$) $\bar{h'}=\bar h$.
+Inoltre $\bar h$ è unica: sia infatti $\bar{h}'$ un'applicazione lineare da $V\tensor W$ in $Z$ che soddisfa $h=\bar{h}'\circ\tensor$; allora $h=(\bar{h}'\circ\pi)\circ e$ da cui (per l'unicità di $k$) $\bar{h}'\circ e=k$, pertanto (per l'unicità di $\bar h$) $\bar{h}'=\bar h$.
 \end{proof}
 
 \begin{proposition}\thlabel{tensor-space-uniqueness}
@@ -104,10 +104,14 @@ V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle.
 $$
 \end{proposition}
 \begin{proof}
-Sia $Z=\langle v\tensor w:v\in V, w\in W\rangle\subseteq V\tensor W$. Consideriamo l'applicazione bilineare nulla $0|_{V\times W}:V\times W\to (V\tensor W)/Z$. È evidente che $0|_{V\times W}=0|_{V\tensor W}\circ\tensor$. D'altro canto, se indichiamo con $\pi$ la proiezione da $V\tensor W$ su $(V\tensor W)/Z$, vale $\pi(v\tensor w)=0$ per ogni $v\in V,w\in W$, dunque $0|_{V\times W}=\pi\circ\tensor$. Segue che il diagramma
+Sia 
 $$
-\begin{diagram}[ampersand replacement = \&]
-V\times W\arrow{r}{0|_{V\times W}}\arrow[swap]{d}{\tensor}\&(V\tensor W)/Z\\
+Z=\langle v\tensor w:v\in V, w\in W\rangle\subseteq V\tensor W.
+$$
+Consideriamo l'applicazione bilineare nulla $0|_{V\times W}:V\times W\to (V\tensor W)/Z$. È evidente che $0|_{V\times W}=0|_{V\tensor W}\circ\tensor$. D'altro canto, se indichiamo con $\pi$ la proiezione da $V\tensor W$ su $(V\tensor W)/Z$, vale $\pi(v\tensor w)=0$ per ogni $v\in V,w\in W$, dunque $0|_{V\times W}=\pi\circ\tensor$. Segue che il diagramma
+$$
+\begin{diagram}
+V\times W\arrow{r}{0|_{V\times W}}\arrow[swap]{d}{\tensor}&(V\tensor W)/Z\\
 V\tensor W\arrow{ru}{\pi}\arrow[bend right=15,swap]{ru}{0|_{V\tensor W}}
 \end{diagram}
 $$
@@ -115,10 +119,10 @@ commuta, dunque $\pi=0|_{V\tensor W}$, ovvero $Z=V\tensor W$.
 \end{proof}
 
 \begin{proposition}\thlabel{tensor-space-basis}
-Siano $V\comma W$ spazi vettoriali con basi, rispettivamente, $\{v_i\}_{i\in I}$ e $\{w_j\}_{j\in J}$. Allora $\{v_i\tensor w_j\}_{(i,j)\in I\times J}$ è una base di $V\tensor W$.
+Siano $V\comma W$ spazi vettoriali con basi, rispettivamente, $\{v_i\}_{i\in I}$ e $\{w_j\}_{j\in J}$. Allora $\mathcal{B}=\{v_i\tensor w_j\}_{(i,j)\in I\times J}$ è una base di $V\tensor W$.
 \end{proposition}
 \begin{proof}
-Se $v\in V$ con $v=\sum_{i\in I}\alpha_i v_i$ e $w\in W$ con $w=\sum_{j\in J}\beta_j w_j$, allora
+Mostriamo innanzitutto che $\mathcal{B}$ è un insieme di generatori: se $v\in V$ con $v=\sum_{i\in I}\alpha_i v_i$ e $w\in W$ con $w=\sum_{j\in J}\beta_j w_j$, allora
 $$
 v\tensor w=\sum_{(i,j)\in I\times J}\alpha_i\beta_j(v_i\tensor w_j)
 $$
@@ -126,7 +130,7 @@ per bilinearità di $\tensor$. Dalla \thref{tensor-space-generated} segue che
 $$
 V\tensor W=\langle v\tensor w:v\in V, w\in W\rangle=\langle v_i\tensor w_j:(i,j)\in I\times J\rangle.
 $$
-Quindi i vettori $\{v_i\tensor w_j\}$ generano; mostriamo ora che sono linearmente indipendenti. Per ogni $i\in I,j\in J$ sia $\psi_{ij}$ l'applicazione lineare
+Mostriamo ora che gli elementi di $\mathcal{B}$ sono linearmente indipendenti. Per ogni $i\in I,j\in J$ sia $\psi_{ij}$ l'applicazione lineare
 \begin{alignat*}{2}
 \psi_{ij}:V&\tensor W&&\longrightarrow\mathbb{K}\\
 v&\tensor w&&\longmapsto v_i^*(v)w_j^*(w)
@@ -137,9 +141,9 @@ $$
 $$
 Allora per ogni $h\in I,k\in J$ vale
 $$
-0=\psi_{hk}\biggl(\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)\biggr)=\sum_{(i,j)\in I\times J}a_{ij}\psi_{hk}(v_i\tensor w_j)=a_{hk},
+0=\psi_{hk}\biggl(\sum_{(i,j)\in I\times J}a_{ij}(v_i\tensor w_j)\biggr)=\sum_{(i,j)\in I\times J}a_{ij}\psi_{hk}(v_i\tensor w_j)=a_{hk}.
 $$
-quindi i vettori $\{v_i\tensor w_j\}$ sono indipendenti.
+Segue che $\mathcal{B}$ è una base di $V\tensor W$.
 \end{proof}
 
 \begin{corollary}\thlabel{tensor-space-dimension}
@@ -416,7 +420,7 @@ Sia $n\in\mathbb{N}$ un intero, $V$ uno spazio vettoriale con base $\{e_i\}_{i\i
 \end{enumerate}
 \end{proposition}
 \begin{proof}
-Dimostriamo solo la (ii). Mostriamo innanzitutto che $\mathcal{B}_\ExtP$ è un sistema di generatori. Per la \thref{symmetric-exterior-power-generated} basta mostrare che ogni elemento della forma $v_1\wedge\ldots\wedge v_n$ può scriversi come combinazione lineare di elementi di $\mathcal{B}_\ExtP$. Per ogni $j\in\{1,\ldots,n\}$ scriviamo $v_j=\sum_{i\in I}\alpha_{ji}e_i$. Allora per $n$-linearità di $\lambda$ abbiamo
+Dimostriamo solo la (ii). Mostriamo innanzitutto che $\mathcal{B}_\ExtP$ è un insieme di generatori. Per la \thref{symmetric-exterior-power-generated} basta mostrare che ogni elemento della forma $v_1\wedge\ldots\wedge v_n$ può scriversi come combinazione lineare di elementi di $\mathcal{B}_\ExtP$. Per ogni $j\in\{1,\ldots,n\}$ scriviamo $v_j=\sum_{i\in I}\alpha_{ji}e_i$. Allora per $n$-linearità di $\lambda$ abbiamo
 $$
 v_1\wedge\ldots\wedge v_n=\sum_{i_1,\ldots,i_n\in I}\alpha_{1i_i}\cdots\alpha_{ni_n}(e_{i_1}\wedge\ldots\wedge e_{i_n}).
 $$
