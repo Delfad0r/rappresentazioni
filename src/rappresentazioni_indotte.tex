@@ -208,7 +208,7 @@ Per snellire la notazione, scriveremo $\Ind f$ in luogo di $\Ind_H^G f$ e $\Res 
 Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione. Allora $\chi_{\Ind\sigma}=\Ind\chi_\sigma$.
 \end{proposition}
 \begin{proof}
-Sia $\Rep{\rho=\Ind\sigma}{G}{V}$, e sia $R$ un insieme di rappresentanti di $G/H$. Per la \thref{induced-representation-dirsum} possiamo supporre $V=\Dirsum_{r\in R}\rho(r)W$. Osserviamo che, essendo $W$ $H$-stabile, , $\rho(g)W$ dipende solo dalla classe di $g$ in $G/H$; in particolare, $\rho(g)W=W$ se e solo se $g\in H$. Allora per ogni $g\in G$ vale
+Sia $\Rep{\rho=\Ind\sigma}{G}{V}$, e sia $R$ un insieme di rappresentanti di $G/H$. Per la \thref{induced-representation-dirsum} possiamo supporre $V=\Dirsum_{r\in R}\rho(r)W$. Osserviamo che, essendo $W$ $H$-stabile, $\rho(g)W$ dipende solo dalla classe di $g$ in $G/H$; in particolare, $\rho(g)W=W$ se e solo se $g\in H$. Allora per ogni $g\in G$ vale
 \begin{align*}
 \chi_\rho(g)&=\tr\rho(g)\\
 &=\sum_{\substack{r\in R\\\rho(gr)W=\rho(r)W}}\tr\rho(g)|_{\rho(r)W}\\
@@ -223,8 +223,37 @@ dove abbiamo utilizzato la proprietà $\tr(f)=\tr(h^{-1}\circ f\circ h)$. Sia or
 \Ind\chi_\sigma(g)&=\frac{1}{|H|}\sum_{\substack{s\in S\\s^{-1}gs\in H}}\chi_\sigma(s^{-1}gs)\\
 &=\frac{1}{|H|}\sum_{h\in H}\sum_{\substack{r\in R\\r^{-1}gr\in H}}\chi_\sigma(r^{-1}gr)\\
 &=\sum_{\substack{r\in R\\r^{-1}gr\in H}}\chi_\sigma(r^{-1}gr)\\
-&=\chi_\rho(g)
+&=\chi_\rho(g).
 \end{align*}
-
 \end{proof}
 
+Dato un gruppo $G$, $\Fun{G}{C}$ è un $\mathbb{C}$-spazio vettoriale, su cui abbiamo considerato la forma hermitiana $\vs{\cdot}{\cdot}_G$; inoltre $\Cl(G)$ è un sottospazio vettoriale di $\Fun{G}{C}$, e per la \thref{character-irreducible-class-functions-basis} i caratteri delle rappresentazioni irriducibili di $G$ sono una base ortonormale di $\Cl(G)$. Se $H\le G$ è un sottogruppo, è immediato verificare che $\Ind:\Fun{H}{\mathbb{C}}\to\Fun{G}{\mathbb{C}}$ e $\Res:\Fun{G}{\mathbb{C}}\to\Fun{H}{\mathbb{C}}$ sono applicazioni lineari. Inoltre $\Res(\Cl(G))\subseteq\Cl(H)$, ovvero $\Res$ manda funzioni di classe di $G$ in funzioni di classe di $H$. Vale una proprietà analoga per $\Ind$.
+
+\begin{proposition}\thlabel{induced-class-function}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo. Allora $\Ind(\Cl(H))\subseteq\Cl(G)$.
+\end{proposition}
+\begin{proof}
+Poiché le rappresentazioni irriducibili di $H$ sono una base di $\Cl(H)$, è sufficiente mostrare che per ogni $\sigma\in\Irr(H)$ vale $\Ind\chi_\sigma\in\Cl(G)$, ma ciò segue banalmente dalla \thref{induced-representation-character}.
+\end{proof}
+
+\begin{proposition}[Reciprocità di Frobenius]\thlabel{frobenius-reciprocity}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\varphi\in\Cl(G)\comma\psi\in\Cl(H)$. Allora
+$$
+\vs{\varphi}{\Ind\psi}_G=\vs{\Res\varphi}{\psi}_H.
+$$
+Equivalentemente, $\Ind$ e $\Res$ ristretti alle funzioni di classe sono operatori aggiunti.
+\end{proposition}
+\begin{proof}
+Poiché i caratteri delle rappresentazioni irriducibili sono una base delle funzioni di classe, è sufficiente verificare la tesi per $\varphi=\chi_\rho$ e $\psi=\chi_\sigma$ con $\rho\in\Irr(G)\comma\sigma\in\Irr(H)$. Vale
+$$
+\vs{\chi_\rho}{\Ind\chi_\sigma}_G=\vs{\chi_\rho}{\chi_{\Ind\sigma}}_G=\dim\Hom(\rho,\Ind\sigma)
+$$
+per la \thref{induced-representation-character} e il \thref{character-vs-dim-homomorphisms}. Analogamente
+$$
+\vs{\Res\chi_\rho}{\chi_\sigma}_H=\vs{\chi_{\Res\rho}}{\chi_\sigma}_H=\dim\Hom(\Res\rho,\sigma).
+$$
+Come osservato precedentemente $\Hom(\rho,\Ind\sigma)\iso\Hom(\Res\rho,\sigma)$, dunque
+$$
+\vs{\chi_\rho}{\Ind\chi_\sigma}_G=\vs{\Res\chi_\rho}{\chi_\sigma}_H.
+$$
+\end{proof}

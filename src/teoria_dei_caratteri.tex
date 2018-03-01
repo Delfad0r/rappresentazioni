@@ -142,6 +142,16 @@ per la \thref{character-properties} e la \thref{character-vs-trivial}. $G$ agisc
 \end{align*}
 \end{proof}
 
+\begin{corollary}\thlabel{character-vs-dim-homomorphisms}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni. Allora
+$$
+\vs{\chi_\rho}{\chi_\sigma}=\dim\Hom(\rho,\sigma)
+$$
+\end{corollary}
+\begin{proof}
+La tesi è vera se $\rho\comma\sigma$ sono irriducibili (\thref{character-irreducible-orthogonal}), e si estende a $\rho\comma\sigma$ qualunque per completa riducibilità.
+\end{proof}
+
 \begin{corollary}\thlabel{character-representation-decomposition}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
 $$
@@ -199,7 +209,7 @@ Sia $G$ un gruppo, $X$ un insieme, $f:G\to X$ una funzione. Si dice che $f$ è u
 
 Dato un gruppo $G$, indichiamo con $\Cl(G)$ il sottospazio vettoriale di $\Fun{G}{\mathbb{C}}$ costituito dalle funzioni di classe. Sappiamo dalla \thref{character-properties} che, per ogni rappresentazione $\rho$, $\chi_\rho\in\Cl(G)$.
 
-\begin{proposition}
+\begin{proposition}\thref{character-irreducible-class-functions-basis}
 Sia $G$ un gruppo. Allora
 $$
 \mathcal{B}=\{\chi_\rho\}_{\rho\in\Irr(G)}
