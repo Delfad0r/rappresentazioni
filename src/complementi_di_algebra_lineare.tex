@@ -85,7 +85,7 @@ V\times W\arrow{rr}{h}\arrow{rd}{e}\arrow[bend right=45,swap]{rrd}{\tensor}&&Z\\
 &U\arrow{ru}{k}\arrow{r}{\pi}&V\tensor W\arrow[swap]{u}{\bar{h}}
 \end{diagram}
 $$
-Inoltre $\bar h$ è unica: sia infatti $\bar{h}'$ un'applicazione lineare da $V\tensor W$ in $Z$ che soddisfa $h=\bar{h}'\circ\tensor$; allora $h=(\bar{h}'\circ\pi)\circ e$ da cui (per l'unicità di $k$) $\bar{h}'\circ e=k$, pertanto (per l'unicità di $\bar h$) $\bar{h}'=\bar h$.
+Inoltre $\bar h$ è unica: sia infatti $\bar{h}'$ un'applicazione lineare da $V\tensor W$ in $Z$ che soddisfa $h=\bar{h}'\circ\tensor$; allora $h=(\bar{h}'\circ\pi)\circ e$ da cui (per l'unicità di $k$) $\bar{h}'\circ \pi=k$, pertanto (per l'unicità di $\bar h$) $\bar{h}'=\bar h$.
 \end{proof}
 
 \begin{proposition}\thlabel{tensor-space-uniqueness}
@@ -549,7 +549,7 @@ Sia $V$ uno spazio vettoriale. Supponiamo $\ch\mathbb{K}\neq 2$. Allora $V\tenso
 Sia $\{e_i\}_{i\in I}$ una base di $V$, con $I$ totalmente ordinato. Siano
 \begin{align*}
 \mathcal{B}_\SymP&=\left\{\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)\right\}_{i\le j}\\
-\mathcal{B}_\ExtP&=\left\{\frac{1}{2}(e_i\tensor e_j-e_j\tensor r_i)\right\}_{i<j}\\
+\mathcal{B}_\ExtP&=\left\{\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)\right\}_{i<j}\\
 \mathcal{B}&=\mathcal{B}_\SymP\cup\mathcal{B}_\ExtP;
 \end{align*}
 mostriamo che $\mathcal{B}$ è una base di $V\tensor V$. Sicuramente è un insieme di generatori: vale infatti
@@ -560,8 +560,8 @@ e_i\tensor e_j&=\frac{1}{2}(e_j\tensor e_i+e_i\tensor e_j)-\frac{1}{2}(e_j\tenso
 \end{align*}
 Inoltre gli elementi di $\mathcal{B}$ sono linearmente indipendenti: siano $\alpha_{ij},\beta_{ij}\in\mathbb{K}$ coefficienti tali che
 \begin{align*}
-0&=\sum_{i\le j}\alpha_i\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\sum_{i<j}\beta_{ij}\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)\\
-&=\sum_{i<j}\frac{1}{2}(\alpha_{ij}+\beta_{ij})(e_i\tensor e_j)+\sum_{i\in I}\alpha_{ii}(e_i\tensor e_i)+\sum_{j>i}\frac{1}{2}(\alpha_{ij}-\beta_{ij})(e_i\tensor e_j).
+0&=\sum_{i\le j}\alpha_{ij}\frac{1}{2}(e_i\tensor e_j+e_j\tensor e_i)+\sum_{i<j}\beta_{ij}\frac{1}{2}(e_i\tensor e_j-e_j\tensor e_i)\\
+&=\sum_{i<j}\frac{1}{2}(\alpha_{ij}+\beta_{ij})(e_i\tensor e_j)+\sum_{i\in I}\alpha_{ii}(e_i\tensor e_i)+\sum_{i>j}\frac{1}{2}(\alpha_{ji}-\beta_{ji})(e_i\tensor e_j).
 \end{align*}
 Allora, essendo $\{e_i\tensor e_j\}_{i,j\in I}$ una base di $V\tensor V$, $\alpha_{ij}$ e $\beta_{ij}$ sono nulli.\\
 Consideriamo l'applicazione lineare

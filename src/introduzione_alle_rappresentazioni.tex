@@ -110,33 +110,6 @@ infatti $\Theta^{-1}$ è ben definita per le stesse ragioni di sopra, e si verif
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Un sottospazio $W\subseteq V$ si dice \emph{$G$-stabile} se, per ogni $g\in G$, $W$ è $\rho(g)$-stabile, ovvero $\rho(g)(W)\subseteq W$.
 \end{definition}
 
-\begin{proposition}\thlabel{representation-quotient}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Allora esiste un'unica rappresentazione $\Rep{\bar\rho}{G}{V/W}$ tale che la proiezione $\pi:V\to V/W$ è un omomorfismo di rappresentazioni.
-\end{proposition}
-\begin{proof}
-La proiezione $\pi$ è un omomorfismo di rappresentazioni se e solo se per ogni $g\in G\comma v\in V$ vale $\pi(\rho(g)v)=\bar\rho(g)\pi(v)$; essendo $\pi$ suriettiva, segue che $\bar\rho$ è al più unica. La suddetta relazione dimostra anche l'esistenza di $\bar\rho$, a patto di far vedere che $\pi(\rho(g)v)$ non dipende da $v$ ma solo da $\pi(v)$, ovvero che presi comunque $v,v'\in V$ con $v-v'\in W$ vale $\rho(g)v-\rho(g)v'\in W$. Ma $\rho(g)v-\rho(g)v'=\rho(g)(v-v')\in W$, poiché $W$ è $G$-stabile.
-\end{proof}
-
-La rappresentazione $\bar\rho$ così costruita è detta \emph{rappresentazione quoziente}, e gode di un'importante proprietà universale.
-
-\begin{proposition}\thlabel{representation-quotient-universal}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile, $\pi:V\to V/W$ la proiezione, $\Rep{\bar\rho}{G}{V/W}$ la rappresentazione quoziente. Sia $\Rep{\sigma}{G}{Z}$ una rappresentazione, $\varphi\in\Hom(\rho,\sigma)$ un omomorfismo. Allora esiste un'unica applicazione $\bar\varphi\in\Hom(\bar\rho,\sigma)$ che fa commutare il diagramma
-$$
-\begin{diagram}
-V\arrow{r}{\varphi}\arrow[swap]{d}{\pi}&Z\\
-V/W\arrow[swap]{ru}{\bar\varphi}
-\end{diagram}
-$$
-ovvero tale che $\varphi=\bar\varphi\circ\pi$.
-\end{proposition}
-\begin{proof}
-Per le proprietà dello spazio vettoriale quoziente esiste un'unica applicazione lineare $\bar\varphi:V/W\to Z$ tale che $\varphi=\bar\varphi\circ\pi$; mostriamo che $\bar\varphi$ è anche un omomorfismo di rappresentazioni. Sia $g\in G\comma v\in V$; allora vale
-$$
-\bar\varphi(\bar\rho(g)\pi(v))=\bar\varphi(\pi(\rho(g)v))=\varphi(\rho(g)v)=\sigma(g)\varphi(v)=\sigma(g)\bar\varphi(\pi(v)).
-$$
-\end{proof}
-
-
 \begin{definition}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Indichiamo con $\Rep{\rho|^W}{G}{W}$ la rappresentazione tale che $\rho|^W(g)=\rho(g)|_W$ per ogni $g\in G$. Diciamo che $\rho|^W$ è una \emph{sottorappresentazione} di $\rho$; se $W\neq\langle0\rangle$ e $W\neq V$ diciamo che $\rho|^W$ è una \emph{sottorappresentazione propria} di $\rho$.
 \end{definition}
@@ -153,6 +126,40 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\H
 \begin{proof}
 Sia $v\in\ker\varphi$. Allora $\varphi(\rho(g)v)=\sigma(g)\varphi(v)=0$, quindi $\rho(g)v\in\ker\varphi$. Analogamente se $w\in\im\varphi$, allora $w=\varphi(v)$ per un qualche $v\in V$; segue che $\sigma(g)w=\sigma(g)\varphi(v)=\varphi(\rho(g)v)$, quindi $\sigma(g)w\in\im\varphi$.
 \end{proof}
+
+\begin{proposition}\thlabel{representation-quotient}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile. Allora esiste un'unica rappresentazione $\Rep{\bar\rho}{G}{V/W}$ tale che la proiezione $\pi:V\to V/W$ è un omomorfismo di rappresentazioni.
+\end{proposition}
+\begin{proof}
+La proiezione $\pi$ è un omomorfismo di rappresentazioni se e solo se per ogni $g\in G\comma v\in V$ vale $\pi(\rho(g)v)=\bar\rho(g)\pi(v)$; essendo $\pi$ suriettiva, segue che $\bar\rho$ è al più unica. La suddetta relazione dimostra anche l'esistenza di $\bar\rho$, a patto di far vedere che $\pi(\rho(g)v)$ non dipende da $v$ ma solo da $\pi(v)$, ovvero che presi comunque $v,v'\in V$ con $v-v'\in W$ vale $\rho(g)v-\rho(g)v'\in W$. Ma $\rho(g)v-\rho(g)v'=\rho(g)(v-v')\in W$, poiché $W$ è $G$-stabile.
+\end{proof}
+
+La rappresentazione $\bar\rho$ così costruita è detta \emph{rappresentazione quoziente}, e gode di un'importante proprietà universale.
+
+\begin{proposition}\thlabel{representation-quotient-universal}
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $G$-stabile, $\pi:V\to V/W$ la proiezione, $\Rep{\bar\rho}{G}{V/W}$ la rappresentazione quoziente. Sia $\Rep{\sigma}{G}{Z}$ una rappresentazione, $\varphi\in\Hom(\rho,\sigma)$ un omomorfismo tale che $\ker\varphi\subseteq W$. Allora esiste un'unica applicazione $\bar\varphi\in\Hom(\bar\rho,\sigma)$ che fa commutare il diagramma
+$$
+\begin{diagram}
+V\arrow{r}{\varphi}\arrow[swap]{d}{\pi}&Z\\
+V/W\arrow[swap]{ru}{\bar\varphi}
+\end{diagram}
+$$
+ovvero tale che $\varphi=\bar\varphi\circ\pi$.
+\end{proposition}
+\begin{proof}
+Per le proprietà dello spazio vettoriale quoziente esiste un'unica applicazione lineare $\bar\varphi:V/W\to Z$ tale che $\varphi=\bar\varphi\circ\pi$; mostriamo che $\bar\varphi$ è anche un omomorfismo di rappresentazioni. Sia $g\in G\comma v\in V$; allora vale
+$$
+\bar\varphi(\bar\rho(g)\pi(v))=\bar\varphi(\pi(\rho(g)v))=\varphi(\rho(g)v)=\sigma(g)\varphi(v)=\sigma(g)\bar\varphi(\pi(v)).
+$$
+\end{proof}
+
+\begin{corollary}[Teorema di Omomorfismo]\thlabel{representation-quotient-hom-theorem}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\Hom(\rho,\sigma)$. Allora $V/\ker\varphi\isor\im\varphi$ (dove su $V/\ker\varphi$ agisce la rappresentazione quoziente di $\rho$ e su $\im\varphi$ agisce $\sigma|^{\im\varphi}$).
+\end{corollary}
+\begin{proof}
+La tesi segue immediatamente dalla \thref{representation-quotient-universal} e dal teorema di omomorfismo per spazi vettoriali.
+\end{proof}
+
 
 \section{Rappresentazioni Irriducibili e Decomposizioni}
 

@@ -33,7 +33,7 @@ e sia
 $$
 K=\langle e_{gh}\tensor w-e_g\tensor\sigma(h)w:w\in W,g\in G,h\in H\rangle.
 $$
-Osserviamo che $K$ è un sottospazio $G$-stabile di $\mathbb{K}[G]$: infatti per ogni $g,g'\in G\comma h\in H\comma w\in W$ vale
+Osserviamo che $K$ è un sottospazio $G$-stabile di $\mathbb{K}[G]\tensor W$: infatti per ogni $g,g'\in G\comma h\in H\comma w\in W$ vale
 $$
 (\mathcal{R}\tensor\triv)(g')(e_{gh}\tensor w-e_g\tensor\sigma(h)w)=e_{g'gh}\tensor w-e_{g'g}\tensor\sigma(h)w\in K.
 $$
@@ -159,10 +159,10 @@ $$
 $$
 \end{corollary}
 
-La \thref{induced-representation-basis} implica che $\iota$ è iniettiva: potremo quindi assumere, senza perdere di generalità, che $\sigma$ sia una sottorappresentazione di $\Ind\sigma$ (e che $\iota$ sia l'identità).
+La \thref{induced-representation-basis} implica che $\iota$ è iniettiva: potremo quindi assumere, senza perdere di generalità, che $W$ sia un sottospazio di $V$ (e che $\iota$ sia l'identità).
 
 \begin{proposition}\thlabel{induced-representation-dirsum}
-Sia $G$ un gruppo, $H\le G$ un sottogruppo di indice finito, $R\subseteq G$ un insieme di rappresentanti di $G/H$. Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ una sottorappresentazione, $\sigma=\Res\rho|^W$. Allora sono equivalenti:
+Sia $G$ un gruppo, $H\le G$ un sottogruppo di indice finito, $R\subseteq G$ un insieme di rappresentanti di $G/H$. Sia $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ un sottospazio $H$-stabile, $\sigma=\Res\rho|^W$. Allora sono equivalenti:
 \begin{enumerate}[(i)]
 \item $\rho$ è indotta da $\sigma$;
 \item $V=\Dirsum_{r\in R}\rho(r)W$.
@@ -189,3 +189,42 @@ $$
 $$
 ovvero $\bar{f}|_W=f$. Dunque $\bar{f}$ è l'omomorfismo cercato.
 \end{proof}
+
+\section{Funzioni Indotte}
+Da qui alla fine del capitolo ci limiteremo a considerare (come già avevamo fatto con la teoria dei caratteri) rappresentazioni complesse di grado finito su gruppi finiti.
+
+\begin{definition}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $f\in\Fun{H}{\mathbb{C}}$. Si definisce \emph{funzione indotta} da $f$ la funzione $\Ind_H^Gf\in\Fun{G}{\mathbb{C}}$ definita da
+$$
+(\Ind_H^Gf)(g)=\frac{1}{|H|}\sum_{\substack{s\in G\\s^{-1}gs\in H}}f(s^{-1}gs)
+$$
+\end{definition}
+
+Se $G$ è un gruppo, $H\le G$ un sottogruppo, $k\in\Fun{G}{\mathbb{C}}$ una funzione, indichiamo con $\Res_H^Gk$ la funzione $k|_H\in\Fun{H}{\mathbb{C}}$.\\
+Per snellire la notazione, scriveremo $\Ind f$ in luogo di $\Ind_H^G f$ e $\Res k$ in luogo di $\Res_H^G k$ quando non vi fossero rischi di ambiguità.\\
+È evidente che, se $\Rep{\rho}{G}{V}$ è una rappresentazione, vale $\Res\chi_\rho=\chi_{\Res\rho}$. Vale una proprietà analoga per le rappresentazioni indotte.
+
+\begin{proposition}\thlabel{induced-representation-character}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione. Allora $\chi_{\Ind\sigma}=\Ind\chi_\sigma$.
+\end{proposition}
+\begin{proof}
+Sia $\Rep{\rho=\Ind\sigma}{G}{V}$, e sia $R$ un insieme di rappresentanti di $G/H$. Per la \thref{induced-representation-dirsum} possiamo supporre $V=\Dirsum_{r\in R}\rho(r)W$. Osserviamo che, essendo $W$ $H$-stabile, , $\rho(g)W$ dipende solo dalla classe di $g$ in $G/H$; in particolare, $\rho(g)W=W$ se e solo se $g\in H$. Allora per ogni $g\in G$ vale
+\begin{align*}
+\chi_\rho(g)&=\tr\rho(g)\\
+&=\sum_{\substack{r\in R\\\rho(gr)W=\rho(r)W}}\tr\rho(g)|_{\rho(r)W}\\
+&=\sum_{\substack{r\in R\\\rho(r^{-1}gr)W=W}}\tr\rho(g)|_{\rho(r)W}\\
+&=\sum_{\substack{r\in R\\r^{-1}gr\in H}}\tr\rho(g)|_{\rho(r)W}\\
+&=\sum_{\substack{r\in R\\r^{-1}gr\in H}}\tr\left(\rho(r)^{-1}|_{\rho(r)W}\circ\rho(g)|_{\rho(r)W}\circ\rho(r)|_W\right)\\
+&=\sum_{\substack{r\in R\\r^{-1}gr\in H}}\tr\rho(r^{-1}gr)|_W\\
+&=\sum_{\substack{r\in R\\r^{-1}gr\in H}}\chi_\sigma(r^{-1}gr)
+\end{align*}
+dove abbiamo utilizzato la proprietà $\tr(f)=\tr(h^{-1}\circ f\circ h)$. Sia ora $s\in G$; $s$ si scrive in modo unico come $s=rh$ con $r\in R\comma h\in H$. Osserviamo che $s^{-1}gs=h^{-1}r^{-1}grh$, quindi $s^{-1}gs\in H$ se e solo se $r^{-1}gr\in H$, e in tal caso $\chi_\sigma(s^{-1}gs)=\chi_\sigma(r^{-1}gr)$ (il carattere è una funzione di classe). Segue che
+\begin{align*}
+\Ind\chi_\sigma(g)&=\frac{1}{|H|}\sum_{\substack{s\in S\\s^{-1}gs\in H}}\chi_\sigma(s^{-1}gs)\\
+&=\frac{1}{|H|}\sum_{h\in H}\sum_{\substack{r\in R\\r^{-1}gr\in H}}\chi_\sigma(r^{-1}gr)\\
+&=\sum_{\substack{r\in R\\r^{-1}gr\in H}}\chi_\sigma(r^{-1}gr)\\
+&=\chi_\rho(g)
+\end{align*}
+
+\end{proof}
+
