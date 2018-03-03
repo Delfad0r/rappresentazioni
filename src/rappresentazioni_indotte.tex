@@ -88,10 +88,28 @@ La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness}
 
 D'ora in poi parleremo dunque \emph{della} rappresentazione indotta da una rappresentazione, dato che abbiamo dimostrato che questa esiste ed è unica a meno di isomorfismo.
 
+\begin{proposition}\thlabel{induced-representation-sum}
+Sia $G$ un gruppo, $H\le G$ un sottogruppo, $\Rep{\sigma_1}{H}{W_1}\comma\Rep{\sigma_2}{H}{W_2}$ rappresentazioni. Allora
+$$
+\Ind(\sigma_1+\sigma_2)=\Ind\sigma_1+\Ind\sigma_2.
+$$
+\end{proposition}
+\begin{proof}
+Sia $\Rep{\rho_i}{G}{V_i}$ la rappresentazione indotta da $\sigma_i$ con applicazione associata $\iota_i$, per $i\in\{1,2\}$. Mostriamo che $\rho_1+\rho_2$ è la rappresentazione indotta da $\sigma_1+\sigma_2$ con applicazione associata $\iota=\iota_1\dirsum\iota_2$. Sia $\Rep{\tau}{G}{Z}$ una rappresentazione, $f\in\Hom_H(W_1\dirsum W_2,Z)$. Per la \thref{representation-sum-homomorphisms} possiamo scrivere $f=f_1\dirsum f_2$ con $f_i\in\Hom_H(W_i,Z)$ per $i\in\{1,2\}$. Sia $\bar{f}_i\in\Hom_G(V_i,Z)$ l'unico omomorfismo tale che $f_i=\bar{f_i}\circ\iota_i$ per $i\in\{1,2\}$, e sia $\bar{f}=\bar{f}_1\dirsum\bar{f}_2\in\Hom_G(V_1\dirsum V_2,Z)$. Vale
+$$
+\bar{f}\circ\iota=(\bar{f}_1\dirsum\bar{f}_2)\circ(\iota_1\dirsum\iota_2)=(\bar{f}_1\circ\iota_1)\dirsum(\bar{f}_2\circ\iota_2)=f_1\dirsum f_2=f.
+$$
+Sia ora $\bar{f}'\in\Hom_G(V_1\dirsum V_2,Z)$ tale che $\bar{f}'\circ\iota=f$. Per la \thref{representation-sum-homomorphisms} possiamo scrivere $\bar{f}'=\bar{f}'_1+\bar{f}'_2$ con $\bar{f}'_i\in\Hom_G(V_i,Z)$ per $i\in\{1,2\}$. Vale
+$$
+f_1\dirsum f_2=f=\bar{f}'\circ\iota=(\bar{f}'_1\dirsum\bar{f}'_2)\circ(\iota_1\dirsum\iota_2)=(\bar{f}'_1\circ\iota_1)\dirsum(\bar{f}'_2\circ\iota_2),
+$$
+dunque $\bar{f}'_i\circ\iota_i=f_i$ per $i\in\{1,2\}$. Dall'unicità di $\bar{f}_i$ segue che $\bar{f}_i=\bar{f}'_i$ per $i\in\{1,2\}$, quindi $\bar{f}'=\bar{f}$.
+\end{proof}
+
 \begin{proposition}\thlabel{induced-representation-generated}
 Sia $G$ un gruppo, $H\subseteq G$ un sottogruppo, $\Rep{\sigma}{H}{W}$ una rappresentazione, $\Rep{\rho}{G}{V}$ la rappresentazione indotta da $\sigma$ con applicazione associata $\iota\in\Hom_H(W,V)$. Allora
 $$
-V=\langle\rho(g)\iota(w):g\in G,w\in W\rangle
+V=\langle\rho(g)\iota(w):g\in G,w\in W\rangle.
 $$
 \end{proposition}
 \begin{proof}
@@ -257,3 +275,78 @@ $$
 \vs{\chi_\rho}{\Ind\chi_\sigma}_G=\vs{\Res\chi_\rho}{\chi_\sigma}_H.
 $$
 \end{proof}
+
+\section{Criterio di Mackey}
+
+In questa sezione ci occupiamo di dimostrare un criterio di irriducibilità per le rappresentazioni indotte.
+
+Sia $G$ un gruppo, $H\le G$ un sottogruppo. Si verifica facilmente che, dati $s,s'\in G$, gli insiemi $HsH$ e $Hs'H$ coincidono oppure sono disgiunti. Segue che esiste un insieme $S\subseteq G$ tale che
+$$
+G=\bigsqcup_{s\in S}HsH.
+$$
+Sia $\Rep{\sigma}{H}{W}$ una rappresentazione. Dato $s\in S$, sia $H_s=sHs^{-1}\cap H\le H$, e sia $\Rep{\sigma_s}{H_s}{W}$ la rappresentazione tale che $\sigma_s(h)=\sigma(s^{-1}hs)$ per ogni $h\in H$.
+\begin{proposition}[Criterio di Mackey]\thlabel{mackey-criterion}
+Sono equivalenti:
+\begin{enumerate}[(i)]
+\item $\Ind\sigma$ è irriducibile;
+\item $\sigma$ è irriducibile e vale $\vs{\Res_{H_s}^H\chi_\sigma}{\chi_{\sigma_s}}_{H_s}=0$ per ogni $s\in S\setminus H$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Per ogni $s\in S$ sia $R_s\subseteq H$ un insieme di rappresentanti di $H/H_s$ ; possiamo supporre $1\in R_s$. la seguente uguaglianza tornerà utile più avanti:
+$$
+HsH=R_sH_ssH=R_s(sHs^{-1}\cap H)sH=R_s(sH\cap Hs)H=R_ssH.
+$$
+Sia $R=\bigcup_{s\in S}R_ss$.
+\begin{lemma*}
+$R$ è un insieme (non ridondante) di rappresentanti di $G/H$.
+\end{lemma*}
+\begin{proof}
+Osserviamo innanzitutto che $R_ss\subseteq Hs\subseteq HsH$, quindi se $s,s'\in S$ sono diversi allora $R_ss$ e $R_{s'}s'$ sono disgiunti. Fissiamo dunque $s\in S$, e siano $r,r'\in R_s$ tali che $rsH=r'sH$. Allora $r^{-1}r'\in sHs^{-1}$, e ovviamente $r^{-1}r'\in H$, quindi $r^{-1}r'\in H_s$; essendo $R_s$ un insieme di rappresentanti di $H/H_s$ segue che $r=r'$. Abbiamo mostrato che le classi di equivalenza degli elementi di $R$ sono tutte distinte; per mostrare che la loro unione è tutto $G$ è sufficiente osservare che
+$$
+G=\bigcup_{s\in S}HsH=\bigcup_{s\in S}R_ssH=\biggl(\bigcup_{s\in S}R_ss\biggr)H=RH.
+$$
+\end{proof}
+Sia $\Rep{\rho=\Ind_H^G\sigma}{G}{V}$ (supponiamo $W\subseteq V$).
+\begin{lemma*}
+$\Res_H^G\rho=\sum_{s\in S}\Ind_{H_s}^H\sigma_s$
+\end{lemma*}
+\begin{proof}
+Poiché $\rho$ è indotta da $\sigma$ vale $V=\Dirsum_{r\in R}\rho(r)W$. Dato $s\in S$ definiamo $V_s=\Dirsum_{r\in R_s}\rho(rs)W\subseteq V$; mostriamo che $V_s$ è $H$-stabile. Dato $h\in H$ vale
+$$
+\rho(h)V_s=\rho(h)\Dirsum_{r\in R_s}\rho(rs)W=\Dirsum_{r\in R_s}\rho(hrs)W.
+$$
+Se $r\in R_s$ allora $hrs\in Hs\subseteq HsH=R_ssH$, dunque $hrs=r'sh'$ per opportuni $r'\in R_s\comma h'\in H$. Pertanto
+$$
+\rho(hrs)W=\rho(r'sh')W=\rho(r's)\rho(h')W=\rho(r's)W\subseteq V_s,
+$$
+da cui
+$$
+\rho(h)V_s=\Dirsum_{r\in R_s}\rho(hrs)W\subseteq V_s.
+$$
+Mostriamo ora che $\rho|_H^{V_s}=\Ind_{H_s}^H\sigma_s$. Poiché abbiamo supposto $1\in R_s$ vale $\rho(s)W\subseteq V_s$; essendo $V_s=\Dirsum_{r\in R_s}\rho(r)\rho(s)W$, è sufficiente dimostrare che $\rho(s)W$ è $H_s$-stabile e che $\rho|_{H_s}^{\rho(s)W}\isor\sigma_s$. Sia $shs^{-1}\in H_s$; allora $\rho(shs^{-1})\rho(s)W=\rho(sh)W=\rho(s)W$, quindi $\rho(s)W$ è $H_s$-stabile. Consideriamo l'applicazione $\rho(s)|_W:W\to\rho(s)W$; dato $h\in H_s$ vale
+$$
+\rho(h)\rho(s)|_W=\rho(s)|_W\rho(s^{-1}hs)|_W=\rho(s)|_W\sigma(s^{-1}hs)=\rho(s)|_W\sigma_s(h),
+$$
+dunque $\rho(s)|_W\in\Hom(\sigma_s,\rho|_{H_s}^{\rho(s)W})$, ed è ovviamente un isomorfismo di spazi vettoriali, quindi le due rappresentazioni sono isomorfe.
+\end{proof}
+Possiamo ora calcolare (utilizzando la reciprocità di Frobenius e il Lemma precedente)
+\begin{align*}
+\vs{\chi_\rho}{\chi_\rho}_G&=\vs{\Res_H^G\chi_\rho}{\chi_\sigma}_H\\
+&=\sum_{s\in S}\vs{\Ind_{H_s}^H\chi_{\sigma_s}}{\chi_\sigma}_H\\
+&=\sum_{s\in S}\vs{\chi_{\sigma_s}}{\Res_{H_s}^H\chi_\sigma}_{H_s}.
+\end{align*}
+Notiamo che tutti gli addendi sono interi non negativi. Inoltre, detto $\bar{s}$ l'unico elemento di $S\cap H$, vale $H_{\bar{s}}=H$ e $\sigma_{\bar{s}}=\sigma$, dunque l'addendo corrispondente vale $\vs{\chi_\sigma}{\chi_\sigma}_H\ge 1$. Allora è evidente che $\rho$ è irriducibile se e solo se $\vs{\chi_\sigma}{\chi_\sigma}_H=1$ (ovvero $\sigma$ è irriducibile) e per ogni $s\in S\setminus\{\bar{s}\}=S\setminus H$ vale $\vs{\chi_{\sigma_s}}{\Res_{H_s}^H\chi_\sigma}_{H_s}=0$.
+\end{proof}
+
+\begin{corollary}\thlabel{normal-induced-representation-irreducible}
+Se $H\trianglelefteq G$, allora sono equivalenti:
+\begin{enumerate}[(i)]
+\item $\Ind_H^G\sigma$ è irriducibile;
+\item $\sigma$ è irriducibile e non isomorfa a $\sigma_s$ per ogni $s\in S\setminus H$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+Se $H$ è normale vale $H_s=H$ per ogni $s\in S$. L'implicazione (i)$\implies$(ii) è un'immediata conseguenza del criterio di Mackey. Per mostrare l'altra implicazione notiamo che se $\sigma$ è irriducibile anche $\sigma_s$ è irriducibile per ogni $s$: infatti gli insiemi $\{\sigma(h):h\in H\}$ e $\{\sigma_s(h):h\in H\}$ coincidono, quindi un sottospazio è stabile per $\sigma$ se e solo se è stabile per $\sigma_s$. A questo punto anche l'implicazione (ii)$\implies$(i) segue dal criterio di Mackey.
+\end{proof}
+
