@@ -1,0 +1,109 @@
+\chapter{Rappresentazioni di Gruppi Compatti}
+
+\section{Gruppi Topologici e Integrale di Haar}
+\begin{definition}
+Si dice \emph{gruppo topologico} un gruppo $G$ dotato di una topologia tale che:
+\begin{itemize}
+\item la mappa $(g,h)\mapsto gh$ (da $G\times G$ con la topologia prodotto in $G$) è continua;
+\item la mappa $g\mapsto g^{-1}$ (da $G$ in $G$) è continua.
+\end{itemize}
+\end{definition}
+\begin{example}\leavevmode
+\begin{itemize}
+\item $\mathbb{R}$ con l'addizione e la topologia euclidea è un gruppo topologico.
+\item $\mathbb{C}^*$ con la moltiplicazione e la topologia euclidea è un gruppo topologico.
+\item Se $G$ è un gruppo topologico e $H\le G$ è un suo sottogruppo, allora $H$ è un gruppo topologico con la topologia di sottospazio. Ad esempio, $S^1\subseteq\mathbb{C}^*$ è un gruppo topologico.
+\end{itemize}
+
+\end{example}
+\begin{definition}
+Siano $G\comma H$ gruppi topologici. Si dice \emph{omomorfismo di gruppi topologici} un omomorfismo di gruppi continuo. Si dice \emph{isomorfismo di gruppi topologici} un isomorfismo di gruppi che è anche un omeomorfismo.
+\end{definition}
+Per brevità, diremo ``omomorfismo'' per indicare un omomorfismo di gruppi topologici, e ``isomorfismo'' per indicare un isomorfismo di gruppi topologici.
+\begin{proposition}
+Siano $G\comma H$ gruppi topologici. Allora $G\times H$ con la topologia prodotto è un gruppo topologico.
+\end{proposition}
+\begin{proof}
+Le verifiche sono ovvie.
+\end{proof}
+
+\begin{proposition}\thlabel{topological-group-homomorphism-theorem}
+Siano $G\comma H\comma K$ gruppi topologici, $f:G\to K$ un omomorfismo, $\pi:G\to K$ un omomorfismo che è anche un'identificazione. Supponiamo che $\ker\pi\subseteq\ker f$. Allora esiste un unico omomorfismo $\bar{f}:H\to K$ che fa commutare il diagramma
+$$
+\begin{diagram}
+G\arrow{r}{f}\arrow[swap]{d}{\pi}&K\\
+H\arrow[swap]{ru}{\bar{f}}
+\end{diagram}
+$$
+ovvero tale che $f=\bar{f}\circ\pi$.
+\end{proposition}
+\begin{proof}
+Sia $\bar{f}$ l'unico omomorfismo di gruppi che fa commutare il diagramma; dobbiamo verificare che è continuo. Sia $A\subseteq$ K un aperto; allora $f^{-1}(A)=\pi^{-1}(\bar{f}^{-1}(A))$ è aperto. Poiché $\pi$ è un'identificazione, segue che $\bar{f}^{-1}(A)$ è aperto, ovvero $\bar{f}$ è continua.
+\end{proof}
+
+\begin{proposition}\thlabel{topological-group-homomorphism-lifting}
+Siano $G\comma H\comma E$ gruppi topologici con $G\comma H$ connessi, $f:H\to G$ un omomorfismo, $p:E\to G$ un omomorfismo che è anche un rivestimento. Supponiamo esista il sollevamento di $f$ a $\bar{f}:H\to E$ tale che $\bar{f}(1)=1$. Allora $\bar{f}$ è un omomorfismo.
+$$
+\begin{diagram}
+\phantom{A}&E\arrow{d}{p}\\
+H\arrow{r}{f}\arrow{ru}{\bar{f}}&G
+\end{diagram}
+$$
+\end{proposition}
+\begin{proof}
+Dati $g,h\in H$ vale
+$$
+p(\bar{f}(gh))=f(gh)=f(g)f(h)=p(\bar{f}(g))p(\bar{f}(h))=p(\bar{f}(g)\bar{f}(h))
+$$
+da cui $p(\bar{f}(gh)^{-1}\bar{f}(g)\bar{f}(h))=1$. Consideriamo l'applicazione continua
+\begin{alignat*}{2}
+\varphi:H&\times &H&\longrightarrow E\\
+(g&,&h)&\longmapsto\bar{f}(gh)^{-1}\bar{f}(g)\bar{f}(h)
+\end{alignat*}
+Notiamo che $\varphi$ è un sollevamento dell'applicazione costante $(g,h)\mapsto 1$, e che $\varphi(1,1)=1$. Per unicità del sollevamento ($H$ è connesso) segue che $\varphi(g,h)=1$ per ogni $g,h\in H$, ossia che $\bar{f}$ è un omomorfismo di gruppi.
+\end{proof}
+
+\begin{example}
+Classifichiamo tutti gli omomorfismi da $S^1$ in $\mathbb{C}^*$.
+\begin{itemize}
+\item Per prima cosa cerchiamo gli omomorfismi da $\mathbb{R}$ in $\mathbb{R}$. Osserviamo che tutte le mappe $x\mapsto ax$, con $a\in\mathbb{R}$, sono omomorfismi. Sia ora $f:\mathbb{R}\to\mathbb{R}$ un omomorfismo, e sia $a=f(1)$. Si ricava facilmente $f(x)=ax$ per ogni $x\in\mathbb{Q}$, e si conclude $f(x)=ax$ per ogni $x\in\mathbb{R}$ per continuità di $f$.
+\item Cerchiamo ora gli omomorfismi da $S^1$ in $S^1$. Osserviamo che tutte le mappe $z\mapsto z^n$, con $n\in\mathbb{Z}$, sono omomorfismi. Sia ora $f:S^1\to S^1$ un omomorfismo, e sia $\hat{e}:\mathbb{R}\to S^1$ il rivestimento $t\mapsto e^{it}$. Consideriamo il diagramma
+$$
+\begin{diagram}
+\phantom{A}&&\mathbb{R}\arrow{d}{\hat{e}}\\
+\mathbb{R}\arrow{r}{\hat{e}}\arrow{rru}{\bar{f}}&S^1\arrow{r}{f}&S^1
+\end{diagram}
+$$
+Poiché $\mathbb{R}$ è semplicemente connesso, esiste $\bar{f}:\mathbb{R}\to\mathbb{R}$ sollevamento di $f\hat{e}$ tale che $\bar{f}(0)=0$; per la \thref{topological-group-homomorphism-lifting} $\bar{f}$ è un omomorfismo. Ma allora $\bar{f}$ è della forma $f(x)=ax$ per un qualche $a\in\mathbb{R}$. Dunque vale $f(\hat{e}(t))=\hat{e}(\bar{f}(t))$, ovvero $f(e^{it})=e^{iat}$ per ogni $t\in\mathbb{R}$. In particolare, ponendo $t=2\pi$ troviamo che $a$ dev'essere intero. Dunque $f$ è della forma $f(e^{it})=e^{int}$ per un qualche $n\in\mathbb{Z}$.
+\item Cerchiamo infine gli omomorfismi da $S^1$ in $\mathbb{C}^*$. Osserviamo che gli omomorfismi da $S^1$ in $S^1$ (ossia quelli della forma $z\mapsto z^n$ con $n\in\mathbb{Z}$) sono anche omomorfismi da $S^1$ in $\mathbb{C}^*$; mostriamo che sono tutti. Sia $f:S^1\to\mathbb{C}^*$ un omomorfismo. Notiamo che $f$ manda radici $n$-esime dell'unità in radici $n$-esime dell'unità, che stanno in $S^1$. Poiché le radici dell'unità sono dense in $S^1$, segue che tutta l'immagine di $f$ è contenuta in $S^1$, dunque gli omomorfismi da $S^1$ in $\mathbb{C}^*$ sono esattamente gli omomorfismi da $S^1$ in $S^1$.
+\end{itemize}
+\end{example}
+
+\begin{definition}
+Sia $G$ un gruppo topologico. Si dice \emph{integrale di Haar} un funzionale $\mathbb{R}$-lineare $\int_G:\Cont{G}{\mathbb{R}}\to\mathbb{R}$ che soddisfa le seguenti proprietà:
+\begin{enumerate}[(i)]
+\item se $f\ge0$ allora $\int_Gf\ge 0$;
+\item $\int_G1=1$;
+\item sia $f\in\Cont{G}{\mathbb{R}}$, $g\in G$; poniamo $f_g(h)=f(gh)$ per ogni $h\in G$ (osserviamo che $f_g$ è continua); allora $\int_Gf=\int_Gf_g$.
+\end{enumerate}
+\end{definition}
+
+Se $f\in\Cont{G}{\mathbb{R}}$, potremo scrivere $\int_G f(g)d\mu(g)$ in luogo di $\int_G f$.
+
+Riportiamo senza dimostrazione il seguente teorema.
+\begin{proposition}[Haar]
+Sia $G$ un gruppo topologico compatto di Hausdorff. Allora esiste un unico integrale di Haar $\int_G$, il quale soddisfa anche, per ogni $f\in\Cont{G}{\mathbb{R}}\comma g\in G$:
+$$
+\int_Gf(h)d\mu(h)=\int_Gf(hg)d\mu(h)
+$$
+\end{proposition}
+L'integrale di Haar si estende naturalmente a un funzionale $\mathbb{C}$-lineare da $\Cont{G}{\mathbb{C}}$ in $\mathbb{C}$ definendo $\int_G(f_1+if_2)=\int_Gf_1+i\int_Gf_2$.
+
+\begin{example}
+Ogni gruppo finito $G$ con la topologia discreta è un gruppo topologico compatto di Hausdorff. L'integrale di Haar di $G$ è dato da
+$$
+\int_Gf(g)d\mu(g)=\frac{1}{|G|}\sum_{g\in G}f(g).
+$$
+\end{example}
+
+

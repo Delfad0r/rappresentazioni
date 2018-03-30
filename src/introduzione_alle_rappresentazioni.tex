@@ -161,7 +161,7 @@ La tesi segue immediatamente dalla \thref{representation-quotient-universal} e d
 \end{proof}
 
 
-\section{Rappresentazioni Irriducibili e Decomposizioni}
+\section{Rappresentazioni Irriducibili e Decomposizioni}\label{section-irreducible-representations}
 
 \begin{definition}
 Una rappresentazione non nulla si dice \emph{irriducibile} se non ha sottorappresentazioni proprie.
@@ -279,28 +279,30 @@ La tesi segue facilmente dalla \thref{representation-sum-homomorphisms} e dal Le
 \end{proof}
 
 \begin{proposition}[Lemma di Schur II]\thlabel{schur-lemma-2}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $\varphi\in\Hom(\rho,\rho)$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\varphi$ è un multiplo scalare (eventualmente nullo) dell'identità.
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile di grado finito, $\varphi\in\Hom(\rho,\rho)$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\varphi$ è un multiplo scalare (eventualmente nullo) dell'identità.
 \end{proposition}
 \begin{proof}
 Sia $\lambda\in\mathbb{K}$ un autovalore per $\varphi$ (esiste poiché $\mathbb{K}$ è algebricamente chiuso). Allora $\varphi-\lambda\id\in\Hom(\rho,\rho)$ non è un isomorfismo (ogni autovettore per $\lambda$ viene mandato in 0), quindi per la \thref{schur-lemma-1} è nullo, ossia $\varphi=\lambda\id$.
 \end{proof}
 
+Poiché il Lemma di Schur II è alla base dei risultati seguenti, fino alla fine di questa sezione (\thref{representation-decomposition-subrepresentation-uniqueness}) supporremo sempre che le rappresentazioni siano di grado finito e che $\mathbb{K}$ sia algebricamente chiuso.
+
 \begin{corollary}\thlabel{representation-center-homothety}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $z\in Z(G)$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\rho(z)$ è un multiplo scalare dell'identità.
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $z\in Z(G)$.  Allora $\rho(z)$ è un multiplo scalare dell'identità.
 \end{corollary}
 \begin{proof}
 Da $z\in Z(G)$ segue $\rho(z)\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\rho(z)$ è un multiplo scalare dell'identità.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-irreducible-abelian-group}
-Sia $G$ un gruppo abeliano, $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\deg\rho=1$.
+Sia $G$ un gruppo abeliano, $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile. Allora $\deg\rho=1$.
 \end{corollary}
 \begin{proof}
 Per il \thref{representation-center-homothety} $\rho(g)$ è un multiplo scalare dell'identità per ogni $g\in G$, quindi ogni sottospazio di $V$ è $G$-stabile, pertanto $\dim V=1$.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-irreducible-homomorphisms-dim}
-Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni irriducibili. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni irriducibili. Allora
 $$
 \dim\Hom(\rho,\sigma)=
 \begin{cases}
@@ -321,7 +323,7 @@ La tesi segue dal \thref{representation-irreducible-homomorphisms-dim} se $\rho$
 \end{proof}
 
 \begin{proposition}\thlabel{representation-decomposition-formula}
-Sia $\Rep{\rho}{G}{V}$ una rappresentazione completamente riducibile. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora:
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione completamente riducibile. Allora:
 \begin{enumerate}[(i)]
 \item per ogni $\sigma\in\Irr(G)$ vale $\dim\Hom(\rho,\sigma)<\infty$;
 \item l'insieme $\{\sigma\in\Irr(G):\dim\Hom(\rho,\sigma)>0\}$ è finito;
@@ -354,7 +356,7 @@ Sia $\Rep{\rho}{G}{V}$ una rappresentazione,
 $$
 \rho=\sum_{i\in I}n_i\sigma_i=\sum_{j\in J}m_j\tau_j
 $$
-due decomposizioni in rappresentazioni irriducibili a due a due non isomorfe, con $n_i\comma m_j\in\mathbb{N}^+$. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora esiste una funzione $\theta:J\to I$ biiettiva tale che per ogni $j\in J$ vale $\tau_j\isor\sigma_{\theta(j)}$ e $m_j=n_{\theta(j)}$.
+due decomposizioni in rappresentazioni irriducibili a due a due non isomorfe, con $n_i\comma m_j\in\mathbb{N}^+$. Allora esiste una funzione $\theta:J\to I$ biiettiva tale che per ogni $j\in J$ vale $\tau_j\isor\sigma_{\theta(j)}$ e $m_j=n_{\theta(j)}$.
 \end{proposition}
 \begin{proof}
 Sia $j\in J$. Con gli usuali ragionamenti (\thref{representation-sum-homomorphisms} e \thref{representation-irreducible-homomorphisms-dim}) otteniamo che
@@ -580,18 +582,14 @@ e ovviamente $\Phi(f)=v$. Dunque $\Phi$ è l'isomorfismo cercato.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-regular-decomposition}
-Sia $G$ un gruppo, $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la sua rappresentazione regolare. Supponiamo che $\mathcal{R}$ sia completamente riducibile e che $\mathbb{K}$ sia algebricamente chiuso. Allora $\Irr(G)$ è finito e vale
+Sia $G$ un gruppo finito, $\Rep{\mathcal{R}}{G}{\mathbb{K}[G]}$ la sua rappresentazione regolare. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid|G|$. Allora $\Irr(G)$ è finito e vale
 $$
 \mathcal{R}=\sum_{\rho\in\Irr(G)}(\deg\rho)\rho.
 $$
 \end{corollary}
 \begin{proof}
-La tesi segue immediatamente dalla \thref{representation-decomposition-formula} e dalla \thref{representation-regular-homomorphisms-dim}.
+La tesi segue immediatamente dalla \thref{representation-decomposition-formula} e dalla \thref{representation-regular-homomorphisms-dim}, dopo aver osservato che le ipotesi implicano la completa riducibilità di $\mathcal{R}$.
 \end{proof}
-
-\begin{remark}
-L'ipotesi di completa riducibilità di $\mathcal{R}$ è soddisfatta, ad esempio, se $G$ è un gruppo finito e $\ch\mathbb{K}\nmid|G|$ (\thref{representation-finite-completely-reducible}).
-\end{remark}
 
 \begin{corollary}\thlabel{representation-irreducible-degrees}
 Sia $G$ un gruppo finito. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso e che $\ch\mathbb{K}\nmid |G|$. Allora
@@ -619,7 +617,7 @@ Se $G=H$, chiamando $\Delta:G\to G\times G$ l'omomorfismo di gruppi tale che $\D
 
 
 \begin{proposition}\thlabel{representation-box-irreducible}
-Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{H}{W}$ rappresentazioni irriducibili. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\rho\tbox\sigma$ è irriducibile.
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{H}{W}$ rappresentazioni irriducibili di grado finito. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $\rho\tbox\sigma$ è irriducibile.
 \end{proposition}
 \begin{proof}
 Premettiamo un Lemma.

@@ -1,5 +1,5 @@
 \chapter{Teoria dei Caratteri}
-Nella trattazione della teoria dei caratteri ci limiteremo a considerare rappresentazioni complesse di grado finito su gruppi finiti. Per tutto questo capitolo, dunque, assumeremo implicitamente le suddette ipotesi.
+Nella trattazione della teoria dei caratteri ci limiteremo a considerare rappresentazioni complesse di grado finito di gruppi finiti. Per tutto questo capitolo, dunque, assumeremo implicitamente le suddette ipotesi.
 
 \section{Caratteri di Rappresentazioni}
 
@@ -231,37 +231,62 @@ quindi tutti i coefficienti sono nulli. Mostriamo ora che $\mathcal{B}$ è un in
 \begin{lemma*}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
 $$
-\sum_{g\in G}f(g)\rho(g)=0.
+\sum_{g\in G}f(g)^*\rho(g)=0.
 $$
 \end{lemma*}
 \begin{proof}
 Sia $T_f:V\to V$ l'applicazione lineare definita da
 $$
-T_f=\frac{1}{|G|}\sum_{g\in G}f(g)\rho(g).
+T_f=\frac{1}{|G|}\sum_{g\in G}f(g)^*\rho(g).
 $$
 Verifichiamo che $T_f\in\Hom(\rho,\rho)$: per ogni $h\in G$ vale
 \begin{align*}
-T_f\rho(h)&=\frac{1}{|G|}\sum_{g\in G}f(g)\rho(gh)\\
-&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(g)\rho(h^{-1}gh)\\
-&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(h^{-1}gh)\rho(h^{-1}gh)\\
-&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(g)\rho(g)\\
+T_f\rho(h)&=\frac{1}{|G|}\sum_{g\in G}f(g)^*\rho(gh)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(g)^*\rho(h^{-1}gh)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(h^{-1}gh)^*\rho(h^{-1}gh)\\
+&=\frac{1}{|G|}\sum_{g\in G}\rho(h)f(g)^*\rho(g)\\
 &=\rho(h)T_f.
 \end{align*}
 Studiamo il caso in cui $\rho$ è irriducibile. Per il Lemma di Schur $T_f=\lambda\id$ per un qualche $\lambda\in\mathbb{C}$. Applicando la traccia a entrambi i membri otteniamo
 \begin{align*}
-\lambda\deg\rho&=\frac{1}{|G|}\sum_{g\in G}f(g)\chi_\rho(g)\\
-&=\frac{1}{|G|}\sum_{g\in G}f(g)\chi_{\rho^*}(g)^*\\
-&=\frac{1}{|G|}\vs{f}{\chi_{\rho^*}}\\
-&=0,
+\lambda\deg\rho&=\frac{1}{|G|}\sum_{g\in G}f(g)^*\chi_\rho(g)\\
+&=\frac{1}{|G|}\vs{\chi_{\rho}}{f}\\
+&=0.
 \end{align*}
-poiché $\rho^*\in\Irr(G)$. Dunque $\lambda=0$, ovvero $T_f=0$. Nel caso generale (cioè se $\rho$ non è necessariamente irriducibile) $\rho$ è completamente riducibile e $T_f$ ristretta alle sottorappresentazioni irriducibili è nulla, quindi $T_f$ è nulla complessivamente.
+Dunque $\lambda=0$, ovvero $T_f=0$. Nel caso generale (cioè se $\rho$ non è necessariamente irriducibile) $\rho$ è completamente riducibile e $T_f$ ristretta alle sottorappresentazioni irriducibili è nulla, quindi $T_f$ è nulla complessivamente.
 \end{proof}
 Sia $\Rep{\mathcal{R}}{G}{\mathbb{C}[G]}$ la rappresentazione regolare di $G$, e sia $\{e_g\}_{g\in G}$ la base ``canonica'' di $\mathbb{C}[G]$. Applichiamo il Lemma a $\mathcal{R}$: 
 $$
-0=\sum_{g\in G}f(g)\mathcal{R}(g)e_1=\sum_{g\in G}f(g)e_g,
+0=\sum_{g\in G}f(g)^*\mathcal{R}(g)e_1=\sum_{g\in G}f(g)^*e_g,
 $$
 quindi $f(g)=0$ per ogni $g\in G$.\\
 Dunque $\mathcal{B}$ è una base di $\Cl(G)$, ed è ortonormale per la \thref{character-irreducible-orthogonal}.
+\end{proof}
+
+\begin{proposition}\thlabel{character-columns-orthogonal}
+Sia $G$ un gruppo, $g,h\in G$. Allora
+$$
+\sum_{\rho\in\Irr(G)}\chi_\rho(g)\chi_\rho(h)^*=
+\begin{cases}
+|Z_G(g)|&\text{se $g$ e $h$ sono coniugati}\\
+0&\text{altrimenti}
+\end{cases}.
+$$
+\end{proposition}
+\begin{proof}
+Ricordiamo la rappresentazione $\Rep{\hat{\mathcal{R}}}{G\times G}{\mathbb{C}[G]}$ e la sua decomposizione
+$$
+\hat{\mathcal{R}}=\sum_{\rho\in\Irr(G)}\rho^*\tbox\rho.
+$$
+Allora
+$$
+\sum_{\rho\in\Irr(G)}\chi_\rho(g)\chi_\rho(h)^*=\sum_{\rho\in\Irr(G)}\chi_{\rho^*}(h)\chi_\rho(g)=\sum_{\rho\in\Irr(G)}\chi_{\rho^*\tbox\rho}(h,g)=\chi_{\hat{\mathcal{R}}}(h,g).
+$$
+Ma $\hat{\mathcal{R}}$ è una rappresentazione per permutazione, quindi
+$$
+\chi_{\hat{\mathcal{R}}}(h,g)=|\{k\in G:gkh^{-1}=k\}|=|\{k\in G:khk^{-1}=g\}|.
+$$
+Se $g$ e $h$ non sono coniugati ovviamente $\chi_{\hat{\mathcal{R}}}(h,g)=0$, mentre se lo sono allora $\{k\in G:khk^{-1}=g\}$ è una classe laterale del centralizzatore di $g$ (e di $h$), quindi $\chi_{\hat{\mathcal{R}}}(h,g)=|Z_G(g)|$.
 \end{proof}
 
 
