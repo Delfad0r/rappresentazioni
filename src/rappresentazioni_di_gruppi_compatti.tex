@@ -91,7 +91,7 @@ Sia $G$ un gruppo topologico. Si dice \emph{integrale di Haar} un funzionale $\m
 Se $f\in\Cont{G}{\mathbb{R}}$, potremo scrivere $\int_G f(g)d\mu(g)$ in luogo di $\int_G f$.
 
 Riportiamo senza dimostrazione il seguente teorema.
-\begin{proposition}[Haar]
+\begin{proposition}[Haar]\thlabel{haar-integral-existence}
 Sia $G$ un gruppo topologico compatto di Hausdorff. Allora esiste un unico integrale di Haar $\int_G$, il quale soddisfa anche, per ogni $f\in\Cont{G}{\mathbb{R}}\comma g\in G$:
 $$
 \int_Gf(h)d\mu(h)=\int_Gf(hg)d\mu(h)
@@ -106,4 +106,125 @@ $$
 $$
 \end{example}
 
+\section{Rappresentazioni di Gruppi Topologici}
+\begin{definition}
+Sia $G$ un gruppo topologico, $V$ uno spazio vettoriale complesso finitamente generato. Si dice \emph{rappresentazione continua} un omomorfismo di gruppi topologici $\Rep{\rho}{G}{V}$, dove su $GL(V)$ consideriamo la topologia euclidea.
+\end{definition}
+Da qui alla fine del capitolo ci limiteremo a considerare gruppi topologici compatti e rappresentazioni continue (e quindi complesse di grado finito). Assumeremo dunque implicitamente le suddette ipotesi.
+
+Rimangono inalterate le definizioni di omomorfismo di rappresentazioni, somma di rappresentazioni\dots.
+
+\begin{proposition}\thlabel{continuous-representations}
+Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni (continue), $n\in\mathbb{N}$. Allora sono rappresentazioni continue:
+\begin{enumerate}[(i)]
+\item $\rho+\sigma$;
+\item $\rho\tensor\sigma$;
+\item $\rho^*$;
+\item $\SymP^n\rho$;
+\item $\ExtP^n\rho$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+La continuità delle rappresentazioni sopra elencate può essere verificata componente per componente dal punto di vista matriciale.
+\end{proof}
+
+Molti risultati ricavati in generale per le rappresentazioni continuano a valere per rappresentazioni continue. In alcuni casi, però, era stata cruciale l'ipotesi di finitezza del gruppo.
+
+\begin{proposition}\thlabel{compact-representation-stable-hermitian}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}$ una rappresentazione. Allora esiste una forma hermitiana $\vs{\cdot}{\cdot}:V\times V\to\mathbb{C}$ definita positiva $G$-stabile, ovvero tale che $\vs{v}{w}=\vs{\rho(g)v}{\rho(g)w}$ per ogni $g\in G\comma v,w\in V$.
+\end{proposition}
+\begin{proof}
+Sia $\vs{\cdot}{\cdot}_0:V\times V\to \mathbb{C}$ una qualunque forma hermitiana definita positiva. Fissiamo $v,w\in V$ e osserviamo che l'applicazione $g\mapsto\vs{\rho(g)v}{\rho(g)w}_0$ è continua; possiamo quindi definire
+$$
+\vs{v}{w}=\int_G\vs{\rho(g)v}{\rho(g)w}_0d\mu(g).
+$$
+$\vs{\cdot}{\cdot}$ è una forma hermitiana per linearità dell'integrale, ed è $G$-stabile per l'invarianza per traslazione dell'integrale di Haar. Per mostrare che è definita positiva fissiamo un $v\in V$ non nullo. L'applicazione $g\mapsto\vs{\rho(g)v}{\rho(g)v}_0$ è continua, quindi ammette un minimo $l$, che è necessariamente strettamente positivo (dato che $\vs{\cdot}{\cdot}_0$ è definita positiva). Allora $\vs{v}{v}\ge\int_Gl=l>0$.
+\end{proof}
+
+\begin{proposition}\thlabel{compact-subrepresentation-stable-complement}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}$ una rappresentazione, $W\subseteq V$ una sottorappresentazione. Allora esiste una sottorappresentazione $W'\subseteq V$ tale che $V=W\dirsum W'$.
+\end{proposition}
+\begin{proof}
+Sia $\vs{\cdot}{\cdot}$ una forma hermitiana definita positiva $G$-stabile, e sia $W'$ l'ortogonale di $W$. Vale $V=W\dirsum W'$. Per vedere che $W'$ è $G$-stabile consideriamo $w\in W\comma w'\in W'\comma g\in G$. Allora
+$$
+\vs{w}{\rho(g)w'}=\vs{\rho(g^{-1})w}{w'}=0
+$$
+poiché $\rho(g^{-1})w\in W$; segue che $\rho(g)w'\in W'$, ossia $W'$ è una sottorappresentazione di $V$.
+\end{proof}
+
+\begin{corollary}\thlabel{compact-representation-indecomposable-implies-irreducible}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}$ una rappresentazione indecomponibile. Allora $\rho$ è irriducibile.
+\end{corollary}
+
+\begin{corollary}\thlabel{compact-representation-surjective-homomorphism-subrepresentation}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\Hom_G(V,W)$ un omomorfismo suriettivo. Allora $\sigma$ è una sottorappresentazione di $\rho$.
+\end{corollary}
+
+\begin{corollary}\thlabel{compact-representation-finite-completely-reducible}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}$ una rappresentazione. Allora $\rho$ è completamente riducibile.
+\end{corollary}
+
+\begin{corollary}\thlabel{compact-representation-eigenvalues}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}$ una rappresentazione, $g\in G$. Allora gli autovalori di $\rho(g)$ hanno modulo $1$.
+\end{corollary}
+\begin{proof}
+Sia $\vs{\cdot}{\cdot}$ una forma hermitiana definita positiva $G$-stabile, e sia $v$ un autovettore per $\rho(g)$ relativo all'autovalore $\lambda$. Allora
+$$
+\vs{v}{v}=\vs{\rho(g)v}{\rho(g)v}=\vs{\lambda v}{\lambda v}=|\lambda|^2\vs{v}{v},
+$$
+da cui $|\lambda|=1$.
+\end{proof}
+
+Per quanto riguarda la teoria dei caratteri per gruppi compatti, la \thref{character-properties} rimane vera, in virtù del \thref{compact-representation-eigenvalues} (in realtà la dimostrazione dei caratteri delle potenze simmetriche ed esterne fallisce, ma il risultato continua a valere; la dimostrazione è elementare e poco interessante, dunque non la riportiamo).
+
+Se $G$ è un gruppo compatto, possiamo definire sullo spazio vettoriale $\Cont{G}{\mathbb{C}}$ la forma hermitiana
+$$
+\vs{f_1}{f_2}_G=\int_Gf_1(g)f_2(g)^*d\mu(g).
+$$
+È evidente che $\vs{\cdot}{\cdot}_G$ (che, per brevità, indicheremo anche con $\vs{\cdot}{\cdot}$) è semidefinita positiva. Osserviamo che, per ogni rappresentazione $\rho$, $\chi_\rho\in\Cont{G}{\mathbb{C}}$ (infatti $\chi_\rho=\tr\circ\rho$ è composizione di funzioni continue). Vale l'analogo della \thref{character-vs-trivial}.
+\begin{proposition}\thlabel{compact-character-vs-trivial}
+Sia $G$ un gruppo compatto, $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
+$$
+\vs{\chi_\rho}{1}=\dim V^G.
+$$
+\end{proposition}
+\begin{proof}
+Sia $T:V\to V$ l'applicazione lineare definita da
+$$
+T=\int_G\rho(g)d\mu(g),
+$$
+dove l'integrale di endomorfismi si intende svolto componente per componente dal punto di vista matriciale. Dopo aver osservato che, per linearità della traccia e dell'integrale, vale
+$$
+\tr T=\int_G\tr\rho(g)d\mu(g)=\vs{\chi_\rho}{1},
+$$
+la dimostrazione è identica a quella della \thref{character-vs-trivial}.
+\end{proof}
+
+Dalla \thref{compact-character-vs-trivial} seguono la \thref{character-irreducible-orthogonal} e i Corollari \ref{character-vs-dim-homomorphisms}, \ref{character-representation-decomposition}, \ref{character-representation-isomorphic} e \ref{character-irreducibility-criterion} per gruppi compatti. La \thref{character-irreducible-class-functions-basis} invece non si estende (in modo immediato) al caso di gruppi compatti.
+
+\section{Quaternioni}
+\begin{definition}
+Si dicono \emph{quaternioni} gli elementi dello spazio vettoriale reale
+$$
+\mathbb{H}=\mathbb{R}\dirsum\mathbb{R}i\dirsum\mathbb{R}j\dirsum\mathbb{R}k=\{\alpha+\beta i+\gamma j+\delta k:\alpha,\beta,\gamma,\delta\in\mathbb{R}\}
+$$
+dotato della struttura moltiplicativa definita da
+$$
+i^2=j^2=k^2=ijk=-1
+$$
+ed estesa per linearità.
+\end{definition}
+Possiamo anche scrivere $\mathbb{H}=\mathbb{R}\dirsum\mathbb{R}^3$, dove $\mathbb{R}^3=\mathbb{R}i\dirsum\mathbb{R}j\dirsum\mathbb{R}k$ è l'insieme dei \emph{quaternioni puri}. Ci proponiamo ora di elencare alcune definizioni e proprietà basilari relative ai quaternioni.
+\begin{itemize}
+\item Dato un quaternione $a=a_0+u$ (si intende che $a_0\in\mathbb{R}$ e $u\in\mathbb{R}^3$), si dice \emph{coniugato} di $a$ il quaternione $a^*=a_0-u$. Osserviamo che $a=a^*$ se e solo se $a$ è reale; inoltre $(ab)^*=b^*a^*$.
+\item Per ogni $a\in\mathbb{H}$, $aa^*$ è reale; si può verificare che, in realtà, $aa^*$ è il quadrato della norma euclidea di $a$ visto come elemento di $\mathbb{R}^4$. Definiamo quindi \emph{norma} di $a$ il numero reale $|a|=\sqrt{aa^*}$. La norma è moltiplicativa, ovvero $|ab|=|a||b|$ per ogni $a,b\in\mathbb{H}$.
+\item Ogni quaternione $a\in\mathbb{H}$ non nullo è invertibile, con inverso $a^{-1}=\frac{1}{|a|^2}a^*$. Quindi il gruppo $\mathbb{H}^*$ dei quaternioni invertibili coincide con $\mathbb{H}\setminus\{0\}$.
+\item $Z(\mathbb{H}^*)=\mathbb{R}^*$. I reali commutano con tutti i quaternioni per definizione. D'altro canto, sia $a=a_0+a_1i+a_2j+a_3k\in Z(\mathbb{H}^*)$; da $ai=ia$ segue facilmente $a_2=a_3=0$, e analogamente da $aj=ja$ segue $a_1=0$, quindi $a=a_0\in\mathbb{R}^*$.
+\item Se $u,v\in\mathbb{R}^3$ sono quaternioni puri, vale la seguente formula di moltiplicazione: $uv=-\vs{u}{v}+u\wedge v$ (si intende che $-\vs{u}{v}\in\mathbb{R}$ e $u\wedge v\in\mathbb{R}^3$). In particolare, $uv=vu$ se e solo se $u$ e $v$ sono paralleli, e $uv=-vu$ se e solo se $u$ e $v$ sono ortogonali.
+\item $\mathbb{H}$ si immerge in $\mathbb{C}^{2\times 2}$ mediante un omomorfismo di anelli. Possiamo infatti considerare $\mathbb{H}=\mathbb{C}\dirsum\mathbb{C}j=\{a+bj:a,b\in\mathbb{C}\}$ come uno spazio vettoriale complesso di dimensione $2$. Dato $\alpha=a+bj\in\mathbb{H}$ possiamo definire $R_\alpha\in GL(\mathbb{H})$ come $R_\alpha(x)=x\alpha$. Calcolando $R_\alpha(1)=a+bj$ e $R_\alpha(j)=-b^*+a^*j$ troviamo che la matrice associata a $R_\alpha$ rispetto alla base $\{1,j\}$ è $\begin{psmallmatrix}a&-b^*\\b&a^*\end{psmallmatrix}$. Poiché $R_\alpha R_\beta=R_{\beta\alpha}$ conviene passare alla matrice trasposta, ottenendo che l'applicazione
+$$
+a+bj\longmapsto\begin{pmatrix}a&b\\-b^*&a^*\end{pmatrix}
+$$
+è un omomorfismo (iniettivo) di anelli.
+\end{itemize}
 

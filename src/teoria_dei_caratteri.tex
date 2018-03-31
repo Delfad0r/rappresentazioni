@@ -84,12 +84,10 @@ $$
 $$
 È evidente che $\vs{\cdot}{\cdot}_G$ è definita positiva.
 
-Ricordiamo che con $1_G$ (o più semplicemente con $1$) si indica la rappresentazione banale di grado 1 di $G$.
-
 \begin{proposition}\thlabel{character-vs-trivial}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Allora
 $$
-\vs{\chi_\rho}{\chi_1}=\dim V^G.
+\vs{\chi_\rho}{1}=\dim V^G.
 $$
 \end{proposition}
 \begin{proof}
@@ -105,8 +103,7 @@ Inoltre $T|_{V^G}=\id$. Segue che $\dim V^G=\tr T$; ma
 \begin{align*}
 \tr T&=\frac{1}{|G|}\sum_{g\in G}\tr\rho(g)\\
 &=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\cdot1\\
-&=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\chi_1(g)^*\\
-&=\vs{\chi_\rho}{\chi_1},
+&=\vs{\chi_\rho}{1},
 \end{align*}
 da cui la tesi.
 \end{proof}
@@ -125,9 +122,9 @@ $$
 Vale
 \begin{align*}
 \vs{\chi_\rho}{\chi_\sigma}&=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\chi_\sigma(g)^*\\
-&=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\chi_{\sigma^*}(g)\cdot1\\
-&=\frac{1}{|G|}\sum_{g\in G}\chi_{\sigma^*\rho}(g)\chi_1(g)^*\\
-&=\vs{\chi_{\sigma^*\rho}}{\chi_1}\\
+&=\frac{1}{|G|}\sum_{g\in G}\chi_\rho(g)\chi_{\sigma^*}(g)\\
+&=\frac{1}{|G|}\sum_{g\in G}\chi_{\sigma^*\rho}(g)\cdot1\\
+&=\vs{\chi_{\sigma^*\rho}}{1}\\
 &=\dim(W^*\tensor V)^G
 \end{align*}
 per la \thref{character-properties} e la \thref{character-vs-trivial}. $G$ agisce su $W^*\tensor V$ mediante $\sigma^*\tensor\rho$, quindi al posto di $W^*\tensor V$ possiamo considerare $\Hom(W,V)$. Applicando la \thref{representation-fix-of-homomorphisms} e il \thref{representation-irreducible-homomorphisms-dim} otteniamo la tesi:
