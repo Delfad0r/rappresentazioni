@@ -1,0 +1,197 @@
+\chapter{Algebre e Moduli}
+
+\section{Definizioni}
+
+\begin{definition}
+Sia $\mathbb{K}$ un campo. Si dice \emph{algebra su $\mathbb{K}$} (o $\mathbb{K}$-algebra) uno spazio vettoriale $A$ su $\mathbb{K}$ dotato di un prodotto bilineare $\cdot:A\times A\to A$ tale che $(A,+,\cdot)$ sia un anello. $A$ si dice \emph{finita} se ha dimensione finita come $\mathbb{K}$-spazio vettoriale.
+\end{definition}
+
+\begin{remark}
+Sia $\mathbb{K}$ un campo, $A$ una $\mathbb{K}$-algebra non nulla. Consideriamo la mappa $\varphi:\mathbb{K}\to A$ definita da $\varphi(a)=a1_A$. Si verifica facilmente che $\varphi$ è un omomorfismo di anelli iniettivo. Inoltre, dati $a\in\mathbb{K}\comma x\in A$ vale
+$$
+\varphi(a)x=ax=x(a1_A)=x\varphi(a),
+$$
+dunque $\im\varphi\subseteq Z(A)$. Viceversa, dato un anello $A$ e un omomorfismo di anelli non nullo $\varphi:\mathbb{K}\to Z(A)$, $A$ acquista una struttura di $\mathbb{K}$-algebra, con il prodotto per scalare definito da $ax=\varphi(a)x$.
+\end{remark}
+
+\begin{definition}
+Siano $A$ e $B$ $\mathbb{K}$-algebre. Si dice \emph{omomorfismo di algebre} un'applicazione lineare $\varphi:A\to B$ che sia anche un omomorfismo di anelli. $\varphi$ si dice \emph{isomorfismo di algebre} se è un omomorfismo di algebre biiettivo.
+\end{definition}
+
+\begin{definition}
+Sia $\mathbb{K}$ un campo, $G$ un gruppo, $\mathbb{K}[G]$ lo spazio vettoriale libero su $G$ con base $\{e_g\}_{g\in G}$. Si dice \emph{algebra di gruppo} lo spazio vettoriale $\mathbb{K}[G]$ dotato del prodotto $e_ge_h=e_{gh}$ esteso per bilinearità.
+\end{definition}
+
+\begin{definition}
+Sia $R$ un anello. Si dice \emph{$R$-modulo sinistro} un gruppo abeliano $(M,+)$ dotato di un prodotto $\cdot:R\times M\to M$ che soddisfa le seguenti proprietà.
+\begin{enumerate}[(i)]
+\item $(a+b)x=ax+bx$ per ogni $a,b\in R\comma x\in M$.
+\item $a(x+y)=ax+ay$ per ogni $a\in R\comma x,y\in M$.
+\item $1_Rx=x$ per ogni $x\in M$.
+\item $(ab)x=a(bx)$ per ogni $a,b\in R\comma x\in M$.
+\end{enumerate}
+\end{definition}
+
+Gli \emph{$R$-moduli destri} si definiscono analogamente, ma con il prodotto a destra (ovvero $\cdot:M\times R\to M$).
+
+Dato un $R$-modulo $M$, potremo scrivere $_RM$ in luogo di $M$ per evidenziare il fatto che $M$ è un $R$-modulo sinistro, e $M_R$ per evidenziare il fatto che si tratta invece di un $R$-modulo destro.
+
+\begin{definition}
+Sia $(R,+,\cdot)$ un anello. Si dice \emph{anello opposto} l'anello $(\op{R},+,\op{\cdot})$, dove $a\op{\cdot}b=b\cdot a$.
+\end{definition}
+
+È evidente che gli $R$-moduli sinistri sono in corrispondenza biunivoca con gli $\op{R}$-moduli destri. Nel seguito ci limiteremo dunque a enunciare i risultati per moduli sinistri, intendendo implicitamente che valgono enunciati analoghi per i moduli destri.
+
+\begin{definition}
+Siano $M,N$ $R$-moduli sinistri. Un'applicazione $f:M\to N$ si dice \emph{omomorfismo di moduli} se è $R$-lineare, ovvero se
+$$
+f(ax+by)=af(x)+bf(y)
+$$
+per ogni $a,b\in R\comma x,y\in M$. $f$ si dice \emph{isomorfismo di moduli} se è $R$-lineare e biiettiva.
+\end{definition}
+
+\section{Quozienti, Prodotti e Somme}
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro. Sia $N\le M$ un sottogruppo. Diciamo che $N$ è un \emph{sottomodulo} di $M$ (e scriviamo $N\le M$) se per ogni $a\in R$ vale $aN\subseteq N$.
+\end{definition}
+
+\begin{proposition}\thlabel{module-homomorfism-ker-im-submodule}
+Siano $M,N$ $R$-moduli sinistri, $f:M\to N$ un omomorfismo di moduli. Allora $\ker f\le M$ e $\im f\le N$.
+\end{proposition}
+\begin{proof}
+Si tratta di semplici verifiche.
+\end{proof}
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro, $N\le M$ un sottomodulo. Si dice \emph{quoziente di $M$ per $N$} un $R$-modulo sinistro (indicato con $M/N$) dotato di un omomorfismo di moduli $\pi:M\to M/N$ con $N\le\ker\pi$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $L$ e per ogni omomorfismo di moduli $f:M\to L$ con $N\le\ker f$ esiste un unico omomorfismo di moduli $\bar{f}:M/N\to L$ che fa commutare il diagramma
+$$
+\begin{diagram}
+M\arrow{r}{f}\arrow[swap]{d}{\pi}&L\\
+M/N\arrow[swap]{ru}{\bar{f}}
+\end{diagram}
+$$
+ovvero tale che $f=\bar{f}\circ\pi$.
+\end{definition}
+
+Si dimostra facilmente che il modulo quoziente è unico a meno di isomorfismo canonico, e si può costruire quozientando $M$ per la relazione di equivalenza $x\sim y\iff x-y\in N$.
+
+\begin{definition}
+Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{prodotto diretto degli $M_i$} un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (proiezioni) $\pi_i:M\to M_i$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:N\to M_i\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:N\to M$ che per ogni $i\in I$ fa commutare il diagramma
+$$
+\begin{diagram}
+N\arrow{r}{\varphi_i}\arrow[swap]{rd}{\varphi}&M_i\arrow{d}{\pi_i}\\
+&M
+\end{diagram}
+$$
+ovvero tale che $\varphi=\pi_i\circ\varphi_i$.
+\end{definition}
+
+Il prodotto diretto degli $M_i$ si indica con $\prod_{i\in I}M_i$. Si dimostra facilmente che il prodotto diretto è unico a meno di isomorfismo canonico, e si può costruire prendendo il prodotto cartesiano degli $M_i$.
+
+
+\begin{definition}
+Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{somma diretta degli $M_i$} un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (immersioni) $\iota_i:M_i\to M$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:M_i\to N\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:M\to N$ che per ogni $i\in I$ fa commutare il diagramma
+$$
+\begin{diagram}
+M_i\arrow{r}{\varphi_i}\arrow[swap]{d}{\iota_i}&N\\
+M\arrow[swap]{ru}{\varphi}
+\end{diagram}
+$$
+ovvero tale che $\varphi_i=\varphi\circ\iota_i$ per ogni $i\in I$.
+\end{definition}
+
+La somma diretta degli $M_i$ si indica con $\Dirsum_{i\in I}M_i$. Si può dimostrare che le immersioni $\iota_i$ sono iniettive, dunque possiamo sempre immaginare che gli $M_i$ siano sottomoduli di $\Dirsum_{i\in I}M_i$. Se $I$ è finito (che è l'unico caso di cui ci occuperemo) vale
+$$
+\Dirsum_{i\in I}M_i\iso \prod_{i\in I}M_i
+$$
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Si dice \emph{somma degli $M_i$} (e si indica con $\sum_{i\in I}M_i$) il più piccolo sottomodulo di $M$ che contiene tutti gli $M_i$.
+\end{definition}
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Consideriamo l'unico omomorfismo di moduli $\Phi:\Dirsum_{i\in I}M_i\to\sum_{i\in I}M_i$ tale che $\Phi(x)=x$ per ogni $i\in I\comma x\in M_i$. Evidentemente $\Phi$ è suriettivo; se è anche iniettivo si dice che gli $M_i$ sono \emph{in somma diretta} e si scrive $\sum_{i\in I}M_i=\Dirsum_{i\in I}M_i$.
+\end{definition}
+
+
+\section{Moduli Semplici e Semisemplici}
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro. Si dice che $M$ è un \emph{modulo semplice} se è non nullo e ammette solo $0$ come sottomodulo proprio.
+\end{definition}
+
+\begin{proposition}\thlabel{simple-module-image}
+Siano $M,N$ $R$-moduli sinistri, $f:M\to N$ un omomorfismo suriettivo di moduli. Se $M$ è semplice, allora $N$ è nullo oppure semplice.
+\end{proposition}
+\begin{proof}
+Supponiamo che $N$ sia non nullo, e sia $N'\le N$ un sottomodulo proprio. Allora $f^{-1}(N')\le M$ è un sottomodulo proprio, dunque è nullo, pertanto $N'$ è nullo.
+\end{proof}
+
+
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro. Si dice che $M$ è \emph{finitamente generato} se esistono $x_1,\ldots x_n\in M$ tali che $M=Rx_1+\ldots+Rx_n$.
+\end{definition}
+
+\begin{definition}
+Sia $A$ una $\mathbb{K}$-algebra non nulla, $M$ un $A$-modulo sinistro. Abbiamo visto che possiamo immaginare $\mathbb{K}$ immerso in $A$ (anzi, in $Z(A)$), dunque $M$ possiede una struttura di $\mathbb{K}$-spazio vettoriale. $M$ si dice \emph{finito} se ha dimensione finita come $\mathbb{K}$-spazio vettoriale.
+\end{definition}
+
+\begin{proposition}\thlabel{finite-module-equivalent}
+Sia $A$ una $\mathbb{K}$-algebra finita non nulla, $M$ un $A$-modulo sinistro. Allora $M$ è finito se e solo se è finitamente generato.
+\end{proposition}
+\begin{proof}
+\leavevmode
+\begin{itemize}
+\item[$(\Rightarrow)$] Supponiamo che $M$ sia finito. Allora esistono $x_1,\ldots, x_n\in M$ tali che $\mathbb{K}x_1+\ldots+\mathbb{K}x_n=M$. Ma $\mathbb{K}\subseteq A$, dunque $Ax_1+\ldots+Ax_n=M$, ovvero $M$ è finitamente generato.
+\item[$(\Leftarrow)$] Supponiamo che $M$ sia finitamente generato. Allora esistono $x_1,\ldots x_n\in M$ tali che $Ax_1+\ldots+Ax_n=M$. Ma $A$ è finita, quindi esistono $a_1,\ldots a_m\in A$ tali che $\mathbb{K}a_1+\ldots+\mathbb{K}a_m=A$. Allora
+$$
+\sum_{i=1}^{n}\sum_{j=1}^{m}\mathbb{K}(a_jx_i)=M,
+$$
+dunque $M$ è finito.
+\end{itemize}
+\end{proof}
+
+
+
+\begin{proposition}\thlabel{semisimple-module-equivalent}
+Sia $A$ una $\mathbb{K}$-algebra finita non nulla, $M$ un $A$-modulo sinistro finito non nullo. Allora sono equivalenti:
+\begin{enumerate}[(i)]
+\item esiste una famiglia finita $\{M_i\}_{i\in I}$ di sottomoduli semplici di $M$ tali che $M=\sum_{i\in I}M_i$;
+\item esiste una famiglia finita $\{M_i\}_{i\in I}$ di sottomoduli semplici di $M$ tali che $M=\Dirsum_{i\in I}M_i$;
+\item per ogni sottomodulo $N\le M$ esiste un sottomodulo $N'\le M$ tale che $M=N\Dirsum N'$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\leavevmode
+\begin{itemize}
+\item[(i)$\Rightarrow$(iii)] Sia $J\subseteq I$ un sottoinsieme massimale tale che $N\cap M_j=0$ per ogni $j\in J$. Sia $N'=\sum_{j\in J}M_j\le M$. Supponiamo per assurdo che $N+N'\neq M$. Osserviamo che per ogni $i\in I$, essendo $M_i$ semplice, vale uno fra $M_i\cap(N+N')=0$ e $M_i\cap(N+N')=M_i$. Poiché $N+N'\neq M$, deve esistere un $i\in I$ tale che $M_i\cap(N+N')=0$. Ma allora $M_i\cap N'=0$ (quindi $i\not\in J$) e $M_i\cap N=0$, dunque $J$ non era massimale ($J\cup\{i\}$ è strettamente più grande e soddisfa la proprietà richiesta), assurdo.
+\item[(iii)$\Rightarrow$(ii)] Se $M$ è semplice la tesi è banalmente vera. Altrimenti sia $N\le M$ un sottomodulo proprio non nullo. Per ipotesi esiste un sottomodulo $N'\le M$ tale che $M=N\dirsum N'$ (dunque $N'$ è proprio e non nullo). Naturalmente le dimensioni di $N$ e di $N$' come $\mathbb{K}$-spazi vettoriali sono minori di quella di $M$, dunque si può concludere per induzione.
+\item[(ii)$\Rightarrow$(i)] È ovvio.
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+Sia $A$ una $\mathbb{K}$-algebra non nulla, $M$ un $A$-modulo sinistro finito non nullo. $M$ si dice \emph{semisemplice} se soddisfa una delle proprietà equivalenti della \thref{semisimple-module-equivalent}.
+\end{definition}
+
+\begin{proposition}\thlabel{semisimple-modules}
+Sia $A$ una $\mathbb{K}$-algebra finita non nulla, $M,N,L$ $A$-moduli sinistri.
+\begin{enumerate}[(i)]
+\item Se $M\le L$ e $N\le L$ sono semisemplici, allora $M+N$ è semisemplice.
+\item Se $M$ e $N$ sono semisemplici, allora $M\dirsum N$ è semisemplice.
+\item Se $f:M\to N$ è un omomorfismo suriettivo di moduli e $M$ è semisemplice, allora $N$ è semisemplice o nullo.
+\item Se $N\le M$ e $M$ è semisemplice, allora $N$ e $M/N$ sono semisemplici o nulli.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\leavevmode
+\begin{enumerate}[(i)]
+\item È ovvio dalla caratterizzazione (i) della \thref{semisimple-module-equivalent}.
+\item È ovvio dalla caratterizzazione (ii) della \thref{semisimple-module-equivalent}.
+\item Sia $M=\sum_{i\in I}M_i$ con gli $M_i$ semplici. Allora $N=f(M)=\sum_{i\in I}f(M_i)$, ma $f(M_i)$ è nullo oppure semplice per ogni $i\in I$ (\thref{simple-module-image}), dunque $N$ è semisemplice o nullo.
+\item $M/N$ è l'immagine della proiezione al quoziente di $M$, dunque è semisemplice o nullo. Scriviamo ora $M=N\dirsum N'$ per un qualche $N'\le M$. Allora $N\iso M/N'$ (semplice verifica), dunque $N$ è un quoziente di $M$ ed è pertanto semisemplice o nullo.
+\end{enumerate}
+
+\end{proof}

@@ -368,3 +368,34 @@ $$
 $$
 dunque tutti i $b_k$ sono nulli tranne uno, diciamo $b_h$, il cui quadrato vale $1$. Ovviamente, però, $\chi_\rho(1)=b_h\chi_{\rho_h}(1)=\deg\rho>0$, e anche $\chi{\rho_h}(1)>0$, dunque $b_h=1$. Otteniamo dunque $\chi_\rho=\chi_{\rho_h}$, da cui $\rho\isor\rho_h$.
 \end{proof}
+
+\section{Rappresentazioni Irriducibili di $SO_3$}
+Consideriamo l'applicazione $p:S^3\to SO_3$ descritta nella \thref{s3-so3-cover}. Osserviamo che per ogni $d\in\mathbb{N}$ vale $\rho_{2d}(-1)=\id$, dunque $\ker p\subseteq\ker\rho_{2d}$. Per la \thref{topological-group-homomorphism-theorem} esiste una rappresentazione $\Rep{\sigma_d}{SO_3}{\SymP^{2d}\mathbb{C}^2}$ che fa commutare il diagramma
+$$
+\begin{diagram}
+S^3\arrow{r}{\rho_{2d}}\arrow[swap]{d}{p}&GL(\SymP^{2d}\mathbb{C}^2)\\
+SO_3\arrow[swap]{ru}{\sigma_d}
+\end{diagram}
+$$
+ovvero tale che $\rho_{2d}=\sigma_{2d}\circ p$. Poiché $\im\rho_{2d}=\im\sigma_d$ e $\rho_{2d}$ è irriducibile, anche $\sigma_d$ è irriducibile. D'altro canto, se $\Rep{\sigma}{SO_3}{V}$ è una rappresentazione irriducibile di $SO_3$, allora $\sigma\circ p$ è una rappresentazione irriducibile di $S^3$; abbiamo già trovato tutte le rappresentazioni irriducibili di $S^3$, dunque sappiamo che $\sigma\circ p\isor\rho_n$ per un qualche $n\in\mathbb{N}$. Osserviamo che per $n$ dispari $\rho_n(-1)=-\id$, quindi non è possibile che $\rho_n\isor\sigma\circ p$. Dunque $n=2d$ per un qualche $d\in\mathbb{N}$, ma allora, per l'unicità garantita dal teorema di omomorfismo, $\sigma\isor\sigma_d$. Segue che le rappresentazioni irriducibili di $SO_3$ sono esattamente le $\sigma_d$.
+
+Possiamo individuare una copia di $S^1$ dentro $SO_3$, ad esempio mediante la corrispondenza biunivoca
+$$
+w=e^{i\theta}\longleftrightarrow\begin{pmatrix}1&0&0\\0&\cos\theta&-\sin\theta\\0&\sin\theta&\cos\theta\end{pmatrix}.
+$$
+Indicheremo quindi con $w$ sia il numero complesso $e^{i\theta}$ sia la matrice corrispondente. Calcoliamo ora il carattere di $\sigma_d$ limitatamente a $S^1$.  Notiamo che
+$$
+p(e^{i\theta})=\begin{pmatrix}1&0&0\\0&\cos2\theta&-\sin2\theta\\0&\sin2\theta&\cos2\theta\end{pmatrix},
+$$
+quindi possiamo scrivere, con lieve abuso di notazione, $p(w)=w^2$. Dato $w\in S^1\subseteq SO_3$, prendiamo un $z\in S^1\subseteq S^3$ tale che $p(z)=w$ (dunque $w=z^2$). Allora
+\begin{align*}
+\chi_{\sigma_d}(w)&=\tr\sigma_d(w)\\
+&=\tr\sigma_d(p(z))\\
+&=\chi_{\rho_{2d}}(z)\\
+&=\sum_{0\le k\le 2d}z^{2k-2d}\\
+&=\sum_{0\le k\le 2d}w^{k-d}\\
+&=w^d+w^{d-2}+\ldots+w^{2-d}+w^{-d}.
+\end{align*}
+
+[TBC]
+
