@@ -138,10 +138,10 @@ Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Consideri
 \end{definition}
 
 
-Siano $R_1,\ldots,R_n$ anelli, $R=R_1\times\ldots\times R_n$. Se $M_i$ è un $R_i$-modulo sinistro per $i=1,\ldots,n$, allora $M=M_1\times\ldots\times M_n$ ha una struttura di $R$-modulo sinistro, con la moltiplicazione data da $(a_1,\ldots,a_n)(x_1,\ldots,x_n)=(a_1x_1,\ldots,a_nx_n)$.
+Siano $R_1,\ldots,R_n$ anelli, $R=R_1\times\ldots\times R_n$. Se $M_i$ è un $R_i$-modulo sinistro, allora possiede anche una struttura di $R$-modulo sinistro (che indicheremo con $\psub{R}M_i$, con la moltiplicazione data da $(a_1,\ldots,a_n)x=a_ix$.
 
 \begin{proposition}\thlabel{modules-over-product-of-rings}
-Siano $R_1,\ldots,R_n$ anelli, $R=R_1\times\ldots\times R_n$, $M$ un $R$-modulo sinistro. Allora esistono $M_1,\ldots,M_n$ tali che $M_i$ è un $R_i$-modulo sinistro e $M\iso M_1\times\ldots\times M_n$.
+Siano $R_1,\ldots,R_n$ anelli, $R=R_1\times\ldots\times R_n$, $M$ un $R$-modulo sinistro. Allora esistono $M_1,\ldots,M_n$ tali che $M_i$ è un $R_i$-modulo sinistro e $M\iso \psub{R}M_1\times\ldots\times \psub{R}M_n$.
 \end{proposition}
 \begin{proof}
 Per $i=1,\ldots, n$ sia $\pi_i:R\to R_i$ la proiezione, $e_i=(0,\ldots,1_{R_i},\ldots,0)\in R$, $M_i=e_iM\le M$. Osserviamo che per ogni $a\in R\comma x\in M$ vale
@@ -167,7 +167,7 @@ $$
 $$
 Dunque $\varphi$ è un isomorfismo.
 \end{proof}
-Manteniamo le notazioni della proposizione precedente; inoltre, dato un qualunque $R$-modulo sinistro $N$, indichiamo con $N_i\subseteq N$ il sottomodulo $e_iN$, in modo che $N\iso N_1\times\ldots\times N_n$.
+Manteniamo le notazioni della proposizione precedente; inoltre, dato un qualunque $R$-modulo sinistro $N$, indichiamo con $N_i\le N$ il sottomodulo $e_iN$, in modo che $N\iso N_1\times\ldots\times N_n$.
 
 
 \begin{corollary}\thlabel{homomorphisms-modules-over-product-of-rings}
@@ -295,16 +295,13 @@ a&\longmapsto a1_M
 $\varphi$ è non nullo ($\varphi(1_A)=1_M\neq 0$), dunque è suriettivo. Vale $M=\sum_{i=1}^{n}\varphi(M_i)$. $M$ è non nullo, pertanto per almeno un $i$ il sottomodulo $\varphi(M_i)\le M$ è non nullo, ma allora $\varphi(M_i)=M$, e per la \thref{simple-module-image} $M\iso M_i$.
 \end{proof}
 
-
-\begin{proposition}\thlabel{product-of-semisimple-algebras}
-Siano $A_1,\ldots,A_n$ $\mathbb{K}$-algebre semisemplici a sinistra. Allora $A=A_1\times\ldots\times A_n$ è semisemplice a sinistra.
-\end{proposition}
-\begin{proof}
-Per $i=1,\ldots n$ scriviamo $\psub{A_i}A_i\iso\Dirsum_{j=1}^{m_j}\psub{A_i}M_{ij}$ con gli $M_{ij}$ semplici. Ogni $M_{ij}$ è anche un $A$-modulo sinistro semplice con il prodotto definito da $(a_1,\ldots,a_n)x=a_ix$, dunque
+\begin{remark}
+Siano $A_1,\ldots,A_n$ $\mathbb{K}$-algebre semisemplici a sinistra, $A=A_1\times\ldots\times A_n$. Scriviamo $\psub{A_i}A_i\iso\Dirsum_{j=1}^{m_j}\psub{A_i}M_{ij}$ con gli $M_{ij}$ semplici. Allora $\psub{A}M_{ij}$ è un $A$-modulo sinistro semplice, dunque
 $$
 \psub{A}A\iso\Dirsum_{i=1}^{n}\Dirsum_{j=1}^{m_j}\psub{A}M_{ij}.
 $$
-\end{proof}
+Segue che $A$ è semisemplice a sinistra, e inoltre per la \thref{simple-modules-on-semisimple-algebra} ogni $A$-modulo sinistro è isomorfo a un qualche $\psub{A}M_{ij}$.
+\end{remark}
 
 
 
@@ -443,7 +440,33 @@ Sia $f\in\End_A(\psub{A}D^n)$. Allora deve valere $f(E_{i1}e_1)=E_{i1}f(e_1)=[f(
 Sia $A$ una $\mathbb{K}$-algebra finita semisemplice a sinistra. Allora esistono $\mathbb{K}$-algebre di divisione $D_1,\ldots,D_m$ e interi positivi $n_1,\ldots, n_m$ tali che $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$. Inoltre le coppie $(D_i,n_i)$ sono uniche a meno di permutazione degli indici.
 \end{proposition}
 \begin{proof}
-
+Mostriamo innanzitutto l'esistenza. Scriviamo
+$$
+\psub{A}A\iso\Dirsum_{i=1}^{m}M_i^{n_i}
+$$
+dove gli $M_i$ sono $A$-moduli sinistri semplici a due a due non isomorfi. Applicando la \thref{matrices-vs-endomorphisms} (con $n=1$) otteniamo
+$$
+\psub{A}A\iso\End^{\op}_A(\psub{A}A)\iso\End^{\op}_A(M_1^{n_1}\dirsum\ldots\dirsum M_m^{n_m}).
+$$
+Osserviamo che se $i\neq j$ ogni omomorfismo di moduli da $M_i$ in $M_j^{n_j}$ è nullo (questo si può vedere componendo l'omomorfismo con le proiezioni sulle $n_j$ copie di $M_j$ e constatando che si ottengono omomorfismi nulli). Segue che
+$$
+\psub{A}A\iso \End^{\op}_A(M_1^{n_1})\dirsum\ldots\dirsum\End^{\op}_A(M_m^{n_m}).
+$$
+Il seguente lemma permette di concludere, dopo aver osservato che $D_i=\End^{\op}_A(M_i)$ è un'algebra di divisione.
+\begin{lemma*}
+Sia $A$ una $\mathbb{K}$-algebra, $M$ un $A$-modulo sinistro, $n$ un intero positivo, $D=\End^{\op}_A(M)$. Allora $\End^{\op}_A(M^n)\iso D^{n\times n}$.
+\end{lemma*}
+\begin{proof}
+Sia $\iota_i:M\to M^n$ l'immersione nella $i$-esima copia di $M$, $\pi_i:M^n\to M$ la proiezione sulla $i$-esima copia di $M$. Consideriamo gli omomorfismi di algebre
+\begin{align*}
+\varphi: R^{n\times n}&\longrightarrow\End^{\op}_A(M^n)\\
+\alpha&\longmapsto\left((x_1,\ldots,x_n)\mapsto\left(\sum_{i=1}^{n}[\alpha]_{1i}(x_i),\ldots,\sum_{i=1}^{n}[\alpha]_{ni}(x_i)\right)\right)\\
+\psi:\End^{\op}_A(M^n)&\longrightarrow R^{n\times n}\\
+f&\longmapsto\psi(f)\qquad\text{dove $[\psi(f)]_{ij}=\pi_j\circ f\circ\iota_i$}
+\end{align*}
+È facile verificare che si tratta effettivamente di omomorfismi di algebre, e che $\varphi$ e $\psi$ sono uno l'inverso dell'altro, dunque sono isomorfismi.
+\end{proof}
+Mostriamo ora l'unicità. Supponiamo che valga $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$ con $D_1,\ldots,D_m$ algebre di divisione finite. Sappiamo che $D_i^{n_i\times n_i}$ è un'algebra semisemplice a sinistra che ha come unico modulo semplice $D_i^{n_i}$ (\thref{matrices-over-division-algebra-semisimple}).
 \end{proof}
 
 
