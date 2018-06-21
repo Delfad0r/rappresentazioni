@@ -3,7 +3,7 @@
 \section{Definizioni}
 
 \begin{definition}
-Sia $\mathbb{K}$ un campo. Si dice \emph{algebra su $\mathbb{K}$} (o $\mathbb{K}$-algebra) uno spazio vettoriale $A$ su $\mathbb{K}$ dotato di un prodotto bilineare $\cdot:A\times A\to A$ tale che $(A,+,\cdot)$ sia un anello. $A$ si dice \emph{finita} se ha dimensione finita come $\mathbb{K}$-spazio vettoriale.
+Sia $\mathbb{K}$ un campo. Si dice \emph{algebra} su $\mathbb{K}$ (o $\mathbb{K}$-algebra) uno spazio vettoriale $A$ su $\mathbb{K}$ dotato di un prodotto bilineare $\cdot:A\times A\to A$ tale che $(A,+,\cdot)$ sia un anello. $A$ si dice \emph{finita} se ha dimensione finita come $\mathbb{K}$-spazio vettoriale.
 \end{definition}
 
 \begin{remark}
@@ -37,10 +37,10 @@ Gli \emph{$R$-moduli destri} si definiscono analogamente, ma con il prodotto a d
 Dato un $R$-modulo $M$, potremo scrivere $_RM$ in luogo di $M$ per evidenziare il fatto che $M$ è un $R$-modulo sinistro, e $M_R$ per evidenziare il fatto che si tratta invece di un $R$-modulo destro.
 
 \begin{definition}
-Sia $(R,+,\cdot)$ un anello. Si dice \emph{anello opposto} l'anello $(\op{R},+,\op{\cdot})$, dove $a\op{\cdot}b=b\cdot a$.
+Sia $(R,+,\cdot)$ un anello. Si dice \emph{anello opposto} l'anello $(R^{\op},+,\cdot^{\op})$, dove $a\cdot^{\op}b=b\cdot a$.
 \end{definition}
 
-È evidente che gli $R$-moduli sinistri sono in corrispondenza biunivoca con gli $\op{R}$-moduli destri. Nel seguito ci limiteremo dunque a enunciare i risultati per moduli sinistri, intendendo implicitamente che valgono enunciati analoghi per i moduli destri.
+È evidente che gli $R$-moduli sinistri sono in corrispondenza biunivoca con gli $R^{\op}$-moduli destri. Nel seguito ci limiteremo dunque a enunciare i risultati per moduli sinistri, intendendo implicitamente che valgono enunciati analoghi per i moduli destri.
 
 \begin{definition}
 Siano $M,N$ $R$-moduli sinistri. Un'applicazione $f:M\to N$ si dice \emph{omomorfismo di moduli} se è $R$-lineare, ovvero se
@@ -52,7 +52,22 @@ per ogni $a,b\in R\comma x,y\in M$. $f$ si dice \emph{isomorfismo di moduli} se 
 
 
 \begin{definition}
-Sia $A$ una $\mathbb{K}$-algebra, $M$ un $A$-modulo sinistro. Si dice \emph{algebra degli endomorfismi di $M$} 
+Sia $M$ un $R$-modulo sinistro, $\mathcal{B}\subseteq M$ un sottoinsieme. $M$ si dice \emph{libero su $\mathcal{B}$} se soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni mappa $f:\mathcal{B}\to N$ esiste un unico omomorfismo di moduli $\bar{f}:M\to N$ che fa commutare il diagramma
+$$
+\begin{diagram}
+\mathcal{B}\arrow{r}{f}\arrow[hook]{d}{}&N\\
+M\arrow[swap]{ru}{\bar{f}}
+\end{diagram}
+$$
+ovvero tale che $f=\bar{f}|_\mathcal{B}$. In tal caso $\mathcal{B}$ si dice \emph{base} di $M$. $M$ si dice \emph{libero} se ammette una base.
+\end{definition}
+
+
+\begin{definition}
+Sia $M$ un $R$-modulo sinistro. $x_1,\ldots,x_n\in M$ si dicono \emph{linearmente indipendenti} se per ogni $a_1,\ldots,a_n\in R$ vale l'implicazione
+$$
+a_1x_1+\ldots+a_nx_n=0\implies a_1=\ldots=a_n=0.
+$$
 \end{definition}
 
 
@@ -71,7 +86,7 @@ Si tratta di semplici verifiche.
 \end{proof}
 
 \begin{definition}
-Sia $M$ un $R$-modulo sinistro, $N\le M$ un sottomodulo. Si dice \emph{quoziente di $M$ per $N$} un $R$-modulo sinistro (indicato con $M/N$) dotato di un omomorfismo di moduli $\pi:M\to M/N$ con $N\le\ker\pi$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $L$ e per ogni omomorfismo di moduli $f:M\to L$ con $N\le\ker f$ esiste un unico omomorfismo di moduli $\bar{f}:M/N\to L$ che fa commutare il diagramma
+Sia $M$ un $R$-modulo sinistro, $N\le M$ un sottomodulo. Si dice \emph{quoziente} di $M$ per $N$ un $R$-modulo sinistro (indicato con $M/N$) dotato di un omomorfismo di moduli $\pi:M\to M/N$ con $N\le\ker\pi$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $L$ e per ogni omomorfismo di moduli $f:M\to L$ con $N\le\ker f$ esiste un unico omomorfismo di moduli $\bar{f}:M/N\to L$ che fa commutare il diagramma
 $$
 \begin{diagram}
 M\arrow{r}{f}\arrow[swap]{d}{\pi}&L\\
@@ -84,7 +99,7 @@ ovvero tale che $f=\bar{f}\circ\pi$.
 Si dimostra facilmente che il modulo quoziente è unico a meno di isomorfismo canonico, e si può costruire quozientando $M$ per la relazione di equivalenza $x\sim y\iff x-y\in N$.
 
 \begin{definition}
-Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{prodotto diretto degli $M_i$} un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (proiezioni) $\pi_i:M\to M_i$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:N\to M_i\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:N\to M$ che per ogni $i\in I$ fa commutare il diagramma
+Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{prodotto diretto} degli $M_i$ un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (proiezioni) $\pi_i:M\to M_i$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:N\to M_i\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:N\to M$ che per ogni $i\in I$ fa commutare il diagramma
 $$
 \begin{diagram}
 N\arrow{r}{\varphi_i}\arrow[swap]{rd}{\varphi}&M_i\\
@@ -98,7 +113,7 @@ Il prodotto diretto degli $M_i$ si indica con $\prod_{i\in I}M_i$. Si dimostra f
 
 
 \begin{definition}
-Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{somma diretta degli $M_i$} un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (immersioni) $\iota_i:M_i\to M$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:M_i\to N\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:M\to N$ che per ogni $i\in I$ fa commutare il diagramma
+Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{somma diretta} degli $M_i$ un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (immersioni) $\iota_i:M_i\to M$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:M_i\to N\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:M\to N$ che per ogni $i\in I$ fa commutare il diagramma
 $$
 \begin{diagram}
 M_i\arrow{r}{\varphi_i}\arrow[swap]{d}{\iota_i}&N\\
@@ -115,11 +130,11 @@ $$
 
 
 \begin{definition}
-Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Si dice \emph{somma degli $M_i$} (e si indica con $\sum_{i\in I}M_i$) il più piccolo sottomodulo di $M$ che contiene tutti gli $M_i$.
+Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Si dice \emph{somma} degli $M_i$ (e si indica con $\sum_{i\in I}M_i$) il più piccolo sottomodulo di $M$ che contiene tutti gli $M_i$.
 \end{definition}
 
 \begin{definition}
-Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Consideriamo l'unico omomorfismo di moduli $\Phi:\Dirsum_{i\in I}M_i\to\sum_{i\in I}M_i$ tale che $\Phi(x)=x$ per ogni $i\in I\comma x\in M_i$. Evidentemente $\Phi$ è suriettivo; se è anche iniettivo si dice che gli $M_i$ sono \emph{in somma diretta} e si scrive $\sum_{i\in I}M_i=\Dirsum_{i\in I}M_i$.
+Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Consideriamo l'unico omomorfismo di moduli $\Phi:\Dirsum_{i\in I}M_i\to\sum_{i\in I}M_i$ tale che $\Phi(x)=x$ per ogni $i\in I\comma x\in M_i$. Evidentemente $\Phi$ è suriettivo; se è anche iniettivo si dice che gli $M_i$ sono in \emph{somma diretta} e si scrive $\sum_{i\in I}M_i=\Dirsum_{i\in I}M_i$.
 \end{definition}
 
 
@@ -261,10 +276,10 @@ Sia A una $\mathbb{K}$-algebra semisemplice a sinistra. Allora ogni $A$-modulo s
 \begin{proof}
 Sia $M$ un $A$-modulo finito non nullo. Per la \thref{finite-module-equivalent} $M$ è finitamente generato; diciamo che $M=Ax_1+\ldots+Ax_n$. Consideriamo l'omomorfismo di moduli
 \begin{align*}
-\varphi:(\psub{A}{A})^n&\longrightarrow M\\
+\varphi:\psub{A}{A}^n&\longrightarrow M\\
 (a_1,\ldots,a_n)&\longmapsto a_1x_1+\ldots+a_nx_n
 \end{align*}
-È evidente che $\varphi$ è suriettivo, dunque $M\iso (\psub{A}{A})^n/\ker\varphi$. Ma $(\psub{A}{A})^n$ è semisemplice (è somma diretta di $n$ copie di $\psub{A}{A}$); per la \thref{semisimple-modules}, $M$ è semisemplice.
+È evidente che $\varphi$ è suriettivo. Ma $\psub{A}{A}^n$ è semisemplice (è somma diretta di $n$ copie di $\psub{A}{A}$); per la \thref{semisimple-modules}, $M$ è semisemplice.
 \end{proof}
 
 
@@ -281,22 +296,23 @@ $\varphi$ è non nullo ($\varphi(1_A)=1_M\neq 0$), dunque è suriettivo. Vale $M
 \end{proof}
 
 
+\begin{proposition}\thlabel{product-of-semisimple-algebras}
+Siano $A_1,\ldots,A_n$ $\mathbb{K}$-algebre semisemplici a sinistra. Allora $A=A_1\times\ldots\times A_n$ è semisemplice a sinistra.
+\end{proposition}
+\begin{proof}
+Per $i=1,\ldots n$ scriviamo $\psub{A_i}A_i\iso\Dirsum_{j=1}^{m_j}\psub{A_i}M_{ij}$ con gli $M_{ij}$ semplici. Ogni $M_{ij}$ è anche un $A$-modulo sinistro semplice con il prodotto definito da $(a_1,\ldots,a_n)x=a_ix$, dunque
+$$
+\psub{A}A\iso\Dirsum_{i=1}^{n}\Dirsum_{j=1}^{m_j}\psub{A}M_{ij}.
+$$
+\end{proof}
+
+
+
 \section{Algebre di Divisione}
 
 \begin{definition}
 Sia $D$ una $\mathbb{K}$-algebra non nulla. Si dice che $D$ è un'\emph{algebra di divisione} se per ogni $a\in A\setminus\{0\}$ esiste $b\in A$ tale che $ab=ba=1$.
 \end{definition}
-
-
-Se $A$ è una $\mathbb{K}$-algebra e $M$ un $A$-modulo sinistro. Allora $M$ acquista una struttura di spazio vettoriale su $\mathbb{K}$, e lo spazio vettoriale $\End_\mathbb{K}(M)$ dotato dell'operazione di composizione è una $\mathbb{K}$-algebra. L'insieme $\End_A(M)$ degli endomorfismi di moduli da $M$ in $M$ è una sottoalgebra di $\End_\mathbb{K}(A)$.
-
-
-\begin{proposition}\thlabel{module-schur-lemma}
-Sia $A$ una $\mathbb{K}$-algebra non nulla, $M$ un $A$-modulo sinistro semplice. Allora $\End_A(M)$ è un'algebra di divisione.
-\end{proposition}
-\begin{proof}
-Sia $\varphi\in\End_A(M)\setminus\{0\}$. Poiché $M$ è semplice e $\varphi$ è non nulla, $\im\varphi=M$ e $\ker\varphi=0$, dunque $\varphi$ è suriettiva e iniettiva, ovvero è invertibile.
-\end{proof}
 
 
 \begin{proposition}\thlabel{division-algebra-closed-fields}
@@ -319,7 +335,117 @@ per opportuni $a_1,\ldots,a_n\in\mathbb{R}$, da cui
 $$
 v(a_nv^{n-1}+\ldots+a_1)=1,
 $$
-ovvero $v^{-1}\in\mathbb{R}[u]$. Osserviamo inoltre che $\mathbb{R}[u]$ è commutativo (le potenze di $u$ commutano fra loro e con gli elementi di $\mathbb{R}$), dunque $\mathbb{R}[u]$ è un campo. Poiché $\mathbb{R}[u]$ non è isomorfo a $\mathbb{R}$, deve necessariamente essere isomorfo a $\mathbb{C}$ (l'unica altra estensione finita di $\mathbb{R}$). Stiamo supponendo che $D$ non sia isomorfo a $\mathbb{C}$, dunque $\mathbb{R}[u]\subsetneq D$. Identifichiamo $\mathbb{C}$ con $\mathbb{R}[u]\subseteq D$. $\psub{\mathbb{C}}{D}$ (ovvero $D$ visto che $\mathbb{R}[u]$-modulo sinistro) è un $\mathbb{C}$-spazio vettoriale di dimensione finita. Consideriamo l'omomorfismo di spazi vettoriali $T:\psub{\mathbb{C}}{D}\to\psub{\mathbb{C}}{D}$ definito da $T(x)=xi$. Vale $T^2=-\id$, dunque per decomposizione primaria vale $\psub{\mathbb{C}}{D}=D^+\dirsum D^-$, dove $D^+=\{x\in D:xi=ix\}$ e $D^-=\{x\in D:xi=-ix\}$. Ovviamente $\mathbb{C}\subseteq D^+$; se per assurdo $\mathbb{C}\subsetneq D^+$, preso un $u'\in D^+\setminus\mathbb{C}$ e applicando un ragionamento analogo a quello di prima otterremmo che $\mathbb{C}[u']\subseteq D^+$ è un'estensione finita propria di $\mathbb{C}$, che è assurdo. Pertanto $D^+=\mathbb{C}$. Sia ora $v\in D^-$; consideriamo l'applicazione $\mathbb{R}$-lineare $\varphi:D\to D$ definita da $\varphi(x)=xv$. Poiché $v$ è invertibile, $\varphi$ è un isomorfismo. Osserviamo inoltre che $\varphi(D^+)\subseteq D^-$ e $\varphi(D^-)\subseteq D^+$, dunque valgono le uguaglianze e $D^-=D^+v$. Segue che $v^2\in D^+$, pertanto commuta con tutti gli elementi di $D^+$ (che è commutativo) e di $D^-$ (che è uguale a $D^+v$), dunque commuta con tutti gli elementi di $D$. Si può verificare facilmente che il centro di $D$ è $\mathbb{R}$: infatti contiene $\mathbb{R}$, è contenuto in $D^+$ (ogni elemento del centro deve commutare con $i$) e non è tutto $D^+$ ($i$ non sta nel centro, dato che $D^-$ è non vuoto), pertanto è esattamente $\mathbb{R}$. Allora $u^2\in\mathbb{R}$; inoltre $u^2<0$: infatti se fosse $u^2\ge 0$ esisterebbe $a\in\mathbb{R}$ tale che $u^2=a^2$, da cui $0=(u+a)(u-a)$, che è assurdo poiché $u\not\in\mathbb{R}$. Ponendo $j=(-u^2)^{-\frac{1}{2}}u$ e $k=ij$ si può verificare che $1,i,j,k$ generano $D$ come $\mathbb{R}$-spazio vettoriale e soddisfano gli assiomi dei quaternioni, dunque $D\iso\mathbb{H}$.
+ovvero $v^{-1}\in\mathbb{R}[u]$. Osserviamo inoltre che $\mathbb{R}[u]$ è commutativo (le potenze di $u$ commutano fra loro e con gli elementi di $\mathbb{R}$), dunque $\mathbb{R}[u]$ è un campo. Poiché $\mathbb{R}[u]$ non è isomorfo a $\mathbb{R}$, deve necessariamente essere isomorfo a $\mathbb{C}$ (l'unica altra estensione finita di $\mathbb{R}$). Stiamo supponendo che $D$ non sia isomorfo a $\mathbb{C}$, dunque $\mathbb{R}[u]\subsetneq D$.
+
+Identifichiamo $\mathbb{C}$ con $\mathbb{R}[u]\subseteq D$. $\psub{\mathbb{C}}{D}$ (ovvero $D$ visto come $\mathbb{R}[u]$-modulo sinistro) è un $\mathbb{C}$-spazio vettoriale di dimensione finita. Consideriamo l'omomorfismo di spazi vettoriali $T:\psub{\mathbb{C}}{D}\to\psub{\mathbb{C}}{D}$ definito da $T(x)=xi$. Vale $T^2=-\id$, dunque per decomposizione primaria $\psub{\mathbb{C}}{D}=D^+\dirsum D^-$, dove $D^+=\{x\in D:xi=ix\}$ e $D^-=\{x\in D:xi=-ix\}$. Ovviamente $\mathbb{C}\subseteq D^+$; se per assurdo $\mathbb{C}\subsetneq D^+$, preso un $u'\in D^+\setminus\mathbb{C}$ e applicando un ragionamento analogo a quello di prima otterremmo che $\mathbb{C}\subseteq\mathbb{C}[u']$ è un'estensione di campi finita propria, che è assurdo. Pertanto $D^+=\mathbb{C}$.
+
+Sia ora $v\in D^-$; consideriamo l'applicazione $\mathbb{R}$-lineare $\varphi:D\to D$ definita da $\varphi(x)=xv$. Poiché $v$ è invertibile, $\varphi$ è un isomorfismo. Osserviamo inoltre che $\varphi(D^+)\subseteq D^-$ e $\varphi(D^-)\subseteq D^+$, dunque valgono le uguaglianze e $D^-=D^+v$. Segue che $v^2\in D^+$, pertanto commuta con tutti gli elementi di $D^+$ (che è commutativo) e di $D^-$ (che è uguale a $D^+v$), dunque commuta con tutti gli elementi di $D$. Si può verificare facilmente che il centro di $D$ è $\mathbb{R}$: infatti contiene $\mathbb{R}$, è contenuto in $D^+$ (ogni elemento del centro deve commutare con $i$) e non è tutto $D^+$ ($i$ non sta nel centro, dato che $D^-$ è non vuoto), pertanto è esattamente $\mathbb{R}$. Allora $v^2\in\mathbb{R}$; inoltre $v^2<0$: infatti se fosse $v^2\ge 0$ esisterebbe $a\in\mathbb{R}$ tale che $v^2=a^2$, da cui $0=(v+a)(v-a)$, che è assurdo poiché $v\not\in\mathbb{R}$. Ponendo $j=(-v^2)^{-\frac{1}{2}}v$ e $k=ij$ si può verificare che $1,i,j,k$ generano $D$ come $\mathbb{R}$-spazio vettoriale e soddisfano gli assiomi dei quaternioni, dunque $D\iso\mathbb{H}$.
 \end{proof}
+
+
+Se $D$ è una $\mathbb{K}$-algebra di divisione finita, per i $D$-moduli finiti valgono molte proprietà analoghe a quelle degli spazi vettoriali. Ad esempio:
+\begin{itemize}
+\item i $D$-moduli finiti sono liberi;
+\item ogni successione di elementi linearmente indipendenti può estendersi a una base;
+\item da ogni successione finita di generatori può estrarsi una base;
+\item se $M$ è un $D$-modulo finito, tutte le basi di $M$ hanno la stessa cardinalità, che si indica con $\dim_DM$; vale inoltre $\dim_DM=\dim_\mathbb{K}M/\dim_\mathbb{K}D$;
+\item un omomorfismo di $D$-moduli è invertibile se e solo se manda basi in basi.
+\end{itemize}
+Le dimostrazioni sono del tutto simili a quelle per gli spazi vettoriali, sfruttando il fatto che gli elementi di $D$ sono invertibili.
+
+
+
+\section{Algebre di Endomorfismi}
+
+
+Se $A$ è una $\mathbb{K}$-algebra e $M$ un $A$-modulo sinistro. Allora $M$ acquista una struttura di spazio vettoriale su $\mathbb{K}$, e lo spazio vettoriale $\End_\mathbb{K}(M)$ dotato dell'operazione di composizione è una $\mathbb{K}$-algebra. L'insieme $\End_A(M)$ degli endomorfismi di moduli da $M$ in $M$ è una sottoalgebra di $\End_\mathbb{K}(A)$.
+
+
+\begin{proposition}\thlabel{module-schur-lemma}
+Sia $A$ una $\mathbb{K}$-algebra non nulla, $M$ un $A$-modulo sinistro semplice. Allora $\End_A(M)$ è un'algebra di divisione.
+\end{proposition}
+\begin{proof}
+Sia $\varphi\in\End_A(M)\setminus\{0\}$. Poiché $M$ è semplice e $\varphi$ è non nulla, $\im\varphi=M$ e $\ker\varphi=0$, dunque $\varphi$ è suriettiva e iniettiva, ovvero è invertibile.
+\end{proof}
+
+
+\begin{corollary}\thlabel{module-schur-lemma-2}
+Sia $A$ una $\mathbb{K}$-algebra finita non nulla, $M$ un $A$-modulo sinistro finito semplice. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora  $\End_A(M)=\mathbb{K}$.
+\end{corollary}
+\begin{proof}
+Dopo aver osservato che $\End_A(M)$ è un'algebra finita, la tesi segue dalla \thref{division-algebra-closed-fields} e dalla \thref{module-schur-lemma}.
+\end{proof}
+
+
+Sia $A$ una $\mathbb{K}$-algebra, $n$ un intero positivo. Allora $A^{n\times n}$ ha una struttura di $\mathbb{K}$-algebra, con il prodotto dato da $[\alpha\beta]_{ij}=\sum_{k=1}^{n}[\alpha]_{ik}[\beta]_{kj}$. Se $A$ è finita anche $A^{n\times n}$ è finita. Se $\alpha\in A^{n\times n}$ e $v\in A^n$, definiamo
+\begin{align*}
+\alpha v\in A^n&\qquad[\alpha v]_i=\sum_{j=1}^{n}[\alpha]_{ij}[v]_j,\\
+v\alpha\in A^n&\qquad[v\alpha]_i=\sum_{j=1}^{n}[v]_j[\alpha]_{ji}.
+\end{align*}
+È facile verificare che $(A^{\op})^{n\times n}\iso(A^{n\times n})^{\op}$ (l'isomorfismo è la trasposizione).
+
+
+
+\begin{proposition}\thlabel{matrices-vs-endomorphisms}
+Sia $A$ una $\mathbb{K}$-algebra, $n$ un intero positivo. Allora le $\mathbb{K}$-algebre $A^{n\times n}$ e $\End^{\op}_A(\psub{A}{A}^n)$ sono isomorfe.
+\end{proposition}
+\begin{proof}
+Sia $e_i=(0,\ldots,1,\ldots 0)\in A^n$ (con un solo $1$ in posizione $i$). Consideriamo gli omomorfismi di algebre
+\begin{align*}
+\varphi:A^{n\times n}&\longrightarrow\End^{\op}_A(\psub{A}{A}^n)\\
+\alpha&\longmapsto(x\mapsto x\alpha)\\
+\psi:\End^{\op}_A(\psub{A}{A}^n)&\longrightarrow A^{n\times n}\\
+f&\longmapsto\psi(f)\qquad\text{dove $[\psi(f)]_{ij}=[f(e_i)]_j$}
+\end{align*}
+È facile verificare che si tratta effettivamente di omomorfismi di algebre, e che $\varphi$ e $\psi$ sono uno l'inverso dell'altro, dunque sono isomorfismi.
+\end{proof}
+
+Se avessimo voluto considerare $A$ come $A$-modulo destro, il risultato della proposizione precedente diventa $A^{n\times n}\iso\End_A(A_A^n)$ (in questo caso la moltiplicazione per matrici avviene a sinistra).
+
+
+Sia $D$ una $\mathbb{K}$-algebra di divisione finita, $n$ un intero positivo, $A=D^{n\times n}$ l'algebra delle matrici $n\times n$ a coefficienti in $D$. $D^n$ è sia un $A$-modulo sinistro che un $A$-modulo destro (possiamo moltiplicare per le matrici a sinistra o a destra).
+
+
+\begin{proposition}\thlabel{vectors-over-division-algebra-simple}
+Con le notazioni precedenti, $\psub{A}{D^n}$ e $D^n_A$ sono $A$-moduli semplici.
+\end{proposition}
+\begin{proof}
+Mostriamo solo che $\psub{A}{D^n}$ è semplice. Siano $u,v\in D^n$ con $u\neq 0$. $D^n_D$ è un $D$-modulo finito. Poiché $D$ è un'algebra di divisione finita, come osservato in precedenza possiamo costruire una base che contiene $u$, e grazie alla proprietà universale delle basi esiste un omomorfismo di moduli $f\in\End_D(D^n_D)$ tale che $f(u)=v$. Grazie all'isomorfismo $A\iso\End_D(D^n_D)$ sappiamo che esiste $\alpha\in A$ tale che $\alpha u=v$. Ma allora ogni sottomodulo di $\psub{A}D^n$ non nullo coincide necessariamente con $\psub{A}D^n$, dunque $\psub{A}D^n$ è semplice.
+\end{proof}
+
+
+\begin{proposition}\thlabel{matrices-over-division-algebra-semisimple}
+Con le notazioni precedenti, $A$ è un'algebra semisemplice a sinistra e a destra. $\psub{A}D^n$ è l'unico $A$-modulo sinistro semplice e $D^n_A$ è l'unico $A$-modulo destro semplice.
+\end{proposition}
+\begin{proof}
+È sufficiente osservare che $\psub{A}A\iso(\psub{A}D^n)^n$ (interpretando i vettori come successione delle colonne) e $A_A\iso(D^n_A)^n$ (interpretando i vettori come successione delle righe).
+\end{proof}
+
+
+\begin{proposition}\thlabel{endomorphisms-of-vectors-over-division-algebra}
+Con le notazioni precedenti, $\End_A(\psub{A}D^n)\iso D$.
+\end{proposition}
+\begin{proof}
+Consideriamo l'omomorfismo di algebre
+\begin{align*}
+\varphi:D&\longrightarrow\End_A(\psub{A}D^n)\\
+a&\longmapsto(x\mapsto xa)
+\end{align*}
+Osserviamo che $\varphi$ è iniettivo, in quanto $\varphi(a^{-1})$ è l'inverso di $\varphi(a)$ per $a\neq 0$; mostriamo ora che è anche suriettivo. Sia $E_{ij}\in A$ la matrice tale che $[E_{ij}]_{kl}=\delta_{ik}\delta_{jl}$, e sia $e_i=(0,\ldots,1,\ldots,0)\in D^n$. Osserviamo che
+$$
+[E_{ij}e_k]_l=\sum_{m=1}^{n}[E_{ij}]_{lm}[e_k]_m=\sum_{m=1}^{n}\delta_{il}\delta_{jm}\delta_{km}=\delta_{il}\delta_{jk}.
+$$
+Sia $f\in\End_A(\psub{A}D^n)$. Allora deve valere $f(E_{i1}e_1)=E_{i1}f(e_1)=[f(e_1)]_1e_i$. Ma $f(E_{i1}e_1)=f(e_i)$, dunque $f(e_i)=[f(e_1)]_1e_i$. Segue che $f=\varphi([f(e_1)]_1)$.
+\end{proof}
+
+
+\begin{proposition}[Teorema di Wedderburn]\thlabel{wedderburn-theorem}
+Sia $A$ una $\mathbb{K}$-algebra finita semisemplice a sinistra. Allora esistono $\mathbb{K}$-algebre di divisione $D_1,\ldots,D_m$ e interi positivi $n_1,\ldots, n_m$ tali che $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$. Inoltre le coppie $(D_i,n_i)$ sono uniche a meno di permutazione degli indici.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+
 
 

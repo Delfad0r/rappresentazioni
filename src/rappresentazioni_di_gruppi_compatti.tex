@@ -247,7 +247,7 @@ $$
 \item Dato $a\in S^3$ e $x\in\mathbb{R}^3\subseteq\mathbb{H}$, osserviamo che $axa^{-1}\in\mathbb{R}^3$: infatti $(axa^{-1})^*=ax^*a^{-1}=-axa^{-1}$. Inoltre $|axa^{-1}|=|a||x||a^{-1}|=|x|$. Deduciamo quindi che la mappa $x\mapsto axa^{-1}$ è una trasformazione lineare ortogonale di $\mathbb{R}^3$. Possiamo allora considerare l'applicazione
 \begin{align*}
 p:S^3&\longrightarrow O_3\\
-a&\longmapsto(x\longmapsto axa^{-1})
+a&\longmapsto(x\mapsto axa^{-1})
 \end{align*}
 Si vede facilmente che $p$ è un omomorfismo di gruppi topologici; in particolare è continuo. Consideriamo allora l'applicazione continua $\det\circ p:S^3\to\{\pm 1\}$: poiché $S^3$ è connesso, anche l'immagine di $\det\circ p$ dev'essere connessa; ma $\det(p(1))=1$, quindi tutti gli elementi dell'immagine di $p$ hanno determinante $1$, ovvero $\im p\subseteq SO_3$. Consideriamo dunque $p$ come applicazione da $S^3$ in $SO_3$, e mostriamo che è suriettiva. Ogni $a\in S^3$ può scriversi come $a=a_0+b_0u$ con $a_0,b_0\in\mathbb{R}$, $u\in\mathbb{R}^3$, $|u|=1$, $a_0^2+b_0^2=1$, e quindi come $a=\cos\theta+u\sin\theta$ per un qualche $\theta\in\mathbb{R}$. Prendiamo un $v\in\mathbb{R}^3$ ortogonale a $u$ di norma $1$, e poniamo $u_1=u\comma u_2=v\comma u_3=uv$. Allora $\{u_1,u_2,u_3\}$ è una base ortonormale di $\mathbb{R}^3$. Ricordando che $u^2=v^2=-1$ e $uv=-vu$, la matrice associata a $p(a)$ rispetto alla base $\{u_1,u_2,u_3\}$ è
 $$
@@ -274,7 +274,7 @@ a+bj&\longmapsto \begin{pmatrix*}a&b\\-b^*&a^*\end{pmatrix*}
 L'applicazione
 \begin{align*}
 p:S^3&\longrightarrow SO_3\\
-a&\longmapsto(x\longmapsto axa^{-1})
+a&\longmapsto(x\mapsto axa^{-1})
 \end{align*}
 è un omomorfismo suriettivo di gruppi topologici, un'identificazione e un rivestimento universale; inoltre vale $\ker p=\{\pm 1\}$. In particolare, se $u\in\mathbb{R}^3$ con $|u|=1$ e $\theta\in\mathbb{R}$, allora $p(\cos\theta+u\sin\theta)$ è la rotazione attorno all'asse $u$ di un angolo $2\theta$.
 \end{proposition}
