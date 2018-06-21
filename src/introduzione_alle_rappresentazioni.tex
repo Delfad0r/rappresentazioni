@@ -243,9 +243,9 @@ Sia $K=\ker\varphi$, e sia $W'\subseteq V$ un complementare $G$-stabile di $K$. 
 \end{proof}
 
 
-\begin{proposition}\thlabel{representation-finite-completely-reducible}
+\begin{restatable}{proposition}{representationfinitecompletelyreducible}\label{representationfinitecompletelyreducible}\thlabel{representation-finite-completely-reducible}
 Sia $G$ un gruppo finito, $\Rep{\rho}{G}{V}$ una rappresentazione di grado finito. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Allora $\rho$ è completamente riducibile.
-\end{proposition}
+\end{restatable}
 \begin{proof}
 Sia $W\subseteq V$ un sottospazio $G$-stabile minimale non nullo. Se $W=V$ non c'è nulla da dimostrare, altrimenti per la \thref{subrepresentation-stable-complement} esiste un complementare $W'$ di $W$ $G$-stabile. Allora $V=W\dirsum W'$ come somma di rappresentazioni con $W$ irriducibile e $\dim W'<\dim V$, dunque si può concludere per induzione.
 \end{proof}
@@ -270,7 +270,7 @@ Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $\varphi\in\H
 Siano $\Rep{\rho_i}{G}{V}$ con $i\in I$ e $\Rep{\sigma_i}{G}{W_j}$ con $j\in J$ rappresentazioni irriducibili tali che $\rho_i\not\isor\sigma_j$ per ogni $i\in I\comma j\in J$ ($I$ e $J$ finiti). Poniamo $\rho=\sum_{i\in I}\rho_i\comma\sigma=\sum_{j\in J}\sigma_j$. Allora $\Hom(\rho,\sigma)=\langle 0\rangle$.
 \end{corollary}
 \begin{proof}
-La tesi segue facilmente dalla \thref{representation-sum-homomorphisms} e dal Lemma di Schur:
+La tesi segue facilmente dalla \thref{representation-sum-homomorphisms} e dal lemma di Schur:
 \begin{align*}
 \Hom(\rho,\sigma)&=\Hom\biggl(\sum_{i\in I}\rho_i,\sum_{j\in J}\sigma_j\biggr)\\
 &\iso\Dirsum_{i\in I}\Dirsum_{j\in J}\Hom(\rho_i,\sigma_j)\\
@@ -285,13 +285,13 @@ Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile di grado finito, $\varp
 Sia $\lambda\in\mathbb{K}$ un autovalore per $\varphi$ (esiste poiché $\mathbb{K}$ è algebricamente chiuso). Allora $\varphi-\lambda\id\in\Hom(\rho,\rho)$ non è un isomorfismo (ogni autovettore per $\lambda$ viene mandato in 0), quindi per la \thref{schur-lemma-1} è nullo, ossia $\varphi=\lambda\id$.
 \end{proof}
 
-Poiché il Lemma di Schur II è alla base dei risultati seguenti, fino alla fine di questa sezione (\thref{representation-decomposition-subrepresentation-uniqueness}) supporremo sempre che le rappresentazioni siano di grado finito e che $\mathbb{K}$ sia algebricamente chiuso.
+Poiché il lemma di Schur II è alla base dei risultati seguenti, fino alla fine di questa sezione (\thref{representation-decomposition-subrepresentation-uniqueness}) supporremo sempre che le rappresentazioni siano di grado finito e che $\mathbb{K}$ sia algebricamente chiuso.
 
 \begin{corollary}\thlabel{representation-center-homothety}
 Sia $\Rep{\rho}{G}{V}$ una rappresentazione irriducibile, $z\in Z(G)$.  Allora $\rho(z)$ è un multiplo scalare dell'identità.
 \end{corollary}
 \begin{proof}
-Da $z\in Z(G)$ segue $\rho(z)\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\rho(z)$ è un multiplo scalare dell'identità.
+Da $z\in Z(G)$ segue $\rho(z)\in\Hom(\rho,\rho)$, quindi per il lemma di Schur $\rho(z)$ è un multiplo scalare dell'identità.
 \end{proof}
 
 \begin{corollary}\thlabel{representation-irreducible-abelian-group}
@@ -312,7 +312,7 @@ $$
 $$
 \end{corollary}
 \begin{proof}
-Se $\rho\not\isor\sigma$ allora per il Lemma di Schur ogni omomorfismo da $\rho$ in $\sigma$ è nullo, quindi $\dim\Hom(\rho,\sigma)=0$. Se invece $\rho\isor\sigma$, sia $\psi$ un isomorfismo da $\rho$ in $\sigma$. Dato $\varphi\in\Hom(\rho,\sigma)$ vale $\psi^{-1}\varphi\in\Hom(\rho,\rho)$, quindi per il Lemma di Schur $\psi^{-1}\varphi$ è un multiplo scalare dell'identità, ovvero $\varphi=\lambda\psi$ per un qualche $\lambda\in\mathbb{K}$. Allora è chiaro che $\Hom(\rho,\sigma)\iso\mathbb{K}$, perciò $\dim\Hom(\rho,\sigma)=1$.
+Se $\rho\not\isor\sigma$ allora per il lemma di Schur ogni omomorfismo da $\rho$ in $\sigma$ è nullo, quindi $\dim\Hom(\rho,\sigma)=0$. Se invece $\rho\isor\sigma$, sia $\psi$ un isomorfismo da $\rho$ in $\sigma$. Dato $\varphi\in\Hom(\rho,\sigma)$ vale $\psi^{-1}\varphi\in\Hom(\rho,\rho)$, quindi per il lemma di Schur $\psi^{-1}\varphi$ è un multiplo scalare dell'identità, ovvero $\varphi=\lambda\psi$ per un qualche $\lambda\in\mathbb{K}$. Allora è chiaro che $\Hom(\rho,\sigma)\iso\mathbb{K}$, perciò $\dim\Hom(\rho,\sigma)=1$.
 \end{proof}
 
 \begin{corollary}
@@ -640,7 +640,7 @@ $$
 &=\sum_{i\in I}\rho(g)\varphi_i(u)\tensor\sigma(1)w_i\\
 &=\sum_{i\in I}\rho(g)\varphi_i(u)\tensor w_i,
 \end{align*}
-da cui $\varphi_i(\tau(g)u)=\rho(g)\varphi_i(u)$. Osserviamo che i $\varphi_i$ non possono essere tutti nulli, poiché $U$ non è nullo, quindi per il Lemma di Schur almeno uno è un isomorfismo. Per il \thref{representation-irreducible-homomorphisms-dim} $\dim\Hom(\tau,\rho)=1$, quindi esistono $\psi\in\Hom(\tau,\rho)\comma\lambda_i\in\mathbb{K}$ tali che per ogni $i\in I$ vale $\varphi_i=\lambda_i\psi$. $\psi$ non è nullo, dunque è un isomorfismo, ovvero ha nucleo banale. Fissato $0\neq u\in U$, solo un numero finito di $\lambda_i\psi(u)$ sono non nulli, ma $\psi(u)$ è non nullo, pertanto solo un numero finito di $\lambda_i$ sono non nulli. Allora per ogni $u\in U$ vale
+da cui $\varphi_i(\tau(g)u)=\rho(g)\varphi_i(u)$. Osserviamo che i $\varphi_i$ non possono essere tutti nulli, poiché $U$ non è nullo, quindi per il lemma di Schur almeno uno è un isomorfismo. Per il \thref{representation-irreducible-homomorphisms-dim} $\dim\Hom(\tau,\rho)=1$, quindi esistono $\psi\in\Hom(\tau,\rho)\comma\lambda_i\in\mathbb{K}$ tali che per ogni $i\in I$ vale $\varphi_i=\lambda_i\psi$. $\psi$ non è nullo, dunque è un isomorfismo, ovvero ha nucleo banale. Fissato $0\neq u\in U$, solo un numero finito di $\lambda_i\psi(u)$ sono non nulli, ma $\psi(u)$ è non nullo, pertanto solo un numero finito di $\lambda_i$ sono non nulli. Allora per ogni $u\in U$ vale
 $$
 u=\sum_{i\in I}\lambda_i\psi(u)\tensor w_i=\psi(u)\tensor\sum_{i\in I}\lambda_i w_i.
 $$
@@ -744,7 +744,7 @@ T_\sigma(\hat{\mathcal{R}}(g_1,g_2)e_g)&=T_\sigma(e_{g_2gg_1^{-1}})\\
 &=(\sigma^*\tbox\sigma)(g_1,g_2)\sigma(g)\\
 &=(\sigma^*\tbox\sigma)(g_1,g_2)T_\sigma(e_g).
 \end{align*}
-Osserviamo che $T_\sigma$ non è nulla (ad esempio $T_\sigma(e_1)=\id$) e $\sigma^*\tbox\sigma$ è irriducibile, quindi per il Lemma di Schur $T_\sigma$ è suriettiva. Allora per il \thref{representation-surjective-homomorphism-subrepresentation} $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$.\\
+Osserviamo che $T_\sigma$ non è nulla (ad esempio $T_\sigma(e_1)=\id$) e $\sigma^*\tbox\sigma$ è irriducibile, quindi per il lemma di Schur $T_\sigma$ è suriettiva. Allora per il \thref{representation-surjective-homomorphism-subrepresentation} $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\sigma^*\tbox\sigma$.\\
 Per dimostrare quest'ultima affermazione possiamo procedere anche in un altro modo. Sia $\tau=\sigma^*\in\Irr(G)\comma V_\tau=V_\sigma^*$. Consideriamo l'applicazione lineare
 \begin{alignat*}{2}
 S_\tau:V_\tau&\tensor V_\tau^*&&\longrightarrow\mathbb{K}[G]\\
@@ -758,5 +758,5 @@ e mostriamo che $S_\tau\in\Hom(\tau\tbox\tau^*,\hat{\mathcal{R}})$:
 &=S_\tau(\tau(g_1)v\tensor\varphi\circ\tau(g_2)^{-1})\\
 &=S_\tau((\tau\tbox\tau^*)(g_1,g_2)(v\tensor\varphi)).
 \end{align*}
-Si verifica facilmente che $S_\tau$ non è nulla, quindi per il Lemma di Schur è iniettiva. Allora $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\tau\tbox\tau^*\isor\sigma^*\tbox{\sigma^*}^*\isor\sigma^*\tbox\sigma$.
+Si verifica facilmente che $S_\tau$ non è nulla, quindi per il lemma di Schur è iniettiva. Allora $\hat{\mathcal{R}}$ ha una sottorappresentazione isomorfa a $\tau\tbox\tau^*\isor\sigma^*\tbox{\sigma^*}^*\isor\sigma^*\tbox\sigma$.
 \end{example}

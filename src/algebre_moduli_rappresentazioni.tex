@@ -1,4 +1,4 @@
-\chapter{Algebre e Moduli}
+\chapter{Algebre, Moduli, Rappresentazioni}
 
 \section{Definizioni}
 
@@ -436,6 +436,9 @@ Sia $f\in\End_A(\psub{A}D^n)$. Allora deve valere $f(E_{i1}e_1)=E_{i1}f(e_1)=[f(
 \end{proof}
 
 
+\section{Wedderburn e Maschke}
+
+
 \begin{proposition}[Teorema di Wedderburn]\thlabel{wedderburn-theorem}
 Sia $A$ una $\mathbb{K}$-algebra finita semisemplice a sinistra. Allora esistono $\mathbb{K}$-algebre di divisione $D_1,\ldots,D_m$ e interi positivi $n_1,\ldots, n_m$ tali che $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$. Inoltre le coppie $(D_i,n_i)$ sono uniche a meno di permutazione degli indici.
 \end{proposition}
@@ -466,9 +469,76 @@ f&\longmapsto\psi(f)\qquad\text{dove $[\psi(f)]_{ij}=\pi_j\circ f\circ\iota_i$}
 \end{align*}
 È facile verificare che si tratta effettivamente di omomorfismi di algebre, e che $\varphi$ e $\psi$ sono uno l'inverso dell'altro, dunque sono isomorfismi.
 \end{proof}
-Mostriamo ora l'unicità. Supponiamo che valga $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$ con $D_1,\ldots,D_m$ algebre di divisione finite. Sappiamo che $D_i^{n_i\times n_i}$ è un'algebra semisemplice a sinistra che ha come unico modulo semplice $D_i^{n_i}$ (\thref{matrices-over-division-algebra-semisimple}).
+Mostriamo ora l'unicità. Supponiamo che valga $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$ con $D_1,\ldots,D_m$ algebre di divisione finite. Sappiamo che $D_i^{n_i\times n_i}$ è un'algebra semisemplice a sinistra che ha come unico modulo semplice $D_i^{n_i}$ (\thref{matrices-over-division-algebra-semisimple}). Allora tutti gli $A$-moduli sinistri semplici sono isomorfi a $\psub{A}D_i^{n_i}$ per un qualche $i$. Osserviamo che $\psub{A}D_i^{n_i}$ non è isomorfo a $\psub{A}D_j^{n_j}$ se $i\neq j$. Per la \thref{endomorphisms-of-vectors-over-division-algebra} vale $D_i\iso\End_A(\psub{A}D_i^{n_i})$; inoltre $n_i=\dim_{D_i}(D_i^{n_i})$. Pertanto le algebre $D_i$ e gli interi $n_i$ sono univocamente determinati: detti $\{M_i\}_{i=1,\ldots m}$ dei rappresentanti delle classi di isomorfismo degli $A$-moduli sinistri semplici, vale (a meno di permutare gli indici) $D_i=\End_A(M_i)$ e $n_i=\dim_{D_i}(\psub{D_i}M_i)$.
 \end{proof}
 
 
+\begin{corollary}\thlabel{wedderburn-theorem-closed-field}
+Sia $A$ una $\mathbb{K}$-algebra finita semisemplice a sinistra. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora esistono (unici a meno di permutazione) interi $n_1,\ldots, n_m$ tali che $A\iso\mathbb{K}^{n_1\times n_1}\times\ldots\times \mathbb{K}^{n_m\times n_m}$.
+\end{corollary}
+\begin{proof}
+È sufficiente ricordare la \thref{division-algebra-closed-fields} e applicare il teorema di Wedderburn.
+\end{proof}
+
+
+\begin{corollary}\thlabel{algebra-semisimple-left-right}
+Sia $A$ una $\mathbb{K}$-algebra finita. Allora $A$ è semisemplice a sinistra se e solo se è semisemplice a destra.
+\end{corollary}
+\begin{proof}
+Supponiamo che $A$ sia semisemplice a sinistra. Allora per il teorema di Wedderburn possiamo scrivere $A\iso D_1^{n_1\times n_1}\times\ldots\times D_m^{n_m\times n_m}$. Ma $D_i^{n_i\times n_i}$ è semisemplice anche a destra, dunque $A$ è semisemplice anche a destra.
+\end{proof}
+
+
+Come conseguenza di questo corollario potremo dire che una $\mathbb{K}$-algebra finita è \emph{semisemplice} senza specificare se intendiamo a sinistra o a destra, essendo le due condizioni equivalenti.
+
+
+\begin{proposition}[Teorema di Maschke]\thlabel{maschke-theorem}
+Sia $G$ un gruppo finito, $\mathbb{K}$ un campo. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Allora $\mathbb{K}[G]$ è semisemplice.
+\end{proposition}
+\begin{proof}
+Sia $M\le\mathbb{K}[G]$ un sottomodulo. Sia $V\subseteq\mathbb{K}[G]$ un sottospazio vettoriale tale che $\mathbb{K}[G]=M\dirsum V$ come spazio vettoriale; sia $\pi_M:\mathbb{K}[G]\to M$ la proiezione associata alla decomposizione. Consideriamo l'applicazione $\mathbb{K}$-lineare $T:\mathbb{K}[G]\to\mathbb{K}[G]$ definita da
+$$
+T(x)=\frac{1}{|G|}\sum_{g\in G}g\pi_M(g^{-1}x)
+$$
+e mostriamo che si tratta di un omomorfismo di moduli. È sufficiente verificare che per ogni $h\in G\comma x\in \mathbb{K}[G]$ vale $T(hx)=hT(x)$. Ma
+\begin{align*}
+hT(x)=\frac{1}{|G|}\sum_{g\in G}hg\pi_M(g^{-1}x)=\frac{1}{|G|}\sum_{g\in G}g\pi_M(g^{-1}hx)=T(hx).
+\end{align*}
+Osserviamo inoltre che $\im T=M$ e che $T|_M=\id|_M$. Per decomposizione primaria segue $\mathbb{K}[G]=M\dirsum N$ dove $N=\ker T$. Abbiamo dunque mostrato che $\mathbb{K}[G]$ è semisemplice.
+\end{proof}
+
+
+\section{Rappresentazioni come $\mathbb{K}[G]$-moduli}
+
+
+Sia $\Rep{\rho}{G}{V}$ una rappresentazione. Mediante $\rho$, $V$ acquista una struttura di $\mathbb{K}[G]$-modulo sinistro: è sufficiente definire il prodotto $gx=\rho(g)x$ per $g\in G\subseteq\mathbb{K}[G]\comma x\in V$ e poi estenderlo per linearità a tutto $\mathbb{K}[G]$.
+
+Viceversa, dato un $\mathbb{K}[G]$-modulo sinistro $V$ possiamo costruire la rappresentazione $\Rep{\rho}{G}{V}$ definendo $\rho(g)x=gx$ per $g\in G\subseteq\mathbb{K}[G]\comma x\in V$.
+
+Dunque le rappresentazioni di $G$ sono in corrispondenza biunivoca con i $\mathbb{K}[G]$-moduli sinistri. Inoltre è facile verificare che a moduli semplici corrispondono rappresentazioni irriducibili e viceversa.
+
+Possiamo ora dare una dimostrazione alternativa della \thref{representation-finite-completely-reducible}.
+\representationfinitecompletelyreducible*
+\begin{proof}
+Per il teorema di Maschke $\mathbb{K}[G]$ è semisemplice, dunque per la \thref{modules-on-semisimple-algebra} ogni $\mathbb{K}[G]$-modulo sinistro (non nullo) è semisemplice, il che è equivalente a dire che ogni rappresentazione di $G$ è completamente riducibile.
+\end{proof}
+
+
+La \thref{module-schur-lemma} e il \thref{module-schur-lemma-2} possono essere interpretate rispettivamente come lemma di Schur I e lemma di Schur II.
+
+
+\begin{corollary}\thlabel{group-algebra-decomposition}
+Sia $G$ un gruppo finito, $\mathbb{K}$ un campo algebricamente chiuso. Supponiamo che $\ch\mathbb{K}\nmid|G|$. Scriviamo $\Irr(G)=\{V_1,\ldots, V_n\}$. Allora $\mathbb{K}[G]\iso\End_\mathbb{K}(V_1)\times\ldots\times\End_\mathbb{K}(V_n)$.
+\end{corollary}
+\begin{proof}
+Per il teorema di Wedderburn vale 
+$$
+\mathbb{K}[G]\iso\End_{D_1}(\psub{D_1}V_1)\times\ldots\times\End_{D_n}(\psub{D_n}V_n)
+$$
+dove $D_i=\End^{\op}_{\mathbb{K}[G]}(V_i)$. Per il lemma di Schur (\thref{module-schur-lemma-2}), $D_1=\mathbb{K}$, dunque
+$$
+\mathbb{K}[G]\iso\End_\mathbb{K}(V_1)\times\ldots\times\End_\mathbb{K}(V_n).
+$$
+\end{proof}
 
 
