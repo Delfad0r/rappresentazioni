@@ -50,6 +50,13 @@ $$
 per ogni $a,b\in R\comma x,y\in M$. $f$ si dice \emph{isomorfismo di moduli} se è $R$-lineare e biiettiva.
 \end{definition}
 
+
+\begin{definition}
+Sia $A$ una $\mathbb{K}$-algebra, $M$ un $A$-modulo sinistro. Si dice \emph{algebra degli endomorfismi di $M$} 
+\end{definition}
+
+
+
 \section{Quozienti, Prodotti e Somme}
 
 \begin{definition}
@@ -80,11 +87,11 @@ Si dimostra facilmente che il modulo quoziente è unico a meno di isomorfismo ca
 Siano $\{M_i\}_{i\in I}$ degli $R$-moduli sinistri. Si dice \emph{prodotto diretto degli $M_i$} un $R$-modulo sinistro $M$ dotato di omomorfismi di moduli (proiezioni) $\pi_i:M\to M_i$ che soddisfa la seguente proprietà universale: per ogni $R$-modulo sinistro $N$ e per ogni famiglia di omomorfismi di moduli $\{\varphi_i:N\to M_i\}_{i\in I}$ esiste un unico omomorfismo di moduli $\varphi:N\to M$ che per ogni $i\in I$ fa commutare il diagramma
 $$
 \begin{diagram}
-N\arrow{r}{\varphi_i}\arrow[swap]{rd}{\varphi}&M_i\arrow{d}{\pi_i}\\
-&M
+N\arrow{r}{\varphi_i}\arrow[swap]{rd}{\varphi}&M_i\\
+&M\arrow{u}{\pi_i}
 \end{diagram}
 $$
-ovvero tale che $\varphi=\pi_i\circ\varphi_i$.
+ovvero tale che $\varphi_i=\pi_i\circ\varphi$.
 \end{definition}
 
 Il prodotto diretto degli $M_i$ si indica con $\prod_{i\in I}M_i$. Si dimostra facilmente che il prodotto diretto è unico a meno di isomorfismo canonico, e si può costruire prendendo il prodotto cartesiano degli $M_i$.
@@ -106,6 +113,7 @@ $$
 \Dirsum_{i\in I}M_i\iso \prod_{i\in I}M_i
 $$
 
+
 \begin{definition}
 Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Si dice \emph{somma degli $M_i$} (e si indica con $\sum_{i\in I}M_i$) il più piccolo sottomodulo di $M$ che contiene tutti gli $M_i$.
 \end{definition}
@@ -115,6 +123,53 @@ Sia $M$ un $R$-modulo sinistro, $\{M_i\}_{i\in I}$ sottomoduli di $M$. Consideri
 \end{definition}
 
 
+Siano $R_1,\ldots,R_n$ anelli, $R=R_1\times\ldots\times R_n$. Se $M_i$ è un $R_i$-modulo sinistro per $i=1,\ldots,n$, allora $M=M_1\times\ldots\times M_n$ ha una struttura di $R$-modulo sinistro, con la moltiplicazione data da $(a_1,\ldots,a_n)(x_1,\ldots,x_n)=(a_1x_1,\ldots,a_nx_n)$.
+
+\begin{proposition}\thlabel{modules-over-product-of-rings}
+Siano $R_1,\ldots,R_n$ anelli, $R=R_1\times\ldots\times R_n$, $M$ un $R$-modulo sinistro. Allora esistono $M_1,\ldots,M_n$ tali che $M_i$ è un $R_i$-modulo sinistro e $M\iso M_1\times\ldots\times M_n$.
+\end{proposition}
+\begin{proof}
+Per $i=1,\ldots, n$ sia $\pi_i:R\to R_i$ la proiezione, $e_i=(0,\ldots,1_{R_i},\ldots,0)\in R$, $M_i=e_iM\le M$. Osserviamo che per ogni $a\in R\comma x\in M$ vale
+$$
+a(e_ix)=ae_i^2x=(ae_i)(e_ix)=\pi_i(a)(e_ix),
+$$
+pertanto $M_i$ è un $R_i$-modulo. Vale inoltre $M_i=\{x\in M:\forall j\neq i\quad e_jx=0\}$: l'inclusione $\subseteq$ segue da $e_ie_j=0$ per $i\neq j$; se invece $e_jx=0$ per ogni $j\neq i$, allora
+$$
+1_Rx=(e_1+\ldots+e_n)x=e_ix\in M_i.
+$$
+Consideriamo ora l'omomorfismo di $R$-moduli
+\begin{align*}
+\varphi:M&\longrightarrow M_1\times\ldots\times M_n\\
+x&\longmapsto (e_1x,\ldots,e_nx)
+\end{align*}
+Verifichiamo che $\varphi$ è iniettivo: se $\varphi(x)=0$ allora
+$$
+x=1_Rx=(e_1+\ldots+e_n)x=0.
+$$
+Inoltre $\varphi$ è suriettivo: se $(x_1,\ldots,x_n)\in M_1\times\ldots\times M_n$ vale
+$$
+\varphi(x_1+\ldots+x_n)=(e_1x_1,\ldots,e_nx_n)=(x_1,\ldots,x_n).
+$$
+Dunque $\varphi$ è un isomorfismo.
+\end{proof}
+Manteniamo le notazioni della proposizione precedente; inoltre, dato un qualunque $R$-modulo sinistro $N$, indichiamo con $N_i\subseteq N$ il sottomodulo $e_iN$, in modo che $N\iso N_1\times\ldots\times N_n$.
+
+
+\begin{corollary}\thlabel{homomorphisms-modules-over-product-of-rings}
+Siano $M,N$ $R$-moduli sinistri, $f:M\to N$ un omomorfismo di moduli. Allora $f=f_1\times\ldots\times f_n$, dove $f_i=f|_{M_i}:M_i\to N_i$.
+\end{corollary}
+\begin{proof}
+È sufficiente osservare che $f(e_ix)=e_if(x)\in N_i$.
+\end{proof}
+
+\begin{corollary}\thlabel{submodules-over-product-of-rings}
+Se $N\le M$ è un sottomodulo, allora $N\iso N_1\times\ldots\times N_n$ con $N_i\le M_i$.
+\end{corollary}
+\begin{proof}
+È sufficiente osservare che $N_i=e_iN\le e_iM=M_i$. 
+\end{proof}
+
+
 \section{Moduli Semplici e Semisemplici}
 
 \begin{definition}
@@ -122,12 +177,11 @@ Sia $M$ un $R$-modulo sinistro. Si dice che $M$ è un \emph{modulo semplice} se 
 \end{definition}
 
 \begin{proposition}\thlabel{simple-module-image}
-Siano $M,N$ $R$-moduli sinistri, $f:M\to N$ un omomorfismo suriettivo di moduli. Se $M$ è semplice, allora $N$ è nullo oppure semplice.
+Siano $M,N$ $R$-moduli sinistri, $f:M\to N$ un omomorfismo suriettivo di moduli. Se $M$ è semplice, allora $N$ è nullo oppure isomorfo a $M$ (e dunque semplice).
 \end{proposition}
 \begin{proof}
-Supponiamo che $N$ sia non nullo, e sia $N'\le N$ un sottomodulo proprio. Allora $f^{-1}(N')\le M$ è un sottomodulo proprio, dunque è nullo, pertanto $N'$ è nullo.
+Vale $N\iso M/\ker f$. Ma $\ker f$ è nullo oppure è tutto $M$, dunque $N$ è nullo oppure isomorfo a $M$.
 \end{proof}
-
 
 
 \begin{definition}
@@ -193,5 +247,79 @@ Sia $A$ una $\mathbb{K}$-algebra finita non nulla, $M,N,L$ $A$-moduli sinistri.
 \item Sia $M=\sum_{i\in I}M_i$ con gli $M_i$ semplici. Allora $N=f(M)=\sum_{i\in I}f(M_i)$, ma $f(M_i)$ è nullo oppure semplice per ogni $i\in I$ (\thref{simple-module-image}), dunque $N$ è semisemplice o nullo.
 \item $M/N$ è l'immagine della proiezione al quoziente di $M$, dunque è semisemplice o nullo. Scriviamo ora $M=N\dirsum N'$ per un qualche $N'\le M$. Allora $N\iso M/N'$ (semplice verifica), dunque $N$ è un quoziente di $M$ ed è pertanto semisemplice o nullo.
 \end{enumerate}
-
 \end{proof}
+
+
+\begin{definition}
+Una $\mathbb{K}$-algebra finita non nulla $A$ si dice \emph{semisemplice a sinistra} se $\psub{A}{A}$ (ovvero $A$ vista come $A$-modulo sinistro) è semisemplice.
+\end{definition}
+
+
+\begin{proposition}\thlabel{modules-on-semisimple-algebra}
+Sia A una $\mathbb{K}$-algebra semisemplice a sinistra. Allora ogni $A$-modulo sinistro finito non nullo è semisemplice.
+\end{proposition}
+\begin{proof}
+Sia $M$ un $A$-modulo finito non nullo. Per la \thref{finite-module-equivalent} $M$ è finitamente generato; diciamo che $M=Ax_1+\ldots+Ax_n$. Consideriamo l'omomorfismo di moduli
+\begin{align*}
+\varphi:(\psub{A}{A})^n&\longrightarrow M\\
+(a_1,\ldots,a_n)&\longmapsto a_1x_1+\ldots+a_nx_n
+\end{align*}
+È evidente che $\varphi$ è suriettivo, dunque $M\iso (\psub{A}{A})^n/\ker\varphi$. Ma $(\psub{A}{A})^n$ è semisemplice (è somma diretta di $n$ copie di $\psub{A}{A}$); per la \thref{semisimple-modules}, $M$ è semisemplice.
+\end{proof}
+
+
+\begin{proposition}\thlabel{simple-modules-on-semisimple-algebra}
+Sia $A$ una $\mathbb{K}$-algebra semisemplice a sinistra, diciamo $\psub{A}{A}=\Dirsum_{i=1}^{n}M_i$ con gli $M_i$ semplici. Allora ogni $A$-modulo sinistro semplice è isomorfo a un qualche $M_i$.
+\end{proposition}
+\begin{proof}
+Sia $M$ un $A$-modulo sinistro semplice. Consideriamo l'omomorfismo di moduli
+\begin{align*}
+\varphi:\psub{A}{A}&\longrightarrow M\\
+a&\longmapsto a1_M
+\end{align*}
+$\varphi$ è non nullo ($\varphi(1_A)=1_M\neq 0$), dunque è suriettivo. Vale $M=\sum_{i=1}^{n}\varphi(M_i)$. $M$ è non nullo, pertanto per almeno un $i$ il sottomodulo $\varphi(M_i)\le M$ è non nullo, ma allora $\varphi(M_i)=M$, e per la \thref{simple-module-image} $M\iso M_i$.
+\end{proof}
+
+
+\section{Algebre di Divisione}
+
+\begin{definition}
+Sia $D$ una $\mathbb{K}$-algebra non nulla. Si dice che $D$ è un'\emph{algebra di divisione} se per ogni $a\in A\setminus\{0\}$ esiste $b\in A$ tale che $ab=ba=1$.
+\end{definition}
+
+
+Se $A$ è una $\mathbb{K}$-algebra e $M$ un $A$-modulo sinistro. Allora $M$ acquista una struttura di spazio vettoriale su $\mathbb{K}$, e lo spazio vettoriale $\End_\mathbb{K}(M)$ dotato dell'operazione di composizione è una $\mathbb{K}$-algebra. L'insieme $\End_A(M)$ degli endomorfismi di moduli da $M$ in $M$ è una sottoalgebra di $\End_\mathbb{K}(A)$.
+
+
+\begin{proposition}\thlabel{module-schur-lemma}
+Sia $A$ una $\mathbb{K}$-algebra non nulla, $M$ un $A$-modulo sinistro semplice. Allora $\End_A(M)$ è un'algebra di divisione.
+\end{proposition}
+\begin{proof}
+Sia $\varphi\in\End_A(M)\setminus\{0\}$. Poiché $M$ è semplice e $\varphi$ è non nulla, $\im\varphi=M$ e $\ker\varphi=0$, dunque $\varphi$ è suriettiva e iniettiva, ovvero è invertibile.
+\end{proof}
+
+
+\begin{proposition}\thlabel{division-algebra-closed-fields}
+Sia $D$ una $\mathbb{K}$-algebra di divisione finita. Supponiamo che $\mathbb{K}$ sia algebricamente chiuso. Allora $D=\mathbb{K}$.
+\end{proposition}
+\begin{proof}
+Sia $a\in D\setminus\{0\}$. Consideriamo l'omomorfismo di spazi vettoriali finitamente generati $\varphi:D\to D$ definito da $\varphi(x)=ax$.  Allora $\varphi$ ammette un un autovettore $x\in D\setminus\{0\}$ per l'autovalore $\lambda\in\mathbb{K}$, ovvero $(a-\lambda)x=0$. Ma $x$ è non nullo e $D$ è un'algebra di divisione, pertanto $a=\lambda$. Abbiamo dimostrato che $D\subseteq\mathbb{K}$, dunque $D=\mathbb{K}$.
+\end{proof}
+
+
+\begin{proposition}\thlabel{division-algebras-over-R}
+Sia $D$ una $\mathbb{R}$-algebra di divisione finita. Allora $D$ è isomorfa a uno fra $\mathbb{R}\comma\mathbb{C}\comma\mathbb{H}$.
+\end{proposition}
+\begin{proof}
+Supponiamo per assurdo che la tesi sia falsa. Sappiamo che $\mathbb{R}\subsetneq D$. Sia allora $u\in D\setminus\mathbb{R}$, e sia $u\in\mathbb{R}[u]=\{p(u):p\in\mathbb{R}[x]\}$. $\mathbb{R}[u]$ è una sottoalgebra di $D$, ed è dunque finita. Preso un qualunque $v\in\mathbb{R}[u]$ esiste un $n\ge 0$ tale che i vettori $1,v,\ldots,v^n$ sono linearmente dipendenti, ovvero esiste un polinomio non nullo $p\in\mathbb{R}[x]$ tale che $p(v)=0$; prendiamo $p$ in modo che $p(0)=-1$. Vale dunque 
+$$
+a_nv^n+a_{n-1}v^{n-1}+\ldots+a_1v-1=0
+$$
+per opportuni $a_1,\ldots,a_n\in\mathbb{R}$, da cui
+$$
+v(a_nv^{n-1}+\ldots+a_1)=1,
+$$
+ovvero $v^{-1}\in\mathbb{R}[u]$. Osserviamo inoltre che $\mathbb{R}[u]$ è commutativo (le potenze di $u$ commutano fra loro e con gli elementi di $\mathbb{R}$), dunque $\mathbb{R}[u]$ è un campo. Poiché $\mathbb{R}[u]$ non è isomorfo a $\mathbb{R}$, deve necessariamente essere isomorfo a $\mathbb{C}$ (l'unica altra estensione finita di $\mathbb{R}$). Stiamo supponendo che $D$ non sia isomorfo a $\mathbb{C}$, dunque $\mathbb{R}[u]\subsetneq D$. Identifichiamo $\mathbb{C}$ con $\mathbb{R}[u]\subseteq D$. $\psub{\mathbb{C}}{D}$ (ovvero $D$ visto che $\mathbb{R}[u]$-modulo sinistro) è un $\mathbb{C}$-spazio vettoriale di dimensione finita. Consideriamo l'omomorfismo di spazi vettoriali $T:\psub{\mathbb{C}}{D}\to\psub{\mathbb{C}}{D}$ definito da $T(x)=xi$. Vale $T^2=-\id$, dunque per decomposizione primaria vale $\psub{\mathbb{C}}{D}=D^+\dirsum D^-$, dove $D^+=\{x\in D:xi=ix\}$ e $D^-=\{x\in D:xi=-ix\}$. Ovviamente $\mathbb{C}\subseteq D^+$; se per assurdo $\mathbb{C}\subsetneq D^+$, preso un $u'\in D^+\setminus\mathbb{C}$ e applicando un ragionamento analogo a quello di prima otterremmo che $\mathbb{C}[u']\subseteq D^+$ è un'estensione finita propria di $\mathbb{C}$, che è assurdo. Pertanto $D^+=\mathbb{C}$. Sia ora $v\in D^-$; consideriamo l'applicazione $\mathbb{R}$-lineare $\varphi:D\to D$ definita da $\varphi(x)=xv$. Poiché $v$ è invertibile, $\varphi$ è un isomorfismo. Osserviamo inoltre che $\varphi(D^+)\subseteq D^-$ e $\varphi(D^-)\subseteq D^+$, dunque valgono le uguaglianze e $D^-=D^+v$. Segue che $v^2\in D^+$, pertanto commuta con tutti gli elementi di $D^+$ (che è commutativo) e di $D^-$ (che è uguale a $D^+v$), dunque commuta con tutti gli elementi di $D$. Si può verificare facilmente che il centro di $D$ è $\mathbb{R}$: infatti contiene $\mathbb{R}$, è contenuto in $D^+$ (ogni elemento del centro deve commutare con $i$) e non è tutto $D^+$ ($i$ non sta nel centro, dato che $D^-$ è non vuoto), pertanto è esattamente $\mathbb{R}$. Allora $u^2\in\mathbb{R}$; inoltre $u^2<0$: infatti se fosse $u^2\ge 0$ esisterebbe $a\in\mathbb{R}$ tale che $u^2=a^2$, da cui $0=(u+a)(u-a)$, che è assurdo poiché $u\not\in\mathbb{R}$. Ponendo $j=(-u^2)^{-\frac{1}{2}}u$ e $k=ij$ si può verificare che $1,i,j,k$ generano $D$ come $\mathbb{R}$-spazio vettoriale e soddisfano gli assiomi dei quaternioni, dunque $D\iso\mathbb{H}$.
+\end{proof}
+
+
