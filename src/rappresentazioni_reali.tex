@@ -1,0 +1,118 @@
+\chapter{Rappresentazioni Reali}
+
+\section{Estensione di scalari}
+
+\begin{definition}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $(V,+,\cdot)$ un $\mathbb{L}$-spazio vettoriale, con $\cdot:\mathbb{L}\times V\to V$. Si dice \emph{restrizione di scalari} di $V$ (e si indica con $V_\mathbb{K}$) il $\mathbb{K}$-spazio vettoriale $(V,+,\cdot|_{\mathbb{K}\times V}$).
+\end{definition}
+
+Osserviamo che $GL_{\mathbb{L}}(V)\subseteq GL_{\mathbb{K}}(V_\mathbb{K})$, ovvero ogni applicazione $\mathbb{L}$-lineare da $V$ in $V$ è anche un'applicazione $\mathbb{K}$-lineare da $V_\mathbb{K}$ in $V_\mathbb{K}$. Inoltre è facile verificare che se $\mathbb{L}$ è un'estensione finita di $\mathbb{K}$ e $V$ ha dimensione finita, allora $\dim V_\mathbb{K}=[\mathbb{L}:\mathbb{K}]\cdot\dim{V}$; una $\mathbb{K}$-base di $V_\mathbb{K}$ è $\{\lambda_iv_j\}_{(i,j)\in I\times J}$, dove $\{\lambda_i\}_{i\in I}$ è una $\mathbb{K}$-base di $\mathbb{L}$ e $\{v_j\}_{j\in J}$ è una $\mathbb{L}$-base di $V$.
+
+
+\begin{definition}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $V$ un $\mathbb{K}$-spazio vettoriale. Si dice \emph{estensione di scalari} di $V$ un $\mathbb{L}$-spazio vettoriale $V_\mathbb{L}$ dotato di un'applicazione $\mathbb{K}$-lineare $\iota:V\to V_\mathbb{L}$ (immersione) che soddisfa la seguente proprietà universale: per ogni $\mathbb{L}$-spazio vettoriale $W$ e per ogni applicazione $\mathbb{K}$-lineare $f:V\to W_\mathbb{K}$ esiste un'unica applicazione $\mathbb{L}$-lineare $\bar{f}:V_\mathbb{L}\to W$ che fa commutare il diagramma
+$$
+\begin{diagram}
+V\arrow{r}{f}\arrow{d}{\iota}&W_\mathbb{K}\arrow[leftrightarrow]{d}{\id}\\
+V_\mathbb{L}\arrow{r}{\bar{f}}&W
+\end{diagram}
+$$
+ovvero tale che $f=\bar{f}\circ \iota$.
+\end{definition}
+
+Dalla definizione segue immediatamente che
+$$
+(\Hom_{\mathbb{L}}(V_\mathbb{L}, W))_\mathbb{K}\iso\Hom_{\mathbb{K}}(V,W_\mathbb{K})
+$$
+come $\mathbb{K}$-spazi vettoriali; l'isomorfismo è dato da $(\bar{f}\mapsto\bar{f}\circ\iota)$.
+
+
+\begin{proposition}\thlabel{scalar-extension-existence}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $V$ un $\mathbb{K}$-spazio vettoriale. Allora esiste un $\mathbb{L}$-spazio-vettoriale $V_\mathbb{L}$ (dotato di un'immersione $\iota:V\to V_\mathbb{L}$) che è un'estensione di scalari di $V$.
+\end{proposition}
+\begin{proof}
+In quanto estensione di $\mathbb{K}$, $\mathbb{L}$ è un $\mathbb{K}$-spazio vettoriale. Sia dunque $V_\mathbb{L}=\mathbb{L}\tensor V$, che acquista una struttura di $\mathbb{L}$-spazio vettoriale con il prodotto per scalare definito da $\lambda(a\tensor v)=(\lambda a)\tensor v$ per $\lambda\in\mathbb{L}\comma a\in\mathbb{K}\comma v\in V$. Sia inoltre $\iota:V\to V_\mathbb{L}$ definita da $\iota(v)=1\tensor v$. Verifichiamo che $V_\mathbb{L}$ verifica la proprietà universale. Sia $W$ un $\mathbb{L}$-spazio vettoriale, $f:V\to W_\mathbb{K}$ un'applicazione $\mathbb{K}$-lineare. L'applicazione $\bar{f}$ deve soddisfare
+$$
+\bar{f}(a\tensor v)=\bar{f}(a(1\tensor v))=a\bar{f}(\iota(v))=af(v),
+$$
+per ogni $a\in\mathbb{L}\comma v\in V$, dunque è al più unica. Definiamo ora $\bar{f}(a\tensor v)=af(v)$ per ogni $a\in\mathbb{L}\comma v\in V$; otteniamo un'applicazione $\bar{f}:V_\mathbb{L}\to W$ che si verifica facilmente essere $\mathbb{L}$-lineare. Inoltre $\bar{f}\iota=f$, dunque $\bar{f}$ è l'applicazione cercata.
+\end{proof}
+
+
+In virtù di questa costruzione, potremo indicare $V_\mathbb{L}$ anche come $\mathbb{L}\tensor V$.
+
+
+\begin{proposition}\thlabel{scalar-extension-uniqueness}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $V$ un $\mathbb{K}$-spazio vettoriale, $V_\mathbb{L}\comma \bar{V}_\mathbb{L}$ due estensioni di scalari di $V$ con immersioni associate rispettivamente $\iota$ e $\bar{\iota}$. Allora $V_\mathbb{L}$ e $\bar{V}_\mathbb{L}$ sono canonicamente isomorfi mediante un isomorfismo $\mathbb{L}$-lineare $\psi:V_\mathbb{L}\to \bar{V}_\mathbb{L}$ tale che $\bar{\iota}=\psi\circ\iota$.
+\end{proposition}
+\begin{proof}
+La dimostrazione è identica a quella della \thref{free-vector-space-uniqueness} e fa uso esclusivamente della proprietà universale dell'estensione di scalari.
+\end{proof}
+
+\begin{proposition}\thlabel{scalar-extension-basis}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $V$ un $\mathbb{K}$-spazio vettoriale, $\mathcal{B}$ una $\mathbb{K}$-base di $V$. Allora $\mathcal{B}_\mathbb{L}=\{\iota(v)\}_{v\in\mathcal{B}}$ è una $\mathbb{L}$-base di $V_\mathbb{L}$.
+\end{proposition}
+\begin{proof}
+Sia $W$ un $\mathbb{L}$-spazio vettoriale, $f:\mathcal{B}_\mathbb{L}\to W$ una mappa. Per la proprietà universale della base $\mathcal{B}$, esiste un'unica applicazione $\mathbb{K}$-lineare $g:V\to W_\mathbb{K}$ tale che $g|_{\mathcal{B}}=f\iota$. Per la proprietà universale dell'estensione di scalari, esiste un'unica applicazione $\mathbb{L}$-lineare $\bar{f}:V_\mathbb{L}\to W$ tale che $g=\bar{f}\iota$. Ma allora $\bar{f}\iota|_\mathcal{B}=g|_\mathcal{B}=f\iota|_\mathcal{B}$; essendo $\iota|_\mathcal{B}:\mathcal{B}\to\mathcal{B}_\mathbb{L}$ suriettiva segue $\bar{f}|_{\mathcal{B}_\mathbb{L}}=f$. L'unicità di $\bar{f}$ segue facilmente dalla costruzione.
+$$
+\begin{diagram}
+\mathcal{B}\arrow{r}{\iota|_\mathcal{B}}\arrow[hook]{d}&\mathcal{B}_\mathbb{L}\arrow[bend left=15]{rd}{f}\arrow[hook]{d}\\
+V\arrow{r}{\iota}\arrow[bend right=15]{rrd}{g}&V_{\mathbb{L}}\arrow{r}{\bar{f}}&W\arrow[leftrightarrow]{d}{\id}\\
+&&W_\mathbb{K}
+\end{diagram}
+$$
+\end{proof}
+
+La \thref{scalar-extension-basis} implica che l'immersione $\iota$ è iniettiva, dunque possiamo sempre supporre che $V\subseteq V_\mathbb{L}$.
+
+Siano $V\comma V'$ due $\mathbb{K}$-spazi vettoriali, $f\in\Hom_\mathbb{K}(V,(V'_\mathbb{L})_\mathbb{K})$. Allora esiste un'unica applicazione $\mathbb{L}$-lineare $f_\mathbb{L}\in\Hom_\mathbb{L}(V_\mathbb{L},V'_\mathbb{L})$ tale che $f_\mathbb{L}|_V=f$. Grazie all'inclusione $V'\subseteq (V'_\mathbb{L})_\mathbb{K}$, la costruzione si può applicare anche se $f\in\Hom_\mathbb{K}(V,V')$. Se scriviamo $V_\mathbb{L}=\mathbb{L}\tensor V$ e $V'_\mathbb{L}=\mathbb{L}\tensor V'$, allora $f_\mathbb{L}=\id|_\mathbb{L}\tensor f$.
+
+
+\begin{proposition}\thlabel{homomorphisms-scalar-extension-isomorphic}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $V\comma V'$ due $\mathbb{K}$-spazi vettoriali di dimensione finita. Consideriamo l'applicazione $\mathbb{K}$-lineare
+\begin{align*}
+\Phi:\Hom_\mathbb{K}(V,V')&\longrightarrow(\Hom_\mathbb{L}(V_\mathbb{L},V'_\mathbb{L}))_\mathbb{K}\\
+f&\longmapsto f_\mathbb{L}
+\end{align*}
+Allora $\Phi_\mathbb{L}:(\Hom_\mathbb{K}(V,V'))_\mathbb{L}\to\Hom_\mathbb{L}(V_\mathbb{L},V'_\mathbb{L})$ è un isomorfismo.
+\end{proposition}
+\begin{proof}
+Sia $\{v_i\}_{i\in I}$ una base di $V$, $\{v'_j\}_{j\in J}$ una base di $V'$. Allora $\{\varphi_{ij}\}_{(i,j)\in I\times J}$ è una base di $\Hom_\mathbb{K}(V, V')$, dove $\varphi_{ij}(x)=v_i^*(x)v'_j$. Osserviamo che $\{v_i\}_{i\in I}$ è una $\mathbb{L}$-base di $V_\mathbb{L}$, $\{v'_j\}_{j\in J}$ è una $\mathbb{L}$-base di $V'_\mathbb{L}$ e $(\varphi_{ij})_\mathbb{L}(v_k)=\delta_{ik}v'_j$, dunque $\{(\varphi_{ij})_\mathbb{L}\}_{(i,j)\in I\times J}$ è una $\mathbb{L}$-base di $\Hom_\mathbb{L}(V_\mathbb{L},V'_\mathbb{L})$. Allora (\thref{scalar-extension-basis}) $\Phi$ manda una base di $(\Hom_\mathbb{K}(V,V'))_\mathbb{L}$ in una base di $\Hom_\mathbb{L}(V_\mathbb{L},V'_\mathbb{L})$, ovvero è un isomorfismo.
+\end{proof}
+
+
+\section{Rappresentazioni per estensione di scalari}
+
+\begin{definition}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi. Sia $V$ un $\mathbb{K}$-spazio vettoriale, $\Rep{\rho}{G}{V}$ una rappresentazione. Definiamo la rappresentazione $\Rep{\rho_\mathbb{L}}{G}{V_\mathbb{L}}$ come $\rho_\mathbb{L}(g)=\rho(g)_\mathbb{L}$.
+\end{definition}
+
+\begin{definition}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi. Sia $W$ un $\mathbb{L}$-spazio vettoriale, $\Rep{\sigma}{G}{W}$ una rappresentazione. Definiamo la rappresentazione $\Rep{\sigma_\mathbb{K}}{G}{W_\mathbb{K}}$ come $\sigma_\mathbb{K}(g)=\sigma(g)\in GL(W)\subseteq GL(W_\mathbb{K})$.
+\end{definition}
+
+Osserviamo che $\deg\rho_\mathbb{L}=\deg\rho$, mentre $\deg\sigma_\mathbb{K}=[\mathbb{L}:\mathbb{K}]\cdot\deg\sigma$. Si può inoltre verificare che se $G$ è un gruppo topologico e $\rho\comma\sigma$ sono continue, allora anche $\rho_\mathbb{L}$ e $\sigma_\mathbb{K}$ sono continue.
+
+
+\begin{proposition}\thlabel{extended-representation-homomorphisms}
+Sia $\mathbb{K}\subseteq\mathbb{L}$ un'estensione di campi, $V$ un $\mathbb{K}$-spazio vettoriale, $W$ un $\mathbb{L}$-spazio vettoriale. Siano $\Rep{\rho}{G}{V}\comma\Rep{\sigma}{G}{W}$ rappresentazioni, $f:V\to W_\mathbb{K}$ un'applicazione $\mathbb{K}$-lineare, $\bar{f}:V_\mathbb{L}\to W$ l'unica applicazione $\mathbb{L}$-lineare tale che $\bar{f}|_V=f$. Allora $f\in\Hom(\rho,\sigma_\mathbb{K})$ se e solo se $\bar{f}\in\Hom(\rho_\mathbb{L},\sigma)$.
+\end{proposition}
+\begin{proof}
+Scriviamo $V_\mathbb{L}=\mathbb{L}\tensor V\supseteq\mathbb{K}\tensor V=V$.
+\begin{itemize}
+\item[$(\Rightarrow)$] Supponiamo $f\in\Hom(\rho,\sigma_\mathbb{K})$. Sia $g\in G\comma a\tensor v\in\mathbb{L}\tensor V$. Allora
+\begin{align*}
+\sigma(g)\bar{f}(a\tensor v)&=\sigma(g)(af(v))\\
+&=a\sigma_\mathbb{K}(g)f(v)\\
+&=af(\rho(g)v)\\
+&=\bar{f}(a\tensor\rho(g)v)\\
+&=\bar{f}\rho_\mathbb{L}(g)(a\tensor v).
+\end{align*}
+\item[$(\Leftarrow)$] Supponiamo $f\in\Hom(\rho_\mathbb{L},\sigma)$. Sia $g\in G\comma v\in V$. Allora
+$$
+\sigma_\mathbb{K}(g)f(v)=\sigma(g)\bar{f}(1\tensor v)=\bar{f}\rho_\mathbb{L}(g)(1\tensor v)=\bar{f}\rho(g)v=f\rho(g)v.
+$$
+\end{itemize}
+
+\end{proof}
+

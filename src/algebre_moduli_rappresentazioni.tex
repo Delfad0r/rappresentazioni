@@ -229,13 +229,13 @@ Sia $A$ una $\mathbb{K}$-algebra finita non nulla, $M$ un $A$-modulo sinistro fi
 \begin{enumerate}[(i)]
 \item esiste una famiglia finita $\{M_i\}_{i\in I}$ di sottomoduli semplici di $M$ tali che $M=\sum_{i\in I}M_i$;
 \item esiste una famiglia finita $\{M_i\}_{i\in I}$ di sottomoduli semplici di $M$ tali che $M=\Dirsum_{i\in I}M_i$;
-\item per ogni sottomodulo $N\le M$ esiste un sottomodulo $N'\le M$ tale che $M=N\Dirsum N'$.
+\item per ogni sottomodulo $N\le M$ esiste un sottomodulo $N'\le M$ tale che $M=N\dirsum N'$.
 \end{enumerate}
 \end{proposition}
 \begin{proof}
 \leavevmode
 \begin{itemize}
-\item[(i)$\Rightarrow$(iii)] Sia $J\subseteq I$ un sottoinsieme massimale tale che $N\cap M_j=0$ per ogni $j\in J$. Sia $N'=\sum_{j\in J}M_j\le M$. Supponiamo per assurdo che $N+N'\neq M$. Osserviamo che per ogni $i\in I$, essendo $M_i$ semplice, vale uno fra $M_i\cap(N+N')=0$ e $M_i\cap(N+N')=M_i$. Poiché $N+N'\neq M$, deve esistere un $i\in I$ tale che $M_i\cap(N+N')=0$. Ma allora $M_i\cap N'=0$ (quindi $i\not\in J$) e $M_i\cap N=0$, dunque $J$ non era massimale ($J\cup\{i\}$ è strettamente più grande e soddisfa la proprietà richiesta), assurdo.
+\item[(i)$\Rightarrow$(iii)] Sia $J\subseteq I$ un sottoinsieme massimale tale che $N\cap\left(\sum_{j\in J}M_j\right)=0$, e sia $N'=\sum_{j\in J}M_j$. $N$ e $N'$ sono ovviamente in somma diretta. Supponiamo per assurdo che $N+N'\neq M$. Esiste allora un $i\in I$ tale che $M_i\not\subseteq N+N'$; essendo $M_i$ semplice, necessariamente $M_i\cap (N+N')=0$. Ma allora, poiché $N\cap N'=0$, vale $N\cap(M_i+N')=0$, assurdo per massimalità di $J$ ($i\not\in J$ dato che $M_i\cap N'=0$).
 \item[(iii)$\Rightarrow$(ii)] Se $M$ è semplice la tesi è banalmente vera. Altrimenti sia $N\le M$ un sottomodulo proprio non nullo. Per ipotesi esiste un sottomodulo $N'\le M$ tale che $M=N\dirsum N'$ (dunque $N'$ è proprio e non nullo). Naturalmente le dimensioni di $N$ e di $N$' come $\mathbb{K}$-spazi vettoriali sono minori di quella di $M$, dunque si può concludere per induzione.
 \item[(ii)$\Rightarrow$(i)] È ovvio.
 \end{itemize}
